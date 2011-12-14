@@ -1,0 +1,6 @@
+rvm use --create ruby-1.9.3@mconigliaro.infrastructure
+if ! command -v bundle
+then
+  gem install bundler
+fi
+bundle install

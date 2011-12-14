@@ -1,0 +1,4 @@
+.DS_Store
+*.pem
+chef/environments/ec2.rb
+chef/environments/home.rb

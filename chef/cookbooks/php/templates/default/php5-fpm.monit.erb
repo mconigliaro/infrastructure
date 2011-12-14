@@ -1,0 +1,4 @@
+check process php5-fpm with pidfile /var/run/php5-fpm.pid
+  start program = "/usr/sbin/service php5-fpm start"
+  stop program  = "/usr/sbin/service php5-fpm stop"
+  if 3 restarts within 10 cycles then timeout

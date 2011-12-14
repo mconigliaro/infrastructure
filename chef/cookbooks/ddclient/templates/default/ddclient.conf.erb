@@ -1,0 +1,12 @@
+pid=<%= node[:ddclient][:pid] %>
+mail=root
+protocol=<%= node[:ddclient][:protocol] %>
+ssl=yes
+use=<%= node[:ddclient][:use] %>
+server=<%= node[:ddclient][:server] %>
+login=CHANGEME
+password=CHANGEME
+custom=<%= node[:ddclient][:custom] %>
+wildcard=<%= node[:ddclient][:wildcard] %>
+<%= "mx=#{node[:ddclient][:mx]}" if node[:ddclient][:mx] %>
+<%= node[:ddclient][:hosts].join(',') %>
