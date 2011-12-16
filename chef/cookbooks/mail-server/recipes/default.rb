@@ -37,6 +37,13 @@ end
   end
 end
 
+template "mailname" do
+  source "mailname.erb"
+  path "/etc/mailname"
+  mode "0644"
+  notifies :restart, resources(:service => "postfix")
+end
+
 template "main.cf" do
   source "main.cf.erb"
   path "/etc/postfix/main.cf"
