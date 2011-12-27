@@ -5,7 +5,7 @@
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
 
-['mail-stack-delivery', 'amavisd-new-postfix', 'mutt'].each do |p|
+['mail-stack-delivery', 'amavisd-new-postfix'].each do |p|
   package p do
     package_name p
   end
@@ -72,7 +72,7 @@ template "mail-server.monit" do
   notifies :restart, resources(:service => "monit")
 end
 
-['.dovecot.sieve', '.muttrc'].each do |f|
+['.dovecot.sieve'].each do |f|
   cookbook_file f do
     source f
     path "/etc/skel/#{f}"

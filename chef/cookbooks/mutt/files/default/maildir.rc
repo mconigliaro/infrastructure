@@ -1,3 +1,5 @@
+set mbox_type=Maildir
+
 set folder="~/Maildir"
 set mask="!^\\.[^.]"
 set mbox="~/Maildir"

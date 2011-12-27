@@ -10,7 +10,7 @@
   'iftop',
   'iotop',
   'lsof',
-  'mtr',
+  'mtr-tiny',
   'ngrep',
   'nethogs',
   'nmap',
