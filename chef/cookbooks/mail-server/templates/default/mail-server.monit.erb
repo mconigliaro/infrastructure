@@ -27,3 +27,9 @@ check process spamassassin with pidfile /var/run/spamd.pid
   stop program  = "/usr/sbin/service spamassassin stop"
   if failed port 783 with timeout 15 seconds for 3 cycles then restart
   if 3 restarts within 10 cycles then timeout
+
+check process postgrey with pidfile /var/run/postgrey.pid
+  start program = "/usr/sbin/service postgrey start"
+  stop program  = "/usr/sbin/service postgrey stop"
+  if failed port 10023 with timeout 15 seconds for 3 cycles then restart
+  if 3 restarts within 10 cycles then timeout

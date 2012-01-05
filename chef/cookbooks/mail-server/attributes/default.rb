@@ -5,4 +5,4 @@ default[:'mail-server'][:maps][:access_sender]  = []
 default[:'mail-server'][:maps][:generic]        = []
 default[:'mail-server'][:maps][:virtual]        = []
 default[:'mail-server'][:maps][:sasl_password]  = []
-
+default[:'mail-server'][:postgrey][:delay]      = 1

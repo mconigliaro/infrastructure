@@ -4,12 +4,9 @@
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
-package 'mutt' do
-  package_name 'mutt'
-end
+package 'mutt'
 
-cookbook_file 'maildir.rc' do
+cookbook_file '/etc/Muttrc.d/maildir.rc' do
   source 'maildir.rc'
-  path '/etc/Muttrc.d/maildir.rc'
   mode "0644"
 end

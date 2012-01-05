@@ -21,8 +21,4 @@
   'telnet',
   'tmux',
   'tshark',
-  'zip'].each do |p|
-    package p do
-      package_name p
-    end
-end
+  'zip'].each { |p| package p }

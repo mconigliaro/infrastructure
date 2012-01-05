@@ -5,77 +5,87 @@
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
 
-['mail-stack-delivery', 'amavisd-new-postfix'].each do |p|
-  package p do
-    package_name p
-  end
-end
+[
+  'mail-stack-delivery',
+  'amavisd-new-postfix',
+  'postgrey'
+].each { |p| package p }
 
 group 'amavis' do
   members ['clamav']
   append true
 end
 
-['dovecot', 'postfix', 'amavis', 'spamassassin'].each do |s|
+[
+  'dovecot',
+  'postfix',
+  'amavis',
+  'spamassassin',
+  'postgrey'
+].each do |s|
   service s do
-    service_name s
     action :enable
   end
 end
 
-['access_client', 'access_sender', 'generic', 'sasl_password', 'virtual'].each do |db|
+[
+  'access_client',
+  'access_sender',
+  'generic',
+  'sasl_password',
+  'virtual'
+].each do |db|
   execute "postmap_#{db}" do
     command "/usr/sbin/postmap /etc/postfix/#{db}"
     action :nothing
   end
 
-  template db do
+  template "/etc/postfix/#{db}" do
     source "#{db}.erb"
-    path "/etc/postfix/#{db}"
     mode "0644"
     notifies :run, resources(:execute => "postmap_#{db}")
   end
 end
 
-template "mailname" do
+template "/etc/mailname" do
   source "mailname.erb"
-  path "/etc/mailname"
   mode "0644"
   notifies :restart, resources(:service => "postfix")
 end
 
-template "main.cf" do
+template "/etc/postfix/main.cf" do
   source "main.cf.erb"
-  path "/etc/postfix/main.cf"
   mode "0644"
   notifies :restart, resources(:service => "postfix")
 end
 
-template "spamassassin.default" do
+template "/etc/default/spamassassin" do
   source "spamassassin.default.erb"
-  path "/etc/default/spamassassin"
   mode "0644"
   notifies :restart, resources(:service => "spamassassin")
 end
 
-template "50-user" do
+template "/etc/amavis/conf.d/50-user" do
   source "50-user.erb"
-  path "/etc/amavis/conf.d/50-user"
   mode "0644"
   notifies :restart, resources(:service => "amavis")
 end
 
-template "mail-server.monit" do
+template "/etc/default/postgrey" do
+  source "postgrey.default.erb"
+  mode "0644"
+  notifies :restart, resources(:service => "postgrey")
+end
+
+template "/etc/monit/conf.d/mail-server.monit" do
   source "mail-server.monit.erb"
-  path "/etc/monit/conf.d/mail-server.monit"
   mode "0644"
   notifies :restart, resources(:service => "monit")
 end
 
 ['.dovecot.sieve'].each do |f|
-  cookbook_file f do
+  cookbook_file "/etc/skel/#{f}" do
     source f
-    path "/etc/skel/#{f}"
     mode "0644"
   end
 end
