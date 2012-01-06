@@ -28,6 +28,12 @@ end
   end
 end
 
+template "/etc/dovecot/dovecot.conf" do
+  source "dovecot.conf.erb"
+  mode "0644"
+  notifies :restart, resources(:service => "dovecot")
+end
+
 [
   'access_client',
   'access_sender',
