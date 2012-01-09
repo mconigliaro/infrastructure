@@ -5,42 +5,47 @@
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
 
-[
-  'mail-stack-delivery',
-  'amavisd-new-postfix',
-  'postgrey'
-].each { |p| package p }
+%w{
+  mail-stack-delivery
+  amavisd-new-postfix
+  postgrey
+}.each { |p| package p }
 
 group 'amavis' do
   members ['clamav']
   append true
 end
 
-[
-  'dovecot',
-  'postfix',
-  'amavis',
-  'spamassassin',
-  'postgrey'
-].each do |s|
+%w{
+  dovecot
+  postfix
+  amavis
+  spamassassin
+  postgrey
+}.each do |s|
   service s do
     action :enable
   end
 end
 
-template "/etc/dovecot/dovecot.conf" do
-  source "dovecot.conf.erb"
-  mode "0644"
-  notifies :restart, resources(:service => "dovecot")
+execute "newaliases" do
+  command "/usr/bin/newaliases"
+  action :nothing
 end
 
-[
-  'access_client',
-  'access_sender',
-  'generic',
-  'sasl_password',
-  'virtual'
-].each do |db|
+template "/etc/aliases" do
+  source "aliases.erb"
+  mode "0644"
+  notifies :run, resources(:execute => "newaliases"), :immediately
+end
+
+%w{
+  access_client
+  access_sender
+  generic
+  sasl_password
+  virtual
+}.each do |db|
   execute "postmap_#{db}" do
     command "/usr/sbin/postmap /etc/postfix/#{db}"
     action :nothing
@@ -59,10 +64,15 @@ template "/etc/mailname" do
   notifies :restart, resources(:service => "postfix")
 end
 
-template "/etc/postfix/main.cf" do
-  source "main.cf.erb"
-  mode "0644"
-  notifies :restart, resources(:service => "postfix")
+%W{
+  master.cf
+  main.cf
+}.each do |f|
+  template "/etc/postfix/#{f}" do
+    source "#{f}.erb"
+    mode "0644"
+    notifies :restart, resources(:service => "postfix")
+  end
 end
 
 template "/etc/default/spamassassin" do
@@ -89,7 +99,9 @@ template "/etc/monit/conf.d/mail-server.monit" do
   notifies :restart, resources(:service => "monit")
 end
 
-['.dovecot.sieve'].each do |f|
+%w{
+  .dovecot.sieve
+}.each do |f|
   cookbook_file "/etc/skel/#{f}" do
     source f
     mode "0644"

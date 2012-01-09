@@ -3,6 +3,7 @@ description 'The default/base role for all nodes (i.e. all other roles are assum
 
 default_run_list = %w{
   recipe[base]
+  recipe[sudo]
   recipe[unattended-upgrades]
   recipe[monit]
   recipe[ntp]

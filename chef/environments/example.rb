@@ -10,6 +10,9 @@ default_attributes({
   :'mail-server' => {
     :virtual_alias_domains => ['example.com', 'example.org'],
     :relayhost             => '[smtp.example.net]:587',
+    :aliases => [
+      'root: mike'
+    ],
     :maps => {
       :access_sender => [
         'user@example.com REJECT Comment'

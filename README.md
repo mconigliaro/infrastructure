@@ -1,19 +1,22 @@
-# New Server Setup
+## New Server Setup
 
-## Install RVM
+### Update system
 
-    aptitude install -y curl
-    /bin/bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
-    /etc/profile.d/rvm.sh
-    aptitude install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion
+    aptitude update
+    aptitude -y safe-upgrade
+
+### Install RVM and Ruby
+
+    aptitude install -y ruby-rvm
+    rvm get latest
     rvm install ruby-1.9.3
     rvm use ruby-1.9.3 --default
 
-## Install Chef
+### Install Chef
 
     gem install chef ohai
 
-## Configure Chef
+### Configure Chef
 
     mkdir /etc/chef
     /bin/cat <<END > /etc/chef/client.rb
@@ -22,3 +25,12 @@
     validation_client_name   "conigliaro-validator"
     verbose_logging          false
     END
+
+## Port forwarding
+
+- 22 (SSH)
+- 25 (SMTP)
+- 80 (HTTP)
+- 443 (HTTPS)
+- 465 (SMTPS)
+- 993 (IMAPS)

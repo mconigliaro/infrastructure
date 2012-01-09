@@ -5,7 +5,6 @@ check process dovecot with pidfile /var/run/dovecot/master.pid
   if failed port 993 type tcpssl protocol imap with timeout 15 seconds for 3 cycles then restart
   if failed port 110 protocol pop with timeout 15 seconds for 3 cycles then restart
   if failed port 995 type tcpssl protocol pop with timeout 15 seconds for 3 cycles then restart
-  if failed port 2000 with timeout 15 seconds for 3 cycles then restart
   if 3 restarts within 10 cycles then timeout
 
 check process postfix with pidfile /var/spool/postfix/pid/master.pid
