@@ -13,6 +13,9 @@ default_attributes({
       }
     }
   },
+  :base => {
+    :timezone => 'America/Denver'
+  },
   :ddclient => {
     :login    => 'login',
     :password => 'password',

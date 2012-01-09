@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: base
-# Recipe:: default
+# Recipe:: packages
 #
-# Copyright 2011, Michael Paul Thomas Conigliaro
+# Copyright 2012, Michael Paul Thomas Conigliaro
 #
 %w{
   bsd-mailx
