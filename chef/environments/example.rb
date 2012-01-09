@@ -1,6 +1,18 @@
 name "example"
 description "Example server"
 default_attributes({
+  :backuppc => {
+    :users => [
+      'mike'
+    ],
+    :hosts => {
+      'ec2.example.com' => {
+        :XferMethod     => '"rsync"',
+        :PingPath       => '/bin/echo',
+        :RsyncShareName => '["/home"]'
+      }
+    }
+  },
   :ddclient => {
     :login    => 'login',
     :password => 'password',

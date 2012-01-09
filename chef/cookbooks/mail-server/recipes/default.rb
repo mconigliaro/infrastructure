@@ -4,7 +4,6 @@
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
-
 %w{
   mail-stack-delivery
   amavisd-new-postfix
@@ -64,7 +63,7 @@ template "/etc/mailname" do
   notifies :restart, resources(:service => "postfix")
 end
 
-%W{
+%w{
   master.cf
   main.cf
 }.each do |f|

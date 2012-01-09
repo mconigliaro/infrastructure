@@ -17,6 +17,6 @@ default_run_list = %w{
 
 env_run_lists({
   'ec2'      => default_run_list,
-  'home'     => default_run_list,
+  'home'     => default_run_list + %w{ recipe[backuppc::server] },
   '_default' => default_run_list
 })
