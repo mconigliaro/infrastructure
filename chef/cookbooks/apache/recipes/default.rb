@@ -13,8 +13,9 @@ end
 template "/etc/monit/conf.d/apache.monit" do
   source "apache.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end
 
 include_recipe "apache::authnz_external"
 include_recipe "apache::authz_unixgroup"
+include_recipe "apache::ssl"

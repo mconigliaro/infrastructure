@@ -27,17 +27,6 @@ end
   end
 end
 
-execute "newaliases" do
-  command "/usr/bin/newaliases"
-  action :nothing
-end
-
-template "/etc/aliases" do
-  source "aliases.erb"
-  mode "0644"
-  notifies :run, resources(:execute => "newaliases"), :immediately
-end
-
 %w{
   access_client
   access_sender
@@ -53,14 +42,14 @@ end
   template "/etc/postfix/#{db}" do
     source "#{db}.erb"
     mode "0644"
-    notifies :run, resources(:execute => "postmap_#{db}")
+    notifies :run, "execute[postmap_#{db}]"
   end
 end
 
 template "/etc/mailname" do
   source "mailname.erb"
   mode "0644"
-  notifies :restart, resources(:service => "postfix")
+  notifies :restart, "service[postfix]"
 end
 
 %w{
@@ -70,32 +59,43 @@ end
   template "/etc/postfix/#{f}" do
     source "#{f}.erb"
     mode "0644"
-    notifies :restart, resources(:service => "postfix")
+    notifies :restart, "service[postfix]"
   end
 end
 
 template "/etc/default/spamassassin" do
   source "spamassassin.default.erb"
   mode "0644"
-  notifies :restart, resources(:service => "spamassassin")
+  notifies :restart, "service[spamassassin]"
 end
 
 template "/etc/amavis/conf.d/50-user" do
   source "50-user.erb"
   mode "0644"
-  notifies :restart, resources(:service => "amavis")
+  notifies :restart, "service[amavis]"
 end
 
 template "/etc/default/postgrey" do
   source "postgrey.default.erb"
   mode "0644"
-  notifies :restart, resources(:service => "postgrey")
+  notifies :restart, "service[postgrey]"
 end
 
 template "/etc/monit/conf.d/mail-server.monit" do
   source "mail-server.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
+end
+
+execute "newaliases" do
+  command "/usr/bin/newaliases"
+  action :nothing
+end
+
+template "/etc/aliases" do
+  source "aliases.erb"
+  mode "0644"
+  notifies :run, "execute[newaliases]", :immediately
 end
 
 %w{

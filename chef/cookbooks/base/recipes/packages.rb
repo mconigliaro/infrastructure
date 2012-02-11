@@ -23,5 +23,5 @@
   telnet
   tmux
   tshark
-  zip
+  vim
 }.each { |p| package p }

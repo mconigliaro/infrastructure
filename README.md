@@ -1,3 +1,9 @@
+## Dependencies
+
+    gem install chef -v 0.10.8
+    gem install vagrant -v 0.9.3
+    gem install veewee -v 0.2.2
+
 ## New Server Setup
 
 ### Update system
@@ -7,8 +13,7 @@
 
 ### Install RVM and Ruby
 
-    aptitude install -y ruby-rvm
-    rvm get latest
+    bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
     rvm install ruby-1.9.3
     rvm use ruby-1.9.3 --default
 

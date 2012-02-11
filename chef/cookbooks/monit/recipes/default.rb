@@ -13,17 +13,23 @@ end
 template "/etc/default/monit" do
   source "monit.default.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end
 
 template "/etc/monit/monitrc" do
   source "monitrc.erb"
   mode "0600"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end
 
 template "/etc/monit/conf.d/system.monit" do
   source "system.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
+end
+
+cron "monit monitor all" do
+  hour "*"
+  minute "0"
+  command "/usr/sbin/monit monitor all 2>&1 > /dev/null"
 end

@@ -17,7 +17,7 @@ template "/etc/backuppc/config.pl" do
   mode "0644"
   owner "backuppc"
   group "www-data"
-  notifies :restart, resources(:service => "backuppc")
+  notifies :restart, "service[backuppc]"
 end
 
 template "/etc/backuppc/hosts" do
@@ -25,7 +25,7 @@ template "/etc/backuppc/hosts" do
   mode "0644"
   owner "backuppc"
   group "www-data"
-  notifies :restart, resources(:service => "backuppc")
+  notifies :restart, "service[backuppc]"
 end
 
 node[:backuppc][:hosts].each do |host,opts|
@@ -37,7 +37,7 @@ node[:backuppc][:hosts].each do |host,opts|
     mode "0644"
     owner "backuppc"
     group "www-data"
-    notifies :restart, resources(:service => "backuppc")
+    notifies :restart, "service[backuppc]"
   end
 end
 
@@ -52,16 +52,16 @@ template "/etc/backuppc/apache.conf" do
   mode "0644"
   owner "backuppc"
   group "www-data"
-  notifies :restart, resources(:service => "apache2")
+  notifies :restart, "service[apache2]"
 end
 
 link "/etc/apache2/conf.d/backuppc" do
   to "/etc/backuppc/apache.conf"
-  notifies :restart, resources(:service => "apache2")
+  notifies :restart, "service[apache2]"
 end
 
 template "/etc/monit/conf.d/backuppc.monit" do
   source "backuppc.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end

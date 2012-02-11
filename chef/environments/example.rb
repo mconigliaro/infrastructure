@@ -17,10 +17,11 @@ default_attributes({
     :timezone => 'America/Denver'
   },
   :ddclient => {
-    :login    => 'login',
-    :password => 'password',
-    :custom   => 'yes',
-    :hosts    => ['ec2.example.com', 'mail.example.com'],
+    :run_daemon => 'true',
+    :login      => 'login',
+    :password   => 'password',
+    :custom     => 'yes',
+    :hosts      => ['ec2.example.com', 'mail.example.com'],
   },
   :'mail-server' => {
     :virtual_alias_domains => ['example.com', 'example.org'],

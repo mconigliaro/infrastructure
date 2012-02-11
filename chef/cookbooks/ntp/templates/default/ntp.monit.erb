@@ -1,3 +1,4 @@
-check process ntpd with pidfile /var/run/ntpd.pid
+check process ntp with pidfile /var/run/ntpd.pid
   start program = "/usr/sbin/service ntp start"
   stop program  = "/usr/sbin/service ntp stop"
+  if 3 restarts within 5 cycles then timeout

@@ -13,11 +13,11 @@ end
 template "/etc/fail2ban/fail2ban.conf" do
   source "fail2ban.conf.erb"
   mode "0644"
-  notifies :restart, resources(:service => "fail2ban")
+  notifies :restart, "service[fail2ban]"
 end
 
 template "/etc/monit/conf.d/fail2ban.monit" do
   source "fail2ban.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end

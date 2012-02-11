@@ -10,5 +10,5 @@ package "libapache2-mod-authz-unixgroup"
 
 execute "/usr/sbin/a2enmod authz_unixgroup" do
   not_if { File.symlink?("/etc/apache2/mods-enabled/authz_unixgroup.load") }
-  notifies :restart, resources(:service => "apache2")
+  notifies :restart, "service[apache2]"
 end

@@ -13,17 +13,17 @@ end
 template "/etc/ddclient.conf" do
   source "ddclient.conf.erb"
   mode "0600"
-  notifies :restart, resources(:service => "ddclient")
+  notifies :restart, "service[ddclient]"
 end
 
-template "/etc/default/ddclient.conf" do
-  source "ddclient.conf.default.erb"
+template "/etc/default/ddclient" do
+  source "ddclient.default.erb"
   mode "0644"
-  notifies :restart, resources(:service => "ddclient")
+  notifies :restart, "service[ddclient]"
 end
 
 template "/etc/monit/conf.d/ddclient.monit" do
   source "ddclient.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end

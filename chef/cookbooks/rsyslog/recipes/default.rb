@@ -13,5 +13,5 @@ end
 template "/etc/monit/conf.d/rsyslog.monit" do
   source "rsyslog.monit.erb"
   mode "0644"
-  notifies :restart, resources(:service => "monit")
+  notifies :restart, "service[monit]"
 end
