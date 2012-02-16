@@ -29,6 +29,7 @@ end
 
 %w{
   01-mail-stack-delivery.conf
+  10-master.conf
 }.each do |f|
   template "/etc/dovecot/conf.d/#{f}" do
     source "#{f}.erb"
