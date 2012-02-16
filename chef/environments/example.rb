@@ -21,7 +21,12 @@ default_attributes({
     :login      => 'login',
     :password   => 'password',
     :custom     => 'yes',
-    :hosts      => ['ec2.example.com', 'mail.example.com'],
+    :hosts      => [
+      'ec2.example.com',
+      'mail.example.com',
+      'ec2.example.org',
+      'mail.example.org'
+    ],
   },
   :'mail-server' => {
     :virtual_alias_domains => ['example.com', 'example.org'],
