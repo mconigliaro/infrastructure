@@ -28,6 +28,16 @@ end
 end
 
 %w{
+  01-mail-stack-delivery.conf
+}.each do |f|
+  template "/etc/dovecot/conf.d/#{f}" do
+    source "#{f}.erb"
+    mode "0644"
+    notifies :restart, "service[dovecot]"
+  end
+end
+
+%w{
   access_client
   access_sender
   generic
