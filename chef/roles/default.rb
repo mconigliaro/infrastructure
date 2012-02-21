@@ -8,6 +8,7 @@ default_run_list = %w{
   recipe[sudo]
   recipe[unattended-upgrades]
   recipe[monit]
+  recipe[chef::client]
   recipe[ntp]
   recipe[rsyslog]
   recipe[openssh::server]
@@ -17,13 +18,14 @@ default_run_list = %w{
   recipe[base::timezone]
 }
 
-remote_run_list = default_run_list + %w{
-  recipe[fail2ban]
-  recipe[ddclient]
-}
-
 env_run_lists({
-  'ec2'      => remote_run_list,
-  'home'     => remote_run_list + %w{ recipe[backuppc::server] },
+  'ec2'  => default_run_list + %w{
+    recipe[fail2ban]
+    recipe[ddclient]
+  },
+  'home' => default_run_list + %w{
+    recipe[smartmontools]
+    recipe[backuppc::server]
+  },
   '_default' => default_run_list
 })

@@ -12,11 +12,3 @@ deb-src http://security.ubuntu.com/ubuntu/ <%= node[:lsb][:codename] %>-security
 
 deb http://archive.canonical.com/ubuntu/ <%= node[:lsb][:codename] %> partner
 deb-src http://archive.canonical.com/ubuntu/ <%= node[:lsb][:codename] %> partner
-
-<% if node[:lsb][:codename] == "oneiric" %>
-deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
-
-deb http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
-<% end %>

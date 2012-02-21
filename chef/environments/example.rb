@@ -16,6 +16,15 @@ default_attributes({
   :base => {
     :timezone => 'America/Denver'
   },
+  :chef => {
+    :client => {
+      :daemon_enabled         => true,
+      :interval               => 3600,
+      :splay                  => 60,
+      :chef_server_url        => "https://api.opscode.com/organizations/example",
+      :validation_client_name => "example-validator"
+    }
+  },
   :ddclient => {
     :run_daemon => 'true',
     :login      => 'login',

@@ -18,3 +18,10 @@ execute "aptitude_update" do
   command "/usr/bin/aptitude update"
   ignore_failure true
 end
+
+template "sources.list" do
+  source "sources.list.erb"
+  path "/etc/apt/sources.list"
+  mode "0644"
+  notifies :run, "execute[aptitude_update]", :immediately
+end

@@ -10,8 +10,8 @@ service "mysql" do
   action :enable
 end
 
-template "/etc/mysql/conf.d/livingsocial.cnf" do
-  source "livingsocial.cnf.erb"
+template "/etc/mysql/conf.d/monit.cnf" do
+  source "monit.cnf.erb"
   mode "0644"
   notifies :restart, "service[mysql]"
 end

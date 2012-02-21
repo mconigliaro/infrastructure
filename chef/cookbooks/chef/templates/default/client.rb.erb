@@ -1,0 +1,6 @@
+log_level               :info
+log_location            STDOUT
+verbose_logging         false
+chef_server_url         "<%= node[:chef][:client][:chef_server_url] %>"
+validation_client_name  "chef-validator"
+node_name               "<%= node.name %>"

@@ -1,8 +1,13 @@
-## Dependencies
+# Infrastructure
 
-    gem install chef -v 0.10.8
-    gem install vagrant -v 0.9.3
-    gem install veewee -v 0.2.2
+## Install dependencies
+
+* [RVM](http://beginrescueend.com/)
+* [VirtualBox](https://www.virtualbox.org/)
+
+## Install gem dependencies
+
+    ./setup.sh
 
 ## New Server Setup
 
@@ -11,19 +16,16 @@
     aptitude update
     aptitude -y safe-upgrade
 
-### Install RVM and Ruby
-
-    bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
-    rvm install ruby-1.9.3
-    rvm use ruby-1.9.3 --default
-
 ### Install Chef
 
-    gem install chef ohai
+    echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" >> /etc/apt/sources.list.d/opscode.list
+    wget -O - -q http://apt.opscode.com/packages@opscode.com.gpg.key | apt-key add -
+    aptitude update
+    echo "chef chef/chef_server_url string" | debconf-set-selections
+    aptitude -y install chef
 
 ### Configure Chef
 
-    mkdir /etc/chef
     /bin/cat <<END > /etc/chef/client.rb
     chef_server_url          "https://api.opscode.com/organizations/conigliaro"
     node_name                "CHANGEME"
