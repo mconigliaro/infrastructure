@@ -2,7 +2,6 @@
 
 ## Install dependencies
 
-* [RVM](http://beginrescueend.com/)
 * [VirtualBox](https://www.virtualbox.org/)
 
 ## Install gem dependencies
