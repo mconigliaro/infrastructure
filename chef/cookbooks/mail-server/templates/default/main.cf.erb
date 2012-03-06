@@ -20,7 +20,7 @@ biff = no
 
 soft_bounce = yes
 delay_warning_time = 4h
-notify_classes = bounce,resource,software
+notify_classes = <%= node[:'mail-server'][:notify_classes].join(",") %>
 
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_password

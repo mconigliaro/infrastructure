@@ -11,5 +11,9 @@ default[:'mail-server'] = {
   },
   :postgrey => {
     :delay => 1
-  }
+  },
+  :notify_classes => [
+    "resource",
+    "software"
+  ]
 }
