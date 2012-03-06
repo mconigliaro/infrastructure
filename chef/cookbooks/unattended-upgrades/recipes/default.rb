@@ -6,8 +6,8 @@
 #
 package "unattended-upgrades"
 
-template "/etc/apt/apt.conf.d/10periodic" do
-  source "10periodic.erb"
+template "/etc/apt/apt.conf.d/02periodic" do
+  source "02periodic.erb"
   mode "0644"
 end
 
