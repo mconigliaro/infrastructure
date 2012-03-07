@@ -1,0 +1,1 @@
+<%= "RedirectMatch ^/$ #{node[:apache][:default_redirect_path]}" unless node[:apache][:default_redirect_path].nil? -%>
