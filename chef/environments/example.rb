@@ -1,6 +1,6 @@
 name "example"
 description "Example server"
-default_attributes({
+override_attributes({
   :apcupsd => {
     :upscable => "usb",
     :upstype  => "usb",
