@@ -12,5 +12,5 @@ end
 template "/etc/sudoers.d/ec2" do
   source "ec2.erb"
   mode "0440"
-  only_if { node[:cloud] && node[:cloud][:provider] == 'ec2' }
+  only_if { node[:cloud] && node[:cloud][:provider] == "ec2" }
 end

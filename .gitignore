@@ -1,5 +1,7 @@
 .DS_Store
 .vagrant
+*.box
 *.pem
 chef/environments/ec2.rb
 chef/environments/home.rb
+iso/

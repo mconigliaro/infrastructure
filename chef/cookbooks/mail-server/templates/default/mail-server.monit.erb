@@ -27,6 +27,16 @@ check process spamassassin with pidfile /var/run/spamd.pid
   if failed port 783 with timeout 15 seconds for 3 cycles then restart
   if 3 restarts within 5 cycles then timeout
 
+check process clamav-daemon with pidfile /var/run/clamav/clamd.pid
+  start program = "/usr/sbin/service clamav-daemon start"
+  stop program  = "/usr/sbin/service clamav-daemon stop"
+  if 3 restarts within 5 cycles then timeout
+
+check process clamav-freshclam with pidfile /var/run/clamav/freshclam.pid
+  start program = "/usr/sbin/service clamav-freshclam start"
+  stop program  = "/usr/sbin/service clamav-freshclam stop"
+  if 3 restarts within 5 cycles then timeout
+
 check process postgrey with pidfile /var/run/postgrey.pid
   start program = "/usr/sbin/service postgrey start"
   stop program  = "/usr/sbin/service postgrey stop"

@@ -4,14 +4,24 @@
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
+template "/etc/mailname" do
+  source "mailname.erb"
+  mode "0644"
+  notifies :restart, "service[postfix]"
+end
+
+# FIXME: https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916
 %w{
-  mail-stack-delivery
+  dovecot-pop3d
+  dovecot-imapd
+  dovecot-sieve
+  postfix
   amavisd-new-postfix
   postgrey
 }.each { |p| package p }
 
-group 'amavis' do
-  members ['clamav']
+group "amavis" do
+  members ["clamav"]
   append true
 end
 
@@ -28,8 +38,9 @@ end
 end
 
 %w{
-  01-mail-stack-delivery.conf
+  10-mail.conf
   10-master.conf
+  20-imap.conf
 }.each do |f|
   template "/etc/dovecot/conf.d/#{f}" do
     source "#{f}.erb"
@@ -55,12 +66,6 @@ end
     mode "0644"
     notifies :run, "execute[postmap_#{db}]"
   end
-end
-
-template "/etc/mailname" do
-  source "mailname.erb"
-  mode "0644"
-  notifies :restart, "service[postfix]"
 end
 
 %w{

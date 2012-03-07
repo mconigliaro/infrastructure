@@ -1,7 +1,9 @@
 default[:'mail-server'] = {
   :relayhost             => nil,
   :virtual_alias_domains => [],
-  :aliases               => [],
+  :aliases               => [
+    "root: vagrant"
+  ],
   :maps => {
     :access_client  => [],
     :access_sender  => [],

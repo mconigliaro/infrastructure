@@ -7,11 +7,11 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "vagrant-ubuntu-oneiric"
+  config.vm.box = "vagrant-ubuntu-precise"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://dl.dropbox.com/u/40267300/VagrantBoxes/vagrant-ubuntu-oneiric.box"
+  # config.vm.box_url = "vagrant-ubuntu-precise.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -58,7 +58,6 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef/cookbooks"
     chef.roles_path     = "chef/roles"
-    chef.data_bags_path = "chef/data_bags"
     chef.add_role "default"
 
     # You may also specify custom JSON attributes:

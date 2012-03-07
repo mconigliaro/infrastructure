@@ -1,20 +1,25 @@
 name "example"
 description "Example server"
 default_attributes({
+  :apcupsd => {
+    :upscable => "usb",
+    :upstype  => "usb",
+    :device   => nil,
+  },
   :backuppc => {
     :users => [
-      'mike'
+      "mike"
     ],
     :hosts => {
-      'ec2.example.com' => {
+      "ec2.example.com" => {
         :XferMethod     => '"rsync"',
-        :PingPath       => '/bin/echo',
+        :PingPath       => "/bin/echo",
         :RsyncShareName => '["/home"]'
       }
     }
   },
   :base => {
-    :timezone => 'America/Denver'
+    :timezone => "America/Denver"
   },
   :chef => {
     :client => {
@@ -26,34 +31,34 @@ default_attributes({
     }
   },
   :ddclient => {
-    :run_daemon => 'true',
-    :login      => 'login',
-    :password   => 'password',
-    :custom     => 'yes',
+    :run_daemon => "true",
+    :login      => "login",
+    :password   => "password",
+    :custom     => "yes",
     :hosts      => [
-      'ec2.example.com',
-      'mail.example.com',
-      'ec2.example.org',
-      'mail.example.org'
+      "ec2.example.com",
+      "mail.example.com",
+      "ec2.example.org",
+      "mail.example.org"
     ],
   },
-  :'mail-server' => {
-    :virtual_alias_domains => ['example.com', 'example.org'],
-    :relayhost             => '[smtp.example.net]:587',
+  :"mail-server" => {
+    :virtual_alias_domains => ["example.com", "example.org"],
+    :relayhost             => "[smtp.example.net]:587",
     :aliases => [
-      'root: mike'
+      "root: mike"
     ],
     :maps => {
       :access_sender => [
-        'user@example.com REJECT Comment'
+        "user@example.com REJECT Comment"
       ],
       :sasl_password => [
-        'smtp.example.net user:password'
+        "smtp.example.net user:password"
       ],
       :virtual => [
-        'mike@example.com  mike',
-        'mike@example.org  mike',
-        '@example.org      mike'
+        "mike@example.com  mike",
+        "mike@example.org  mike",
+        "@example.org      mike"
       ]
     }
   }

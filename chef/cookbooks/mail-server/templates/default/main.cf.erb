@@ -15,7 +15,7 @@ append_dot_mydomain = no
 mailbox_size_limit = 0
 recipient_delimiter = +
 home_mailbox = Maildir/
-mailbox_command = /usr/lib/dovecot/deliver -c /etc/dovecot/conf.d/01-mail-stack-delivery.conf -m "${EXTENSION}"
+mailbox_command = /usr/lib/dovecot/deliver -m "${EXTENSION}"
 biff = no
 
 soft_bounce = yes
@@ -42,8 +42,8 @@ smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
 
 smtpd_use_tls=yes
-smtpd_tls_cert_file = /etc/ssl/certs/ssl-mail.pem
-smtpd_tls_key_file = /etc/ssl/private/ssl-mail.key
+smtpd_tls_cert_file = /etc/ssl/certs/dovecot.pem
+smtpd_tls_key_file = /etc/ssl/private/dovecot.pem
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtpd_tls_received_header = yes
 smtpd_tls_mandatory_protocols = SSLv3, TLSv1

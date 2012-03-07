@@ -1,0 +1,4 @@
+check process apcupsd with pidfile /var/run/apcupsd.pid
+  start program = "/usr/sbin/service apcupsd start"
+  stop program  = "/usr/sbin/service apcupsd stop"
+  if 3 restarts within 5 cycles then timeout
