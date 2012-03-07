@@ -16,8 +16,8 @@ template "/etc/ssh/sshd_config" do
   notifies :restart, "service[ssh]"
 end
 
-template "/etc/monit/conf.d/ssh.monit" do
-  source "ssh.monit.erb"
+template "/etc/monit/conf.d/openssh.monit" do
+  source "openssh.monit.erb"
   mode "0644"
   notifies :restart, "service[monit]"
 end

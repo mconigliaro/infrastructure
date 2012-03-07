@@ -6,6 +6,8 @@
 #
 %w{
   bsd-mailx
+  curl
+  debconf-utils
   git-core
   htop
   iftop
