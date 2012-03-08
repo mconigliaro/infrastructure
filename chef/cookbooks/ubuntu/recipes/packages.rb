@@ -26,5 +26,4 @@
   tmux
   tshark
   vim
-  zsh
 }.each { |p| package p }

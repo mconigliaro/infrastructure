@@ -16,13 +16,8 @@ group node[:lsb][:release] == "11.10" ? "admin" : "sudo" do
   append true
 end
 
-git "/home/mike/.oh-my-zsh" do
-  repository "git://github.com/robbyrussell/oh-my-zsh.git"
-end
+include_recipe "zsh"
 
-template "/home/mike/.zshrc" do
-  source ".zshrc.erb"
-  mode "0644"
-  owner "mike"
-  group "mike"
+oh_my_zsh "mike" do
+  manage_zshrc true
 end
