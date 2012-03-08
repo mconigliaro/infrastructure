@@ -4,7 +4,7 @@ override_attributes({
   :apcupsd => {
     :upscable => "usb",
     :upstype  => "usb",
-    :device   => nil,
+    :device   => "",
   },
   :backuppc => {
     :users => [
