@@ -16,6 +16,7 @@ end
 
 execute "aptitude_update" do
   command "/usr/bin/aptitude update"
+  action :nothing
   ignore_failure true
 end
 

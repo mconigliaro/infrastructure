@@ -1,11 +1,11 @@
-name "base"
-description "The base role"
+name "server"
+description "Server"
 
 # FIXME: recipe[chef::client] goes after monit once we get packages for 12.04
 default_run_list = %w{
-  recipe[base::locale]
+  recipe[ubuntu::locale]
   recipe[apt]
-  recipe[base::packages]
+  recipe[ubuntu::packages]
   recipe[sudo]
   recipe[unattended-upgrades]
   recipe[monit]
@@ -16,7 +16,7 @@ default_run_list = %w{
   recipe[mail]
   recipe[mutt]
   recipe[conigliaro]
-  recipe[base::timezone]
+  recipe[ubuntu::timezone]
 }
 
 production_run_list = default_run_list + %w{

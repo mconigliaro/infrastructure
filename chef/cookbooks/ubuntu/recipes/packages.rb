@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: ubuntu
 # Recipe:: packages
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
@@ -26,4 +26,5 @@
   tmux
   tshark
   vim
+  zsh
 }.each { |p| package p }

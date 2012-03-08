@@ -28,7 +28,6 @@ template "/etc/monit/conf.d/system.monit" do
   notifies :restart, "service[monit]"
 end
 
-# FIXME: Temporary
 cron "monit monitor all" do
   hour "*"
   minute "0"

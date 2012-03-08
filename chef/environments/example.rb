@@ -1,5 +1,5 @@
 name "example"
-description "Example server"
+description "Example"
 override_attributes({
   :apcupsd => {
     :upscable => "usb",
@@ -18,7 +18,7 @@ override_attributes({
       }
     }
   },
-  :base => {
+  :ubuntu => {
     :timezone => "America/Denver"
   },
   :chef => {

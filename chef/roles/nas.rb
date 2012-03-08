@@ -2,7 +2,7 @@ name "nas"
 description "NAS server"
 
 default_run_list = %w{
-  role[base]
+  role[server]
   recipe[smartmontools]
   recipe[mdadm]
 }

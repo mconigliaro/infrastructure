@@ -34,7 +34,7 @@
 
 ## Port forwarding
 
-### Base
+### Server
 - 22 (SSH)
 
 ### Mail
