@@ -26,6 +26,7 @@ env_run_lists({
   "home" => default_run_list + %w{
     recipe[apcupsd]
     recipe[smartmontools]
+    recipe[mdadm]
     recipe[backuppc::server]
   },
   "_default" => default_run_list
