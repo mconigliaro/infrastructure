@@ -13,7 +13,7 @@
 ### Update system
 
     aptitude update
-    aptitude -y safe-upgrade
+    aptitude -y full-upgrade
 
 ### Install Chef
 
@@ -34,9 +34,14 @@
 
 ## Port forwarding
 
+### Base
 - 22 (SSH)
+
+### Mail
 - 25 (SMTP)
-- 80 (HTTP)
-- 443 (HTTPS)
 - 465 (SMTPS)
 - 993 (IMAPS)
+
+### NAS
+- 80 (HTTP)
+- 443 (HTTPS)
