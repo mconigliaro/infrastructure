@@ -44,6 +44,7 @@ override_attributes({
   },
   :mail => {
     :postfix => {
+      :inet_interfaces       => ["all"],
       :virtual_alias_domains => ["example.com", "example.org"],
       :relayhost             => "[smtp.example.net]:587",
       :aliases => [

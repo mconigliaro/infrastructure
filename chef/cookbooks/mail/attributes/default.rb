@@ -1,5 +1,6 @@
 default[:mail] = {
   :postfix => {
+    :inet_interfaces       => ["loopback-only"],
     :relayhost             => nil,
     :virtual_alias_domains => [],
     :aliases               => [

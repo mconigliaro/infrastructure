@@ -1,4 +1,4 @@
-inet_interfaces = <%= node[:recipes].include?("mail::server") ? "all" : "loopback-only" %>
+inet_interfaces = <%= node[:mail][:postfix][:inet_interfaces].join(',') %>
 
 myorigin = /etc/mailname
 myhostname = <%= @node[:fqdn] %>
