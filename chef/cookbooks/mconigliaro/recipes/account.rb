@@ -1,21 +1,17 @@
 #
-# Cookbook Name:: ubuntu
-# Recipe:: users
+# Cookbook Name:: mconigliaro
+# Recipe:: account
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
 #
-user "mike" do
+user node[:mconigliaro][:user] do
   comment "Mike Conigliaro"
-  home "/home/mike"
+  home node[:mconigliaro][:homedir]
   shell "/bin/zsh"
   supports :manage_home => true
 end
 
 group node[:lsb][:release] == "11.10" ? "admin" : "sudo" do
-  members ["mike"]
+  members [node[:mconigliaro][:user]]
   append true
-end
-
-oh_my_zsh "mike" do
-  manage_zshrc true
 end

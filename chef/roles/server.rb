@@ -15,8 +15,9 @@ default_run_list = %w{
   recipe[fail2ban]
   recipe[mail]
   recipe[mutt]
-  recipe[ubuntu::users]
   recipe[ubuntu::timezone]
+  recipe[mconigliaro::account]
+  recipe[mconigliaro]
 }
 
 production_run_list = default_run_list + %w{
