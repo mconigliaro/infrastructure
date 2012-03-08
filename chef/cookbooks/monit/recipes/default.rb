@@ -28,8 +28,9 @@ template "/etc/monit/conf.d/system.monit" do
   notifies :restart, "service[monit]"
 end
 
+# FIXME: Temporary
 cron "monit monitor all" do
   hour "*"
   minute "0"
-  command "/usr/sbin/monit monitor all 2>&1 > /dev/null"
+  command "/usr/#{node[:lsb][:release] == "11.10" ? "sbin" : "bin" }/monit monitor all 2>&1 > /dev/null"
 end
