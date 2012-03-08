@@ -1,9 +1,18 @@
 name "nas"
 description "NAS server"
-run_list %w{
+
+default_run_list = %w{
   role[base]
-  recipe[apcupsd]
   recipe[smartmontools]
   recipe[mdadm]
-  recipe[backuppc::server]
 }
+
+production_run_list = default_run_list + %w{
+  recipe[apcupsd]
+}
+
+env_run_lists({
+  "ec2"      => production_run_list,
+  "home"     => production_run_list,
+  "_default" => default_run_list
+})
