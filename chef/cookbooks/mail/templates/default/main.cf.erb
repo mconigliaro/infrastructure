@@ -1,38 +1,38 @@
-inet_interfaces = all
-mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
-readme_directory = no
+inet_interfaces = <%= node[:recipes].include?("mail::server") ? "all" : "loopback-only" %>
 
 myorigin = /etc/mailname
 myhostname = <%= @node[:fqdn] %>
 mydestination = $myhostname, localhost
+
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-virtual_alias_domains = <%= node[:'mail-server'][:virtual_alias_domains].join(' ') %>
+virtual_alias_domains = <%= node[:mail][:postfix][:virtual_alias_domains].join(' ') %>
 virtual_alias_maps = hash:/etc/postfix/virtual
 smtp_generic_maps = regexp:/etc/postfix/generic
-append_dot_mydomain = no
 
+append_dot_mydomain = no
 mailbox_size_limit = 0
 recipient_delimiter = +
 home_mailbox = Maildir/
-mailbox_command = /usr/lib/dovecot/deliver -m "${EXTENSION}"
-biff = no
 
 soft_bounce = yes
 delay_warning_time = 4h
-notify_classes = <%= node[:'mail-server'][:notify_classes].join(",") %>
+notify_classes = <%= node[:mail][:postfix][:notify_classes].join(",") %>
+readme_directory = no
+biff = no
 
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
 smtp_sasl_security_options = noanonymous
-header_size_limit = 4096000
-relayhost = <%= node[:'mail-server'][:relayhost] %>
-
-smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 
 smtp_use_tls = yes
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtp_tls_security_level = may
+
+relayhost = <%= node[:mail][:postfix][:relayhost] %>
+
+<% if node[:recipes].include?("mail::server") -%>
+mailbox_command = /usr/lib/dovecot/deliver -m "${EXTENSION}"
 
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_type = dovecot
@@ -74,3 +74,4 @@ spf-policyd_time_limit = 3600s
 disable_vrfy_command = yes
 smtpd_delay_reject = yes
 smtpd_helo_required = yes
+<% end -%>

@@ -3,4 +3,4 @@ postmaster: root
 monit: root
 clamav: root
 
-<%= node[:'mail-server'][:aliases].join("\n") %>
+<%= node[:mail][:postfix][:aliases].join("\n") %>

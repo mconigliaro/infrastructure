@@ -7,14 +7,6 @@ check process dovecot with pidfile /var/run/dovecot/master.pid
   if failed port 995 type tcpssl protocol pop with timeout 15 seconds for 3 cycles then restart
   if 3 restarts within 5 cycles then timeout
 
-check process postfix with pidfile /var/spool/postfix/pid/master.pid
-  start program = "/usr/sbin/service postfix start"
-  stop program  = "/usr/sbin/service postfix stop"
-  if failed port 25 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  if failed port 465 type tcpssl protocol smtp with timeout 15 seconds for 3 cycles then restart
-  if failed port 10025 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  if 3 restarts within 5 cycles then timeout
-
 check process amavis with pidfile /var/run/amavis/amavisd.pid
   start program = "/usr/sbin/service amavis start"
   stop program  = "/usr/sbin/service amavis stop"

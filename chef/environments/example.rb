@@ -42,24 +42,26 @@ override_attributes({
       "mail.example.org"
     ],
   },
-  :"mail-server" => {
-    :virtual_alias_domains => ["example.com", "example.org"],
-    :relayhost             => "[smtp.example.net]:587",
-    :aliases => [
-      "root: mike"
-    ],
-    :maps => {
-      :access_sender => [
-        "user@example.com REJECT Comment"
+  :mail => {
+    :postfix => {
+      :virtual_alias_domains => ["example.com", "example.org"],
+      :relayhost             => "[smtp.example.net]:587",
+      :aliases => [
+        "root: mike"
       ],
-      :sasl_password => [
-        "smtp.example.net user:password"
-      ],
-      :virtual => [
-        "mike@example.com  mike",
-        "mike@example.org  mike",
-        "@example.org      mike"
-      ]
+      :maps => {
+        :access_sender => [
+          "user@example.com REJECT Comment"
+        ],
+        :sasl_password => [
+          "smtp.example.net user:password"
+        ],
+        :virtual => [
+          "mike@example.com  mike",
+          "mike@example.org  mike",
+          "@example.org      mike"
+        ]
+      }
     }
   }
 })

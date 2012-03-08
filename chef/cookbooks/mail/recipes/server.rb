@@ -1,21 +1,15 @@
 #
-# Cookbook Name:: mail-server
-# Recipe:: default
+# Cookbook Name:: mail
+# Recipe:: server
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
-template "/etc/mailname" do
-  source "mailname.erb"
-  mode "0644"
-  notifies :restart, "service[postfix]"
-end
 
 # FIXME: https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916
 %w{
   dovecot-pop3d
   dovecot-imapd
   dovecot-sieve
-  postfix
   amavisd-new-postfix
   postgrey
 }.each { |p| package p }
@@ -27,7 +21,6 @@ end
 
 %w{
   dovecot
-  postfix
   amavis
   spamassassin
   postgrey
@@ -46,36 +39,6 @@ end
     source "#{f}.erb"
     mode "0644"
     notifies :restart, "service[dovecot]"
-  end
-end
-
-%w{
-  access_client
-  access_sender
-  generic
-  sasl_password
-  virtual
-}.each do |db|
-  execute "postmap_#{db}" do
-    command "/usr/sbin/postmap /etc/postfix/#{db}"
-    action :nothing
-  end
-
-  template "/etc/postfix/#{db}" do
-    source "#{db}.erb"
-    mode "0644"
-    notifies :run, "execute[postmap_#{db}]"
-  end
-end
-
-%w{
-  master.cf
-  main.cf
-}.each do |f|
-  template "/etc/postfix/#{f}" do
-    source "#{f}.erb"
-    mode "0644"
-    notifies :restart, "service[postfix]"
   end
 end
 
@@ -101,17 +64,6 @@ template "/etc/monit/conf.d/mail-server.monit" do
   source "mail-server.monit.erb"
   mode "0644"
   notifies :restart, "service[monit]"
-end
-
-execute "newaliases" do
-  command "/usr/bin/newaliases"
-  action :nothing
-end
-
-template "/etc/aliases" do
-  source "aliases.erb"
-  mode "0644"
-  notifies :run, "execute[newaliases]", :immediately
 end
 
 %w{
