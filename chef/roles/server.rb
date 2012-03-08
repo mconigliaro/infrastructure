@@ -15,7 +15,7 @@ default_run_list = %w{
   recipe[fail2ban]
   recipe[mail]
   recipe[mutt]
-  recipe[conigliaro]
+  recipe[ubuntu::users]
   recipe[ubuntu::timezone]
 }
 

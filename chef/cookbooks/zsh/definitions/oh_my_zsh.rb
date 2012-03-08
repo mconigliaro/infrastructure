@@ -7,6 +7,8 @@ define :oh_my_zsh, :action => :install, :user => nil, :group => nil, :homedir =>
   case params[:action]
   when :install
 
+    include_recipe "zsh"
+
     git "#{params[:homedir]}/.oh-my-zsh" do
       repository "git://github.com/robbyrussell/oh-my-zsh.git"
       user params[:user]
