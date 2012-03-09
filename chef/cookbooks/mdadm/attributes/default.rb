@@ -1,0 +1,4 @@
+default[:mdadm] = {
+  :arrays => {},
+  :mounts => {}
+}

@@ -11,3 +11,17 @@ template "/etc/monit/conf.d/mdadm.monit" do
   mode "0644"
   notifies :restart, "service[monit]"
 end
+
+node[:mdadm][:arrays].each do |array,opts|
+  mdadm array do
+    opts.each { |n,v| send(n, v)  }
+  end
+end
+
+node[:mdadm][:mounts].each do |mount_point,opts|
+  directory mount_point
+
+  mount mount_point do
+    opts.each { |n,v| send(n, v)  }
+  end
+end
