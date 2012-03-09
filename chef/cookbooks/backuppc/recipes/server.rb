@@ -41,6 +41,11 @@ node[:backuppc][:hosts].each do |host,opts|
   end
 end
 
+directory "/var/lib/backuppc" do
+  owner "backuppc"
+  group "www-data"
+end
+
 ssh_key_path = "/var/lib/backuppc/.ssh/id_rsa"
 execute "ssh-keygen -f #{ssh_key_path} -N ''" do
   user "backuppc"
