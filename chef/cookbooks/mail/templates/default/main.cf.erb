@@ -1,7 +1,7 @@
 inet_interfaces = <%= node[:mail][:postfix][:inet_interfaces].join(',') %>
 
 myorigin = /etc/mailname
-myhostname = <%= @node[:fqdn] %>
+myhostname = <%= node[:fqdn] %>
 mydestination = $myhostname, localhost
 
 alias_maps = hash:/etc/aliases

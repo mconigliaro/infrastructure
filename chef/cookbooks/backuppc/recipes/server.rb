@@ -12,6 +12,11 @@ service "backuppc" do
   action :enable
 end
 
+group "backuppc" do
+  members node[:backuppc][:users]
+  append true
+end
+
 template "/etc/backuppc/config.pl" do
   source "config.pl.erb"
   mode "0644"
