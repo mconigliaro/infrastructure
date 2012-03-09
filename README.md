@@ -6,7 +6,8 @@
 
 ## Install gem dependencies
 
-    ./setup.sh
+    gem install thor
+    thor setup:gems
 
 ## New Server Setup
 
