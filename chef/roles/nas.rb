@@ -5,6 +5,7 @@ default_run_list = %w{
   role[server]
   recipe[smartmontools]
   recipe[mdadm]
+  recipe[backuppc::server]
 }
 
 production_run_list = default_run_list + %w{

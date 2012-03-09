@@ -47,6 +47,13 @@ execute "ssh-keygen -f #{ssh_key_path} -N ''" do
   not_if { File.exists?(ssh_key_path) }
 end
 
+template "/var/lib/backuppc/.ssh/config" do
+  source "config.erb"
+  mode "0644"
+  owner "backuppc"
+  group "www-data"
+end
+
 template "/etc/backuppc/apache.conf" do
   source "apache.conf.erb"
   mode "0644"
