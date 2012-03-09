@@ -1,6 +1,9 @@
 name "example"
 description "Example"
 override_attributes({
+  :apache => {
+    :default_redirect_path => "http://example.org"
+  },
   :apcupsd => {
     :upscable => "usb",
     :upstype  => "usb",
@@ -14,6 +17,10 @@ override_attributes({
       "ec2.example.com" => {
         :XferMethod     => '"rsync"',
         :PingPath       => "/bin/echo",
+        :RsyncShareName => '["/home"]'
+      },
+      "localhost" => {
+        :XferMethod     => '"rsync"',
         :RsyncShareName => '["/home"]'
       }
     }

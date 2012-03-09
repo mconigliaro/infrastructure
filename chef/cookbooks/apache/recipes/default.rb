@@ -10,6 +10,12 @@ service "apache2" do
   action :enable
 end
 
+template "/etc/apache2/conf.d/default_redirect" do
+  source "default_redirect.erb"
+  mode "0644"
+  notifies :restart, resources(:service => "apache2")
+end
+
 template "/etc/monit/conf.d/apache.monit" do
   source "apache.monit.erb"
   mode "0644"
