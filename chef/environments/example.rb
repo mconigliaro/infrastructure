@@ -77,7 +77,7 @@ override_attributes({
       "/dev/md0" => {
         :devices => ["/dev/sdb1", "/dev/sdc1"],
         :level   => 1,
-        :action  => [ :create, :assemble ]
+        :action  => [:create, :assemble]
       }
     },
     :mounts => {
