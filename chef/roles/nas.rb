@@ -3,6 +3,7 @@ description "NAS server"
 
 default_run_list = %w{
   role[server]
+  recipe[ubuntu::grub]
   recipe[smartmontools]
   recipe[mdadm]
   recipe[backuppc::server]
