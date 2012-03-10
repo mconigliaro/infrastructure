@@ -7,6 +7,7 @@ default_run_list = %w{
   recipe[smartmontools]
   recipe[mdadm]
   recipe[backuppc::server]
+  recipe[avahi-daemon]
   recipe[netatalk]
 }
 
