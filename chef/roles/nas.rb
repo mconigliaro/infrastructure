@@ -7,6 +7,7 @@ default_run_list = %w{
   recipe[smartmontools]
   recipe[mdadm]
   recipe[backuppc::server]
+  recipe[netatalk]
 }
 
 production_run_list = default_run_list + %w{
