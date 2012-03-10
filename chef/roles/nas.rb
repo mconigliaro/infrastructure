@@ -9,6 +9,7 @@ default_run_list = %w{
   recipe[backuppc::server]
   recipe[avahi-daemon]
   recipe[netatalk]
+  recipe[cups]
 }
 
 production_run_list = default_run_list + %w{
