@@ -1,17 +1,20 @@
 #
-# Cookbook Name:: avahi-daemon
+# Cookbook Name:: avahi
 # Recipe:: default
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
 #
-package "avahi-daemon"
+%w{
+  avahi-daemon
+  avahi-utils
+}.each { |p| package p }
 
 service "avahi-daemon" do
   action :enable
 end
 
-template "/etc/monit/conf.d/avahi-daemon.monit" do
-  source "avahi-daemon.monit.erb"
+template "/etc/monit/conf.d/avahi.monit" do
+  source "avahi.monit.erb"
   mode "0644"
   notifies :restart, "service[monit]"
 end
