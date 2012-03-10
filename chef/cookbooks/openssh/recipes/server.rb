@@ -6,9 +6,7 @@
 #
 package "openssh-server"
 
-service "ssh" do
-  action :enable
-end
+service "ssh"
 
 template "/etc/ssh/sshd_config" do
   source "sshd_config.erb"

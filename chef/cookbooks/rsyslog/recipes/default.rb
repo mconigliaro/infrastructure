@@ -6,9 +6,7 @@
 #
 package "rsyslog"
 
-service "rsyslog" do
-  action :enable
-end
+service "rsyslog"
 
 template "/etc/monit/conf.d/rsyslog.monit" do
   source "rsyslog.monit.erb"
