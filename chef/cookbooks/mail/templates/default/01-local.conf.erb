@@ -1,5 +1,4 @@
 mail_location = maildir:~/Maildir
-mail_plugins = sieve
 
 service auth {
   unix_listener /var/spool/postfix/private/auth {
@@ -9,4 +8,8 @@ service auth {
 
 protocol imap {
   mail_max_userip_connections = 20
+}
+
+protocol lda {
+  mail_plugins = sieve
 }
