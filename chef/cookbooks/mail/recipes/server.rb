@@ -30,8 +30,8 @@ end
   end
 end
 
-template "/etc/dovecot/local.conf" do
-  source "local.conf.erb"
+template "/etc/dovecot/conf.d/01-local.conf" do
+  source "01-local.conf.erb"
   mode "0644"
   notifies :restart, "service[dovecot]"
 end
