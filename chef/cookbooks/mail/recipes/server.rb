@@ -30,16 +30,10 @@ end
   end
 end
 
-%w{
-  10-mail.conf
-  10-master.conf
-  20-imap.conf
-}.each do |f|
-  template "/etc/dovecot/conf.d/#{f}" do
-    source "#{f}.erb"
-    mode "0644"
-    notifies :restart, "service[dovecot]"
-  end
+template "/etc/dovecot/local.conf" do
+  source "local.conf.erb"
+  mode "0644"
+  notifies :restart, "service[dovecot]"
 end
 
 template "/etc/default/spamassassin" do
