@@ -6,9 +6,7 @@
 #
 package "cups"
 
-service "cups" do
-  action :enable
-end
+service "cups"
 
 template "/etc/cups/cupsd.conf" do
   source "cupsd.conf.erb"
