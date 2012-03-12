@@ -9,9 +9,7 @@
   avahi-utils
 }.each { |p| package p }
 
-service "avahi-daemon" do
-  action :enable
-end
+service "avahi-daemon"
 
 template "/etc/monit/conf.d/avahi.monit" do
   source "avahi.monit.erb"
