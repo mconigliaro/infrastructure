@@ -1,0 +1,4 @@
+default[:nfs] = {
+  :mounts  => {},
+  :exports => {}
+}

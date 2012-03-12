@@ -86,5 +86,14 @@ override_attributes({
         :action => [:enable, :mount]
       }
     }
+  },
+  :nfs => {
+    :mounts => {
+      "/home" => "/srv/nfs/home"
+    },
+    :exports => {
+      "/srv/nfs"      => "*(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)",
+      "/srv/nfs/home" => "*(rw,sync,no_subtree_check,no_root_squash)"
+    }
   }
 })

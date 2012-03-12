@@ -9,6 +9,7 @@ default_run_list = %w{
   recipe[backuppc::server]
   recipe[avahi]
   recipe[netatalk]
+  recipe[nfs]
   recipe[cups]
 }
 
