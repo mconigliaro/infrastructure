@@ -19,7 +19,8 @@ define :oh_my_zsh, :action => :install, :user => nil, :group => nil, :homedir =>
 
     template "#{params[:homedir]}/.zshrc" do
       variables({
-        :install_dir => install_dir
+        :system_install => params[:system_install],
+        :install_dir    => install_dir
       })
       cookbook "zsh"
       source ".zshrc.erb"
