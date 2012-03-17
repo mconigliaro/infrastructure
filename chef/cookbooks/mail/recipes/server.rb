@@ -42,6 +42,12 @@ template "/etc/default/spamassassin" do
   notifies :restart, "service[spamassassin]"
 end
 
+template "/etc/spamassassin/local.cf" do
+  source "local.cf.erb"
+  mode "0644"
+  notifies :restart, "service[spamassassin]"
+end
+
 template "/etc/amavis/conf.d/50-user" do
   source "50-user.erb"
   mode "0644"
