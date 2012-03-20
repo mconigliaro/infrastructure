@@ -11,6 +11,18 @@
   dovecot-imapd
   dovecot-sieve
   amavisd-new-postfix
+  pyzor
+  razor
+  arj
+  cabextract
+  cpio
+  lha
+  nomarch
+  pax
+  rar
+  unrar
+  unzip
+  zip
   postgrey
 }.each { |p| package p }
 
@@ -42,10 +54,15 @@ template "/etc/default/spamassassin" do
   notifies :restart, "service[spamassassin]"
 end
 
-template "/etc/spamassassin/local.cf" do
-  source "local.cf.erb"
-  mode "0644"
-  notifies :restart, "service[spamassassin]"
+%w{
+  local.cf
+  v310.pre
+}.each do |f|
+  template "/etc/spamassassin/#{f}" do
+    source "#{f}.erb"
+    mode "0644"
+    notifies :restart, "service[spamassassin]"
+  end
 end
 
 template "/etc/amavis/conf.d/50-user" do
