@@ -4,8 +4,6 @@ myorigin = /etc/mailname
 myhostname = <%= node[:fqdn] %>
 mydestination = $myhostname, localhost
 
-alias_maps = hash:/etc/aliases
-alias_database = hash:/etc/aliases
 virtual_alias_domains = <%= node[:mail][:postfix][:virtual_alias_domains].join(" ") %>
 virtual_alias_maps = hash:/etc/postfix/virtual
 smtp_generic_maps = regexp:/etc/postfix/generic
