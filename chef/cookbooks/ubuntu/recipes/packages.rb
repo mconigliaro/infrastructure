@@ -20,7 +20,6 @@
   nmap
   psmisc
   strace
-  sysstat
   sysv-rc-conf
   tcpdump
   telnet
