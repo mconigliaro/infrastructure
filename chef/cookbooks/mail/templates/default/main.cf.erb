@@ -15,7 +15,6 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 home_mailbox = Maildir/
 
-soft_bounce = yes
 delay_warning_time = 4h
 notify_classes = <%= node[:mail][:postfix][:notify_classes].join(",") %>
 readme_directory = no
