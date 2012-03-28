@@ -46,3 +46,4 @@
 ### NAS
 - 80 (HTTP)
 - 443 (HTTPS)
+- 4040 (Subsonic)

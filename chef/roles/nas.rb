@@ -11,6 +11,7 @@ default_run_list = %w{
   recipe[netatalk]
   recipe[nfs]
   recipe[cups]
+  recipe[subsonic]
 }
 
 production_run_list = default_run_list + %w{
