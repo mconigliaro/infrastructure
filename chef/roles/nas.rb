@@ -12,6 +12,7 @@ default_run_list = %w{
   recipe[nfs]
   recipe[cups]
   recipe[subsonic]
+  recipe[minidlna]
 }
 
 production_run_list = default_run_list + %w{

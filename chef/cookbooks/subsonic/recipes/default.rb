@@ -17,6 +17,7 @@ remote_file file_name do
   source node[:subsonic][:download_url]
   mode "0644"
   notifies :run, "execute[subsonic_install]"
+  not_if { File.exists?(file_name) }
 end
 
 service "subsonic" do

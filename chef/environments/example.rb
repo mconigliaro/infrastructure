@@ -87,6 +87,11 @@ override_attributes({
       }
     }
   },
+  :minidlna => {
+    :media_dirs => [
+      "/home/example/media/"
+    ]
+  },
   :nfs => {
     :mounts => {
       "/home" => "/srv/nfs/home"
