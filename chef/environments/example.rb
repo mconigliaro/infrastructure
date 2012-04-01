@@ -89,7 +89,9 @@ override_attributes({
   },
   :minidlna => {
     :media_dirs => [
-      "/home/example/media/"
+      "A,/home/example/media/audio/music",
+      "V,/home/example/media/video",
+      "P,/home/example/media/pictures"
     ]
   },
   :nfs => {
