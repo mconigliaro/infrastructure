@@ -18,6 +18,8 @@ notify_classes = <%= node[:mail][:postfix][:notify_classes].join(",") %>
 readme_directory = no
 biff = no
 
+message_size_limit = 20480000
+
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
 smtp_sasl_security_options = noanonymous
