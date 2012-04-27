@@ -31,5 +31,5 @@ end
 cron "monit monitor all" do
   hour "*"
   minute "0"
-  command "/usr/#{node[:lsb][:release] == "11.10" ? "sbin" : "bin" }/monit monitor all 2>&1 > /dev/null"
+  command "/usr/bin/monit monitor all 2>&1 > /dev/null"
 end

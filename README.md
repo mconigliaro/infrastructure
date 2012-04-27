@@ -18,7 +18,7 @@
 
 ### Install Chef
 
-    echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" >> /etc/apt/sources.list.d/opscode.list
+    echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" > /etc/apt/sources.list.d/opscode.list
     wget -O - -q http://apt.opscode.com/packages@opscode.com.gpg.key | apt-key add -
     aptitude update
     echo "chef chef/chef_server_url string" | debconf-set-selections
@@ -36,14 +36,21 @@
 ## Port forwarding
 
 ### Server
-- 22 (SSH)
+
+  - 22 (SSH)
 
 ### Mail
-- 25 (SMTP)
-- 465 (SMTPS)
-- 993 (IMAPS)
+
+  - 25 (SMTP)
+  - 465 (SMTPS)
+  - 993 (IMAPS)
 
 ### NAS
-- 80 (HTTP)
-- 443 (HTTPS)
-- 4040 (Subsonic)
+
+  - 80 (HTTP)
+  - 443 (HTTPS)
+  - 4040 (Subsonic)
+
+### Known issues
+
+  - https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916

@@ -11,7 +11,7 @@ user node[:mconigliaro][:user] do
   supports :manage_home => true
 end
 
-group node[:lsb][:release] == "11.10" ? "admin" : "sudo" do
+group "sudo" do
   members [node[:mconigliaro][:user]]
   append true
 end
