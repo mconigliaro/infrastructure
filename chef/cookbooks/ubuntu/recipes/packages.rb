@@ -14,6 +14,7 @@
   iftop
   iotop
   lsof
+  mosh
   mtr-tiny
   ngrep
   nethogs
