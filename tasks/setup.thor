@@ -6,7 +6,7 @@ class Setup < Thor
   def gems
     gems = %w{
       chef
-      vagrant
+      foodcritic
       veewee
     }
     PTY.spawn("gem install #{gems.join(" ")}") do |r, w, pid|
