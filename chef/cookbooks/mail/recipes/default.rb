@@ -62,5 +62,3 @@ template "/etc/aliases" do
   mode "0644"
   notifies :run, "execute[newaliases]", :immediately
 end
-
-

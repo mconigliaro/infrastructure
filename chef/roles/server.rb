@@ -1,7 +1,6 @@
 name "server"
 description "Server"
 
-# FIXME: recipe[chef::client] goes after monit once we get packages for 12.04
 default_run_list = %w{
   recipe[ubuntu::locale]
   recipe[apt]
@@ -10,6 +9,7 @@ default_run_list = %w{
   recipe[sudo]
   recipe[unattended-upgrades]
   recipe[monit]
+  recipe[chef::client]
   recipe[ntp]
   recipe[rsyslog]
   recipe[openssh::server]
