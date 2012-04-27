@@ -6,7 +6,7 @@
 #
 include_recipe "java"
 
-file_name = "/tmp/#{node[:subsonic][:download_url].split("/").last}"
+file_name = "/var/cache/apt/archives/#{node[:subsonic][:download_url].split("/").last}"
 
 execute "subsonic_install" do
   command "dpkg -i #{file_name}"
