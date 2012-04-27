@@ -31,7 +31,7 @@ end
   template "/etc/postfix/#{db}" do
     source "#{db}.erb"
     mode "0644"
-    notifies :run, "execute[postmap_#{db}]"
+    notifies :run, "execute[postmap_#{db}]", :immediately
   end
 end
 
