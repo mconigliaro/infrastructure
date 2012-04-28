@@ -11,6 +11,7 @@ default_run_list = %w{
   recipe[netatalk]
   recipe[nfs]
   recipe[cups]
+  recipe[deluge]
   recipe[subsonic]
   recipe[minidlna]
 }

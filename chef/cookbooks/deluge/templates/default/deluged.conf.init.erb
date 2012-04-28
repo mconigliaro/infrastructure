@@ -1,0 +1,25 @@
+# deluged - BitTorrent client daemon
+#
+# Deluge is a full-featured, multi-platform, multi-interface BitTorrent client
+# using libtorrent-rasterbar in it's backend and featuring multiple
+# user-interfaces: GTK+, web and console.
+
+description "BitTorrent client daemon"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+
+script
+  DAEMON=/usr/bin/deluged
+  CONFIG=/var/lib/deluged
+  LOGFILE=/var/log/deluged.log
+  LOGLEVEL=info
+  PIDFILE=/var/run/deluged.pid
+
+  [ -f /etc/default/deluged ] && . /etc/default/deluged
+  [ -d $CONFIG ] || install -m 755 -d $CONFIG
+
+  $DAEMON -d -c $CONFIG -l $LOGFILE -L $LOGLEVEL -P $PIDFILE
+end script
