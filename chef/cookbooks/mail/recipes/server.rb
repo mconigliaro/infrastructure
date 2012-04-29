@@ -45,6 +45,11 @@ template "/etc/dovecot/conf.d/01-local.conf" do
   notifies :restart, "service[dovecot]"
 end
 
+template "/etc/default/spamassassin" do
+  source "spamassassin.default.erb"
+  mode "0644"
+end
+
 %w{
   local.cf
   v310.pre
