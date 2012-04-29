@@ -32,7 +32,6 @@ end
 %w{
   dovecot
   amavis
-  spamassassin
   postgrey
 }.each do |s|
   service s do
@@ -46,12 +45,6 @@ template "/etc/dovecot/conf.d/01-local.conf" do
   notifies :restart, "service[dovecot]"
 end
 
-template "/etc/default/spamassassin" do
-  source "spamassassin.default.erb"
-  mode "0644"
-  notifies :restart, "service[spamassassin]"
-end
-
 %w{
   local.cf
   v310.pre
@@ -59,7 +52,7 @@ end
   template "/etc/spamassassin/#{f}" do
     source "#{f}.erb"
     mode "0644"
-    notifies :restart, "service[spamassassin]"
+    notifies :restart, "service[amavis]"
   end
 end
 
