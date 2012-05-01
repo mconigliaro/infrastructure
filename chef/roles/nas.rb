@@ -6,6 +6,7 @@ default_run_list = %w{
   recipe[ubuntu::grub]
   recipe[smartmontools]
   recipe[mdadm]
+  recipe[bind]
   recipe[backuppc::server]
   recipe[avahi]
   recipe[netatalk]
