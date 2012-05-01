@@ -50,7 +50,8 @@
 
   - 80 (HTTP)
   - 443 (HTTPS)
-  - 4040 (Subsonic)
+  - 4040 (HTTPS - Subsonic)
+  - 8112 (HTTPS - Deluge)
 
 ### Known issues
 

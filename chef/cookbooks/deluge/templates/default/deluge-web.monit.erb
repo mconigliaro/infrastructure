@@ -1,0 +1,5 @@
+check process deluge-web with pidfile /var/run/deluge-web.pid
+  start program = "/usr/sbin/service deluge-web start"
+  stop program  = "/usr/sbin/service deluge-web stop"
+  if failed port 8112 with timeout 15 seconds for 3 cycles then restart
+  if 3 restarts within 5 cycles then timeout

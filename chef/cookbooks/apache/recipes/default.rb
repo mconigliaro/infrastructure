@@ -22,6 +22,4 @@ template "/etc/monit/conf.d/apache.monit" do
   notifies :restart, "service[monit]"
 end
 
-include_recipe "apache::authnz_external"
-include_recipe "apache::authz_unixgroup"
-include_recipe "apache::ssl"
+include_recipe "apache::authnz_external", "apache::authz_unixgroup", "apache::ssl"
