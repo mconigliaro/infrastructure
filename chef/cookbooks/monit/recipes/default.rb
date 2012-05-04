@@ -28,8 +28,7 @@ template "/etc/monit/conf.d/system.monit" do
   notifies :restart, "service[monit]"
 end
 
-cron "monit monitor all" do
-  hour "*"
-  minute "0"
-  command "/usr/bin/monit monitor all 2>&1 > /dev/null"
+template "/etc/cron.daily/monit-monitor-all" do
+  source "monit-monitor-all.erb"
+  mode "0755"
 end

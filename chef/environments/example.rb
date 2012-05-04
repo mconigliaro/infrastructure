@@ -5,9 +5,10 @@ override_attributes({
     :default_redirect_path => "http://example.org"
   },
   :apcupsd => {
-    :upscable => "usb",
-    :upstype  => "usb",
-    :device   => "",
+    :isconfigured => "yes",
+    :upscable     => "usb",
+    :upstype      => "usb",
+    :device       => "",
   },
   :backuppc => {
     :users => [

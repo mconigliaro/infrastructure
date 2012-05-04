@@ -22,8 +22,15 @@ template "/etc/apcupsd/apcupsd.conf" do
   notifies :restart, "service[apcupsd]"
 end
 
-template "/etc/monit/conf.d/apcupsd.monit" do
-  source "apcupsd.monit.erb"
-  mode "0644"
-  notifies :restart, "service[monit]"
+if node[:apcupsd][:isconfigured] == "yes"
+  template "/etc/monit/conf.d/apcupsd.monit" do
+    source "apcupsd.monit.erb"
+    mode "0644"
+    notifies :restart, "service[monit]"
+  end
+else
+  file "/etc/monit/conf.d/apcupsd.monit" do
+    action :delete
+    notifies :restart, "service[monit]"
+  end
 end
