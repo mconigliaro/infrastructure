@@ -1,7 +1,6 @@
 name "server"
 description "Server"
-
-default_run_list = %w{
+run_list %w{
   recipe[ubuntu::locale]
   recipe[apt]
   recipe[ubuntu::packages]
@@ -15,18 +14,9 @@ default_run_list = %w{
   recipe[openssh::server]
   recipe[fail2ban]
   recipe[mail]
+  recipe[ddclient]
   recipe[mutt]
   recipe[ubuntu::timezone]
   recipe[mconigliaro::account]
   recipe[mconigliaro]
 }
-
-production_run_list = default_run_list + %w{
-  recipe[ddclient]
-}
-
-env_run_lists({
-  "ec2"      => production_run_list,
-  "home"     => production_run_list,
-  "_default" => default_run_list
-})

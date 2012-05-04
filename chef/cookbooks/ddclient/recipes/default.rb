@@ -22,8 +22,15 @@ template "/etc/default/ddclient" do
   notifies :restart, "service[ddclient]"
 end
 
-template "/etc/monit/conf.d/ddclient.monit" do
-  source "ddclient.monit.erb"
-  mode "0644"
-  notifies :restart, "service[monit]"
+if node[:ddclient][:run_daemon] == "true"
+  template "/etc/monit/conf.d/ddclient.monit" do
+    source "ddclient.monit.erb"
+    mode "0644"
+    notifies :restart, "service[monit]"
+  end
+else
+  file "/etc/monit/conf.d/ddclient.monit" do
+    action :delete
+    notifies :restart, "service[monit]"
+  end
 end
