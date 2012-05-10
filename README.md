@@ -33,7 +33,3 @@
   - 443 (HTTPS)
   - 4040 (HTTPS - Subsonic)
   - 8112 (HTTPS - Deluge)
-
-### Known issues
-
-  - https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916

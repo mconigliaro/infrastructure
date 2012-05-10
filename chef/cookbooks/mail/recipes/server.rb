@@ -4,11 +4,22 @@
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
+
+# FIXME: https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916
+package "amavisd-new-postfix" do
+  ignore_failure true
+end
+
+template "/etc/init.d/amavis" do
+  source "amavis.init.erb"
+  mode "0755"
+  notifies :restart, "service[amavis]"
+end
+
 %w{
   dovecot-pop3d
   dovecot-imapd
   dovecot-sieve
-  amavisd-new-postfix
   pyzor
   razor
   arj

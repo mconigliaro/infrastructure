@@ -34,15 +34,15 @@ end
   sasl_password
   virtual
 }.each do |db|
+  execute "postmap_#{db}" do
+    command "/usr/sbin/postmap /etc/postfix/#{db}"
+    action :nothing
+  end
+
   file "/etc/postfix/#{db}" do
     content node[:mail][:postfix][:maps][db.to_sym].join("\n")
     mode "0644"
     notifies :run, "execute[postmap_#{db}]", :immediately
-  end
-
-  execute "postmap_#{db}" do
-    command "/usr/sbin/postmap /etc/postfix/#{db}"
-    action :nothing
   end
 end
 
