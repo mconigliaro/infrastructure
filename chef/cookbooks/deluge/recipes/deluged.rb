@@ -6,10 +6,13 @@
 #
 package "deluged"
 
+service "deluged"
+
 # FIXME: https://bugs.launchpad.net/ubuntu/+source/deluge/+bug/990629
 template "/etc/init/deluged.conf" do
   source "deluged.conf.init.erb"
   mode "0644"
+  notifies :restart, "service[deluged]"
 end
 
 link "/etc/init.d/deluged" do

@@ -6,9 +6,13 @@
 #
 package "deluge-web"
 
+service "deluge-web"
+
+# FIXME: https://bugs.launchpad.net/ubuntu/+source/deluge/+bug/990629
 template "/etc/init/deluge-web.conf" do
   source "deluge-web.conf.init.erb"
   mode "0644"
+  notifies :restart, "service[deluge-web]"
 end
 
 link "/etc/init.d/deluge-web" do
