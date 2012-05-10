@@ -37,5 +37,3 @@
 ### Known issues
 
   - https://bugs.launchpad.net/ubuntu/+source/amavisd-new/+bug/930916
-  - https://bugs.launchpad.net/ubuntu/+source/popularity-contest/+bug/707311
-  - https://bugs.launchpad.net/ubuntu/+source/upstart/+bug/990102
