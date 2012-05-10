@@ -1,5 +1,5 @@
 default[:ddclient] = {
-  :run_daemon      => "true",
+  :run_daemon      => "false",
   :daemon_interval => 300,
   :pid             => "/var/run/ddclient.pid",
   :protocol        => "dyndns2",
