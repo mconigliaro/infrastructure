@@ -13,7 +13,7 @@ end
 file "/etc/apache2/conf.d/default_redirect" do
   content "RedirectMatch ^/$ #{node[:apache][:default_redirect_path]}" unless node[:apache][:default_redirect_path].nil?
   mode "0644"
-  notifies :restart, resources(:service => "apache2")
+  notifies :restart, "service[apache2]"
 end
 
 template "/etc/monit/conf.d/apache.monit" do

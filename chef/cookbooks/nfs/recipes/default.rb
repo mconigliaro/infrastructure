@@ -31,7 +31,7 @@ end
   template "/etc/default/#{f}" do
     source "#{f}.default.erb"
     mode "0644"
-    notifies :restart, resources(:service => "nfs-kernel-server")
+    notifies :restart, "service[nfs-kernel-server]"
   end
 end
 
