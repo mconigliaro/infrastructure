@@ -19,5 +19,6 @@ end
 template "/etc/monit/conf.d/smartmontools.monit" do
   source "smartmontools.monit.erb"
   mode "0644"
+  action node[:smartmontools][:start_smartd] == "yes" ? :create : :delete
   notifies :restart, "service[monit]"
 end

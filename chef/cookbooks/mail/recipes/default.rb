@@ -4,35 +4,16 @@
 #
 # Copyright 2011, Michael Paul Thomas Conigliaro
 #
-template "/etc/mailname" do
-  source "mailname.erb"
-  mode "0644"
-  notifies :restart, "service[postfix]"
-end
-
 package "postfix"
 
 service "postfix" do
   action :enable
 end
 
-%w{
-  access_client
-  access_sender
-  generic
-  sasl_password
-  virtual
-}.each do |db|
-  execute "postmap_#{db}" do
-    command "/usr/sbin/postmap /etc/postfix/#{db}"
-    action :nothing
-  end
-
-  template "/etc/postfix/#{db}" do
-    source "#{db}.erb"
-    mode "0644"
-    notifies :run, "execute[postmap_#{db}]", :immediately
-  end
+file "/etc/mailname" do
+  content node[:fqdn]
+  mode "0644"
+  notifies :restart, "service[postfix]"
 end
 
 %w{
@@ -43,6 +24,25 @@ end
     source "#{f}.erb"
     mode "0644"
     notifies :restart, "service[postfix]"
+  end
+end
+
+%w{
+  access_client
+  access_sender
+  generic
+  sasl_password
+  virtual
+}.each do |db|
+  file "/etc/postfix/#{db}" do
+    content node[:mail][:postfix][:maps][db.to_sym].join("\n")
+    mode "0644"
+    notifies :run, "execute[postmap_#{db}]", :immediately
+  end
+
+  execute "postmap_#{db}" do
+    command "/usr/sbin/postmap /etc/postfix/#{db}"
+    action :nothing
   end
 end
 

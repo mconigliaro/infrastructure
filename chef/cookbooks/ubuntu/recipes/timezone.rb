@@ -10,9 +10,8 @@ execute "dpkg-reconfigure_tzdata" do
   notifies :restart, "service[rsyslog]", :immediately
 end
 
-template "timezone" do
-  source "timezone.erb"
-  path "/etc/timezone"
+file "/etc/timezone" do
+  content node[:ubuntu][:timezone] + "\n"
   mode "0644"
   notifies :run, "execute[dpkg-reconfigure_tzdata]", :immediately
 end

@@ -34,11 +34,8 @@ template "/etc/backuppc/hosts" do
 end
 
 node[:backuppc][:hosts].each do |host,opts|
-  template "/etc/backuppc/#{host}.pl" do
-    variables({
-      :opts => opts
-    })
-    source "host.pl.erb"
+  file "/etc/backuppc/#{host}.pl" do
+    content opts.sort.map { |name,value| "$Conf{#{name}} = #{value};" }.join("\n")
     mode "0644"
     owner "backuppc"
     group "www-data"

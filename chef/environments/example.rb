@@ -101,5 +101,8 @@ override_attributes({
       "/srv/nfs"      => "*(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)",
       "/srv/nfs/home" => "*(rw,sync,no_subtree_check,no_root_squash)"
     }
+  },
+  :smartmontools => {
+    :start_smartd => "yes"
   }
 })
