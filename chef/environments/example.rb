@@ -26,8 +26,16 @@ override_attributes({
       }
     }
   },
-  :ubuntu => {
-    :timezone => "America/Denver"
+  :bind => {
+    :forwarders => [
+      "208.67.222.222",
+      "208.67.220.220"
+    ],
+    :zones => {
+      "home.example.org" => [
+        "nas IN A 192.168.180.3"
+      ]
+    }
   },
   :chef => {
     :client => {
@@ -104,5 +112,8 @@ override_attributes({
   },
   :smartmontools => {
     :start_smartd => "yes"
+  },
+  :ubuntu => {
+    :timezone => "America/Denver"
   }
 })
