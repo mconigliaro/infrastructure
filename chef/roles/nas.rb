@@ -6,7 +6,6 @@ run_list %w{
   recipe[smartmontools]
   recipe[mdadm]
   recipe[apcupsd]
-  recipe[bind]
   recipe[nfs]
   recipe[avahi]
   recipe[netatalk]

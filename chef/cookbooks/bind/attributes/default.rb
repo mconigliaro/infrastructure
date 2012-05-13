@@ -1,4 +1,0 @@
-default[:bind] = {
-  :forwarders => [],
-  :zones      => {}
-}

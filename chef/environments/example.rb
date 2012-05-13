@@ -26,17 +26,6 @@ override_attributes({
       }
     }
   },
-  :bind => {
-    :forwarders => [
-      "208.67.222.222",
-      "208.67.220.220"
-    ],
-    :zones => {
-      "home.example.org" => [
-        "nas IN A 192.168.180.3"
-      ]
-    }
-  },
   :chef => {
     :client => {
       :daemon_enabled         => true,
