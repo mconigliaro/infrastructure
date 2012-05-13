@@ -6,6 +6,7 @@
 #
 %w{
   bsd-mailx
+  chkrootkit
   curl
   debconf-utils
   ethtool
@@ -13,6 +14,7 @@
   htop
   iftop
   iotop
+  iptraf
   lsof
   mosh
   mtr-tiny
