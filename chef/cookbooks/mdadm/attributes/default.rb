@@ -1,4 +1,4 @@
-default[:mdadm] = {
-  :arrays => {},
-  :mounts => {}
+default["mdadm"] = {
+  "arrays" => {},
+  "mounts" => {}
 }

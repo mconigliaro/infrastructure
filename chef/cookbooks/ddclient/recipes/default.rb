@@ -32,7 +32,7 @@ template "/etc/default/ddclient" do
   notifies :restart, "service[ddclient]"
 end
 
-if node[:ddclient][:run_daemon] == "true"
+if node["ddclient"]["run_daemon"] == "true"
   template "/etc/monit/conf.d/ddclient.monit" do
     source "ddclient.monit.erb"
     mode "0644"

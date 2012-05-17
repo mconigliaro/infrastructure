@@ -1,4 +1,4 @@
-check process ddclient with pidfile <%= node[:ddclient][:pid] %>
+check process ddclient with pidfile <%= node["ddclient"]["pid"] %>
   start program = "/usr/sbin/service ddclient start"
   stop program  = "/usr/bin/pkill -f ddclient" # FIXME
   if 3 restarts within 5 cycles then timeout

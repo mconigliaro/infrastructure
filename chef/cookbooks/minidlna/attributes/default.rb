@@ -1,3 +1,3 @@
-default[:minidlna] = {
-  :media_dirs => []
+default["minidlna"] = {
+  "media_dirs" => []
 }

@@ -1,4 +1,4 @@
-default[:nfs] = {
-  :mounts  => {},
-  :exports => {}
+default["nfs"] = {
+  "mounts"  => {},
+  "exports" => {}
 }

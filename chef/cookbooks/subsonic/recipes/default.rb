@@ -6,7 +6,7 @@
 #
 include_recipe "java"
 
-file_name = "/var/cache/apt/archives/#{node[:subsonic][:download_url].split("/").last}"
+file_name = "/var/cache/apt/archives/#{node["subsonic"]["download_url"].split("/").last}"
 
 execute "subsonic_install" do
   command "dpkg -i #{file_name}"
@@ -14,10 +14,10 @@ execute "subsonic_install" do
 end
 
 remote_file file_name do
-  source node[:subsonic][:download_url]
+  source node["subsonic"]["download_url"]
   mode "0644"
   notifies :run, "execute[subsonic_install]", :immediately
-  not_if "test `dpkg-query --showformat '${Version}' --show subsonic` = '#{node[:subsonic][:version]}'"
+  not_if "test `dpkg-query --showformat '${Version}' --show subsonic` = '#{node["subsonic"]["version"]}'"
 end
 
 service "subsonic" do

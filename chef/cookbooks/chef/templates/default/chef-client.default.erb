@@ -1,4 +1,4 @@
 LOGFILE=/var/log/chef/client.log
 CONFIG=/etc/chef/client.rb
-INTERVAL=<%= node[:chef][:client][:interval] %>
-SPLAY=<%= node[:chef][:client][:splay] %>
+INTERVAL=<%= node["chef"]["client"]["interval"] %>
+SPLAY=<%= node["chef"]["client"]["splay"] %>

@@ -1,3 +1,3 @@
-default[:apache] = {
-  :default_redirect_path => nil
+default["apache"] = {
+  "default_redirect_path" => nil
 }

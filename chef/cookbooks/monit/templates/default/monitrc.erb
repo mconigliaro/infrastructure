@@ -115,10 +115,10 @@ set eventqueue
 #
 
 set mail-format {
-    from: monit@<%= node[:fqdn] %>
+    from: monit@<%= node["fqdn"] %>
     subject: $SERVICE - $EVENT
     message: Date: $DATE
-Host: <%= node[:fqdn] %>
+Host: <%= node["fqdn"] %>
 Service: $SERVICE
 Description: $DESCRIPTION
 Action: $ACTION
@@ -134,7 +134,7 @@ Action: $ACTION
 #
 #
 
-<% node[:monit][:alert_recipients].each do |recipient| -%>
+<% node["monit"]["alert_recipients"].each do |recipient| -%>
 set alert <%= recipient %>
     but not on { action, instance, pid, ppid }
     with reminder on 120 cycles

@@ -35,7 +35,7 @@
 ## Browsing/Identification ###
 
 # Change this to the workgroup/NT-domain name your Samba server will part of
-   workgroup = <%= node[:samba][:workgroup] %>
+   workgroup = <%= node["samba"]["workgroup"] %>
 
 # server string is the equivalent of the NT Description field
    server string = %h server (Samba, Ubuntu)
@@ -100,7 +100,7 @@
 # in this server for every user accessing the server. See
 # /usr/share/doc/samba-doc/htmldocs/Samba3-HOWTO/ServerType.html
 # in the samba-doc package for details.
-   security = <%= node[:samba][:security] %>
+   security = <%= node["samba"]["security"] %>
 
 # You may wish to use password encryption.  See the section on
 # 'encrypt passwords' in the smb.conf(5) manpage before enabling.

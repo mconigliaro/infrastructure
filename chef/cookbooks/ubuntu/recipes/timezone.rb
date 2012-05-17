@@ -11,7 +11,7 @@ execute "dpkg-reconfigure_tzdata" do
 end
 
 file "/etc/timezone" do
-  content node[:ubuntu][:timezone] + "\n"
+  content node["ubuntu"]["timezone"] + "\n"
   mode "0644"
   notifies :run, "execute[dpkg-reconfigure_tzdata]", :immediately
 end

@@ -1,10 +1,10 @@
-inet_interfaces = <%= node[:mail][:postfix][:inet_interfaces].join(",") %>
+inet_interfaces = <%= node["mail"]["postfix"]["inet_interfaces"].join(",") %>
 
 myorigin = /etc/mailname
-myhostname = <%= node[:fqdn] %>
+myhostname = <%= node["fqdn"] %>
 mydestination = $myhostname, localhost
 
-virtual_alias_domains = <%= node[:mail][:postfix][:virtual_alias_domains].join(" ") %>
+virtual_alias_domains = <%= node["mail"]["postfix"]["virtual_alias_domains"].join(" ") %>
 virtual_alias_maps = hash:/etc/postfix/virtual
 smtp_generic_maps = regexp:/etc/postfix/generic
 
@@ -14,7 +14,7 @@ recipient_delimiter = +
 home_mailbox = Maildir/
 
 delay_warning_time = 4h
-notify_classes = <%= node[:mail][:postfix][:notify_classes].join(",") %>
+notify_classes = <%= node["mail"]["postfix"]["notify_classes"].join(",") %>
 readme_directory = no
 biff = no
 
@@ -28,9 +28,9 @@ smtp_use_tls = yes
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtp_tls_security_level = may
 
-relayhost = <%= node[:mail][:postfix][:relayhost] %>
+relayhost = <%= node["mail"]["postfix"]["relayhost"] %>
 
-<% if node[:recipes].include?("mail::server") -%>
+<% if node["recipes"].include?("mail::server") -%>
 mailbox_command = /usr/lib/dovecot/deliver -m "${EXTENSION}"
 
 smtpd_sasl_auth_enable = yes

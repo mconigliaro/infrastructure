@@ -1,6 +1,6 @@
-default[:apcupsd] = {
-  :isconfigured => "no",
-  :upscable     => "smart",
-  :upstype      => "apcsmart",
-  :device       => "/dev/ttyS0"
+default["apcupsd"] = {
+  "isconfigured" => "no",
+  "upscable"     => "smart",
+  "upstype"      => "apcsmart",
+  "device"       => "/dev/ttyS0"
 }

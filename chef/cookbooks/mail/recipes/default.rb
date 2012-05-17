@@ -11,7 +11,7 @@ service "postfix" do
 end
 
 file "/etc/mailname" do
-  content node[:fqdn]
+  content node["fqdn"]
   mode "0644"
   notifies :restart, "service[postfix]"
 end
@@ -40,7 +40,7 @@ end
   end
 
   file "/etc/postfix/#{db}" do
-    content node[:mail][:postfix][:maps][db.to_sym].join("\n")
+    content node["mail"]["postfix"]["maps"][db.to_sym].join("\n")
     mode "0644"
     notifies :run, "execute[postmap_#{db}]", :immediately
   end

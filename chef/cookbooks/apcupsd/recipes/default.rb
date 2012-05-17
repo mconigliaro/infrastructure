@@ -22,7 +22,7 @@ template "/etc/apcupsd/apcupsd.conf" do
   notifies :restart, "service[apcupsd]"
 end
 
-if node[:apcupsd][:isconfigured] == "yes"
+if node["apcupsd"]["isconfigured"] == "yes"
   template "/etc/monit/conf.d/apcupsd.monit" do
     source "apcupsd.monit.erb"
     mode "0644"

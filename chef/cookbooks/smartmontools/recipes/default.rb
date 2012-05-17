@@ -16,7 +16,7 @@ template "/etc/default/smartmontools" do
   notifies :restart, "service[smartmontools]"
 end
 
-if node[:smartmontools][:start_smartd] == "yes"
+if node["smartmontools"]["start_smartd"] == "yes"
   template "/etc/monit/conf.d/smartmontools.monit" do
     source "smartmontools.monit.erb"
     mode "0644"

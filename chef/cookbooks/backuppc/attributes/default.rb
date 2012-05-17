@@ -1,4 +1,4 @@
-default[:backuppc] = {
-  :users => [],
-  :hosts => {}
+default["backuppc"] = {
+  "users" => [],
+  "hosts" => {}
 }

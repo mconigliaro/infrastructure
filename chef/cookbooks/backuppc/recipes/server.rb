@@ -13,7 +13,7 @@ service "backuppc" do
 end
 
 group "backuppc" do
-  members node[:backuppc][:users]
+  members node["backuppc"]["users"]
   append true
 end
 
@@ -33,7 +33,7 @@ template "/etc/backuppc/hosts" do
   notifies :restart, "service[backuppc]"
 end
 
-node[:backuppc][:hosts].each do |host,opts|
+node["backuppc"]["hosts"].each do |host,opts|
   file "/etc/backuppc/#{host}.pl" do
     content opts.sort.map { |name,value| "$Conf{#{name}} = #{value};" }.join("\n")
     mode "0644"

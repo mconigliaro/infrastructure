@@ -1,19 +1,19 @@
-default[:mail] = {
-  :postfix => {
-    :inet_interfaces       => ["loopback-only"],
-    :relayhost             => nil,
-    :virtual_alias_domains => [],
-    :aliases               => ["root: vagrant"],
-    :maps => {
-      :access_client => [],
-      :access_sender => [],
-      :generic       => [],
-      :virtual       => [],
-      :sasl_password => []
+default["mail"] = {
+  "postfix" => {
+    "inet_interfaces"       => ["loopback-only"],
+    "relayhost"             => nil,
+    "virtual_alias_domains" => [],
+    "aliases"               => ["root: vagrant"],
+    "maps" => {
+      "access_client" => [],
+      "access_sender" => [],
+      "generic"       => [],
+      "virtual"       => [],
+      "sasl_password" => []
     },
-    :notify_classes => ["resource", "software"]
+    "notify_classes" => ["resource", "software"]
   },
-  :postgrey => {
-    :delay => 1
+  "postgrey" => {
+    "delay" => 1
   }
 }

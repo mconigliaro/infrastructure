@@ -1,3 +1,3 @@
-default[:smartmontools] = {
-  :start_smartd => "no"
+default["smartmontools"] = {
+  "start_smartd" => "no"
 }

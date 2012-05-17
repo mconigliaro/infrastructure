@@ -16,14 +16,14 @@ template "/etc/mdadm/mdadm.conf" do
   notifies :restart, "service[mdadm]"
 end
 
-node[:mdadm][:arrays].each do |array,opts|
+node["mdadm"]["arrays"].each do |array,opts|
   mdadm array do
     opts.each { |n,v| send(n, v)  }
     notifies :create, "template[/etc/mdadm/mdadm.conf]"
   end
 end
 
-node[:mdadm][:mounts].each do |mount_point,opts|
+node["mdadm"]["mounts"].each do |mount_point,opts|
   directory mount_point
 
   mount mount_point do

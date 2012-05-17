@@ -11,7 +11,7 @@ service "apache2" do
 end
 
 file "/etc/apache2/conf.d/default_redirect" do
-  content "RedirectMatch ^/$ #{node[:apache][:default_redirect_path]}" unless node[:apache][:default_redirect_path].nil?
+  content "RedirectMatch ^/$ #{node["apache"]["default_redirect_path"]}" unless node["apache"]["default_redirect_path"].nil?
   mode "0644"
   notifies :restart, "service[apache2]"
 end

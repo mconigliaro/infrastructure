@@ -45,10 +45,10 @@ end
 
 # FIXME: Why does this prompt for a password in production?
 # samba_user "root" do
-#   password node[:samba][:root_password]
+#   password node["samba"]["root_password"]
 # end
 #
-# execute "echo '#{node[:samba][:root_password]}' | net rpc rights grant -U root '#{node[:samba][:workgroup]}\\Domain Admins' SeMachineAccountPrivilege SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege SeRemoteShutdownPrivilege"
+# execute "echo '#{node["samba"]["root_password"]}' | net rpc rights grant -U root '#{node["samba"]["workgroup"]}\\Domain Admins' SeMachineAccountPrivilege SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege SeRemoteShutdownPrivilege"
 
 template "/etc/monit/conf.d/samba.monit" do
   source "samba.monit.erb"

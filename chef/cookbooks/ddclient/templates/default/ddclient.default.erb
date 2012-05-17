@@ -9,8 +9,8 @@ run_ipup="false"
 
 # Set to "true" if ddclient should run in daemon mode
 # If this is changed to true, run_ipup must be set to false.
-run_daemon="<%= node[:ddclient][:run_daemon] %>"
+run_daemon="<%= node["ddclient"]["run_daemon"] %>"
 
 # Set the time interval between the updates of the dynamic DNS name in seconds.
 # This option only takes effect if the ddclient runs in daemon mode.
-daemon_interval="<%= node[:ddclient][:daemon_interval] %>"
+daemon_interval="<%= node["ddclient"]["daemon_interval"] %>"

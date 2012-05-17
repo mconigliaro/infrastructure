@@ -4,7 +4,7 @@
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
 #
-node[:nfs][:mounts].each do |d,mp|
+node["nfs"]["mounts"].each do |d,mp|
   directory mp do
     recursive true
     mode "0777"
