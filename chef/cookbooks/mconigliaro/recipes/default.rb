@@ -4,4 +4,8 @@
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
 #
-include_recipe "mconigliaro::zsh"
+oh_my_zsh node[:mconigliaro][:user] do
+  homedir node[:mconigliaro][:homedir]
+  system_install node[:mconigliaro][:zsh_system_install]
+  manage_zshrc true
+end

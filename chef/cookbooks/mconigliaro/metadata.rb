@@ -4,4 +4,4 @@ license          ""
 description      "Installs/Configures mconigliaro"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
-depends          "zsh"
+depends          "oh_my_zsh"
