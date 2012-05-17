@@ -99,6 +99,9 @@ override_attributes({
       "/srv/nfs/home" => "*(rw,sync,no_subtree_check,no_root_squash)"
     }
   },
+  :samba => {
+    :workgroup => "EXAMPLE",
+  },
   :smartmontools => {
     :start_smartd => "yes"
   },

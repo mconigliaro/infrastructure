@@ -138,7 +138,7 @@
 # must have this setting enabled. If you are the BDC you must
 # change the 'domain master' setting to no
 #
-;   domain logons = yes
+   domain logons = yes
 #
 # The following setting only takes effect if 'domain logons' is set
 # It specifies the location of the user's profile directory
@@ -148,19 +148,19 @@
 ;   logon path = \\%N\profiles\%U
 # Another common choice is storing the profile in the user's home directory
 # (this is Samba's default)
-#   logon path = \\%N\%U\profile
+   logon path = \\%N\%U\profile
 
 # The following setting only takes effect if 'domain logons' is set
 # It specifies the location of a user's home directory (from the client
 # point of view)
-;   logon drive = H:
-#   logon home = \\%N\%U
+   logon drive = H:
+   logon home = \\%N\%U
 
 # The following setting only takes effect if 'domain logons' is set
 # It specifies the script to run during logon. The script must be stored
 # in the [netlogon] share
 # NOTE: Must be store in 'DOS' file format convention
-;   logon script = logon.cmd
+   logon script = logon.cmd
 
 # This allows Unix users to be created on the domain controller via the SAMR
 # RPC pipe.  The example command creates a user account with a disabled Unix
@@ -170,7 +170,7 @@
 # This allows machine accounts to be created on the domain controller via the
 # SAMR RPC pipe.
 # The following assumes a "machines" group exists on the system
-; add machine script  = /usr/sbin/useradd -g machines -c "%u machine account" -d /var/lib/samba -s /bin/false %u
+ add machine script  = /usr/sbin/useradd -g machines -c "%u machine account" -d /var/lib/samba -s /bin/false %u
 
 # This allows Unix groups to be created on the domain controller via the SAMR
 # RPC pipe.
@@ -271,11 +271,11 @@
 
 # Un-comment the following and create the netlogon directory for Domain Logons
 # (you need to configure Samba to act as a domain controller too.)
-;[netlogon]
-;   comment = Network Logon Service
-;   path = /home/samba/netlogon
-;   guest ok = yes
-;   read only = yes
+[netlogon]
+   comment = Network Logon Service
+   path = /srv/samba/netlogon
+   guest ok = yes
+   read only = yes
 
 # Un-comment the following and create the profiles directory to store
 # users profiles (see the "logon path" option above)

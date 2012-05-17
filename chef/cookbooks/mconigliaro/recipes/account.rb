@@ -15,3 +15,8 @@ group "sudo" do
   members [node[:mconigliaro][:user]]
   append true
 end
+
+group "domainadmins" do
+  members [node[:mconigliaro][:user]]
+  append true
+end
