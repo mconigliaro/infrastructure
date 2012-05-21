@@ -39,8 +39,8 @@ template "/etc/samba/smb.conf" do
   services.each { |s| notifies :restart, "service[#{s}]" }
 end
 
-execute "net groupmap add ntgroup='Domain Admins' unixgroup='root' rid=512 type=d" do
-  not_if "net groupmap list ntgroup='Domain Admins'"
+execute "net groupmap add ntgroup='Domain Admins' unixgroup='domainadmins' rid=512 type=d" do
+  not_if "net groupmap list ntgroup='Domain Admins' | grep domainadmins"
 end
 
 # FIXME: Why does this prompt for a password in production?
