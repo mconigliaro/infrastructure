@@ -11,6 +11,7 @@ Vagrant::Config.run do |config|
       node.vm.host_name = "#{role}.localdomain"
       ports[role].each { |port| node.vm.forward_port port, start_port + port } if ports.has_key?(role)
       node.vm.provision :chef_solo do |chef|
+        chef.log_level      = :debug
         chef.cookbooks_path = "chef/cookbooks"
         chef.roles_path     = "chef/roles"
         chef.add_role role

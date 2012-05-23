@@ -1,3 +1,7 @@
 {
+  "mconigliaro": {
+    "user": "mikec",
+    "oh_my_zsh_system_install": false
+  },
   "run_list": "role[workstation]"
 }

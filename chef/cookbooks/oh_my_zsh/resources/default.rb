@@ -7,8 +7,6 @@
 actions :create, :remove
 
 attribute :user, :kind_of => String, :name_attribute => true
-attribute :group, :kind_of => String
-attribute :homedir, :kind_of => String
 attribute :system_install, :kind_of => [TrueClass, FalseClass]
 attribute :manage_zshrc, :kind_of => [TrueClass, FalseClass]
 

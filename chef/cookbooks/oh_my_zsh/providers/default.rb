@@ -7,15 +7,14 @@
 action :create do
   package "zsh"
 
-  install_dir = new_resource.system_install ? "/opt/oh-my-zsh" : "#{new_resource.homedir}/.oh-my-zsh"
+  install_dir = new_resource.system_install ? "/opt/oh-my-zsh" : ::File.join(homedir(new_resource.user), ".oh-my-zsh")
 
   git install_dir do
     repository "git://github.com/robbyrussell/oh-my-zsh.git"
     user new_resource.user unless new_resource.system_install
-    group new_resource.group unless new_resource.system_install
   end
 
-  template "#{new_resource.homedir}/.zshrc" do
+  template ::File.join(homedir(new_resource.user), ".zshrc") do
     variables({
       :system_install => new_resource.system_install,
       :install_dir    => install_dir
@@ -24,8 +23,7 @@ action :create do
     source ".zshrc.erb"
     mode "0644"
     owner new_resource.user
-    group new_resource.group
-    only_if { !::File.exist?("#{new_resource.homedir}/.zshrc") || new_resource.manage_zshrc }
+    only_if { ::File.directory?(homedir(new_resource.user)) && new_resource.manage_zshrc }
   end
 end
 
@@ -38,7 +36,8 @@ action :remove do
     only_if { ::File.directory?(install_dir) && !new_resource.system_install }
   end
 
-  execute "rm #{new_resource.homedir}/.zshrc" do
-    only_if { ::File.exist?("#{new_resource.homedir}/.zshrc") && new_resource.manage_zshrc }
+  file ::File.join(homedir(new_resource.user), ".zshrc") do
+    action :delete
+    only_if { new_resource.manage_zshrc }
   end
 end

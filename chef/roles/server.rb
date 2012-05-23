@@ -4,6 +4,7 @@ run_list %w{
   recipe[ubuntu::locale]
   recipe[apt]
   recipe[ubuntu::packages]
+  recipe[git]
   recipe[sysstat]
   recipe[sudo]
   recipe[unattended-upgrades]

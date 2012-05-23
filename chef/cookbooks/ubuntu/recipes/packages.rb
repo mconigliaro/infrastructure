@@ -10,7 +10,6 @@
   curl
   debconf-utils
   ethtool
-  git-core
   htop
   iftop
   iotop

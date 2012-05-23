@@ -8,7 +8,7 @@ user node["mconigliaro"]["user"] do
   comment "Mike Conigliaro"
   home node["mconigliaro"]["homedir"]
   shell "/bin/zsh"
-  supports :manage_home => true
+  supports :manage_home => true # FIXME: Why doesn't this work?
 end
 
 group "sudo" do

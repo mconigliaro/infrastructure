@@ -1,5 +1,4 @@
 default["mconigliaro"] = {
-  "user"               => "mike",
-  "homedir"            => "/home/mike",
-  "zsh_system_install" => true
+  "user"                     => "mike",
+  "oh_my_zsh_system_install" => true
 }
