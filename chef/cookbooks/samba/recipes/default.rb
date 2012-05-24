@@ -43,13 +43,6 @@ execute "net groupmap add ntgroup='Domain Admins' unixgroup='domainadmins' rid=5
   not_if "net groupmap list ntgroup='Domain Admins' | grep domainadmins"
 end
 
-# FIXME: Why does this prompt for a password in production?
-# samba_user "root" do
-#   password node["samba"]["root_password"]
-# end
-#
-# execute "echo '#{node["samba"]["root_password"]}' | net rpc rights grant -U root '#{node["samba"]["workgroup"]}\\Domain Admins' SeMachineAccountPrivilege SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege SeRemoteShutdownPrivilege"
-
 template "/etc/monit/conf.d/samba.monit" do
   source "samba.monit.erb"
   mode "0644"

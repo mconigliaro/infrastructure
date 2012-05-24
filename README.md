@@ -6,13 +6,18 @@
 
 ## Install gem dependencies
 
-    gem install thor
-    thor setup:gems
+    rake gems
 
 ## Bootstrapping new servers
 
     aptitude update && aptitude -y install curl
     curl -L https://raw.github.com/mconigliaro/infrastructure/master/definitions/ubuntu-precise/postinstall.sh | sudo bash
+
+Credentials are not currently managed by Chef, so the following commands must be run manually:
+
+    passwd <user>
+    smbpasswd -a <user>
+    net rpc rights grant -U <user> '<DOMAIN>\Domain Admins' SeMachineAccountPrivilege SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege SeRemoteShutdownPrivilege
 
 ## Port forwarding
 
