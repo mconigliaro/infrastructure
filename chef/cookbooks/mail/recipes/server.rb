@@ -10,12 +10,6 @@ package "amavisd-new-postfix" do
   ignore_failure true
 end
 
-template "/etc/init.d/amavis" do
-  source "amavis.init.erb"
-  mode "0755"
-  notifies :restart, "service[amavis]"
-end
-
 %w{
   dovecot-pop3d
   dovecot-imapd
