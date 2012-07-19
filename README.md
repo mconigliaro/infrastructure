@@ -3,6 +3,7 @@
 ## Install dependencies
 
 * [VirtualBox](https://www.virtualbox.org/)
+* [Vagrant](http://vagrantup.com/)
 
 ## Set up environment
 

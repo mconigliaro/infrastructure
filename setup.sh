@@ -2,8 +2,20 @@
 
 set -ex
 
-gem install chef foodcritic veewee
+GEMS="chef foodcritic veewee"
 
+# Install RVM
+if ! command -v rvm
+then
+  curl -L https://get.rvm.io | bash -s stable
+  . ~/.rvm/scripts/rvm
+  rvm rvmrc load
+fi
+
+# Install gems
+gem install ${GEMS}
+
+# Build baseboxes
 for box in ./definitions/*
 do
   vagrant basebox build ${box}
