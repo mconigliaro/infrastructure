@@ -4,9 +4,9 @@
 
 * [VirtualBox](https://www.virtualbox.org/)
 
-## Install gem dependencies
+## Set up environment
 
-    rake gems
+    ./setup.sh
 
 ## Bootstrapping new servers
 
