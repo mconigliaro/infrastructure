@@ -2,6 +2,6 @@
 .vagrant
 *.box
 *.pem
-chef/environments/ec2.rb
-chef/environments/home.rb
+chef/environments/
+!chef/environments/example.rb
 iso/
