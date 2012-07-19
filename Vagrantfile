@@ -5,7 +5,7 @@ ports = {
 }
 
 Vagrant::Config.run do |config|
-  config.vm.box = "ubuntu-precise"
+  config.vm.box = "ubuntu-12.04-server-amd64"
   Dir["./chef/roles/*"].map { |file| File.basename(file, ".rb") }.each do |role|
     config.vm.define role do |node|
       node.vm.host_name = "#{role}.localdomain"
