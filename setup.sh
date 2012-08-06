@@ -24,14 +24,8 @@ for box in ${BASEBOXES}
 do
   box=${box##*/}
   vagrant basebox build ${box}
-  if [[ -f ${box}.box ]]
-  then
-    rm ${box}.box
-  fi
+  rm ${box}.box || true
   vagrant basebox export ${box}
-  if [[ -d ~/.vagrant.d/boxes/${box} ]]
-  then
-    vagrant box remove ${box}
-  fi
+  vagrant box remove ${box} || true
   vagrant box add ${box} ${box}.box
 done
