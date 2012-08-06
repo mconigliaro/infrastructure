@@ -40,7 +40,7 @@ end
   end
 
   execute "/usr/sbin/postmap /etc/postfix/#{db}" do
-    only_if { File.mtime("/etc/postfix/#{db}.db").to_i < File.mtime("/etc/postfix/#{db}").to_i }
+    only_if { !File.exists?("/etc/postfix/#{db}.db") || File.mtime("/etc/postfix/#{db}.db").to_i < File.mtime("/etc/postfix/#{db}").to_i }
   end
 end
 
@@ -50,7 +50,7 @@ template "/etc/aliases" do
 end
 
 execute "/usr/bin/newaliases" do
-  only_if { File.mtime("/etc/aliases.db").to_i < File.mtime("/etc/aliases").to_i }
+  only_if { !File.exists?("/etc/aliases.db") || File.mtime("/etc/aliases.db").to_i < File.mtime("/etc/aliases").to_i }
 end
 
 template "/etc/monit/conf.d/mail.monit" do
