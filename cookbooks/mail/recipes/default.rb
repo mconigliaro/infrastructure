@@ -34,31 +34,27 @@ end
   sasl_password
   virtual
 }.each do |db|
-  execute "postmap_#{db}" do
-    command "/usr/sbin/postmap /etc/postfix/#{db}"
-    action :nothing
-  end
-
   file "/etc/postfix/#{db}" do
     content node["mail"]["postfix"]["maps"][db.to_sym].join("\n")
     mode "0644"
-    notifies :run, "execute[postmap_#{db}]", :immediately
   end
+
+  execute "/usr/sbin/postmap /etc/postfix/#{db}" do
+    only_if { File.mtime("/etc/postfix/#{db}.db").to_i < File.mtime("/etc/postfix/#{db}").to_i }
+  end
+end
+
+template "/etc/aliases" do
+  source "aliases.erb"
+  mode "0644"
+end
+
+execute "/usr/bin/newaliases" do
+  only_if { File.mtime("/etc/aliases.db").to_i < File.mtime("/etc/aliases").to_i }
 end
 
 template "/etc/monit/conf.d/mail.monit" do
   source "mail.monit.erb"
   mode "0644"
   notifies :restart, "service[monit]"
-end
-
-execute "newaliases" do
-  command "/usr/bin/newaliases"
-  action :nothing
-end
-
-template "/etc/aliases" do
-  source "aliases.erb"
-  mode "0644"
-  notifies :run, "execute[newaliases]", :immediately
 end
