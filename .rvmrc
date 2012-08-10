@@ -1,3 +1,4 @@
+rvm install ruby-1.9.3
 rvm use ruby-1.9.3
 if ! command -v bundle
 then
