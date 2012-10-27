@@ -8,7 +8,7 @@
     "theme": "gentoo",
     "plugins": [
       "brew", "bundler", "cap", "debian", "gem", "git", "nanoc",
-      "osx", "rake", "ruby", "rvm", "sublime", "vagrant", "yum"
+      "osx", "rake", "ruby", "rvm", "sublime", "vagrant"
     ]
   },
   "groups": ["domainadmins", "sudo"],
