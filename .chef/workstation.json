@@ -1,6 +1,0 @@
-{
-  "users": {
-    "manage": false
-  },
-  "run_list": "role[workstation]"
-}

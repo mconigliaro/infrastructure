@@ -5,3 +5,8 @@ run_list %w{
   recipe[users]
   recipe[sublime]
 }
+override_attributes({
+  "users" => {
+    "manage" => false
+  }
+})
