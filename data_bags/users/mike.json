@@ -12,6 +12,15 @@
     ]
   },
   "groups": ["domainadmins", "sudo"],
+  "git": {
+    "user": {
+      "name": "Mike Conigliaro",
+      "email": "mike@conigliaro.org"
+    },
+    "color": {
+      "ui": true
+    }
+  },
   "github": {
     "local_dir": "projects",
     "users": ["mconigliaro"],

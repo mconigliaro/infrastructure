@@ -28,6 +28,10 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |user|
     only_if { user["shell"] =~ /zsh$/ }
   end
 
+  git_config user["id"] do
+    options user["git"]
+  end
+
   github_sync user["github"]["local_dir"] do
     local_user user["id"]
     users user["github"]["users"]
