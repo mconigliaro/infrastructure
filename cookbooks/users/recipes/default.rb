@@ -30,6 +30,7 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |user|
 
   git_config user["id"] do
     options user["git"]
+    only_if { user["git"] }
   end
 
   github_sync user["github"]["local_dir"] do
@@ -41,5 +42,6 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |user|
 
   sublime user["id"] do
     options user["sublime"]
+    only_if { user["sublime"] }
   end
 end
