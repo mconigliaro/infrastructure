@@ -23,7 +23,9 @@ action :create do
   template ::File.join(homedir(new_resource.user), ".zshrc") do
     variables({
       :system_install => system_install,
-      :install_dir    => install_dir
+      :install_dir    => install_dir,
+      :theme          => new_resource.theme,
+      :plugins        => new_resource.plugins
     })
     cookbook "oh_my_zsh"
     source ".zshrc.erb"

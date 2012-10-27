@@ -1,4 +1,5 @@
 log_level       :info
+verbose_logging false
 file_cache_path "#{ENV['HOME']}/.chef/cache"
 file_backup_path "#{ENV['HOME']}/.chef/backup"
 cache_type      "BasicFile"

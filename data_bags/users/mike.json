@@ -4,7 +4,12 @@
   "comment": "Mike Conigliaro",
   "shell": "/bin/zsh",
   "oh_my_zsh": {
-    "manage_zshrc": true
+    "manage_zshrc": true,
+    "theme": "gentoo",
+    "plugins": [
+      "brew", "bundler", "cap", "debian", "gem", "git", "nanoc",
+      "osx", "rake", "ruby", "rvm", "sublime", "vagrant", "yum"
+    ]
   },
   "groups": ["domainadmins", "sudo"],
   "github": {
