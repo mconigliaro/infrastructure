@@ -10,12 +10,14 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |user|
     home user["homedir"]
     shell user["shell"]
     supports :manage_home => true # FIXME: Why doesn't this work?
+    only_if { node["users"]["manage"] }
   end
 
   user["groups"].each do |group|
     group group do
       members [user["id"]]
       append true
+      only_if { node["users"]["manage"] }
     end
   end
 
