@@ -34,4 +34,8 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |user|
     orgs user["github"]["orgs"]
     only_if { node["users"]["github_sync"] }
   end
+
+  sublime user["id"] do
+    options user["sublime"]
+  end
 end
