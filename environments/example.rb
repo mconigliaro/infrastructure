@@ -107,5 +107,8 @@ override_attributes({
   },
   :ubuntu => {
     :timezone => "America/Denver"
+  },
+  :users => {
+    :github_sync => false
   }
 })

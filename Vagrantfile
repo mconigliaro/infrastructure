@@ -14,6 +14,7 @@ Vagrant::Config.run do |config|
         chef.log_level      = :info
         chef.cookbooks_path = "cookbooks"
         chef.roles_path     = "roles"
+        chef.data_bags_path = "data_bags"
         chef.add_role role
       end
     end

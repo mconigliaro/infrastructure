@@ -1,0 +1,15 @@
+{
+  "id": "mike",
+  "homedir": "/home/mike",
+  "comment": "Mike Conigliaro",
+  "shell": "/bin/zsh",
+  "oh_my_zsh": {
+    "manage_zshrc": true
+  },
+  "groups": ["domainadmins", "sudo"],
+  "github": {
+    "local_dir": "projects",
+    "users": ["mconigliaro"],
+    "orgs": ["bloarzeyd"]
+  }
+}

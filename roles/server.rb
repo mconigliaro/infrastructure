@@ -19,6 +19,5 @@ run_list %w{
   recipe[mutt]
   recipe[ubuntu::timezone]
   recipe[ubuntu::bugs]
-  recipe[mconigliaro::account]
-  recipe[mconigliaro]
+  recipe[users]
 }

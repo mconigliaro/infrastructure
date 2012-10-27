@@ -7,16 +7,22 @@
 action :create do
   package "zsh"
 
-  install_dir = new_resource.system_install ? "/opt/oh-my-zsh" : ::File.join(homedir(new_resource.user), ".oh-my-zsh")
+  system_install = false
+  install_dir = if ::File.writable?("/opt/oh-my-zsh")
+    system_install = true
+    "/opt/oh-my-zsh"
+  else
+    ::File.join(homedir(new_resource.user), ".oh-my-zsh")
+  end
 
   git install_dir do
     repository "git://github.com/robbyrussell/oh-my-zsh.git"
-    user new_resource.user unless new_resource.system_install
+    user new_resource.user unless system_install
   end
 
   template ::File.join(homedir(new_resource.user), ".zshrc") do
     variables({
-      :system_install => new_resource.system_install,
+      :system_install => system_install,
       :install_dir    => install_dir
     })
     cookbook "oh_my_zsh"
@@ -33,7 +39,7 @@ action :remove do
   end
 
   execute "rm -rf #{install_dir}" do
-    only_if { ::File.directory?(install_dir) && !new_resource.system_install }
+    only_if { ::File.directory?(install_dir) && !system_install }
   end
 
   file ::File.join(homedir(new_resource.user), ".zshrc") do
