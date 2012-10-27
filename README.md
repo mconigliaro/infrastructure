@@ -13,7 +13,9 @@
 
     rake workstation
 
-## Bootstrapping new servers
+## Configuring servers
+
+### Bootstrapping new servers
 
     aptitude update && aptitude -y install curl
     curl -L https://raw.github.com/mconigliaro/infrastructure/master/definitions/ubuntu-precise/postinstall.sh | sudo bash
