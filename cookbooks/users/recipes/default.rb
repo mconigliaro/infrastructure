@@ -4,6 +4,8 @@
 #
 # Copyright 2012, Michael Paul Thomas Conigliaro
 #
+include_recipe "git", "github", "oh_my_zsh", "sublime"
+
 data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |u|
   user u["id"] do
     comment u["comment"]

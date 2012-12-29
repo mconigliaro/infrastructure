@@ -4,5 +4,7 @@ license          ""
 description      "Installs/Configures users"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
-depends          "oh_my_zsh"
+depends          "git"
 depends          "github"
+depends          "oh_my_zsh"
+depends          "sublime"
