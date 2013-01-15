@@ -1,4 +1,5 @@
 default["mail"] = {
+  "mailname" => nil,
   "postfix" => {
     "inet_interfaces"       => ["loopback-only"],
     "relayhost"             => nil,

@@ -48,6 +48,7 @@ override_attributes({
     ],
   },
   :mail => {
+    :mailname => "home.example.org",
     :postfix => {
       :inet_interfaces       => ["all"],
       :virtual_alias_domains => ["example.com", "example.org"],

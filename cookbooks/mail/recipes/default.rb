@@ -11,7 +11,7 @@ service "postfix" do
 end
 
 file "/etc/mailname" do
-  content node["fqdn"]
+  content node["mail"]["mailname"] || node["fqdn"]
   mode "0644"
   notifies :restart, "service[postfix]"
 end
