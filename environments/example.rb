@@ -15,7 +15,7 @@ override_attributes({
       "mike"
     ],
     :hosts => {
-      "ec2.example.com" => {
+      "mail.example.com" => {
         :XferMethod     => '"rsync"',
         :PingPath       => "/bin/echo",
         :RsyncShareName => '["/home"]'
@@ -41,9 +41,9 @@ override_attributes({
     :password   => "password",
     :custom     => "yes",
     :hosts      => [
-      "ec2.example.com",
+      "home.example.com",
       "mail.example.com",
-      "ec2.example.org",
+      "home.example.org",
       "mail.example.org"
     ],
   },
