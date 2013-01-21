@@ -10,7 +10,7 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |u|
   user u["id"] do
     comment u["comment"]
     home u["homedir"]
-    shell u["shell"]
+    shell u["shell"] # FIXME: How do we change shell on OSX?
     supports :manage_home => true # FIXME: Why doesn't this work?
     only_if { node["users"]["manage"] }
   end
