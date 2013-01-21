@@ -11,7 +11,11 @@
 
 ## Configuring workstations
 
-    rake workstation
+1.) Install [Homebrew](http://mxcl.github.com/homebrew/)
+2.) `brew install git`
+3.) `git clone` this repo
+4.) Set up environment (see above)
+5.) `rake workstation`
 
 ## Configuring servers
 
