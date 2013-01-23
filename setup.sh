@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 GEMS=${GEMS-"chef foodcritic veewee"}
 BASEBOXES=${BASEBOXES-./definitions/*}
@@ -16,7 +16,7 @@ fi
 # Install gems
 for gem in ${GEMS}
 do
-  gem install ${gem}
+  gem list | grep -q "${gem} " || gem install ${gem}
 done
 
 # Build baseboxes
