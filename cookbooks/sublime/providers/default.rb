@@ -22,6 +22,11 @@ action :create do
       only_if { ::File.directory?(user_root) }
     end
   end
+
+  link ::File::SEPARATOR + ::File.join("usr", "local", "bin", "subl") do
+    to ::File::SEPARATOR + ::File.join("Applications", "Sublime Text 2.app", "Contents", "SharedSupport", "bin", "subl")
+  end
+
 end
 
 action :remove do
