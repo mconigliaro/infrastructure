@@ -2,6 +2,4 @@
 .vagrant
 *.box
 *.pem
-environments/
-!environments/example.rb
 iso/
