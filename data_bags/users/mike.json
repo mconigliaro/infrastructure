@@ -27,7 +27,10 @@
     "orgs": ["bloarzeyd"]
   },
   "sublime": {
-    "Preferences": {
+    "packages": [
+      "https://sublime.wbond.net/Package%20Control.sublime-package"
+    ],
+    "preferences": {
       "rulers": [79],
       "tab_size": 2,
       "translate_tabs_to_spaces": true,
