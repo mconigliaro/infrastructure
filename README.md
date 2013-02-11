@@ -5,9 +5,9 @@
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](http://vagrantup.com/)
 
-## Set up environment
+## Getting Started
 
-    ./setup.sh
+    ./bin/setup.sh
 
 ## Configuring workstations
 
