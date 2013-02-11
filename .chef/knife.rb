@@ -1,9 +1,9 @@
 log_level                :info
 log_location             STDOUT
 node_name                "mconigliaro"
-client_key               "#{File.dirname(__FILE__)}/../certificates/chef-mconigliaro.pem"
+client_key               "~/chef-mconigliaro.pem"
 validation_client_name   "conigliaro-validator"
-validation_key           "#{File.dirname(__FILE__)}/../certificates/chef-conigliaro-validator.pem"
+validation_key           "~/chef-conigliaro-validator.pem"
 chef_server_url          "https://api.opscode.com/organizations/conigliaro"
 cache_type               "BasicFile"
 cache_options( :path => "#{ENV['HOME']}/.chef/checksums" )
