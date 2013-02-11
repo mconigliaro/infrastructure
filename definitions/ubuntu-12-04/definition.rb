@@ -44,7 +44,7 @@ Veewee::Session.declare({
   :ssh_login_timeout => "10000",
   :ssh_password => "vagrant",
   :ssh_user => "vagrant",
-  :sudo_cmd => "echo '%p' | sudo -S bash '%f'",
+  :sudo_cmd => "echo '%p' | sudo -S bash '%f' && rm %f",
   :virtualbox => {
     :vm_options => {
       :ioapic => "on",
