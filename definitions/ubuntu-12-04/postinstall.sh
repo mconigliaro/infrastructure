@@ -19,8 +19,6 @@ if [[ is_vagrant ]]; then
   VBOX_PREREQUISITES="linux-headers-$(uname -r) build-essential"
   VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
   aptitude -y install $VBOX_PREREQUISITES
-  cd /tmp
-  wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
   mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
   echo "yes" | sh /mnt/VBoxLinuxAdditions.run
   umount /mnt
@@ -36,8 +34,9 @@ if [[ is_vagrant ]]; then
   chmod 600 /home/vagrant/.ssh/authorized_keys
   chown -R vagrant /home/vagrant/.ssh
 
-  # Set up passwordless sudo for Vagrant
+  # Configure sudo for Vagrant
   sed -i -e '/Defaults\s\+env_reset/a Defaults\texempt_group=sudo' /etc/sudoers
+  sed -i -e '/Defaults\s\+exempt_group/a Defaults\tenv_keep += "SSH_AUTH_SOCK"' /etc/sudoers
   sed -i -e 's/^%sudo.*$/%sudo ALL=NOPASSWD: ALL/' /etc/sudoers
 
   # Disable DNS lookups in sshd
