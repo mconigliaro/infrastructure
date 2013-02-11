@@ -1,0 +1,15 @@
+{
+  "name": "workstation",
+  "description": "Workstation",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "default_attributes": {
+    "users": {
+      "manage": false
+    }
+  },
+  "run_list": [
+    "recipe[homebrew]",
+    "recipe[users]"
+  ]
+}

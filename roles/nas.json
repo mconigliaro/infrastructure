@@ -1,0 +1,30 @@
+{
+  "name": "nas",
+  "description": "NAS server",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "vagrant": {
+    "forward_port": {
+      "80": "30080",
+      "443": "30443",
+      "4040": "34040",
+      "8112": "38112"
+    }
+  },
+  "run_list": [
+    "role[server]",
+    "recipe[ubuntu::grub]",
+    "recipe[smartmontools]",
+    "recipe[mdadm]",
+    "recipe[apcupsd]",
+    "recipe[nfs]",
+    "recipe[avahi]",
+    "recipe[netatalk]",
+    "recipe[cups]",
+    "recipe[samba]",
+    "recipe[backuppc::server]",
+    "recipe[deluge]",
+    "recipe[subsonic]",
+    "recipe[minidlna]"
+  ]
+}
