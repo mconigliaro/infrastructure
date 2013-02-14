@@ -31,11 +31,13 @@
       "https://sublime.wbond.net/Package%20Control.sublime-package"
     ],
     "preferences": {
+      "ensure_newline_at_eof_on_save": true,
+      "find_selected_text": true,
       "rulers": [79],
+      "save_on_focus_lost": true,
       "tab_size": 2,
       "translate_tabs_to_spaces": true,
-      "trim_trailing_white_space_on_save": true,
-      "find_selected_text": true
+      "trim_trailing_white_space_on_save": true
     }
   }
 }
