@@ -1,12 +1,16 @@
 # Infrastructure
 
-## Install dependencies
+## Getting Started
+
+Install prerequisites:
 
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](http://vagrantup.com/)
 
-## Getting Started
+Clone the repo and run the setup script:
 
+    git clone git@github.com:mconigliaro/infrastructure.git
+    cd infrastructure
     ./bin/setup.sh
 
 ## Configuring workstations
@@ -15,7 +19,7 @@
 2. `brew install git`
 3. `git clone` this repo
 4. Set up environment (see above)
-5. `rake workstation`
+5. `./bin/chef-solo-workstation.sh`
 
 ## Configuring servers
 

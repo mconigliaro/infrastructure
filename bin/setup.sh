@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -e
+set -eu
 
-GEMS=${GEMS-"chef foodcritic"}
+GEMS=${GEMS-"bundler chef foodcritic veewee"}
 BASEBOXES=${BASEBOXES-./definitions/*}
 
 # Install RVM
@@ -11,12 +11,6 @@ then
   curl -L https://get.rvm.io | bash -s stable
   . ~/.rvm/scripts/rvm
   rvm rvmrc load
-fi
-
-# Install bundler
-if ! command -v bundle
-then
-  gem install bundler
 fi
 
 # Install gems

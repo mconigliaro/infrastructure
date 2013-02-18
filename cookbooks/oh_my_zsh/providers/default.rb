@@ -25,7 +25,8 @@ action :create do
       :system_install => system_install,
       :install_dir    => install_dir,
       :theme          => new_resource.theme,
-      :plugins        => new_resource.plugins
+      :plugins        => new_resource.plugins,
+      :zsh_options    => new_resource.zsh_options
     })
     cookbook "oh_my_zsh"
     source ".zshrc.erb"

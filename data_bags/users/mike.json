@@ -7,8 +7,11 @@
     "manage_zshrc": true,
     "theme": "gentoo",
     "plugins": [
-      "brew", "bundler", "cap", "debian", "gem", "git", "nanoc",
-      "osx", "rake", "ruby", "rvm", "sublime", "vagrant"
+      "brew", "bundler", "capistrano", "debian", "gem", "git", "git-extras",
+      "git-flow", "nanoc", "osx", "rake", "rvm", "thor", "vagrant"
+    ],
+    "zsh_options": [
+      "NO_CORRECT_ALL"
     ]
   },
   "groups": ["domainadmins", "sudo"],

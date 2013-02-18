@@ -27,6 +27,7 @@ data_bag("users").map { |obj| data_bag_item("users", obj) }.each do |u|
     manage_zshrc u["oh_my_zsh"]["manage_zshrc"]
     theme u["oh_my_zsh"]["theme"]
     plugins u["oh_my_zsh"]["plugins"]
+    zsh_options u["oh_my_zsh"]["zsh_options"]
     only_if { u["shell"] =~ /zsh$/ }
   end
 
