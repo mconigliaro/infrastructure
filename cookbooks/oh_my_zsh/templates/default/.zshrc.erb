@@ -37,4 +37,4 @@ plugins=(<%= @plugins.sort.join(" ") %>)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-<%= @zsh_options.sort.map { |obj| "setopt #{obj}" }.join("\n") %>
+<%= @zsh_options.sort.join("\n") %>

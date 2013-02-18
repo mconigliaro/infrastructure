@@ -11,7 +11,8 @@
       "git-flow", "nanoc", "osx", "rake", "rvm", "thor", "vagrant"
     ],
     "zsh_options": [
-      "NO_CORRECT_ALL"
+      "setopt NO_CORRECT_ALL",
+      "export EDITOR=subl"
     ]
   },
   "groups": ["domainadmins", "sudo"],
