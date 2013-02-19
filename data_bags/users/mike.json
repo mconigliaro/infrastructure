@@ -12,7 +12,7 @@
     ],
     "zsh_options": [
       "setopt NO_CORRECT_ALL",
-      "export EDITOR=subl"
+      "export EDITOR=vim"
     ]
   },
   "groups": ["domainadmins", "sudo"],
