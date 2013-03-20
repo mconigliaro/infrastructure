@@ -9,7 +9,7 @@ include_recipe "java"
 file_name = "/var/cache/apt/archives/#{node["subsonic"]["download_url"].split("/").last}"
 
 execute "subsonic_install" do
-  command "dpkg -i #{file_name}"
+  command "dpkg -i --force-confnew #{file_name}"
   action :nothing
 end
 
