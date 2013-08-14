@@ -15,8 +15,9 @@ START_DAEMON="yes"
 #LOGFILE="/var/log/minidlna.log"
 
 # User and group the daemon should run as
-#USER="minidlna"
-#GROUP="minidlna"
+# FIXME: minidlna segfaults when running as the minidlna user
+USER="root"
+GROUP="root"
 
 # Additional options that are passed to the daemon
 DAEMON_OPTS="-R"
