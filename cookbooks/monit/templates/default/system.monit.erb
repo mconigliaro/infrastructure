@@ -3,4 +3,4 @@ check process cron with pidfile /var/run/crond.pid
   stop program  = "/usr/sbin/service cron stop"
 
 check filesystem rootfs with path /
-  if space usage > 80% for 5 times within 15 cycles then alert
+  if space usage > 90% for 5 times within 15 cycles then alert

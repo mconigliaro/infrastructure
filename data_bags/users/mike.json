@@ -7,8 +7,12 @@
     "manage_zshrc": true,
     "theme": "gentoo",
     "plugins": [
-      "brew", "bundler", "cap", "debian", "gem", "git", "nanoc",
-      "osx", "rake", "ruby", "rvm", "sublime", "vagrant"
+      "brew", "bundler", "capistrano", "debian", "gem", "git", "git-extras",
+      "git-flow", "nanoc", "osx", "rake", "rvm", "thor", "vagrant"
+    ],
+    "zsh_options": [
+      "setopt NO_CORRECT_ALL",
+      "export EDITOR=vim"
     ]
   },
   "groups": ["domainadmins", "sudo"],
@@ -27,12 +31,17 @@
     "orgs": ["bloarzeyd"]
   },
   "sublime": {
-    "Preferences": {
+    "packages": [
+      "https://sublime.wbond.net/Package%20Control.sublime-package"
+    ],
+    "preferences": {
+      "ensure_newline_at_eof_on_save": true,
+      "find_selected_text": true,
       "rulers": [79],
+      "save_on_focus_lost": true,
       "tab_size": 2,
       "translate_tabs_to_spaces": true,
-      "trim_trailing_white_space_on_save": true,
-      "find_selected_text": true
+      "trim_trailing_white_space_on_save": true
     }
   }
 }
