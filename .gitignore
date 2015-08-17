@@ -2,4 +2,4 @@
 .vagrant
 *.box
 *.pem
-iso/
+*.iso
