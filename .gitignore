@@ -1,5 +1,6 @@
 .DS_Store
 .vagrant
 *.box
-*.pem
+*.dmg
 *.iso
+*.pem
