@@ -1,0 +1,4 @@
+# README: /etc/cron.daily/apt says to put this stuff in 02periodic, but this
+# file already exists by default.
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
