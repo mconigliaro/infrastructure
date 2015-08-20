@@ -1,0 +1,7 @@
+name 'mconigliaro_apt'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_apt'
+long_description 'Installs/Configures mconigliaro_apt'
+version '0.1.0'
