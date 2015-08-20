@@ -1,0 +1,7 @@
+name 'mconigliaro_zsh'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_zsh'
+long_description 'Installs/Configures mconigliaro_zsh'
+version '0.1.0'
