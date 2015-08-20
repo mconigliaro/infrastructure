@@ -7,5 +7,6 @@ check process afpd with pidfile /var/run/afpd.pid
 check process cnid_metad with pidfile /var/run/cnid_metad.pid
   start program = "/usr/sbin/service netatalk start"
   stop program  = "/usr/sbin/service netatalk stop"
-  if failed port 4700 with timeout 15 seconds for 3 cycles then restart
+  # FIXME: Do we need this?
+  # if failed port 4700 with timeout 15 seconds for 3 cycles then restart
   if 3 restarts within 5 cycles then timeout
