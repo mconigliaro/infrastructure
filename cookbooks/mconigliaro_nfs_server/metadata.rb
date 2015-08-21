@@ -1,0 +1,7 @@
+name 'mconigliaro_nfs_server'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_nfs_server'
+long_description 'Installs/Configures mconigliaro_nfs_server'
+version '0.1.0'

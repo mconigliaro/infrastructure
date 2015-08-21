@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.4.1
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mconigliaro_nfs_server::default]
+    attributes:
+      mconigliaro_nfs_server:
+        exports:
+          /home: '*(rw,sync,no_root_squash)'
