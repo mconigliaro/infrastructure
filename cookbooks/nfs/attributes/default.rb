@@ -1,4 +1,0 @@
-default["nfs"] = {
-  "mounts"  => {},
-  "exports" => {}
-}
