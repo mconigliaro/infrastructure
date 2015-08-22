@@ -1,0 +1,15 @@
+mail_location = maildir:~/Maildir
+
+service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0666
+  }
+}
+
+protocol imap {
+  mail_max_userip_connections = 20
+}
+
+protocol lda {
+  mail_plugins = sieve
+}
