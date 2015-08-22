@@ -5,6 +5,7 @@ action :create do
 
   template "/etc/monit/conf.d/#{new_resource.name}" do
     source "#{new_resource.name}.monit.erb"
+    variables new_resource.variables
     mode 00644
     notifies :restart, 'service[monit]'
   end
