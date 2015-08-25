@@ -1,7 +1,7 @@
 ---
 driver:
   name: vagrant
-  vm_hostname: 'default-ubuntu-1404.local'
+  vm_hostname: 'default-ubuntu-1404.localdomain'
 
 provisioner:
   name: chef_zero
