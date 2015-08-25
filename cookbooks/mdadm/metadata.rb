@@ -1,3 +1,4 @@
+name 'mdadm'
 maintainer       "Michael Paul Thomas Conigliaro"
 maintainer_email "mike [at] conigliaro [dot] org"
 license          ""
