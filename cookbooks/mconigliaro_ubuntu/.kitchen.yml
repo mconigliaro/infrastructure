@@ -13,5 +13,6 @@ suites:
   - name: default
     run_list:
       - recipe[mconigliaro_apt::default] # Fix for stale apt cache
-      - recipe[mconigliaro_ubuntu::default]
+      - recipe[mconigliaro_ubuntu::packages]
+      - recipe[mconigliaro_ubuntu::grub]
     attributes:
