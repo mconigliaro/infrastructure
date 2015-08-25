@@ -1,0 +1,9 @@
+mail_location = maildir:~/Maildir
+
+protocol imap {
+  mail_max_userip_connections = 20
+}
+
+protocol lda {
+  mail_plugins = sieve
+}

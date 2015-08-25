@@ -1,0 +1,5 @@
+check process postgrey with pidfile /var/run/postgrey.pid
+  start program = "/usr/sbin/service postgrey start"
+  stop program  = "/usr/sbin/service postgrey stop"
+  if failed port 10023 with timeout 15 seconds for 3 cycles then restart
+  if 3 restarts within 5 cycles then timeout

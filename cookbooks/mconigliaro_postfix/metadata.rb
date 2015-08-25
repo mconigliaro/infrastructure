@@ -1,0 +1,10 @@
+name 'mconigliaro_postfix'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_postfix'
+long_description 'Installs/Configures mconigliaro_postfix'
+version '0.1.0'
+
+depends 'mconigliaro_dovecot'
+depends 'mconigliaro_monit'
