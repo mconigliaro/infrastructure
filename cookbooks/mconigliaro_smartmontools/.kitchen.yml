@@ -14,5 +14,3 @@ suites:
     run_list:
       - recipe[mconigliaro_smartmontools::default]
     attributes:
-      mconigliaro_smartmontools:
-        enable: false
