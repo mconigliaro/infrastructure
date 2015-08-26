@@ -6,7 +6,7 @@ DEV=$1 # get this with diskutil list
 ISO=${ISO-ubuntu-14.04.3-server-amd64.iso}
 IMG=${ISO}.dmg
 
-# https://help.ubuntu.com/community/Installation/FromUSBStick/
+# https://help.ubuntu.com/community/How%20to%20install%20Ubuntu%20on%20MacBook%20using%20USB%20Stick
 hdiutil convert -format UDRW -o "$IMG" "$ISO" || true
 diskutil unmountDisk "$DEV"
 sudo dd if="$IMG" of="$DEV" bs=1m
