@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eux
+
+CHEF_PACKAGE=chef_12.4.1-1_amd64.deb
+CHEF_URL=https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/10.04/x86_64/$CHEF_PACKAGE
+
+if ! command -v chef-soloo >/dev/null 2>&1; then
+  echo wget -O /tmp/$CHEF_PACKAGE -c $CHEF_URL
+  echo dpkg -i /tmp/$CHEF_PACKAGE
+fi
+
+echo chef-solo $*
