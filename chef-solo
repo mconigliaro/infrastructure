@@ -10,4 +10,4 @@ if ! command -v chef-solo >/dev/null 2>&1; then
   dpkg -i /tmp/$CHEF_PACKAGE
 fi
 
-echo chef-solo $*
+chef-solo --config solo.rb $*
