@@ -1,27 +1,25 @@
-ENV['CHEF_ENVIRONMENT'] ||= 'development'
+ENV['HTTP_PROXY'] = ENV['KITCHEN_HTTP_PROXY']
+ENV['HTTPS_PROXY'] = ENV['KITCHEN_HTTPS_PROXY']
 
-def parse_json(path)
-  JSON.parse(File.open(path) { |f| f.read }, :create_additions => false)
-end
+Vagrant.configure(2) do |config|
+  config.vm.box = 'opscode-ubuntu-14.04'
 
-chef_env_conf = parse_json("./environments/#{ENV['CHEF_ENVIRONMENT']}.json")
-Vagrant::Config.run do |config|
-  config.vm.box = "ubuntu-12-04"
-  Dir["./roles/*"].map { |file| File.basename(file, ".json") }.each do |role|
-    chef_role_conf = parse_json("./roles/#{role}.json")
-    chef_role_conf["vagrant"] ||= {}
+  if Vagrant.has_plugin?('vagrant-proxyconf')
+    config.proxy.http = ENV['KITCHEN_HTTP_PROXY']
+    config.proxy.https = ENV['KITCHEN_HTTPS_PROXY']
+    config.proxy.no_proxy = 'localhost,127.0.0.1'
+  end
+
+  Dir['./roles/*.rb'].map { |file| File.basename(file, '.rb') }.each do |role|
     config.vm.define role do |node|
       node.vm.host_name = "#{role}.localdomain"
-      if chef_role_conf["vagrant"]["forward_port"].respond_to?(:each)
-        chef_role_conf["vagrant"]["forward_port"].each { |a,b| node.vm.forward_port a.to_i, b.to_i }
-      end
       node.vm.provision :chef_solo do |chef|
-        chef.log_level      = :info
-        chef.cookbooks_path = "cookbooks"
-        chef.roles_path     = "roles"
-        chef.data_bags_path = "data_bags"
+        chef.log_level = :info
+        chef.cookbooks_path = 'cookbooks'
+        chef.roles_path = 'roles'
+        chef.environments_path = 'environments'
+        chef.environment = 'development'
         chef.add_role role
-        chef.json = chef_env_conf["override_attributes"]
       end
     end
   end
