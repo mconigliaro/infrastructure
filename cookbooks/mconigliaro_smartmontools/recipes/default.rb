@@ -7,10 +7,6 @@ include_recipe 'mconigliaro_monit'
 
 package 'smartmontools'
 
-service 'smartmontools' do
-  action [:start, :enable]
-end
-
 template '/etc/default/smartmontools' do
   variables(
     start_smartd: node['mconigliaro_smartmontools']['enable']
@@ -19,4 +15,10 @@ template '/etc/default/smartmontools' do
   notifies :restart, 'service[smartmontools]'
 end
 
-mconigliaro_monit_service 'smartmontools'
+service 'smartmontools' do
+  action node['mconigliaro_smartmontools']['enable'] ? [:start, :enable] : [:stop, :disable]
+end
+
+mconigliaro_monit_service 'smartmontools' do
+  action node['mconigliaro_smartmontools']['enable'] ? :create : :delete
+end
