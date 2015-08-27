@@ -2,7 +2,7 @@
 
 ## Bootstrapping New Servers
 
-    git clone git@github.com:mconigliaro/infrastructure.git
+    git clone https://github.com/mconigliaro/infrastructure.git
     cd infrastructure
     # create json_attributes directory
     ./run-chef <nas|mail>
