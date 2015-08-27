@@ -10,6 +10,9 @@ service 'monit' do
 end
 
 template '/etc/monit/monitrc' do
+  variables(
+    mail_format_from: node['mconigliaro_monit']['mail_format']['from']
+  )
   mode 00600
   notifies :restart, 'service[monit]'
 end
