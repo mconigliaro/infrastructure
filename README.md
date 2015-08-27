@@ -5,7 +5,7 @@
     git clone git@github.com:mconigliaro/infrastructure.git
     cd infrastructure
     # create json_attributes directory
-    ./chef-bootstrap <nas|mail>
+    ./run-chef <nas|mail>
 
 ## NAS
 
