@@ -1,4 +1,0 @@
-default["mdadm"] = {
-  "arrays" => {},
-  "mounts" => {}
-}

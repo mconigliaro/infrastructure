@@ -11,8 +11,8 @@
 # auto-create devices with Debian standard permissions
 CREATE owner=root group=disk mode=0660 auto=yes
 
-# disable homehost (see comments 5-8 on https://bugzilla.redhat.com/show_bug.cgi?id=606481)
-HOMEHOST <none>
+# automatically tag new arrays as belonging to the local system
+HOMEHOST <system>
 
 # instruct the monitoring daemon where to send mail alerts
 MAILADDR root
