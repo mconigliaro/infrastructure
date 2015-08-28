@@ -8,7 +8,7 @@ template '/etc/hosts' do
     domain: node['mconigliaro_hosts']['domain']
   )
   mode 00644
-  notifies :reload, 'ohai[reload]'
+  notifies :reload, 'ohai[reload]', :immediately
 end
 
 ohai 'reload' do
