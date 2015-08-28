@@ -1,6 +1,6 @@
 # Infrastructure
 
-## Bootstrapping New Servers
+## Running Chef
 
     git clone https://github.com/mconigliaro/infrastructure.git
     cd infrastructure
@@ -33,7 +33,3 @@ Time Machine support is enabled by default on all volumes. This means users can 
   - 25 (SMTP)
   - 587 (Submission)
   - 993 (IMAPS)
-
-### NAS
-
-FIXME
