@@ -2,10 +2,11 @@
 
 ## Running Chef
 
+    aptitude install git
     git clone https://github.com/mconigliaro/infrastructure.git
     cd infrastructure
-    # create json_attributes directory
-    ./run-chef <nas|mail>
+    vi json_attributes/<role>.json
+    ./run-chef <role>
 
 ## NAS
 
