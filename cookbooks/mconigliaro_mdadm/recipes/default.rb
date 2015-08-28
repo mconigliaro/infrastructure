@@ -3,6 +3,8 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+include_recipe 'mconigliaro_monit'
+
 package 'mdadm'
 
 mdadm node['mconigliaro_mdadm']['raid_device'] do
@@ -33,4 +35,10 @@ end
 mount node['mconigliaro_mdadm']['mount_point'] do
   device node['mconigliaro_mdadm']['raid_device']
   action [:mount, :enable]
+end
+
+mconigliaro_monit_service 'mdadm' do
+  variables(
+    mount_point: node['mconigliaro_mdadm']['mount_point']
+  )
 end
