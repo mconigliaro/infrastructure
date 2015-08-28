@@ -34,7 +34,7 @@ end
 template '/etc/postfix/main.cf' do
   variables(
     inet_interfaces: node['mconigliaro_postfix']['inet_interfaces'].join(', '),
-    myhostname: node['mconigliaro_postfix']['myhostname'],
+    myhostname: node['fqdn'],
     virtual_alias_domains: node['mconigliaro_postfix']['virtual_alias_domains'].join(' '),
     relayhost: node['mconigliaro_postfix']['relayhost'],
     configure_smtpd_sasl: configure_smtpd_sasl,

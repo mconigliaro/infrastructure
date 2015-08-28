@@ -6,6 +6,11 @@
     git clone https://github.com/mconigliaro/infrastructure.git
     cd infrastructure
     vi json_attributes/<role>.json
+    
+    # If on AWS
+    mkdir -p /etc/chef/ohai/hints/
+    touch /etc/chef/ohai/hints/ec2.json
+    
     ./run-chef <role>
 
 ## NAS

@@ -1,5 +1,4 @@
-default['mconigliaro_postfix']['mailname'] = node['ec2'] ? "#{node['hostname']}.ec2.internal" : node['fqdn']
-default['mconigliaro_postfix']['myhostname'] = node['ec2'] ? "#{node['hostname']}.ec2.internal" : node['fqdn']
+default['mconigliaro_postfix']['mailname'] = node['fqdn']
 
 default['mconigliaro_postfix']['inet_interfaces'] = %w(loopback-only)
 default['mconigliaro_postfix']['virtual_alias_domains'] = []

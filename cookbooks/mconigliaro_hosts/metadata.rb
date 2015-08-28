@@ -1,0 +1,7 @@
+name 'mconigliaro_hosts'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_hosts'
+long_description 'Installs/Configures mconigliaro_hosts'
+version '0.1.0'
