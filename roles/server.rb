@@ -1,7 +1,7 @@
 name 'server'
 description 'Server'
 run_list %w(
-  mconigliato_hosts
+  mconigliaro_hosts
   mconigliaro_apt
   mconigliaro_ubuntu::packages
   mconigliaro_unattended_upgrades
