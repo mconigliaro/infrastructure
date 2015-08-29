@@ -22,6 +22,24 @@ group 'amavis' do
   append true
 end
 
+execute 'razor-admin -create' do
+  environment 'HOME' => Dir.home('amavis')
+  user 'amavis'
+  creates "#{Dir.home('amavis')}/.razor"
+end
+
+execute 'razor-admin -register' do
+  environment 'HOME' => Dir.home('amavis')
+  user 'amavis'
+  creates "#{Dir.home('amavis')}/.razor/identity"
+end
+
+execute 'pyzor discover' do
+  environment 'HOME' => Dir.home('amavis')
+  user 'amavis'
+  creates "#{Dir.home('amavis')}/.pyzor/servers"
+end
+
 %w(
   /etc/spamassassin/local.cf
   /etc/spamassassin/v310.pre

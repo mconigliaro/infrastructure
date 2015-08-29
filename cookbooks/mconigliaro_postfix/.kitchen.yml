@@ -13,7 +13,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      #- recipe[mconigliaro_apt::default] # Fix for stale apt cache
+      - recipe[mconigliaro_apt::default] # Fix for stale apt cache
       - recipe[mconigliaro_postfix::default]
       - recipe[mconigliaro_postfix::amavis]
       - recipe[mconigliaro_postfix::postgrey]
