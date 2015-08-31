@@ -1,12 +1,12 @@
-ENV['HTTP_PROXY'] = ENV['KITCHEN_HTTP_PROXY']
-ENV['HTTPS_PROXY'] = ENV['KITCHEN_HTTPS_PROXY']
+ENV['HTTP_PROXY'] = ENV['VAGRANT_HTTP_PROXY']
+ENV['HTTPS_PROXY'] = ENV['VAGRANT_HTTPS_PROXY']
 
 Vagrant.configure(2) do |config|
   config.vm.box = 'opscode-ubuntu-14.04'
 
   if Vagrant.has_plugin?('vagrant-proxyconf')
-    config.proxy.http = ENV['KITCHEN_HTTP_PROXY']
-    config.proxy.https = ENV['KITCHEN_HTTPS_PROXY']
+    config.proxy.http = ENV['VAGRANT_HTTP_PROXY']
+    config.proxy.https = ENV['VAGRANT_HTTPS_PROXY']
     config.proxy.no_proxy = 'localhost,127.0.0.1'
   end
 
