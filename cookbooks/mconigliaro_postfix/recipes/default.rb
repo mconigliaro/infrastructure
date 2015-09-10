@@ -12,7 +12,7 @@ service 'postfix' do
 end
 
 file '/etc/mailname' do
-  content node['mconigliaro_postfix']['mailname'] + "\n"
+  content node['mconigliaro_postfix']['myhostname'] + "\n"
   mode 00644
   notifies :restart, 'service[postfix]'
 end
@@ -34,7 +34,7 @@ end
 template '/etc/postfix/main.cf' do
   variables(
     inet_interfaces: node['mconigliaro_postfix']['inet_interfaces'].join(', '),
-    myhostname: node['fqdn'],
+    myhostname: node['mconigliaro_postfix']['myhostname'],
     virtual_alias_domains: node['mconigliaro_postfix']['virtual_alias_domains'].join(' '),
     relayhost: node['mconigliaro_postfix']['relayhost'],
     configure_smtpd_sasl: configure_smtpd_sasl,
