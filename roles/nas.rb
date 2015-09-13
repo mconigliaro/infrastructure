@@ -12,5 +12,6 @@ run_list %w(
   mconigliaro_cups
   mconigliaro_samba
   mconigliaro_plex
+  mconigliaro_sshfs
   mconigliaro_attic
 )

@@ -12,9 +12,12 @@ user 'mike' do
   supports manage_home: true
 end
 
-group 'sudo' do
-  members %w(mike)
-  append true
+%w(sudo fuse).each do |obj|
+  group obj do
+    members %w(mike)
+    append true
+    action :manage
+  end
 end
 
 mconigliaro_zsh_oh_my_zsh 'mike' do
