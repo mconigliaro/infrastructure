@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 # Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
-%w(python3-dev libacl1-dev libssl-dev python-virtualenv).each do |obj|
+%w(sshfs python3-dev libacl1-dev libssl-dev python-virtualenv).each do |obj|
   package obj
 end
 
@@ -20,5 +20,9 @@ template '/usr/local/bin/attic' do
   variables(
     virtualenv_path: node['mconigliaro_attic']['virtualenv_path']
   )
+  mode 00755
+end
+
+template '/usr/local/bin/attic_backup' do
   mode 00755
 end
