@@ -39,11 +39,11 @@ file "#{node['mconigliaro_users']['home_root']}/mike/.ssh/authorized_keys" do
   mode 00600
 end
 
-node['mconigliaro_users']['attic_backup'].each do |host, paths|
-  cron "attic_backup_#{host}" do
-    user 'mike'
-    hour 9
-    minute 0
-    command "attic_backup #{host} #{paths.join(' ')}"
+node['mconigliaro_users']['attic_backup'].each do |obj|
+  cron "attic_backup_#{obj['host']}" do
+    user obj['user']
+    hour obj['hour']
+    minute obj['minute']
+    command "attic_backup #{obj['host']} #{obj['paths'].join(' ')}"
   end
 end
