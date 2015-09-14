@@ -38,3 +38,11 @@ file "#{node['mconigliaro_users']['home_root']}/mike/.ssh/authorized_keys" do
   group 'mike'
   mode 00600
 end
+
+node['mconigliaro_users']['attic_backup'].each do |host, paths|
+  cron "attic_backup_#{host}" do
+    hour 9
+    minute 0
+    command "attic_backup #{host} #{paths.join(' ')}"
+  end
+end
