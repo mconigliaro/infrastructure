@@ -41,6 +41,7 @@ end
 
 node['mconigliaro_users']['attic_backup'].each do |host, paths|
   cron "attic_backup_#{host}" do
+    user 'mike'
     hour 9
     minute 0
     command "attic_backup #{host} #{paths.join(' ')}"
