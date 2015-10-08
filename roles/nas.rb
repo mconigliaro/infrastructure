@@ -11,6 +11,6 @@ run_list %w(
   mconigliaro_netatalk
   mconigliaro_cups
   mconigliaro_samba
-  mconigliaro_plex
+  mconigliaro_plexmediaserver
   mconigliaro_attic
 )

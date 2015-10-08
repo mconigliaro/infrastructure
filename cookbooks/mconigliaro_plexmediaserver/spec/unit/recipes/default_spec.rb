@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: mconigliaro_plex
+# Cookbook Name:: mconigliaro_plexmediaserver
 # Spec:: default
 #
 # Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'mconigliaro_plex::default' do
+describe 'mconigliaro_plexmediaserver::default' do
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
