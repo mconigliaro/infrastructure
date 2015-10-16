@@ -9,7 +9,12 @@ user 'mike' do
   comment 'Mike Conigliaro'
   home "#{node['mconigliaro_users']['home_root']}/mike"
   shell '/bin/zsh'
-  supports manage_home: true
+end
+
+directory "#{node['mconigliaro_users']['home_root']}/mike" do
+  owner 'mike'
+  group 'mike'
+  mode 00700
 end
 
 %w(sudo fuse).each do |obj|

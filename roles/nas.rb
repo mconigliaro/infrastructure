@@ -2,10 +2,11 @@ name 'nas'
 description 'Network appliance server'
 run_list %w(
   role[server]
+  mconigliaro_mdadm
+  mconigliaro_users
   mconigliaro_ddclient
   mconigliaro_ubuntu::grub
   mconigliaro_smartmontools
-  mconigliaro_mdadm
   mconigliaro_nfs_server
   mconigliaro_avahi
   mconigliaro_netatalk
