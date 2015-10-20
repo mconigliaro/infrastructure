@@ -14,7 +14,7 @@ end
 directory "#{node['mconigliaro_users']['home_root']}/mike" do
   owner 'mike'
   group 'mike'
-  mode 00700
+  mode 00755
 end
 
 %w(sudo fuse).each do |obj|
