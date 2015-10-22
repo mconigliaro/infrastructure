@@ -20,6 +20,7 @@
   nethogs
   nmap
   psmisc
+  silversearcher-ag
   strace
   sysv-rc-conf
   tcpdump
