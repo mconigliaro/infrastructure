@@ -69,6 +69,7 @@ TCPKeepAlive yes
 #UseLogin no
 
 #MaxStartups 10:30:60
+MaxStartups 20:30:60
 #Banner /etc/issue.net
 
 # Allow client to pass locale environment variables
@@ -86,5 +87,5 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
+
 UseDNS no
-GSSAPIAuthentication no

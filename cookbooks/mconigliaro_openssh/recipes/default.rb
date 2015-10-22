@@ -11,10 +11,9 @@ service 'ssh' do
   action [:start, :enable]
 end
 
-# FIXME: Do we need this?
-# template '/etc/ssh/sshd_config' do
-#   mode 00644
-#   notifies :restart, 'service[ssh]'
-# end
+template '/etc/ssh/sshd_config' do
+  mode 00644
+  notifies :restart, 'service[ssh]'
+end
 
 mconigliaro_monit_service 'openssh'
