@@ -7,14 +7,18 @@ include_recipe 'mconigliaro_monit'
 
 package 'cups'
 
+# FIXME: Why is this here? It conflicts with the Upstart script.
+file '/etc/init.d/cups' do
+  action :delete
+end
+
 service 'cups' do
   action [:start, :enable]
 end
 
-# FIXME: Do we need this?
-# template '/etc/cups/cupsd.conf' do
-#   mode 00644
-#   notifies :restart, 'service[cups]'
-# end
+template '/etc/cups/cupsd.conf' do
+  mode 00644
+  notifies :restart, 'service[cups]'
+end
 
 mconigliaro_monit_service 'cups'
