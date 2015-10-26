@@ -39,3 +39,8 @@ Time Machine support is enabled by default on all volumes. This means users can 
   - 25 (SMTP)
   - 587 (Submission)
   - 993 (IMAPS)
+
+### NAS
+
+  - 631 (CUPS)
+  - 32400 (Plex)
