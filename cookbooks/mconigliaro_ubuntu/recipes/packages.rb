@@ -27,5 +27,6 @@
   telnet
   tmux
   tshark
+  usbmount
   vim
 ).each { |p| package p }
