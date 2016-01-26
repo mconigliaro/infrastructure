@@ -11,4 +11,4 @@ if ! command -v chef-solo >/dev/null 2>&1; then
   dpkg -i /tmp/$CHEF_PACKAGE
 fi
 
-chef-solo --config solo.rb --override-runlist "role[$1]" --json-attributes json_attributes/$1.json
+chef-solo --config solo.rb --override-runlist "role[$ROLE]" --json-attributes json_attributes/$ROLE.json
