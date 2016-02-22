@@ -49,6 +49,7 @@ end
 node['mconigliaro_postfix']['maps'].each do |name, values|
   file "/etc/postfix/#{name}" do
     content values.join("\n")
+    sensitive true if node['mconigliaro_postfix']['sensitive_maps'].include?(name)
     mode 00644
   end
 

@@ -18,6 +18,7 @@ template '/etc/ddclient.conf' do
     hosts: node['mconigliaro_ddclient']['hosts'].join(',')
   )
   mode 00600
+  sensitive true
   notifies :restart, 'service[ddclient]'
 end
 

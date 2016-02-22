@@ -10,6 +10,8 @@ default['mconigliaro_postfix']['maps']['generic'] = []
 default['mconigliaro_postfix']['maps']['virtual'] = []
 default['mconigliaro_postfix']['maps']['sasl_password'] = []
 
+default['mconigliaro_postfix']['sensitive_maps'] = %w(sasl_password)
+
 default['mconigliaro_postfix']['aliases'] = []
 
 default['mconigliaro_postfix']['postgrey']['delay'] = 1
