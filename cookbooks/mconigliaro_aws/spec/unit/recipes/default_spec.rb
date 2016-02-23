@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: mconigliaro_ddclient
+# Cookbook Name:: mconigliaro_aws
 # Spec:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2016 Mike Conigliaro, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'mconigliaro_ddclient::default' do
+describe 'mconigliaro_aws::default' do
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new

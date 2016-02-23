@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+set -eu
+
+HOSTED_ZONE_ID=$1
+HOSTNAME=$2
+
+MY_IP=$(curl -s https://api.ipify.org)
+CHANGES="{\"Changes\":[{\"Action\":\"UPSERT\",\"ResourceRecordSet\":{\"Name\":\"$HOSTNAME\",\"Type\":\"A\",\"TTL\":300,\"ResourceRecords\":[{\"Value\":\"$MY_IP\"}]}}]}"
+aws route53 change-resource-record-sets --hosted-zone-id "$HOSTED_ZONE_ID" --change-batch "$CHANGES"

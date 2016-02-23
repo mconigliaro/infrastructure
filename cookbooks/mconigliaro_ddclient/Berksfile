@@ -1,5 +1,0 @@
-source 'https://supermarket.chef.io'
-
-metadata
-
-cookbook 'mconigliaro_monit', path: '../mconigliaro_monit'
