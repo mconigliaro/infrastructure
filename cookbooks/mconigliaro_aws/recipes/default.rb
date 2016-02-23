@@ -12,25 +12,15 @@ if node['mconigliaro_aws'].values.any? { |obj| !obj.nil? }
 
   template ::File.join(Dir.home('root'), '.aws', 'config') do
     variables(
-      region: node['mconigliaro_aws']['aws_default_region']
-    )
-    mode 00644
-  end
-
-  template ::File.join(Dir.home('root'), '.aws', 'credentials') do
-    variables(
       aws_access_key_id: node['mconigliaro_aws']['aws_access_key_id'],
-      aws_secret_access_key: node['mconigliaro_aws']['aws_secret_access_key']
+      aws_secret_access_key: node['mconigliaro_aws']['aws_secret_access_key'],
+      region: node['mconigliaro_aws']['aws_default_region']
     )
     sensitive true
     mode 00600
   end
 else
   file ::File.join(Dir.home('root'), '.aws', 'config') do
-    action :delete
-  end
-
-  file ::File.join(Dir.home('root'), '.aws', 'credentials') do
     action :delete
   end
 
