@@ -11,7 +11,7 @@ cookbook_file '/usr/local/bin/update_my_ip' do
   mode 00755
 end
 
-node['ibotta_aws']['update_my_ip'].each do |hosted_zone_id, records|
+node['mconigliaro_aws']['update_my_ip'].each do |hosted_zone_id, records|
   records.each do |record|
     cron "update_my_ip_#{record}" do
       minute '*/5'
