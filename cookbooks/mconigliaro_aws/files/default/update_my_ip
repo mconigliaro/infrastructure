@@ -6,9 +6,9 @@ HOSTED_ZONE_ID=$1
 HOSTNAME=$2
 
 my_ip=$(curl -s https://api.ipify.org)
-record_ip=$(aws route53 list-resource-record-sets --hosted-zone-id "$HOSTED_ZONE_ID" | jq -rj --arg hostname "$HOSTNAME" '.ResourceRecordSets[] | select(.Name == $hostname + ".") | .ResourceRecords[].Value')
+record_ip=$(aws route53 list-resource-record-sets --hosted-zone-id "$HOSTED_ZONE_ID" | jq -r --arg hostname "$HOSTNAME" '.ResourceRecordSets[] | select(.Name == $hostname + ".") | .ResourceRecords[].Value')
 if [ "$my_ip" != "$record_ip" ]; then
-  echo "Changing IP address for $HOSTNAME from $record_ip to $my_ip"
+  echo "Changing IP address for $HOSTNAME from '$record_ip' to '$my_ip'"
   changes="{\"Changes\":[{\"Action\":\"UPSERT\",\"ResourceRecordSet\":{\"Name\":\"$HOSTNAME\",\"Type\":\"A\",\"TTL\":300,\"ResourceRecords\":[{\"Value\":\"$my_ip\"}]}}]}"
   aws --output text route53 change-resource-record-sets --hosted-zone-id "$HOSTED_ZONE_ID" --change-batch "$changes"
 fi
