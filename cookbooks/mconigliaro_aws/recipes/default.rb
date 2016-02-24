@@ -4,6 +4,7 @@
 #
 # Copyright (c) 2016 Mike Conigliaro, All Rights Reserved.
 package 'awscli'
+package 'jq'
 
 if node['mconigliaro_aws'].values.any? { |obj| !obj.nil? }
   directory ::File.join(Dir.home('root'), '.aws') do
