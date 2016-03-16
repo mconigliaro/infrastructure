@@ -50,6 +50,6 @@ node['mconigliaro_users']['attic_backup'].each do |obj|
     user obj['user']
     hour obj['hour']
     minute obj['minute']
-    command "/usr/local/bin/attic_backup #{obj['host']} #{obj['paths'].join(' ')}"
+    command "chronic /usr/local/bin/attic_backup #{obj['host']} #{obj['paths'].join(' ')}"
   end
 end

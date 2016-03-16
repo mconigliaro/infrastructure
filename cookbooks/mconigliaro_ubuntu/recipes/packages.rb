@@ -15,6 +15,7 @@
   iptraf
   lsof
   mosh
+  moreutils
   mtr-tiny
   ngrep
   nethogs
