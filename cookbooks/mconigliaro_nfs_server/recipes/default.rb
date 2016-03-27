@@ -21,6 +21,20 @@ execute 'exportfs' do
   action :nothing
 end
 
+node['mconigliaro_nfs_server']['mounts'].each do |d, mp|
+  directory mp do
+    recursive true
+    mode 00777
+  end
+
+  mount mp do
+    device d
+    fstype 'none'
+    options 'bind'
+    action [:mount, :enable]
+  end
+end
+
 template '/etc/exports' do
   variables(
     exports: node['mconigliaro_nfs_server']['exports']
