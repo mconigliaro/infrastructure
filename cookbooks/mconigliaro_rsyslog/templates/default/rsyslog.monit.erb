@@ -1,4 +1,5 @@
 check process rsyslog with pidfile /var/run/rsyslogd.pid
   start program = "/usr/sbin/service rsyslog start"
   stop program  = "/usr/sbin/service rsyslog stop"
+  if does not exist for 3 cycles then restart
 # FIXME: on zombie, rm /var/spool/rsyslog/*

@@ -2,14 +2,14 @@ check process amavis with pidfile /var/run/amavis/amavisd.pid
   start program = "/usr/sbin/service amavis start"
   stop program  = "/usr/sbin/service amavis stop"
   if failed port 10024 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  if 3 restarts within 5 cycles then timeout
+  if does not exist for 3 cycles then restart
 
 check process clamav-daemon with pidfile /var/run/clamav/clamd.pid
   start program = "/usr/sbin/service clamav-daemon start"
   stop program  = "/usr/sbin/service clamav-daemon stop"
-  if 3 restarts within 5 cycles then timeout
+  if does not exist for 3 cycles then restart
 
 check process clamav-freshclam with pidfile /var/run/clamav/freshclam.pid
   start program = "/usr/sbin/service clamav-freshclam start"
   stop program  = "/usr/sbin/service clamav-freshclam stop"
-  if 3 restarts within 5 cycles then timeout
+  if does not exist for 3 cycles then restart
