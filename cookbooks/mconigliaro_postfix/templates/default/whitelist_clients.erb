@@ -1,0 +1,16 @@
+# postgrey whitelist for mail client hostnames
+# --------------------------------------------
+# put this file in /etc/postgrey or specify its path
+# with --whitelist-clients=xxx
+#
+# postgrey version: 1.34, build date: 2011-05-04
+
+# Debian-specific additions
+# I *know* they run real mail queues, so greylisting only creates
+# bigger load for them.
+debconf.org
+debian.org
+spi-inc.org
+
+amazonses.com
+proxy.gmail.com

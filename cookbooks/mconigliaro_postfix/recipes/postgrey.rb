@@ -18,4 +18,8 @@ template '/etc/postgrey/whitelist_clients' do
   notifies :restart, 'service[postgrey]'
 end
 
+service 'postgrey' do
+  action [:start, :enable]
+end
+
 mconigliaro_monit_service 'postgrey'
