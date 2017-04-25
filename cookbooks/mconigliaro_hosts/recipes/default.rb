@@ -7,7 +7,7 @@ template '/etc/hosts' do
   variables(
     domain: node['mconigliaro_hosts']['domain']
   )
-  mode 00644
+  mode '0644'
   notifies :reload, 'ohai[reload]', :immediately
 end
 
