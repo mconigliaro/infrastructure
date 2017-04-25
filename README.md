@@ -1,5 +1,12 @@
 # Infrastructure
 
+## Cookbook Development
+
+### Creating New Cookbooks
+
+    cd cookbooks
+    ./generate <name>
+
 ## Running Chef
 
     aptitude install git

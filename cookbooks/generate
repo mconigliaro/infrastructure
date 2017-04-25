@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -eu
+
+NAME=$1
+COPYRIGHT="Mike Conigliaro"
+EMAIL=mike@conigliaro.org
+GENERATOR=./code_generator
+
+chef generate cookbook "$NAME" -C "$COPYRIGHT" -m "$EMAIL" -g "$GENERATOR"
+(
+  cd "$NAME"
+
+  # Symlink to common Berksfile
+  rm -v Berksfile
+  ln -sv ../Berksfile .
+
+  # Remove unused files/directories
+  rm -rfv .delivery spec
+)
