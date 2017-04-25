@@ -5,5 +5,7 @@ license 'all_rights'
 description 'Installs/Configures mconigliaro_openssh'
 long_description 'Installs/Configures mconigliaro_openssh'
 version '0.1.0'
+issues_url 'https://github.com/mconigliaro/infrastructure/issues'
+source_url 'https://github.com/mconigliaro/infrastructure'
 
 depends 'mconigliaro_monit'

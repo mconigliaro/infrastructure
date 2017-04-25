@@ -5,5 +5,7 @@ license 'all_rights'
 description 'Installs/Configures mconigliaro_smartmontools'
 long_description 'Installs/Configures mconigliaro_smartmontools'
 version '0.1.0'
+issues_url 'https://github.com/mconigliaro/infrastructure/issues'
+source_url 'https://github.com/mconigliaro/infrastructure'
 
 depends 'mconigliaro_monit'
