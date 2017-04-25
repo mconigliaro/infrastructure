@@ -13,7 +13,7 @@ template '/etc/monit/monitrc' do
   variables(
     mail_format_from: node['mconigliaro_monit']['mail_format']['from']
   )
-  mode 00600
+  mode '0600'
   notifies :restart, 'service[monit]'
 end
 
@@ -22,5 +22,5 @@ end
 end
 
 template '/etc/cron.daily/monit-monitor-all' do
-  mode 00755
+  mode '0755'
 end

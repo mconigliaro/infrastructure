@@ -1,5 +1,25 @@
 actions :create, :delete
 default_action :create
 
-attribute :service_name, name_attribute: true
-attribute :variables, kind_of: Hash
+property :service_name, name_attribute: true
+property :variables, kind_of: Hash
+
+action :create do
+  service 'monit'
+
+  template "/etc/monit/conf.d/#{new_resource.name}" do
+    source "#{new_resource.name}.monit.erb"
+    variables new_resource.variables
+    mode '0644'
+    notifies :restart, 'service[monit]'
+  end
+end
+
+action :delete do
+  service 'monit'
+
+  file "/etc/monit/conf.d/#{new_resource.name}" do
+    action :delete
+    notifies :restart, 'service[monit]'
+  end
+end
