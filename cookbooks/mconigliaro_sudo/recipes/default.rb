@@ -6,5 +6,5 @@
 package 'sudo'
 
 template '/etc/sudoers' do
-  mode 00440
+  mode '0440'
 end
