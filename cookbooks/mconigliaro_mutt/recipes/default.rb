@@ -6,5 +6,5 @@
 package 'mutt'
 
 template '/etc/Muttrc.d/maildir.rc' do
-  mode 00644
+  mode '0644'
 end
