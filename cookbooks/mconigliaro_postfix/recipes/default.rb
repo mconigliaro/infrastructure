@@ -13,7 +13,7 @@ end
 
 file '/etc/mailname' do
   content node['mconigliaro_postfix']['myhostname'] + "\n"
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[postfix]'
 end
 
@@ -27,7 +27,7 @@ template '/etc/postfix/master.cf' do
     configure_smtpd_sasl: configure_smtpd_sasl,
     configure_amavis: configure_amavis
   )
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[postfix]'
 end
 
@@ -42,7 +42,7 @@ template '/etc/postfix/main.cf' do
     configure_postgrey: configure_postgrey,
     configure_dovecot_imap: configure_dovecot_imap
   )
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[postfix]'
 end
 
@@ -50,7 +50,7 @@ node['mconigliaro_postfix']['maps'].each do |name, values|
   file "/etc/postfix/#{name}" do
     content values.join("\n")
     sensitive true if node['mconigliaro_postfix']['sensitive_maps'].include?(name)
-    mode 00644
+    mode '0644'
   end
 
   execute "/usr/sbin/postmap /etc/postfix/#{name}" do
@@ -63,7 +63,7 @@ template '/etc/aliases' do
     configure_amavis: configure_amavis,
     aliases: node['mconigliaro_postfix']['aliases'].join("\n")
   )
-  mode 00644
+  mode '0644'
 end
 
 execute '/usr/bin/newaliases' do

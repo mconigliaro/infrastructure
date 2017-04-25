@@ -9,12 +9,12 @@ template '/etc/default/postgrey' do
   variables(
     delay: node['mconigliaro_postfix']['postgrey']['delay']
   )
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[postgrey]'
 end
 
 template '/etc/postgrey/whitelist_clients' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[postgrey]'
 end
 
