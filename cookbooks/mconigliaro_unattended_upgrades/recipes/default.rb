@@ -7,6 +7,6 @@ package 'unattended-upgrades'
 
 %w(20auto-upgrades 50unattended-upgrades).each do |obj|
   template "/etc/apt/apt.conf.d/#{obj}" do
-    mode 00644
+    mode '0644'
   end
 end
