@@ -10,6 +10,6 @@ service 'sysstat' do
 end
 
 template '/etc/default/sysstat' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[sysstat]'
 end
