@@ -1,5 +1,1 @@
-source 'https://supermarket.chef.io'
-
-metadata
-
-cookbook 'mconigliaro_apt', path: '../mconigliaro_apt'
+../Berksfile
