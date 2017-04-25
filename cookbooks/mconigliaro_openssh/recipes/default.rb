@@ -12,7 +12,7 @@ service 'ssh' do
 end
 
 template '/etc/ssh/sshd_config' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[ssh]'
 end
 
