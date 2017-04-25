@@ -11,7 +11,7 @@ end
 
 %w(nfs-common nfs-kernel-server).each do |f|
   template "/etc/default/#{f}" do
-    mode 00644
+    mode '0644'
     notifies :restart, 'service[nfs-kernel-server]'
   end
 end
@@ -24,7 +24,7 @@ end
 node['mconigliaro_nfs_server']['mounts'].each do |d, mp|
   directory mp do
     recursive true
-    mode 00777
+    mode '0777'
   end
 
   mount mp do
@@ -39,6 +39,6 @@ template '/etc/exports' do
   variables(
     exports: node['mconigliaro_nfs_server']['exports']
   )
-  mode 00644
+  mode '0644'
   notifies :run, 'execute[exportfs]', :immediately
 end

@@ -8,7 +8,7 @@ include_recipe 'mconigliaro_aws::default'
 package 'curl'
 
 cookbook_file '/usr/local/bin/update_my_ip' do
-  mode 00755
+  mode '0755'
 end
 
 node['mconigliaro_aws']['update_my_ip'].each do |hosted_zone_id, records|

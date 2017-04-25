@@ -21,7 +21,7 @@ end
 end
 
 template '/etc/cups/cupsd.conf' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[cups]'
 end
 

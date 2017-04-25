@@ -6,6 +6,6 @@
 include_recipe 'mconigliaro_dovecot'
 
 template '/etc/dovecot/conf.d/99-auth.conf' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[dovecot]'
 end

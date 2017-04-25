@@ -14,7 +14,7 @@ end
 directory "#{node['mconigliaro_users']['home_root']}/mike" do
   owner 'mike'
   group 'mike'
-  mode 00755
+  mode '0755'
 end
 
 %w(sudo fuse).each do |obj|
@@ -32,7 +32,7 @@ end
 directory "#{node['mconigliaro_users']['home_root']}/mike/.ssh" do
   owner 'mike'
   group 'mike'
-  mode 00700
+  mode '0700'
 end
 
 file "#{node['mconigliaro_users']['home_root']}/mike/.ssh/authorized_keys" do
@@ -42,7 +42,7 @@ file "#{node['mconigliaro_users']['home_root']}/mike/.ssh/authorized_keys" do
   ].map { |obj| "#{obj}\n" }.join
   owner 'mike'
   group 'mike'
-  mode 00600
+  mode '0600'
 end
 
 node['mconigliaro_users']['attic_backup'].each do |obj|

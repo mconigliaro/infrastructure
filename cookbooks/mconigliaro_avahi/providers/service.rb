@@ -5,7 +5,7 @@ action :create do
 
   template "/etc/avahi/services/#{new_resource.name}" do
     source "#{new_resource.name}.avahi.erb"
-    mode 00644
+    mode '0644'
     notifies :restart, 'service[avahi-daemon]'
   end
 end

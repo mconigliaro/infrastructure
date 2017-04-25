@@ -12,7 +12,7 @@ service 'dovecot' do
 end
 
 template '/etc/dovecot/conf.d/99-ssl.conf' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[dovecot]'
 end
 

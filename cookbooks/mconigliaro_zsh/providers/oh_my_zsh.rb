@@ -18,7 +18,7 @@ action :install do
     )
     owner new_resource.name
     group new_resource.name
-    mode 00644
+    mode '0644'
     action :create_if_missing
   end
 end

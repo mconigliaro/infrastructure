@@ -19,7 +19,7 @@ execute 'format_raid_device' do
 end
 
 template '/etc/mdadm/mdadm.conf' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[mdadm]'
 end
 
@@ -29,7 +29,7 @@ end
 
 directory node['mconigliaro_mdadm']['mount_point'] do
   recursive true
-  mode 00755
+  mode '0755'
 end
 
 mount node['mconigliaro_mdadm']['mount_point'] do

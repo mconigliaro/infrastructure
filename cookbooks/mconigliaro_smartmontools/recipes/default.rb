@@ -11,7 +11,7 @@ template '/etc/default/smartmontools' do
   variables(
     start_smartd: node['mconigliaro_smartmontools']['enable']
   )
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[smartmontools]'
 end
 

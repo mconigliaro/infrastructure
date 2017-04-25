@@ -14,12 +14,12 @@ package 'samba'
 end
 
 directory '/var/lib/samba/netlogon' do
-  mode 00755
+  mode '0755'
 end
 
 %w(logon.cmd Win7_Samba3DomainMember.reg).each do |obj|
   cookbook_file "/var/lib/samba/netlogon/#{obj}" do
-    mode 00644
+    mode '0644'
     %w(smbd nmbd).each { |service| notifies :restart, "service[#{service}]" }
   end
 end
@@ -28,7 +28,7 @@ template '/etc/samba/smb.conf' do
   variables(
     workgroup: node['mconigliaro_samba']['workgroup']
   )
-  mode 00644
+  mode '0644'
   %w(smbd nmbd).each { |obj| notifies :restart, "service[#{obj}]" }
 end
 

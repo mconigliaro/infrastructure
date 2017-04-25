@@ -10,10 +10,10 @@ include_recipe 'mconigliaro_dovecot'
 end
 
 template '/etc/dovecot/conf.d/99-imap.conf' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[dovecot]'
 end
 
 cookbook_file '/etc/skel/.dovecot.sieve' do
-  mode 00644
+  mode '0644'
 end

@@ -15,7 +15,7 @@ service 'netatalk' do
 end
 
 template '/etc/netatalk/AppleVolumes.default' do
-  mode 00644
+  mode '0644'
   notifies :restart, 'service[netatalk]'
 end
 
@@ -26,5 +26,5 @@ end
 mconigliaro_monit_service 'netatalk'
 
 file '/etc/skel/.com.apple.timemachine.supported' do
-  mode 00644
+  mode '0644'
 end
