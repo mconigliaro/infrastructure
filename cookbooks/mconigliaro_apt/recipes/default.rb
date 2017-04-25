@@ -7,12 +7,11 @@ template '/etc/apt/apt.conf.d/70debconf' do
   mode 00644
 end
 
-execute 'aptitude_update' do
-  command 'aptitude update'
-  action :nothing
+apt_update 'periodic' do
+  action :periodic
 end
 
 template '/etc/apt/sources.list' do
   mode 00644
-  notifies :run, 'execute[aptitude_update]', :immediately
+  notifies :periodic, 'apt_update[periodic]', :immediately
 end
