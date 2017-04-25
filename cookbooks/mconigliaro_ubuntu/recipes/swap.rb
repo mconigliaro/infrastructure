@@ -8,7 +8,7 @@ execute 'fallocate -l 1G /swapfile' do
 end
 
 file '/swapfile' do
-  mode 00600
+  mode '0600'
 end
 
 execute 'mkswap /swapfile' do

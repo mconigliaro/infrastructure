@@ -9,6 +9,6 @@ execute 'update-grub' do
 end
 
 template '/etc/default/grub' do
-  mode 00644
+  mode '0644'
   notifies :run, 'execute[update-grub]', :immediately
 end
