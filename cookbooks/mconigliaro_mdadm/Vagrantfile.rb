@@ -1,8 +1,9 @@
 Vagrant.configure('2') do |config|
   config.vm.provider 'virtualbox' do |vb|
-    2.times do |n|
-      vb.customize ['createhd', '--filename', "disk#{n + 1}.vdi", '--size', '64']
-      vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--medium', "disk#{n + 1}.vdi", '--port', '1', '--device', n, '--type', 'hdd']
+    [1, 2, 3].each_with_index do |disk_id, index|
+      disk_file = "disk#{disk_id}.vdi"
+      vb.customize ['createhd', '--filename', disk_file, '--size', '1024'] unless File.exist?(disk_file)
+      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--medium', disk_file, '--port', index + 1, '--type', 'hdd']
     end
   end
 end

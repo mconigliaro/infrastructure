@@ -11,11 +11,11 @@
 # auto-create devices with Debian standard permissions
 CREATE owner=root group=disk mode=0660 auto=yes
 
-# automatically tag new arrays as belonging to the local system
-HOMEHOST <system>
+# disable homehost checking
+HOMEHOST <ignore>
 
 # instruct the monitoring daemon where to send mail alerts
 MAILADDR root
 
 # definitions of existing MD arrays
-<%= `/sbin/mdadm --detail --scan` %>
+<%= Mixlib::ShellOut.new('/sbin/mdadm --detail --scan').run_command.stdout %>

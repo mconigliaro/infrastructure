@@ -7,6 +7,10 @@ include_recipe 'mconigliaro_monit'
 
 package 'mdadm'
 
+service 'mdadm' do
+  action [:start, :enable]
+end
+
 mdadm node['mconigliaro_mdadm']['raid_device'] do
   devices Dir.glob(node['mconigliaro_mdadm']['volumes']).sort
   level node['mconigliaro_mdadm']['raid_level']
@@ -18,13 +22,19 @@ execute 'format_raid_device' do
   not_if "file -sL #{node['mconigliaro_mdadm']['raid_device']} | grep 'ext4 filesystem'"
 end
 
+# Important: This file must be written after all md devices are created in order
+# to have all the array definitions
 template '/etc/mdadm/mdadm.conf' do
   mode '0644'
   notifies :restart, 'service[mdadm]'
+  notifies :run, 'execute[update-initramfs]'
 end
 
-service 'mdadm' do
-  action [:start, :enable]
+# Update initramfs so it'll have the updated mdadm.conf on boot
+# See: http://serverfault.com/questions/763870/raid-device-on-rename-appended-with-0
+execute 'update-initramfs' do
+  command 'update-initramfs -u'
+  action :nothing
 end
 
 directory node['mconigliaro_mdadm']['mount_point'] do
