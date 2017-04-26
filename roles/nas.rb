@@ -4,7 +4,7 @@ run_list %w(
   role[server]
   mconigliaro_mdadm
   mconigliaro_users
-  mconigliaro_aws::update_my_ip
+  mconigliaro_aws::ec2_update_dns
   mconigliaro_ubuntu::grub
   mconigliaro_smartmontools
   mconigliaro_nfs_server

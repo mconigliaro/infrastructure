@@ -7,13 +7,13 @@ provisioner:
   require_chef_omnibus: 13.0.118
 
 platforms:
-  - name: ubuntu-14.04
+  - name: ubuntu-16.04
 
 suites:
-  - name: route53
+  - name: ec2_update_dns
     run_list:
       - recipe[mconigliaro_apt::default] # Fix for stale apt cache
-      - recipe[mconigliaro_aws::route53]
+      - recipe[mconigliaro_aws::ec2_update_dns]
     attributes:
       mconigliaro_aws:
         aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>

@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+#
+set -eux
+
+NAME=${1:-$(hostname)}
+DOMAIN=${2:-$(dnsdomainname).}
+FQDN="$NAME.$DOMAIN"
+TTL=300
+
+# Use the first address we get
+desired_value=$(
+  curl -sf http://instance-data/2014-11-05/meta-data/public-hostname ||
+  curl -sf http://instance-data/2014-11-05/meta-data/local-hostname ||
+  curl -sf https://api.ipify.org
+)
+
+hosted_zone_id=$(aws route53 list-hosted-zones --query "HostedZones[?Name=='$DOMAIN'].Id | [0]" --output text)
+if [ -z "$hosted_zone_id" ]; then
+  echo "Zone ID not found for domain: $DOMAIN"
+  exit 1
+else
+  current_recordset=$(aws route53 list-resource-record-sets --hosted-zone-id "$hosted_zone_id" --query "ResourceRecordSets[?Name=='$FQDN'] | [0]")
+  current_name=$(echo "$current_recordset" | jq -r '.Name')
+   # FIXME: jq error when record doesn't exist yet
+  current_value=$(echo "$current_recordset" | jq -r '.ResourceRecords[].Value' | paste -s -d, -)
+  if [ "$desired_value" != "$current_value" ]; then
+    # Upsert doesn't work properly when switching between CNAME and A records,
+    # so we need to delete the existing record first. We also need to pass the
+    # entire current recordset (TTL, etc.) in order for the delete to succeed.
+    changes=''
+    if [ "$current_name" == "$FQDN" ] && [ -n "$current_recordset" ]; then
+      echo "Changing '$FQDN' from '$current_value' to '$desired_value'"
+      changes="{\"Action\":\"DELETE\",\"ResourceRecordSet\":$current_recordset},"
+    else
+      echo "Creating '$FQDN' with '$desired_value'"
+    fi
+
+    # Hack: If the desired value contains letters or hyphens, assume we're
+    # creating a CNAME.
+    if echo "$desired_value" | grep -E -q '[a-z\-]'; then
+      desired_type='CNAME'
+    else
+      desired_type='A'
+    fi
+    changes="$changes{\"Action\":\"CREATE\",\"ResourceRecordSet\":{\"Name\":\"$FQDN\",\"Type\":\"$desired_type\",\"TTL\":$TTL,\"ResourceRecords\":[{\"Value\":\"$desired_value\"}]}}"
+    aws --output text route53 change-resource-record-sets --hosted-zone-id "$hosted_zone_id" --change-batch "{\"Changes\":[$changes]}"
+  fi
+fi
