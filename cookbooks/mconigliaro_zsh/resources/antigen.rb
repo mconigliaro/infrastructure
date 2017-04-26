@@ -2,9 +2,9 @@ actions :install, :uninstall
 default_action :install
 
 property :user, name_attribute: true
-property :theme, kind_of: String, default: 'robbyrussell'
-property :bundles, kind_of: Array, default: []
-property :exports, kind_of: Hash, default: {}
+property :theme, kind_of: String, default: 'gentoo'
+property :bundles, kind_of: Array, default: %w(zsh-users/zsh-autosuggestions zsh-users/zsh-completions zsh-users/zsh-syntax-highlighting)
+property :exports, kind_of: Hash, default: { 'ZSH_AUTOSUGGEST_STRATEGY' => 'match_prev_cmd' }
 
 action :install do
   package 'git'
