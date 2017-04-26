@@ -35,9 +35,6 @@ node['mconigliaro_users'].each do |user|
   end
 
   mconigliaro_zsh_antigen user['username'] do
-    theme user['antigen_theme'] unless user['antigen_theme'].nil?
-    bundles user['antigen_bundles'] unless user['antigen_bundles'].nil?
-    exports user['antigen_exports'] unless user['antigen_exports'].nil?
     only_if { using_zsh }
   end
 
