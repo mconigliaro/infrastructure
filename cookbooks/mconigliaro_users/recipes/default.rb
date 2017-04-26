@@ -11,7 +11,8 @@ node['mconigliaro_users'].each do |user|
   user['ssh_authorized_keys'] ||= []
   user['attic_backup'] ||= []
 
-  include_recipe 'mconigliaro_zsh' if user['shell'] =~ %r{/zsh$}
+  using_zsh = user['shell'] =~ %r{/zsh$}
+  include_recipe 'mconigliaro_zsh' if using_zsh
 
   user user['username'] do
     comment user['comment']
@@ -34,10 +35,10 @@ node['mconigliaro_users'].each do |user|
   end
 
   mconigliaro_zsh_antigen user['username'] do
-    theme user['antigen_theme']
-    bundles user['antigen_bundles']
-    exports user['antigen_exports']
-    only_if { user['shell'] =~ %r{/zsh$} }
+    theme user['antigen_theme'] unless user['antigen_theme'].nil?
+    bundles user['antigen_bundles'] unless user['antigen_bundles'].nil?
+    exports user['antigen_exports'] unless user['antigen_exports'].nil?
+    only_if { using_zsh }
   end
 
   directory "#{user['home']}/.ssh" do
