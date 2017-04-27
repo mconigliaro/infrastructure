@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_netatalk
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 include_recipe 'mconigliaro_avahi'
 include_recipe 'mconigliaro_monit'
 

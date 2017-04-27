@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_unattended_upgrades
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'unattended-upgrades'
 
 %w(20auto-upgrades 50unattended-upgrades).each do |obj|

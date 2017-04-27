@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_hosts
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 template '/etc/hosts' do
   variables(
     domain: node['mconigliaro_hosts']['domain']

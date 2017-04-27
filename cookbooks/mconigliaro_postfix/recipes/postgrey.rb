@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_postfix
 # Recipe:: postgrey
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'postgrey'
 
 template '/etc/default/postgrey' do

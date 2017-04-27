@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_users
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 node['mconigliaro_users'].each do |user|
   user = user.to_h
   user['home'] ||= "/home/#{user['username']}"

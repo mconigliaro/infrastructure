@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_apt
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 template '/etc/apt/apt.conf.d/70debconf' do
   mode '0644'
 end

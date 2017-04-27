@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_sysstat
 # Recipe:: default
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'sysstat'
 
 service 'sysstat' do

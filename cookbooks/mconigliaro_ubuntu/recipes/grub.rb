@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_ubuntu
 # Recipe:: grub
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 execute 'update-grub' do
   command 'update-grub'
   action :nothing

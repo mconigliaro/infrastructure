@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_ubuntu
 # Recipe:: packages
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'default_packages' do
   package_name %w(
     bsd-mailx

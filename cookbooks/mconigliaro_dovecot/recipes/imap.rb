@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_dovecot
 # Recipe:: imap
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 include_recipe 'mconigliaro_dovecot'
 
 %w(dovecot-imapd dovecot-sieve).each do |obj|

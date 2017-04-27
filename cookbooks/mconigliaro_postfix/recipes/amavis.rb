@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_postfix
 # Recipe:: amavis
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'amavis' do
   package_name [
     'amavisd-new',

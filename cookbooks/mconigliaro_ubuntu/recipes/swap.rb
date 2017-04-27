@@ -2,7 +2,7 @@
 # Cookbook Name:: mconigliaro_ubuntu
 # Recipe:: swap
 #
-# Copyright (c) 2015 Mike Conigliaro, All Rights Reserved.
+# Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 execute 'fallocate -l 1G /swapfile' do
   creates '/swapfile'
 end
