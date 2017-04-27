@@ -11,7 +11,7 @@ provisioner:
   require_chef_omnibus: 13.0.118
 
 platforms:
-  - name: ubuntu-14.04
+  - name: ubuntu-16.04
 
 suites:
   - name: default
