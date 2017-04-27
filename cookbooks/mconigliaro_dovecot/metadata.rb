@@ -9,3 +9,4 @@ issues_url 'https://github.com/mconigliaro/infrastructure/issues'
 source_url 'https://github.com/mconigliaro/infrastructure'
 
 depends 'mconigliaro_monit'
+depends 'mconigliaro_postfix'
