@@ -19,5 +19,5 @@ trap cleanup EXIT
 
 mkdir -p $LOCAL_PATH
 sshfs -o idmap=user $REMOTE_HOST:/ $LOCAL_PATH
-/usr/local/bin/attic create -s $REPOSITORY::$(date +%Y.%m.%d.%H.%M) $REMOTE_PATHS
-/usr/local/bin/attic prune -v $REPOSITORY --keep-daily=7 --keep-weekly=4 --keep-monthly=3
+attic create -s $REPOSITORY::$(date +%Y.%m.%d.%H.%M) $REMOTE_PATHS
+attic prune -v $REPOSITORY --keep-daily=7 --keep-weekly=4 --keep-monthly=3
