@@ -13,7 +13,7 @@ CHEF_URL=https://packages.chef.io/files/stable/chef/${CHEF_VERSION}/${LSB_ID}/${
 
 if ! command -v chef-solo >/dev/null 2>&1; then
   wget -O /tmp/${CHEF_PACKAGE} -c "$CHEF_URL"
-  dpkg -i /tmp/${CHEF_PACKAGE}
+  sudo dpkg -i /tmp/${CHEF_PACKAGE}
 fi
 
-chef-solo --config solo.rb --override-runlist "role[$ROLE]" --json-attributes "json_attributes/${ROLE}.json"
+sudo chef-solo --config solo.rb --override-runlist "role[$ROLE]" --json-attributes "json_attributes/${ROLE}.json"
