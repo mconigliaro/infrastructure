@@ -1,4 +1,4 @@
-default['mconigliaro_postfix']['myhostname'] = node['fqdn']
+default['mconigliaro_postfix']['myhostname'] = node['fqdn'] || node['hostname']
 
 default['mconigliaro_postfix']['inet_interfaces'] = %w(all)
 default['mconigliaro_postfix']['virtual_alias_domains'] = []
