@@ -1,6 +1,7 @@
 name 'server'
 description 'Server'
 run_list %w(
+  mconigliaro_ubuntu::swap
   mconigliaro_hosts
   mconigliaro_apt
   mconigliaro_ubuntu::packages
