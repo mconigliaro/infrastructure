@@ -29,11 +29,13 @@ WebInterface Yes
 # Restrict access to the server...
 <Location />
   Order allow,deny
+  Allow all
 </Location>
 
 # Restrict access to the admin pages...
 <Location /admin>
   Order allow,deny
+  Allow all
 </Location>
 
 # Restrict access to configuration files...
