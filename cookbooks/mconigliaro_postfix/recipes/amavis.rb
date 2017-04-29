@@ -31,6 +31,10 @@ package 'amavis' do
   ]
 end
 
+template '/etc/clamav/clamd.conf' do
+  mode '0644'
+end
+
 group 'amavis' do
   members %w( clamav )
   append true
