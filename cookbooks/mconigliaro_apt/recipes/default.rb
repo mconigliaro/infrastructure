@@ -7,11 +7,11 @@ template '/etc/apt/apt.conf.d/70debconf' do
   mode '0644'
 end
 
-apt_update 'periodic' do
-  action :periodic
-end
-
 template '/etc/apt/sources.list' do
   mode '0644'
   notifies :periodic, 'apt_update[periodic]', :immediately
+end
+
+apt_update 'periodic' do
+  action :periodic
 end
