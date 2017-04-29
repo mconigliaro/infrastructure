@@ -4,6 +4,7 @@ run_list %w(
   mconigliaro_ubuntu::swap
   mconigliaro_hosts
   mconigliaro_apt
+  mconigliaro_chef_client
   mconigliaro_ubuntu::packages
   mconigliaro_unattended_upgrades
   mconigliaro_sysstat
