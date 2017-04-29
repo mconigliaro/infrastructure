@@ -13,28 +13,33 @@ package 'amavis' do
     # For improved spam detection
     'pyzor',
     'razor',
-    # For improved attachment scanning
+    # Decoders for improved attachment scanning
+    'altermime',
     'arj',
+    'binutils',
     'bzip2',
     'cabextract',
-    'cpio',
     'file',
     'gzip',
-    'lhasa',
+    'liblz4-tool',
+    'lrzip',
+    'lzop',
     'nomarch',
+    'p7zip-full',
     'pax',
-    'rar',
-    'unrar',
-    'unzip',
-    'zip',
+    'ripole',
+    'rpm2cpio',
+    'unrar-free',
+    'xz-utils',
     'zoo'
   ]
+  notifies :restart, 'service[amavis]'
 end
 
 template '/etc/clamav/clamd.conf' do
   mode '0644'
   notifies :restart, 'service[clamav-daemon]'
-  notifies :restart, 'service[amavis]'
+  notifies :restart, 'service[amavis]' # FIXME: Needed?
 end
 
 group 'amavis' do
