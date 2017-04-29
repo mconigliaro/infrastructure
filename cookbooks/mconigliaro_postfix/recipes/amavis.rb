@@ -33,6 +33,7 @@ end
 
 template '/etc/clamav/clamd.conf' do
   mode '0644'
+  notifies :restart, 'service[clamav-daemon]'
 end
 
 group 'amavis' do
