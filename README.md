@@ -9,16 +9,35 @@
 
 ## Running Chef
 
-    aptitude install git
+### Setup
+
+    apt-get install git
     git clone https://github.com/mconigliaro/infrastructure.git
+    vi infrastructure/json_attributes/<role>.json
+
+### Run
+
     cd infrastructure
-    vi json_attributes/<role>.json
-    
-    # If on AWS
-    mkdir -p /etc/chef/ohai/hints/
-    touch /etc/chef/ohai/hints/ec2.json
-    
+    git pull
     ./run-chef <role>
+
+## Mail
+
+### Migrating to New Instance
+
+1. Create a new stack:
+```        
+aws cloudformation create-stack --stack-name <name> --template-body file://cloudformation/mail.yaml
+```
+1. Stop the old instance
+1. Detach the data volume from the old instance and attach it to the new one
+1. Run Chef
+1. Re-associate the elastic IP with new instance
+1. Set passwords for local users (for mail, etc.)
+1. Destroy the old stack:
+```        
+aws cloudformation delete-stack --stack-name <name>
+```
 
 ## NAS
 
@@ -36,16 +55,15 @@ Time Machine support is enabled by default on all volumes. This means users can 
 
 ## Ports Used
 
-### Server
+### All
 
   - 22 (SSH)
-  - 60000-61000 (Mosh)
 
 ### Mail
 
   - 25 (SMTP)
   - 587 (Submission)
-  - 993 (IMAPS)
+  - 143 (IMAP)
 
 ### NAS
 
