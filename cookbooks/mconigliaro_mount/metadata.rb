@@ -1,0 +1,11 @@
+name 'mconigliaro_mount'
+maintainer 'Mike Conigliaro'
+maintainer_email 'mike@conigliaro.org'
+license 'all_rights'
+description 'Installs/Configures mconigliaro_mount'
+long_description 'Installs/Configures mconigliaro_mount'
+version '0.1.0'
+issues_url 'https://github.com/mconigliaro/infrastructure/issues'
+source_url 'https://github.com/mconigliaro/infrastructure'
+
+depends 'mconigliaro_monit'

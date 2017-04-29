@@ -2,6 +2,3 @@ check process mdadm with pidfile /var/run/mdadm/monitor.pid
   start program = "/usr/sbin/service mdadm start"
   stop program  = "/usr/sbin/service mdadm stop"
   if does not exist for 3 cycles then restart
-
-check filesystem <%= @mount_point.gsub("/", "_")[1..-1] %> with path <%= @mount_point %>
-  if space usage > 80% for 5 times within 15 cycles then alert

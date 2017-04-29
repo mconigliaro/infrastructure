@@ -17,11 +17,6 @@ mdadm node['mconigliaro_mdadm']['raid_device'] do
   not_if { ::File.exist?(node['mconigliaro_mdadm']['raid_device']) }
 end
 
-execute 'format_raid_device' do
-  command "mkfs.ext4 #{node['mconigliaro_mdadm']['raid_device']}"
-  not_if "file -sL #{node['mconigliaro_mdadm']['raid_device']} | grep 'ext4 filesystem'"
-end
-
 # Important: This file must be written after all md devices are created in order
 # to have all the array definitions
 template '/etc/mdadm/mdadm.conf' do
@@ -37,18 +32,4 @@ execute 'update-initramfs' do
   action :nothing
 end
 
-directory node['mconigliaro_mdadm']['mount_point'] do
-  recursive true
-  mode '0755'
-end
-
-mount node['mconigliaro_mdadm']['mount_point'] do
-  device node['mconigliaro_mdadm']['raid_device']
-  action [:mount, :enable]
-end
-
-mconigliaro_monit_service 'mdadm' do
-  variables(
-    mount_point: node['mconigliaro_mdadm']['mount_point']
-  )
-end
+mconigliaro_monit_service 'mdadm'
