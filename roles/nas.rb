@@ -3,6 +3,7 @@ description 'Network appliance server'
 run_list %w(
   role[server]
   mconigliaro_mdadm
+  mconigliaro_mount
   mconigliaro_users
   mconigliaro_aws::ec2_update_dns
   mconigliaro_ubuntu::grub
