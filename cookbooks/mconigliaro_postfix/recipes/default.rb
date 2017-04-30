@@ -38,6 +38,8 @@ template '/etc/postfix/main.cf' do
     virtual_alias_domains: node['mconigliaro_postfix']['virtual_alias_domains'].join(' '),
     relayhost: node['mconigliaro_postfix']['relayhost'],
     configure_smtpd_sasl: configure_smtpd_sasl,
+    smtpd_tls_cert_file: node['mconigliaro_postfix']['smtpd_tls_cert_file'],
+    smtpd_tls_key_file: node['mconigliaro_postfix']['smtpd_tls_key_file'],
     configure_amavis: configure_amavis,
     configure_postgrey: configure_postgrey,
     configure_dovecot_imap: configure_dovecot_imap

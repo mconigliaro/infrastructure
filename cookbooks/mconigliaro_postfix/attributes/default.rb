@@ -12,6 +12,9 @@ default['mconigliaro_postfix']['maps']['sasl_password'] = []
 
 default['mconigliaro_postfix']['sensitive_maps'] = %w(sasl_password)
 
+default['mconigliaro_postfix']['smtpd_tls_cert_file'] = '/etc/ssl/certs/ssl-cert-snakeoil.pem'
+default['mconigliaro_postfix']['smtpd_tls_key_file'] = '/etc/ssl/private/ssl-cert-snakeoil.key'
+
 default['mconigliaro_postfix']['aliases'] = []
 
 default['mconigliaro_postfix']['postgrey']['delay'] = 1
