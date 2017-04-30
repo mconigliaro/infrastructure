@@ -3,6 +3,12 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       AvailabilityZone: us-east-1b
+      # FIXME: Not possible to add tags to the volumes yet?
+      # BlockDeviceMappings:
+      #   - DeviceName: /dev/sda1
+      #     Ebs:
+      #       VolumeSize: 6
+      #       VolumeType: gp2
       # https://cloud-images.ubuntu.com/locator/ec2/
       # Search: us-east-1 xenial hvm ssd
       ImageId: ami-80861296
@@ -13,4 +19,5 @@ Resources:
       SubnetId: subnet-12feb239
       Tags:
         - Key: Name
-          Value: mail
+          Value:
+            Ref: AWS::StackName
