@@ -11,7 +11,7 @@ apt_repository 'certbot' do
   keyserver 'keyserver.ubuntu.com'
 end
 
-package 'certbot'
+package %w(certbot moreutils)
 
 execute "certbot certonly --non-interactive --agree-tos --email #{node['mconigliaro_letsencrypt']['certbot']['email']} --standalone --domains #{node['mconigliaro_letsencrypt']['certbot']['domains'].join(',')}" do
   not_if { node['mconigliaro_letsencrypt']['certbot']['email'].nil? || node['mconigliaro_letsencrypt']['certbot']['domains'].empty? }

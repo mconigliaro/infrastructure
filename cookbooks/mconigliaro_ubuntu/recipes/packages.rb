@@ -16,7 +16,6 @@ package 'default_packages' do
     iptraf
     lsof
     mosh
-    moreutils
     mtr-tiny
     ngrep
     nethogs
