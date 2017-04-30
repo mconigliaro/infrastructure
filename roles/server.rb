@@ -12,6 +12,7 @@ run_list %w(
   mconigliaro_ntp
   mconigliaro_rsyslog
   mconigliaro_openssh
+  mconigliaro_letsencrypt
   mconigliaro_postfix
   mconigliaro_mutt
   mconigliaro_sudo
