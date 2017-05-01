@@ -16,4 +16,5 @@ run_list %w(
   mconigliaro_postfix
   mconigliaro_mutt
   mconigliaro_sudo
+  mconigliaro_fail2ban
 )
