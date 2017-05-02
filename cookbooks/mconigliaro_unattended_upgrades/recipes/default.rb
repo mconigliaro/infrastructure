@@ -5,8 +5,6 @@
 # Copyright (c) 2017 Mike Conigliaro, All Rights Reserved.
 package 'unattended-upgrades'
 
-%w(20auto-upgrades 50unattended-upgrades).each do |obj|
-  template "/etc/apt/apt.conf.d/#{obj}" do
-    mode '0644'
-  end
+template '/etc/apt/apt.conf.d/50unattended-upgrades' do
+  mode '0644'
 end
