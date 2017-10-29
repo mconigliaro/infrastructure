@@ -8,6 +8,7 @@ run_list %w(
   mconigliaro_aws::ec2_update_dns
   mconigliaro_ubuntu::grub
   mconigliaro_smartmontools
+  mconigliaro_vsftpd
   mconigliaro_nfs_server
   mconigliaro_avahi
   mconigliaro_netatalk
