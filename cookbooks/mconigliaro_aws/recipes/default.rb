@@ -3,7 +3,15 @@
 # Recipe:: default
 #
 # Copyright (c) 2016 Mike Conigliaro, All Rights Reserved.
-package 'awscli'
+package 'awscli' do
+  action :purge
+end
+
+package 'python-pip'
+
+execute 'pip install awscli' do
+  creates '/usr/local/bin/aws'
+end
 
 node['mconigliaro_aws']['configure_users'].each do |user|
   directory '~/.aws' do
