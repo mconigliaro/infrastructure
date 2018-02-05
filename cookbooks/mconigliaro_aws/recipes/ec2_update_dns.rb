@@ -16,6 +16,6 @@ node['mconigliaro_aws']['ec2_update_dns_args'].each do |args|
   args_string = args.join(' ')
   cron "ec2_update_dns #{args_string}" do
     minute '*/5'
-    command "/usr/local/bin/ec2_update_dns #{args_string}"
+    command "PATH=/usr/local/bin:$PATH /usr/local/bin/ec2_update_dns #{args_string}"
   end
 end
