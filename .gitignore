@@ -1,4 +1,11 @@
+# OSX
 .DS_Store
+
+# Terraform
+.terraform
+*tfstate*
+
+# Vagrant/VirtualBox
 .vagrant
 *.box
 *.dmg
