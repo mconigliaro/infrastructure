@@ -1,0 +1,7 @@
+---
+- name: configure grub
+  copy:
+    src: files/grub
+    dest: /etc/default/grub
+  notify:
+    - update grub
