@@ -1,0 +1,16 @@
+---
+- name: configure debconf
+  become: yes
+  copy:
+    src: files/70debconf
+    dest: /etc/apt/apt.conf.d/70debconf
+    mode: 0644
+
+- name: configure sources.list
+  become: yes
+  template:
+    src: templates/sources.list.j2
+    dest: /etc/apt/sources.list
+    mode: 0644
+  notify:
+    - apt update

@@ -1,0 +1,4 @@
+---
+- name: apt update
+  become: yes
+  command: apt update

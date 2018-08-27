@@ -4,3 +4,4 @@
     - grub
     - swap
     - hosts
+    - apt
