@@ -3,3 +3,4 @@
   roles:
     - grub
     - swap
+    - hosts
