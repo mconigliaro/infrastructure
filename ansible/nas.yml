@@ -5,3 +5,4 @@
     - swap
     - hosts
     - apt
+    - packages
