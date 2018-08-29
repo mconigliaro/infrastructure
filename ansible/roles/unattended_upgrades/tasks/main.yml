@@ -1,0 +1,11 @@
+---
+- name: install unattended-upgrades
+  apt:
+    name: unattended-upgrades
+
+- name: configure unattended-upgrades
+  become: yes
+  template:
+    src: files/50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    mode: 0644

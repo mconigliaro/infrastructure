@@ -5,3 +5,4 @@
     - hosts
     - apt
     - packages
+    - unattended_upgrades
