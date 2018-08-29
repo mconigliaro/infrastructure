@@ -1,0 +1,11 @@
+---
+- import_role:
+    name: swap
+- import_role:
+    name: hosts
+- import_role:
+    name: apt
+- import_role:
+    name: packages
+- import_role:
+    name: unattended_upgrades

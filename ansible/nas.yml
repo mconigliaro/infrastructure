@@ -1,9 +1,5 @@
 ---
 - hosts: nas
   roles:
+    - common
     - grub
-    - swap
-    - hosts
-    - apt
-    - packages
-    - unattended_upgrades
