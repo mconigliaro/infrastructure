@@ -9,3 +9,5 @@
     name: packages
 - import_role:
     name: unattended_upgrades
+- import_role:
+    name: sysstat
