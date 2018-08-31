@@ -1,9 +1,0 @@
-
-#!/usr/bin/env bash
-
-set -eu
-
-export ANSIBLE_CONFIG="$(dirname "${BASH_SOURCE[0]}")/ansible.cfg"
-export ANSIBLE_INVENTORY="$(dirname "${BASH_SOURCE[0]}")/hosts"
-
-exec "$@"

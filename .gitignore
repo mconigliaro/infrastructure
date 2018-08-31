@@ -1,5 +1,6 @@
 # Ansible
 *.retry
+.ansible_vault_password
 
 # OSX
 .DS_Store
