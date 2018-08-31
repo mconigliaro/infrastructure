@@ -1,2 +1,3 @@
 ---
+hosts_domain: ec2.local
 monit_mail_format_from: "{{ vault_monit_mail_format_from }}"
