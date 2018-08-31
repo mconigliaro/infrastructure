@@ -4,7 +4,8 @@
   apt:
     name: sysstat
 
-- service:
+- name: start sysstat
+  service:
     name: sysstat
     state: started
 
