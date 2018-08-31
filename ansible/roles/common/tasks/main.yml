@@ -11,3 +11,5 @@
     name: unattended_upgrades
 - import_role:
     name: sysstat
+- import_role:
+    name: monit

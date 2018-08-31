@@ -1,0 +1,19 @@
+---
+- name: install monit
+  become: yes
+  apt:
+    name: monit
+
+- name: start monit
+  service:
+    name: monit
+    state: started
+
+- name: configure monit
+  become: yes
+  template:
+    src: templates/monitrc.j2
+    dest: /etc/monit/monitrc
+    mode: 0600
+  notify:
+    - restart monit
