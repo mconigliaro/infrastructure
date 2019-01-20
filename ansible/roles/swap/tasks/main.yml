@@ -1,41 +1,36 @@
 ---
-- name: create swap
-  become: yes
-  command: fallocate -l 1G /swapfile
+- name: Create swap
+  command: fallocate -l {{ swap_size }} {{ swap_path }}
   args:
-    creates: /swapfile
+    creates: "{{ swap_path }}"
 
-- name: set swap permissions
-  become: yes
+- name: Set swap permissions
   file:
-    path: /swapfile
+    path: "{{ swap_path }}"
     mode: 0600
 
-- name: check swap format
-  become: yes
-  command: file /swapfile | grep "swap file"
+- name: Check swap format
+  command: file {{ swap_path }} | grep "swap file"
+  changed_when: false
   register: format_result
 
-- name: format swap
-  become: yes
-  command: mkswap /swapfile
+- name: Format swap
+  command: mkswap {{ swap_path }}
   when: format_result is failed
 
-- name: check swap enabled
-  become: yes
-  command: swapon -s | grep "/swapfile"
+- name: Check swap enabled
+  command: swapon -s | grep "{{ swap_path }}"
+  changed_when: false
   register: enabled_result
 
-- name: enable swap
-  become: yes
-  command: swapon /swapfile
+- name: Enable swap
+  command: swapon {{ swap_path }}
   when: enabled_result is failed
 
-- name: update fstab
-  become: yes
+- name: Update fstab
   mount:
     path: none
-    src: /swapfile
+    src: "{{ swap_path }}"
     fstype: swap
     opts: sw
     state: present
