@@ -1,16 +1,29 @@
 ---
-- name: configure debconf
-  become: yes
-  copy:
-    src: files/70debconf
-    dest: /etc/apt/apt.conf.d/70debconf
-    mode: 0644
-
-- name: configure sources.list
-  become: yes
+- name: Manage apt sources
   template:
     src: templates/sources.list.j2
     dest: /etc/apt/sources.list
-    mode: 0644
   notify:
-    - apt update
+    - Run apt update
+
+- name: Run apt update immediately
+  meta: flush_handlers
+
+- name: Install debconf-utils
+  apt:
+    name: debconf-utils
+
+- name: Manage debconf
+  copy:
+    src: files/70debconf
+    dest: /etc/apt/apt.conf.d/70debconf
+
+- name: Run apt upgrade
+  apt:
+    upgrade: true
+  when: apt_upgrade
+
+# Required by apt-key commands
+- name: Install gpg
+  apt:
+    name: gnupg2

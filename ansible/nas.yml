@@ -1,5 +1,6 @@
 ---
 - hosts: nas
+  become: true
   roles:
     - common
     - grub

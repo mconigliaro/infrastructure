@@ -1,4 +1,5 @@
 ---
 - hosts: mail
+  become: true
   roles:
     - common

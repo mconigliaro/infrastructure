@@ -1,5 +1,6 @@
 # Ansible
 .ansible_vault_password
+__pycache__
 
 # OSX
 .DS_Store

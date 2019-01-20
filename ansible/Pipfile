@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ansible = "~=2.7"
+boto3 = "~=1.9"
+
+[dev-packages]
+docker-py = "~=1.10"
+molecule = "~=2.19"
+
+[requires]
+python_version = "3.7"

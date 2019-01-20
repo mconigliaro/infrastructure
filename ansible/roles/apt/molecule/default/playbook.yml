@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: apt
+  vars:
+    apt_upgrade: true

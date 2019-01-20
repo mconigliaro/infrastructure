@@ -1,7 +1,6 @@
 ---
-- name: configure hostname
-  become: yes
+- name: Manage hosts file
   template:
     src: templates/hosts.j2
     dest: /etc/hosts
-    mode: 0644
+  when: ansible_virtualization_type != "docker"

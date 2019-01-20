@@ -1,6 +1,5 @@
 ---
-- name: restart monit
-  become: true
+- name: Restart monit
   service:
     name: monit
     state: restarted

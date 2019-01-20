@@ -1,5 +1,5 @@
 ---
-- name: install default packages
+- name: Install default packages
   apt:
     name: "{{ packages }}"
   vars:
@@ -7,14 +7,11 @@
       - bsd-mailx
       - chkrootkit
       - curl
-      - debconf-utils
-      - ethtool
       - htop
       - iftop
       - iotop
       - iptraf
       - lsof
-      - mosh
       - mtr-tiny
       - ngrep
       - nethogs
@@ -22,7 +19,6 @@
       - psmisc
       - silversearcher-ag
       - strace
-      - sysv-rc-conf
       - tcpdump
       - telnet
       - tmux
