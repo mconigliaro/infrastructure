@@ -1,17 +1,16 @@
 ---
-- name: install sysstat
-  become: yes
+- name: Install sysstat
   apt:
     name: sysstat
 
-- name: start sysstat
-  service:
-    name: sysstat
-    state: started
-
-- name: configure sysstat
+- name: Configure sysstat
   copy:
     src: files/sysstat
     dest: /etc/default/sysstat
   notify:
-    - restart sysstat
+    - Restart sysstat
+
+- name: Start sysstat
+  service:
+    name: sysstat
+    state: started
