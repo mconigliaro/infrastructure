@@ -7,84 +7,84 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_bsd_mailx(host):
-    host.exists('mail')
+    assert host.exists('mail')
 
 
 def test_chkrootkit(host):
-    host.exists('chkrootkit')
+    assert host.exists('chkrootkit')
 
 
 def test_curl(host):
-    host.exists('curl')
+    assert host.exists('curl')
 
 
 def test_htop(host):
-    host.exists('htop')
+    assert host.exists('htop')
 
 
 def test_iftop(host):
-    host.exists('iftop')
+    assert host.exists('iftop')
 
 
 def test_iotop(host):
-    host.exists('iotop')
+    assert host.exists('iotop')
 
 
 def test_iptraf(host):
-    host.exists('iptraf')
+    assert host.exists('iptraf')
 
 
 def test_lsof(host):
-    host.exists('lsof')
+    assert host.exists('lsof')
 
 
 def test_mtr(host):
-    host.exists('mtr')
+    assert host.exists('mtr')
 
 
 def test_ngrep(host):
-    host.exists('ngrep')
+    assert host.exists('ngrep')
 
 
 def test_nethogs(host):
-    host.exists('nethogs')
+    assert host.exists('nethogs')
 
 
 def test_nmap(host):
-    host.exists('nmap')
+    assert host.exists('nmap')
 
 
 def test_psmisc(host):
-    host.exists('pkill')
+    assert host.exists('pkill')
 
 
 def test_silversearcher_ag(host):
-    host.exists('ag')
+    assert host.exists('ag')
 
 
 def test_strace(host):
-    host.exists('strace')
+    assert host.exists('strace')
 
 
 def test_tcpdump(host):
-    host.exists('tcpdump')
+    assert host.exists('tcpdump')
 
 
 def test_telnet(host):
-    host.exists('telnet')
+    assert host.exists('telnet')
 
 
 def test_tmux(host):
-    host.exists('tmux')
+    assert host.exists('tmux')
 
 
 def test_tshark(host):
-    host.exists('tshark')
+    assert host.exists('tshark')
 
 
 def test_usbmount(host):
-    host.exists('usbmount')
+    assert host.exists('/usr/share/usbmount/usbmount')
 
 
 def test_vim(host):
-    host.exists('vim')
+    assert host.exists('vim')
