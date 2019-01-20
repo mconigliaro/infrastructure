@@ -10,6 +10,7 @@
     - sysstat
     - monit
     - ntp
+    - rsyslog
   vars:
     hosts_domain: ec2.local
     monit_mail_format_from: monit@mail.conigliaro.org

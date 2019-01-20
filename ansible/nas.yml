@@ -11,5 +11,6 @@
     - monit
     - grub
     - ntp
+    - rsyslog
   vars:
     monit_mail_format_from: monit@home.conigliaro.org
