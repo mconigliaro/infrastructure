@@ -1,0 +1,16 @@
+---
+- name: Install ntp
+  apt:
+    name: ntp
+
+- name: Start ntp
+  service:
+    name: ntp
+    state: started
+
+- name: Configure monit for ntp
+  template:
+    src: templates/ntp.monit.j2
+    dest: /etc/monit/conf.d/ntp
+  notify:
+    - Restart monit

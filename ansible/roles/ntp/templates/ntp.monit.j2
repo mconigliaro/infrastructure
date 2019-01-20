@@ -1,0 +1,4 @@
+check process ntp with pidfile /var/run/ntpd.pid
+  start program = "/usr/sbin/service ntp start"
+  stop program  = "/usr/sbin/service ntp stop"
+  if does not exist for 3 cycles then restart
