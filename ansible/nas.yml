@@ -10,3 +10,5 @@
     - sysstat
     - monit
     - grub
+  vars:
+    monit_mail_format_from: monit@home.conigliaro.org
