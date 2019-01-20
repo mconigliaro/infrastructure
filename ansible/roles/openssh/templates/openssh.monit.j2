@@ -1,0 +1,5 @@
+check process ssh with pidfile /var/run/sshd.pid
+  start program = "/usr/sbin/service ssh start"
+  stop program  = "/usr/sbin/service ssh stop"
+  if failed port 22 protocol ssh with timeout 15 seconds for 3 cycles then restart
+  if does not exist for 3 cycles then restart
