@@ -2,4 +2,10 @@
 - hosts: mail
   become: true
   roles:
-    - common
+    - swap
+    - hosts
+    - apt
+    - packages
+    - unattended_upgrades
+    - sysstat
+    - monit
