@@ -45,16 +45,6 @@ resource "aws_security_group_rule" "smtp" {
   description       = "SMTP"
 }
 
-resource "aws_security_group_rule" "submission" {
-  security_group_id = "${module.security_group_mail.id}"
-  type              = "ingress"
-  from_port         = 587
-  to_port           = 587
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  description       = "Submission"
-}
-
 resource "aws_security_group_rule" "ssh" {
   security_group_id = "${module.security_group_mail.id}"
   type              = "ingress"
@@ -63,4 +53,14 @@ resource "aws_security_group_rule" "ssh" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "SSH"
+}
+
+resource "aws_security_group_rule" "submission" {
+  security_group_id = "${module.security_group_mail.id}"
+  type              = "ingress"
+  from_port         = 587
+  to_port           = 587
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "Submission"
 }
