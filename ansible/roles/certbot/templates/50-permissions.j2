@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# This script ensures that all certificates have the correct permissions after
+# renewal. See: https://certbot.eff.org/docs/using.html#renewing-certificates
+
+set -eu
+
+CERT_PATH=/etc/letsencrypt
+GROUP=ssl-cert
+
+if [ -n "$CERT_PATH" ] && [ -n "$GROUP" ]; then
+  chgrp -R "$GROUP" "$CERT_PATH"
+  chmod -R g=rX "$CERT_PATH"
+fi

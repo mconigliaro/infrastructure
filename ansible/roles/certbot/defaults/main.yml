@@ -1,0 +1,8 @@
+---
+certbot_cli:
+  agree-tos: true
+  email: root@{{ ansible_domain }}
+  # Disable internal certbot log rotation since we're using logrotate
+  max-log-backups: 0
+certbot_plugins: []
+certbot_options: []

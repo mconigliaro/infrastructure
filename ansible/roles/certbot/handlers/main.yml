@@ -1,0 +1,3 @@
+---
+- name: Fix cert permissions
+  command: /etc/letsencrypt/renewal-hooks/deploy/50-permissions

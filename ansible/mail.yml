@@ -12,6 +12,11 @@
     - ntp
     - rsyslog
     - openssh
+    - certbot
   vars:
+    certbot_options:
+      - certonly
+      - --domains mail.conigliaro.org
+      - --standalone
     hosts_domain: ec2.local
     monit_mail_format_from: monit@mail.conigliaro.org

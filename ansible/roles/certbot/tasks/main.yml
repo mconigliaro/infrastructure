@@ -1,0 +1,56 @@
+---
+- name: Add certbot key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 75BCA694
+
+- name: Add certbot repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: Install ssl-cert
+  apt:
+    name: ssl-cert
+
+- name: Manage SSL certificate directory permissions
+  file:
+    path: /etc/ssl/private
+    group: ssl-cert
+    recurse: true
+
+- name: Install certbot
+  apt:
+    name: certbot
+
+- name: Install certbot plugins
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages: "{{certbot_plugins}}"
+
+- name: Configure certbot CLI
+  template:
+    src: templates/cli.ini.j2
+    dest: /etc/letsencrypt/cli.ini
+
+- name: Manage renewal hooks permissions
+  file:
+    path: /etc/letsencrypt/renewal-hooks/deploy
+    mode: 0755
+    recurse: true
+
+- name: Configure cert permissions renewal hook
+  template:
+    src: templates/50-permissions.j2
+    dest: /etc/letsencrypt/renewal-hooks/deploy/50-permissions
+    mode: 0755
+  notify: Fix cert permissions
+
+- name: Fix cert permissions immediately
+  meta: flush_handlers
+
+- name: Run certbot
+  command: certbot {{ certbot_options | join(' ') }} --non-interactive --quiet
+  # It looks like certbot doesn't run the renewal hooks on initial cert creation (only renewal)
+  notify: Fix cert permissions
+  when: certbot_options | length > 0
