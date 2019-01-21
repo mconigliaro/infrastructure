@@ -15,7 +15,7 @@ Resources:
       InstanceType: t2.micro
       KeyName: mike
       SecurityGroupIds:
-        - sg-fd27599a
+        - sg-031fdc50fc19654c8
       SubnetId: subnet-12feb239
       Tags:
         - Key: Name
