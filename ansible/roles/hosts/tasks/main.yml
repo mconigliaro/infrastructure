@@ -1,6 +1,6 @@
 ---
 - name: Manage hosts file
   template:
-    src: templates/hosts.j2
+    src: hosts.j2
     dest: /etc/hosts
   when: ansible_virtualization_type != "docker"
