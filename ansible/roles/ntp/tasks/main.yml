@@ -10,7 +10,7 @@
 
 - name: Configure monit for ntp
   template:
-    src: templates/ntp.monit.j2
+    src: ntp.monit.j2
     dest: /etc/monit/conf.d/ntp
   notify:
     - Restart monit
