@@ -1,0 +1,28 @@
+---
+- name: Install postgrey
+  apt:
+    name: postgrey
+
+- name: Configure postgrey
+  template:
+    src: postgrey.j2
+    dest: /etc/default/postgrey
+  notify: Restart postgrey
+
+- name: Manage whitelist_clients
+  template:
+    src: whitelist_clients.j2
+    dest: /etc/postgrey/whitelist_clients
+  notify: Restart postgrey
+
+- name: Start postgrey
+  service:
+    name: postgrey
+    state: started
+
+- name: Configure monit for postgrey
+  template:
+    src: postgrey.monit.j2
+    dest: /etc/monit/conf.d/postgrey
+  notify:
+    - Restart monit

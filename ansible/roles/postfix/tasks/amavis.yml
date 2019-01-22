@@ -1,0 +1,117 @@
+---
+- name: Install amavis
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - amavisd-new
+      - clamav-daemon
+      - opendkim
+      - postfix-policyd-spf-python
+      - spamassassin
+
+      # For improved spam detection
+      - pyzor
+      - razor
+
+      # Decoders for improved attachment scanning
+      - altermime
+      - arj
+      - binutils
+      - bzip2
+      - cabextract
+      - file
+      - gzip
+      - liblz4-tool
+      - lrzip
+      - lzop
+      - nomarch
+      - p7zip-full
+      - pax
+      - ripole
+      - rpm2cpio
+      - unrar-free
+      - xz-utils
+      - zoo
+  notify:
+    - Restart amavis
+
+- name: Configure clamav
+  template:
+    src: clamd.conf.j2
+    dest: /etc/clamav/clamd.conf
+  notify:
+    - Restart clamav-daemon
+    # FIXME: Needed?
+    # - Restart amavis
+
+- name: Add clamav user to amavis group
+  user:
+    name: clamav
+    groups: amavis
+    append: true
+
+- name: Create razor database
+  command: razor-admin -create
+  args:
+    creates: /var/lib/amavis/.razor
+  become: true
+  become_user: amavis
+  environment:
+    HOME: /var/lib/amavis
+
+- name: Register razor
+  command: razor-admin -register
+  args:
+    creates: /var/lib/amavis/.razor/identity
+  become: true
+  become_user: amavis
+  environment:
+    HOME: /var/lib/amavis
+
+- name: Discover pyzor servers
+  command: pyzor discover
+  args:
+    creates: /var/lib/amavis/.pyzor/servers
+  become: true
+  become_user: amavis
+  environment:
+    HOME: /var/lib/amavis
+
+- name: Configure spamassassin
+  template:
+    src: "{{ item['src'] }}"
+    dest: "{{ item['dest'] }}"
+  loop:
+    -
+      src: local.cf.j2
+      dest: /etc/spamassassin/local.cf
+    -
+      src: v310.pre.j2
+      dest: /etc/spamassassin/v310.pre
+    -
+      src: 50-user.j2
+      dest: /etc/amavis/conf.d/50-user
+  notify: Restart amavis
+
+- name: Start amavis
+  service:
+    name: amavis
+    state: started
+
+- name: Start clamav-daemon
+  service:
+    name: clamav-daemon
+    state: started
+
+- name: Start clamav-freshclam
+  service:
+    name: clamav-freshclam
+    state: started
+
+- name: Configure monit for amavis
+  template:
+    src: amavis.monit.j2
+    dest: /etc/monit/conf.d/amavis
+  notify:
+    - Restart monit

@@ -1,0 +1,7 @@
+# See man 5 aliases for format
+postmaster: root
+monit: root
+{% if postfix_configure_amavis %}
+clamav: root
+{% endif %}
+{{ postfix_conf_alias_maps | join("\n") }}

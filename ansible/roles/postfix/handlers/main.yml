@@ -1,0 +1,30 @@
+---
+- name: Restart postfix
+  service:
+    name: postfix
+    state: restarted
+  when: ansible_virtualization_type != "docker"
+
+- name: Run newaliases
+  command: /usr/bin/newaliases
+
+- name: Run postmap on SASL password maps
+  command: /usr/sbin/postmap /etc/postfix/sasl_password
+
+- name: Run postmap on virtual alias maps
+  command: /usr/sbin/postmap /etc/postfix/virtual
+
+- name: Restart postgrey
+  service:
+    name: postgrey
+    state: restarted
+
+- name: Restart clamav-daemon
+  service:
+    name: clamav-daemon
+    state: restarted
+
+- name: Restart amavis
+  service:
+    name: amavis
+    state: restarted
