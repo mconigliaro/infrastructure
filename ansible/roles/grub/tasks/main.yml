@@ -5,8 +5,8 @@
   register: grub_installed_result
 
 - name: Manage grub
-  copy:
-    src: files/grub
+  template:
+    src: grub.j2
     dest: /etc/default/grub
   when: grub_installed_result.stat.exists
   notify:
