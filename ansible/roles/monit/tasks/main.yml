@@ -5,7 +5,7 @@
 
 - name: Configure monit
   template:
-    src: templates/monitrc.j2
+    src: monitrc.j2
     dest: /etc/monit/monitrc
     mode: 0600
   notify:
