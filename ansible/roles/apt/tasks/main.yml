@@ -1,7 +1,7 @@
 ---
 - name: Manage apt sources
   template:
-    src: templates/sources.list.j2
+    src: sources.list.j2
     dest: /etc/apt/sources.list
   notify:
     - Run apt update
@@ -14,8 +14,8 @@
     name: debconf-utils
 
 - name: Manage debconf
-  copy:
-    src: files/70debconf
+  template:
+    src: 70debconf.j2
     dest: /etc/apt/apt.conf.d/70debconf
 
 - name: Run apt upgrade
