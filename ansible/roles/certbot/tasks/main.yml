@@ -30,7 +30,7 @@
 
 - name: Configure certbot CLI
   template:
-    src: templates/cli.ini.j2
+    src: cli.ini.j2
     dest: /etc/letsencrypt/cli.ini
 
 - name: Manage renewal hooks permissions
@@ -41,7 +41,7 @@
 
 - name: Configure cert permissions renewal hook
   template:
-    src: templates/50-permissions.j2
+    src: 50-permissions.j2
     dest: /etc/letsencrypt/renewal-hooks/deploy/50-permissions
     mode: 0755
   notify: Fix cert permissions
