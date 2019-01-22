@@ -4,8 +4,8 @@
     name: sysstat
 
 - name: Configure sysstat
-  copy:
-    src: files/sysstat
+  template:
+    src: sysstat.j2
     dest: /etc/default/sysstat
   notify:
     - Restart sysstat
