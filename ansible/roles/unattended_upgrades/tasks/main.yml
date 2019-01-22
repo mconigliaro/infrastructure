@@ -5,5 +5,5 @@
 
 - name: Configure unattended-upgrades
   template:
-    src: files/50unattended-upgrades
+    src: 50unattended-upgrades
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
