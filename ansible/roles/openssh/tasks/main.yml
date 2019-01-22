@@ -10,7 +10,7 @@
 
 - name: Configure monit for openssh
   template:
-    src: templates/openssh.monit.j2
+    src: openssh.monit.j2
     dest: /etc/monit/conf.d/openssh
   notify:
     - Restart monit
