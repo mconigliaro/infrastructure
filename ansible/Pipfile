@@ -12,4 +12,4 @@ docker-py = "~=1.10"
 molecule = "~=2.19"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
