@@ -2,10 +2,10 @@ check process postfix with pidfile /var/spool/postfix/pid/master.pid
   start program = "/usr/sbin/service postfix start"
   stop program  = "/usr/sbin/service postfix stop"
   if failed port 25 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  {% if postfix_configure_smtpd_sasl %}
+{% if postfix_configure_smtpd_sasl %}
   if failed port 587 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  {% endif %}
-  {% if postfix_configure_amavis %}
+{% endif %}
+{% if postfix_configure_amavis %}
   if failed port 10025 protocol smtp with timeout 15 seconds for 3 cycles then restart
-  {% endif %}
+{% endif %}
   if does not exist for 3 cycles then restart

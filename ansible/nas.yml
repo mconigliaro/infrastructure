@@ -13,5 +13,11 @@
     - ntp
     - rsyslog
     - openssh
+    - postfix
   vars:
     monit_mail_format_from: monit@home.conigliaro.org
+    postfix_conf_myhostname: home.conigliaro.org
+    postfix_conf_relayhost: "[email-smtp.us-east-1.amazonaws.com]:587"
+    postfix_conf_alias_maps:
+      - "root: mike@conigliaro.org"
+      - "mike: mike@conigliaro.org"

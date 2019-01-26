@@ -1,4 +1,3 @@
-
 ---
 postfix_configure_amavis: false
 postfix_configure_dovecot_imap: false

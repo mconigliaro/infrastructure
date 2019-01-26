@@ -13,6 +13,7 @@
     - rsyslog
     - openssh
     - certbot
+    - postfix
   vars:
     certbot_options:
       - certonly
@@ -20,3 +21,25 @@
       - --standalone
     hosts_domain: ec2.local
     monit_mail_format_from: monit@mail.conigliaro.org
+    postfix_configure_amavis: true
+    postfix_configure_dovecot_imap: true
+    postfix_configure_postgrey: true
+    postfix_configure_smtpd_sasl: true
+    postfix_conf_relayhost: "[email-smtp.us-east-1.amazonaws.com]:587"
+    postfix_conf_smtpd_tls_cert_file: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
+    postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
+    postfix_conf_alias_maps:
+      - "root: mike"
+    postfix_conf_virtual_alias_domains:
+      - conigliaro.org
+      - gyrate.org
+    postfix_conf_virtual_maps:
+      - mike@conigliaro.org mike
+      - mike@gyrate.org mike
+      - bloarzeyd@gyrate.org mike,webmaster@peepees.net
+    postfix_postgrey_whitelist_clients:
+      - amazonses.com
+      - gmail.com
+      - google.com
+      - me.com
+      - outlook.com
