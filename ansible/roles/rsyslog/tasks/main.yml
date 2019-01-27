@@ -1,16 +1,16 @@
 ---
-- name: Install rsyslog
+- name: install rsyslog
   apt:
     name: rsyslog
 
-- name: Start rsyslog
+- name: start rsyslog
   service:
     name: rsyslog
     state: started
 
-- name: Configure monit for rsyslog
+- name: configure monit for rsyslog
   template:
     src: rsyslog.monit.j2
     dest: /etc/monit/conf.d/rsyslog
   notify:
-    - Restart monit
+    - restart monit

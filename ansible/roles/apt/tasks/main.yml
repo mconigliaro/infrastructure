@@ -1,29 +1,29 @@
 ---
-- name: Manage apt sources
+- name: manage apt sources
   template:
     src: sources.list.j2
     dest: /etc/apt/sources.list
   notify:
-    - Run apt update
+    - run apt update
 
-- name: Run apt update immediately
+- name: run apt update immediately
   meta: flush_handlers
 
-- name: Install debconf-utils
+- name: install debconf-utils
   apt:
     name: debconf-utils
 
-- name: Manage debconf
+- name: manage debconf
   template:
     src: 70debconf.j2
     dest: /etc/apt/apt.conf.d/70debconf
 
-- name: Run apt upgrade
+- name: run apt upgrade
   apt:
     upgrade: true
   when: apt_upgrade
 
 # Required by apt-key commands
-- name: Install gpg
+- name: install gpg
   apt:
     name: gnupg2

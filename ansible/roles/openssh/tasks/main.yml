@@ -1,16 +1,16 @@
 ---
-- name: Install openssh
+- name: install openssh
   apt:
     name: openssh-server
 
-- name: Start openssh
+- name: start openssh
   service:
     name: ssh
     state: started
 
-- name: Configure monit for openssh
+- name: configure monit for openssh
   template:
     src: openssh.monit.j2
     dest: /etc/monit/conf.d/openssh
   notify:
-    - Restart monit
+    - restart monit

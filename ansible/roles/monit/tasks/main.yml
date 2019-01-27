@@ -1,17 +1,17 @@
 ---
-- name: Install monit
+- name: install monit
   apt:
     name: monit
 
-- name: Configure monit
+- name: configure monit
   template:
     src: monitrc.j2
     dest: /etc/monit/monitrc
     mode: 0600
   notify:
-    - Restart monit
+    - restart monit
 
-- name: Start monit
+- name: start monit
   service:
     name: monit
     state: started

@@ -1,59 +1,59 @@
 ---
-- name: Install postfix
+- name: install postfix
   apt:
     name: postfix
 
-- name: Start postfix
+- name: start postfix
   service:
     name: postfix
     state: started
   when: ansible_virtualization_type != "docker"
 
-- name: Manage mailname
+- name: manage mailname
   template:
     src: mailname.j2
     dest: /etc/mailname
   notify:
-    - Restart postfix
+    - restart postfix
 
-- name: Manage master.cf
+- name: manage master.cf
   template:
     src: master.cf.j2
     dest: /etc/postfix/master.cf
   notify:
-    - Restart postfix
+    - restart postfix
 
-- name: Manage main.cf
+- name: manage main.cf
   template:
     src: main.cf.j2
     dest: /etc/postfix/main.cf
   notify:
-    - Restart postfix
+    - restart postfix
 
-- name: Manage alias maps
+- name: manage alias maps
   template:
     src: aliases.j2
     dest: /etc/aliases
-  notify: Run newaliases
+  notify: run newaliases
 
-- name: Manage SASL password maps
+- name: manage SASL password maps
   copy:
     content: "{{ postfix_conf_sasl_password_maps | join(\"\n\") }}"
     dest: /etc/postfix/sasl_password
-  notify: Run postmap on SASL password maps
+  notify: run postmap on SASL password maps
 
-- name: Manage virtual alias maps
+- name: manage virtual alias maps
   copy:
     content: "{{ postfix_conf_virtual_maps | join(\"\n\") }}"
     dest: /etc/postfix/virtual
-  notify: Run postmap on virtual alias maps
+  notify: run postmap on virtual alias maps
 
-- name: Configure monit for postfix
+- name: configure monit for postfix
   template:
     src: postfix.monit.j2
     dest: /etc/monit/conf.d/postfix
   notify:
-    - Restart monit
+    - restart monit
 
 - import_tasks: amavis.yml
   when: postfix_configure_amavis

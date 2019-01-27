@@ -1,13 +1,13 @@
 ---
-- name: Check whether grub is installed
+- name: check whether grub is installed
   stat:
     path: /usr/sbin/update-grub
   register: grub_installed_result
 
-- name: Manage grub
+- name: manage grub
   template:
     src: grub.j2
     dest: /etc/default/grub
   when: grub_installed_result.stat.exists
   notify:
-    - Update grub
+    - update grub

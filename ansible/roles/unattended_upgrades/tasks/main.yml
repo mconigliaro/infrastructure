@@ -1,9 +1,9 @@
 ---
-- name: Install unattended-upgrades
+- name: install unattended-upgrades
   apt:
     name: unattended-upgrades
 
-- name: Configure unattended-upgrades
+- name: configure unattended-upgrades
   template:
     src: 50unattended-upgrades
     dest: /etc/apt/apt.conf.d/50unattended-upgrades

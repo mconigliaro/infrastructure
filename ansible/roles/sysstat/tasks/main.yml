@@ -1,16 +1,16 @@
 ---
-- name: Install sysstat
+- name: install sysstat
   apt:
     name: sysstat
 
-- name: Configure sysstat
+- name: configure sysstat
   template:
     src: sysstat.j2
     dest: /etc/default/sysstat
   notify:
-    - Restart sysstat
+    - restart sysstat
 
-- name: Start sysstat
+- name: start sysstat
   service:
     name: sysstat
     state: started

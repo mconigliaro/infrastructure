@@ -1,5 +1,5 @@
 ---
-- name: Install amavis
+- name: install amavis
   apt:
     name: "{{ packages }}"
   vars:
@@ -34,24 +34,22 @@
       - xz-utils
       - zoo
   notify:
-    - Restart amavis
+    - restart amavis
 
-- name: Configure clamav
+- name: configure clamav
   template:
     src: clamd.conf.j2
     dest: /etc/clamav/clamd.conf
   notify:
-    - Restart clamav-daemon
-    # FIXME: Needed?
-    # - Restart amavis
+    - restart clamav-daemon
 
-- name: Add clamav user to amavis group
+- name: add clamav user to amavis group
   user:
     name: clamav
     groups: amavis
     append: true
 
-- name: Create razor database
+- name: create razor database
   command: razor-admin -create
   args:
     creates: /var/lib/amavis/.razor
@@ -60,7 +58,7 @@
   environment:
     HOME: /var/lib/amavis
 
-- name: Register razor
+- name: register razor
   command: razor-admin -register
   args:
     creates: /var/lib/amavis/.razor/identity
@@ -69,7 +67,7 @@
   environment:
     HOME: /var/lib/amavis
 
-- name: Discover pyzor servers
+- name: discover pyzor servers
   command: pyzor discover
   args:
     creates: /var/lib/amavis/.pyzor/servers
@@ -78,7 +76,7 @@
   environment:
     HOME: /var/lib/amavis
 
-- name: Configure spamassassin
+- name: configure spamassassin
   template:
     src: "{{ item['src'] }}"
     dest: "{{ item['dest'] }}"
@@ -92,26 +90,26 @@
     -
       src: 50-user.j2
       dest: /etc/amavis/conf.d/50-user
-  notify: Restart amavis
+  notify: restart amavis
 
-- name: Start amavis
+- name: start amavis
   service:
     name: amavis
     state: started
 
-- name: Start clamav-daemon
+- name: start clamav-daemon
   service:
     name: clamav-daemon
     state: started
 
-- name: Start clamav-freshclam
+- name: start clamav-freshclam
   service:
     name: clamav-freshclam
     state: started
 
-- name: Configure monit for amavis
+- name: configure monit for amavis
   template:
     src: amavis.monit.j2
     dest: /etc/monit/conf.d/amavis
   notify:
-    - Restart monit
+    - restart monit

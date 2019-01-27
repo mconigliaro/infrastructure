@@ -1,33 +1,33 @@
 ---
-- name: Create swap
+- name: create swap
   command: fallocate -l {{ swap_size }} {{ swap_path }}
   args:
     creates: "{{ swap_path }}"
 
-- name: Set swap permissions
+- name: set swap permissions
   file:
     path: "{{ swap_path }}"
     mode: 0600
 
-- name: Check swap format
+- name: check swap format
   command: file {{ swap_path }} | grep "swap file"
   changed_when: false
   register: format_result
 
-- name: Format swap
+- name: format swap
   command: mkswap {{ swap_path }}
   when: format_result is failed
 
-- name: Check swap enabled
+- name: check swap enabled
   command: swapon -s | grep "{{ swap_path }}"
   changed_when: false
   register: enabled_result
 
-- name: Enable swap
+- name: enable swap
   command: swapon {{ swap_path }}
   when: enabled_result is failed
 
-- name: Update fstab
+- name: update fstab
   mount:
     path: none
     src: "{{ swap_path }}"
