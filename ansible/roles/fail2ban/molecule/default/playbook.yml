@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: fail2ban
+  vars:
+    fail2ban_dovecot_enabled: false
+    fail2ban_postfix_enabled: false

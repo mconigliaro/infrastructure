@@ -1,0 +1,23 @@
+---
+- name: install fail2ban
+  apt:
+    name: fail2ban
+
+- name: configure monit for openssh
+  template:
+    src: jail.local.j2
+    dest: /etc/fail2ban/jail.local
+  notify:
+    - restart fail2ban
+
+# FIXME: This file doesn't exist in Docker
+- name: create /var/log/auth.log
+  copy:
+    dest: /var/log/auth.log
+    content: ""
+  when: ansible_virtualization_type == "docker"
+
+- name: start fail2ban
+  service:
+    name: fail2ban
+    state: started

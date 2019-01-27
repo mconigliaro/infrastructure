@@ -16,11 +16,14 @@
     - postfix
     - mutt
     - sudo
+    - fail2ban
   vars:
     certbot_options:
       - certonly
       - --domains mail.conigliaro.org
       - --standalone
+    fail2ban_dovecot_enabled: true
+    fail2ban_postfix_enabled: true
     hosts_domain: ec2.local
     monit_mail_format_from: monit@mail.conigliaro.org
     postfix_configure_amavis: true
