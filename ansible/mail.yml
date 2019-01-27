@@ -15,6 +15,7 @@
     - certbot
     - postfix
     - mutt
+    - sudo
   vars:
     certbot_options:
       - certonly
