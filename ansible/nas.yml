@@ -14,6 +14,7 @@
     - rsyslog
     - openssh
     - postfix
+    - mutt
   vars:
     monit_mail_format_from: monit@home.conigliaro.org
     postfix_conf_myhostname: home.conigliaro.org

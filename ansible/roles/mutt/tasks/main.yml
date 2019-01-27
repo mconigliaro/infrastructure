@@ -1,0 +1,9 @@
+---
+- name: install mutt
+  apt:
+    name: mutt
+
+- name: configure mutt
+  template:
+    src: maildir.rc.j2
+    dest: /etc/Muttrc.d/maildir.rc
