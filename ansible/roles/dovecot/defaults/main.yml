@@ -1,0 +1,6 @@
+---
+dovecot_configure_auth: false
+dovecot_configure_imap: false
+
+dovecot_ssl_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem
+dovecot_ssl_key: /etc/ssl/private/ssl-cert-snakeoil.key

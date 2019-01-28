@@ -1,0 +1,6 @@
+---
+- name: configure dovecot imap
+  template:
+    src: 99-auth.conf.j2
+    dest: /etc/dovecot/conf.d/99-auth.conf
+  notify: restart dovecot

@@ -1,0 +1,19 @@
+---
+- name: install dovecot imap
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - dovecot-imapd
+      - dovecot-sieve
+
+- name: configure dovecot imap
+  template:
+    src: 99-imap.conf.j2
+    dest: /etc/dovecot/conf.d/99-imap.conf
+  notify: restart dovecot
+
+- name: configure dovecot sieve skeleton
+  template:
+    src: .dovecot.sieve.j2
+    dest: /etc/skel/.dovecot.sieve

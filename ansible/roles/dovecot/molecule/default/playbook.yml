@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: postfix
+    - role: dovecot
+  vars:
+    dovecot_configure_auth: true
+    dovecot_configure_imap: true

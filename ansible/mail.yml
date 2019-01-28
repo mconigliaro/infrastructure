@@ -17,11 +17,16 @@
     - mutt
     - sudo
     - fail2ban
+    - dovecot
   vars:
     certbot_options:
       - certonly
       - --domains mail.conigliaro.org
       - --standalone
+    dovecot_configure_auth: true
+    dovecot_configure_imap: true
+    dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
+    dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
     fail2ban_dovecot_enabled: true
     fail2ban_postfix_enabled: true
     hosts_domain: ec2.local
