@@ -1,2 +1,0 @@
----
-postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"

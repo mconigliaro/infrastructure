@@ -45,6 +45,7 @@
     postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
     postfix_conf_alias_maps:
       - "root: mike"
+    postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
     postfix_conf_virtual_alias_domains:
       - conigliaro.org
       - gyrate.org

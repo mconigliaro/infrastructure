@@ -24,3 +24,4 @@
     postfix_conf_alias_maps:
       - "root: mike@conigliaro.org"
       - "mike: mike@conigliaro.org"
+    postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
