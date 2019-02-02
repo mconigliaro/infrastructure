@@ -1,0 +1,11 @@
+---
+- name: restart mdadm
+  service:
+    name: mdadm
+    state: restarted
+
+# Update initramfs so it'll have the updated mdadm.conf on boot
+# See: http://serverfault.com/questions/763870/raid-device-on-rename-appended-with-0
+- name: run update-initramfs
+  command: update-initramfs -u
+  when: ansible_virtualization_type != "docker"

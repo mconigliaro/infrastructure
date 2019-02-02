@@ -1,0 +1,3 @@
+---
+# See molecule/default/playbook.yml for examples
+raid_devices: []

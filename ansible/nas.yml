@@ -17,6 +17,7 @@
     - mutt
     - sudo
     - fail2ban
+    - raid_devices
   vars:
     monit_mail_format_from: monit@home.conigliaro.org
     postfix_conf_myhostname: home.conigliaro.org
@@ -25,3 +26,10 @@
       - "root: mike@conigliaro.org"
       - "mike: mike@conigliaro.org"
     postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
+    raid_devices:
+      -
+        device: /dev/md127
+        raid_level: 1
+        volumes:
+          - /dev/sdb
+          - /dev/sdc

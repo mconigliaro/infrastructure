@@ -1,0 +1,42 @@
+---
+- name: install mdadm
+  apt:
+    name: mdadm
+
+- name: start mdadm
+  service:
+    name: mdadm
+    state: started
+
+- name: check whether raid devices exist
+  stat:
+    path: "{{item.device}}"
+  loop: "{{raid_devices}}"
+  register: raid_devices_stat_result
+
+- name: create raid_devices
+  command: mdadm --create {{ item.item.device }} --metadata=0.90 --level={{ item.item.raid_level }} --raid-devices={{ item.item.volumes | length }} {{ item.item.volumes | join(' ') }}
+  loop: "{{raid_devices_stat_result.results}}"
+  when: item.stat.exists != True
+
+- name: scan for md devices
+  command: mdadm --detail --scan
+  changed_when: false
+  register: mdadm_detail_scan
+
+# Important: This file must be written after all md devices are created in order
+# to have all the array definitions
+- name: configure mdadm
+  template:
+    src: mdadm.conf.j2
+    dest: /etc/mdadm/mdadm.conf
+  notify:
+    - restart mdadm
+    - run update-initramfs
+
+- name: configure monit for mdadm
+  template:
+    src: mdadm.monit.j2
+    dest: /etc/monit/conf.d/mdadm
+  notify:
+    - restart monit

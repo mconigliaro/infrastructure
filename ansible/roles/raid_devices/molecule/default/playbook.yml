@@ -1,0 +1,28 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: block_devices
+    - role: raid_devices
+  vars:
+    block_devices:
+      -
+        file: /tmp/test0
+        size: 100
+        device: /dev/loop0
+      -
+        file: /tmp/test1
+        size: 100
+        device: /dev/loop1
+      -
+        file: /tmp/test2
+        size: 100
+        device: /dev/loop2
+    raid_devices:
+      -
+        device: /dev/md127
+        raid_level: 1
+        volumes:
+          - /dev/loop0
+          - /dev/loop1
+          - /dev/loop2
