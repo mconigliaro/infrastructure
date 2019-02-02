@@ -2,15 +2,18 @@
 - name: Converge
   hosts: all
   roles:
+    - role: block_devices
     - role: data_volumes
   vars:
+    block_devices:
+      - device: /tmp/test1
+        size: 1
+      - device: /tmp/test2
+        size: 2
     data_volumes:
-      - device: /tmp/test
-        create_device: true
-        path: /mnt/test
+      - device: /tmp/test1
+        path: /mnt/test1
         create_path: true
       - device: /tmp/test2
-        create_device: true
-        create_device_size: 2
         path: /mnt/test2
         create_path: true

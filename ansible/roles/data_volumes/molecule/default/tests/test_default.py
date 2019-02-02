@@ -7,9 +7,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_data_volumes(host):
-    assert host.mount_point('/mnt/test').exists
-    assert host.mount_point('/mnt/test').device == '/dev/loop0'
-    assert host.mount_point('/mnt/test').filesystem == 'ext4'
+    assert host.mount_point('/mnt/test1').exists
+    assert host.mount_point('/mnt/test1').device == '/dev/loop0'
+    assert host.mount_point('/mnt/test1').filesystem == 'ext4'
 
     assert host.mount_point('/mnt/test2').exists
     assert host.mount_point('/mnt/test2').device == '/dev/loop1'

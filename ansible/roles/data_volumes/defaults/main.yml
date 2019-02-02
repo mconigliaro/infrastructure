@@ -2,8 +2,6 @@
 data_volumes: []
 # -
 #   device: /tmp/test
-#   create_device: true       # optional
-#   create_device_size: 1024  # optional (in MB)
 #   path: /mnt/test
 #   create_path: true         # optional
 #   fstype: ext4              # optional

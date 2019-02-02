@@ -1,15 +1,4 @@
 ---
-- name: check whether data volume devices exists
-  stat:
-    path: "{{item.device}}"
-  loop: "{{data_volumes}}"
-  register: data_volumes_stat_result
-
-- name: create data volume devices
-  command: dd if=/dev/zero of={{item.item.device}} bs=1M count={{('create_device_size' in item.item) | ternary(item.item.create_device_size, 1)}}
-  loop: "{{data_volumes_stat_result.results}}"
-  when: "'create_device' in item.item and item.item.create_device and item.stat.exists != True"
-
 - name: format data volumes
   filesystem:
     dev: "{{item.device}}"
