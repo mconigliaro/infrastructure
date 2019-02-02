@@ -8,6 +8,7 @@ lint:
 platforms:
   - name: instance
     image: ubuntu:16.04
+    privileged: true
 provisioner:
   name: ansible
   lint:

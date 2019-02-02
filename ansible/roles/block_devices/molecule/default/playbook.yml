@@ -5,7 +5,15 @@
     - role: block_devices
   vars:
     block_devices:
-      - device: /tmp/test1
-        size: 1
-      - device: /tmp/test2
-        size: 2
+      -
+        file: /tmp/test0
+        size: 10
+        device: /dev/loop0
+      -
+        file: /tmp/test1
+        size: 20
+        device: /dev/loop1
+      -
+        file: /tmp/test2
+        size: 30
+        device: /dev/loop2

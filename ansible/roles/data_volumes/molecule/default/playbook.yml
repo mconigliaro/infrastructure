@@ -6,14 +6,28 @@
     - role: data_volumes
   vars:
     block_devices:
-      - device: /tmp/test1
-        size: 1
-      - device: /tmp/test2
-        size: 2
+      -
+        file: /tmp/test0
+        size: 10
+        device: /dev/loop0
+      -
+        file: /tmp/test1
+        size: 20
+        device: /dev/loop1
+      -
+        file: /tmp/test2
+        size: 30
+        device: /dev/loop2
     data_volumes:
-      - device: /tmp/test1
+      -
+        device: /dev/loop0
+        path: /mnt/test0
+        create_path: true
+      -
+        device: /dev/loop1
         path: /mnt/test1
         create_path: true
-      - device: /tmp/test2
+      -
+        device: /dev/loop2
         path: /mnt/test2
         create_path: true
