@@ -1,6 +1,3 @@
 ---
+# See molecule/default/playbook.yml for examples
 block_devices: []
-# -
-#   device: /tmp/test
-#   size: 1024        # optional (in MB)
-#   block_size: 1M    # optional

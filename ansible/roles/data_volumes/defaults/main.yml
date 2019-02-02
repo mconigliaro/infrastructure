@@ -1,7 +1,3 @@
 ---
+# See molecule/default/playbook.yml for examples
 data_volumes: []
-# -
-#   device: /tmp/test
-#   path: /mnt/test
-#   create_path: true         # optional
-#   fstype: ext4              # optional
