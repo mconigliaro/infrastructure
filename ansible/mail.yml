@@ -18,11 +18,16 @@
     - sudo
     - fail2ban
     - dovecot
+    - data_volumes
   vars:
     certbot_options:
       - certonly
       - --domains mail.conigliaro.org
       - --standalone
+    data_volumes:
+      -
+        device: /dev/xvdf
+        path: /mnt/data
     dovecot_configure_auth: true
     dovecot_configure_imap: true
     dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem

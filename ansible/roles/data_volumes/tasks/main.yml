@@ -1,0 +1,35 @@
+---
+- name: check whether data volume devices exists
+  stat:
+    path: "{{item.device}}"
+  loop: "{{data_volumes}}"
+  register: data_volumes_stat_result
+
+- name: create data volume devices
+  command: dd if=/dev/zero of={{item.item.device}} bs=1M count={{('create_device_size' in item.item) | ternary(item.item.create_device_size, 1)}}
+  loop: "{{data_volumes_stat_result.results}}"
+  when: "'create_device' in item.item and item.item.create_device and item.stat.exists != True"
+
+- name: format data volumes
+  filesystem:
+    dev: "{{item.device}}"
+    fstype: "{{('fstype' in item) | ternary(item.fstype, 'ext4')}}"
+  loop: "{{data_volumes}}"
+  when: (ansible_mounts | json_query(query) | length) == 0
+  vars:
+    query: "[?mount == `{{item.path}}`]"
+
+- name: create data volume paths
+  file:
+    path: "{{item.path}}"
+    state: directory
+  loop: "{{data_volumes}}"
+  when: "'create_path' in item and item.create_path"
+
+- name: mount data volumes
+  mount:
+    path: "{{item.path}}"
+    src: "{{item.device}}"
+    fstype: auto
+    state: mounted
+  loop: "{{data_volumes}}"
