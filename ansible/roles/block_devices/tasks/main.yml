@@ -10,7 +10,7 @@
   loop: "{{ block_devices_stat_result.results }}"
   when: item.stat.exists != True
 
-- name: check whether loop devices are used
+- name: check whether block devices are used
   command: losetup {{ item.device }}
   register: losetup_result
   changed_when: false
