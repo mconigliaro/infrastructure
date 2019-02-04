@@ -1,0 +1,16 @@
+---
+- name: purge awscli package
+  apt:
+    name: awscli
+    state: absent
+    purge: true
+
+- name: install pip
+  apt:
+    name: python-pip
+
+- name: pip install awscli
+  pip:
+    name: awscli
+
+# FIXME: Write aws config for awscli_users

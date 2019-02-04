@@ -19,6 +19,7 @@
     - fail2ban
     - dovecot
     - data_volumes
+    - awscli
   vars:
     certbot_options:
       - certonly

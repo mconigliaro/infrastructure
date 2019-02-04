@@ -19,6 +19,7 @@
     - fail2ban
     - raid_devices
     - data_volumes
+    - awscli
   vars:
     data_volumes:
       -
