@@ -18,7 +18,12 @@
     - sudo
     - fail2ban
     - raid_devices
+    - data_volumes
   vars:
+    data_volumes:
+      -
+        device: /dev/md127
+        path: /mnt/data
     monit_mail_format_from: monit@home.conigliaro.org
     postfix_conf_myhostname: home.conigliaro.org
     postfix_conf_relayhost: "[email-smtp.us-east-1.amazonaws.com]:587"
