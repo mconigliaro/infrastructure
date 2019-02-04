@@ -13,7 +13,6 @@
     path: "{{item.path}}"
     state: directory
   loop: "{{data_volumes}}"
-  when: "'create_path' in item and item.create_path"
 
 - name: mount data volumes
   mount:

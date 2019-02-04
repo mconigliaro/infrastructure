@@ -22,12 +22,9 @@
       -
         device: /dev/loop0
         path: /mnt/test0
-        create_path: true
       -
         device: /dev/loop1
         path: /mnt/test1
-        create_path: true
       -
         device: /dev/loop2
         path: /mnt/test2
-        create_path: true
