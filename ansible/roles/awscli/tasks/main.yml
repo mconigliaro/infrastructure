@@ -13,4 +13,21 @@
   pip:
     name: awscli
 
-# FIXME: Write aws config for awscli_users
+- name: manage ~/.aws directory
+  file:
+    path: ~/.aws
+    state: directory
+    mode: 0755
+
+- name: manage ~/.aws/config
+  template:
+    src: config.j2
+    dest: ~/.aws/config
+    mode: 0600
+
+- name: manage ~/.aws/credentials
+  template:
+    src: credentials.j2
+    dest: ~/.aws/credentials
+    mode: 0600
+  no_log: true

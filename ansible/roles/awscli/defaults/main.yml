@@ -1,2 +1,4 @@
 ---
-awscli_users: []
+awscli_aws_access_key_id:
+awscli_aws_secret_access_key:
+awscli_aws_default_region: us-east-1
