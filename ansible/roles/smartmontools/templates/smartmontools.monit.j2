@@ -1,0 +1,4 @@
+check process smartmontools matching "smartd"
+  start program = "/usr/sbin/service smartmontools start"
+  stop program  = "/usr/sbin/service smartmontools stop"
+  if does not exist for 3 cycles then restart

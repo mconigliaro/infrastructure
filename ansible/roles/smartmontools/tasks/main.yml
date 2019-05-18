@@ -1,0 +1,24 @@
+---
+- name: install smartmontools
+  apt:
+    name: smartmontools
+
+- name: manage smartmontools config
+  template:
+    src: smartmontools.j2
+    dest: /etc/default/smartmontools
+  notify:
+    - restart smartmontools
+
+- name: start smartmontools
+  service:
+    name: smartmontools
+    state: started
+  when: ansible_virtualization_type != "docker"
+
+- name: configure monit for smartmontools
+  template:
+    src: smartmontools.monit.j2
+    dest: /etc/monit/conf.d/smartmontools
+  notify:
+    - restart monit

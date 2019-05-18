@@ -1,0 +1,6 @@
+---
+- name: restart smartmontools
+  service:
+    name: smartmontools
+    state: restarted
+  when: ansible_virtualization_type != "docker"
