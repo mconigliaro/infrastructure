@@ -2,25 +2,25 @@
 - hosts: nas
   become: true
   roles:
-    # - swap
-    # - hosts
-    # - apt
-    # - packages
-    # - unattended_upgrades
-    # - sysstat
-    # - monit
-    # - grub
-    # - ntp
-    # - rsyslog
-    # - openssh
-    # - postfix
-    # - mutt
-    # - sudo
-    # - fail2ban
-    # - raid_devices
-    # - data_volumes
-    # - route53_update_dns
-    # - smartmontools
+    - swap
+    - hosts
+    - apt
+    - packages
+    - unattended_upgrades
+    - sysstat
+    - monit
+    - grub
+    - ntp
+    - rsyslog
+    - openssh
+    - postfix
+    - mutt
+    - sudo
+    - fail2ban
+    - raid_devices
+    - data_volumes
+    - route53_update_dns
+    - smartmontools
     - vsftpd
   vars:
     awscli_aws_access_key_id: "{{ vault_awscli_aws_access_key_id }}"
