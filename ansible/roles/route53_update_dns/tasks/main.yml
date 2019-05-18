@@ -1,0 +1,19 @@
+---
+- name: install route53_update_dns dependencies
+  apt:
+    name:
+      - curl
+      - jq
+      - cron
+
+- name: manage route53_update_dns
+  template:
+    src: route53_update_dns.j2
+    dest: /usr/local/bin/route53_update_dns
+    mode: 0755
+
+- name: Manage route53_update_dns cron job
+  cron:
+    name: route53_update_dns
+    minute: '*/5'
+    job: PATH=/usr/local/bin:$PATH /usr/local/bin/route53_update_dns {{ route53_update_dns_args }}

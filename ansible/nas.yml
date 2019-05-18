@@ -19,8 +19,10 @@
     - fail2ban
     - raid_devices
     - data_volumes
-    - awscli
+    - route53_update_dns
   vars:
+    awscli_aws_access_key_id: "{{ vault_awscli_aws_access_key_id }}"
+    awscli_aws_secret_access_key: "{{ vault_awscli_aws_secret_access_key }}"
     data_volumes:
       -
         device: /dev/md127
@@ -39,3 +41,4 @@
         volumes:
           - /dev/sdb
           - /dev/sdc
+    route53_update_dns_args: "home conigliaro.org."
