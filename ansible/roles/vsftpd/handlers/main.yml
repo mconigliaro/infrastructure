@@ -1,0 +1,6 @@
+---
+- name: restart vsftpd
+  service:
+    name: vsftpd
+    state: restarted
+  when: ansible_virtualization_type != "docker"

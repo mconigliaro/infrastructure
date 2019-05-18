@@ -1,0 +1,24 @@
+---
+- name: install vsftpd
+  apt:
+    name: vsftpd
+
+- name: manage vsftpd.conf
+  template:
+    src: vsftpd.conf.j2
+    dest: /etc/vsftpd.conf
+  notify:
+    - restart vsftpd
+
+- name: start vsftpd
+  service:
+    name: vsftpd
+    state: started
+  when: ansible_virtualization_type != "docker"
+
+- name: configure monit for vsftpd
+  template:
+    src: vsftpd.monit.j2
+    dest: /etc/monit/conf.d/vsftpd
+  notify:
+    - restart monit
