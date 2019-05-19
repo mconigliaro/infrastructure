@@ -1,6 +1,7 @@
 Resources:
   Ec2Instance:
     Type: "AWS::EC2::Instance"
+    DeletionPolicy": "Retain"
     Properties:
       AvailabilityZone: us-east-1b
       # FIXME: Not possible to add tags to the volumes yet?

@@ -1,12 +1,27 @@
-module "security_group_mail" {
-  source      = "../../../modules/aws/security_group"
-  vpc_id      = "${module.vpc.vpc_id}"
-  name        = "mail"
+resource "aws_security_group" "mail" {
+  name_prefix = "mail-"
   description = "Mail server"
+  vpc_id      = "${module.vpc.vpc_id}"
+
+  # Replace the default egress rule that is normally removed by Terraform
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "mail"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group_rule" "http" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 80
   to_port           = 80
@@ -16,7 +31,7 @@ resource "aws_security_group_rule" "http" {
 }
 
 resource "aws_security_group_rule" "icmp_echo_request" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 8
   to_port           = -1
@@ -26,7 +41,7 @@ resource "aws_security_group_rule" "icmp_echo_request" {
 }
 
 resource "aws_security_group_rule" "imap" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 143
   to_port           = 143
@@ -36,7 +51,7 @@ resource "aws_security_group_rule" "imap" {
 }
 
 resource "aws_security_group_rule" "smtp" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 25
   to_port           = 25
@@ -46,7 +61,7 @@ resource "aws_security_group_rule" "smtp" {
 }
 
 resource "aws_security_group_rule" "ssh" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 22
   to_port           = 22
@@ -56,7 +71,7 @@ resource "aws_security_group_rule" "ssh" {
 }
 
 resource "aws_security_group_rule" "submission" {
-  security_group_id = "${module.security_group_mail.id}"
+  security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
   from_port         = 587
   to_port           = 587
