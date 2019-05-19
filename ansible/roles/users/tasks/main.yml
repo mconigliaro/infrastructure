@@ -23,6 +23,7 @@
   cron:
     name: attic_backup_mail.conigliaro.org
     hour: '*/12'
+    minute: 0
     job: chronic /usr/local/bin/attic_backup mail.conigliaro.org /mnt/data/mike/Maildir
   when: users_attic_backup
 
