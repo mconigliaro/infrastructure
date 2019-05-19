@@ -22,7 +22,7 @@
     - route53_update_dns
     - smartmontools
     - vsftpd
-    - avahi
+    - samba
     - plexmediaserver
   vars:
     awscli_aws_access_key_id: "{{ vault_awscli_aws_access_key_id }}"

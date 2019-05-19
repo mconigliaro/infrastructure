@@ -1,0 +1,33 @@
+---
+- name: install samba
+  apt:
+    name: samba
+
+- name: configure samba
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+  notify:
+    - restart samba
+
+- name: configure avahi for samba
+  template:
+    src: smb.avahi.j2
+    dest: /etc/avahi/services/smb
+  notify:
+    - restart avahi
+
+- name: start samba
+  service:
+    name: "{{ item }}"
+    state: started
+  loop:
+    - smbd
+    - nmbd
+
+- name: configure monit for samba
+  template:
+    src: samba.monit.j2
+    dest: /etc/monit/conf.d/samba
+  notify:
+    - restart monit
