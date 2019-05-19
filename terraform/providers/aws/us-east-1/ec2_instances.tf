@@ -22,6 +22,8 @@ resource "aws_instance" "mail" {
   tags = {
     Name = "mail"
   }
+
+  disable_api_termination = true
 }
 
 resource "aws_ebs_volume" "data" {
