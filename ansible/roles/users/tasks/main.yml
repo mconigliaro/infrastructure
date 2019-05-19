@@ -17,7 +17,7 @@
     name: attic
   when: users_attic_backup
 
-- name: Manage attic cron job
+- name: manage attic cron job
   become: true
   become_user: mike
   cron:
@@ -25,3 +25,13 @@
     minute: '*/12'
     job: chronic /usr/local/bin/attic_backup mail.conigliaro.org /mnt/data/mike/Maildir
   when: users_attic_backup
+
+- name: manage .dovecot.sieve
+  become: true
+  become_user: mike
+  template:
+    src: .dovecot.sieve.j2
+    dest: "{{ users_home_root }}/mike/.dovecot.sieve"
+  notify:
+    - sievec
+  when: users_dovecot_sieve
