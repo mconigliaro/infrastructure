@@ -4,5 +4,5 @@ variable "zone_id" {
 
 variable "mail_from_subdomain" {
   description = "Mail-from subdomain"
-  default = "outbound-smtp"
+  default     = "outbound-smtp"
 }
