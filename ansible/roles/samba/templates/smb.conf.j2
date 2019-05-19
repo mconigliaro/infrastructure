@@ -192,7 +192,7 @@
 # user's home directory as \\server\username
 [homes]
    comment = Home Directories
-   browseable = no
+   browseable = yes
 
 # By default, the home directories are exported read-only. Change the
 # next parameter to 'no' if you want to be able to write to them.
@@ -215,11 +215,11 @@
 
 # Un-comment the following and create the netlogon directory for Domain Logons
 # (you need to configure Samba to act as a domain controller too.)
-[netlogon]
-   comment = Network Logon Service
-   path = /var/lib/samba/netlogon
-   guest ok = yes
-   read only = yes
+;[netlogon]
+;   comment = Network Logon Service
+;   path = /home/samba/netlogon
+;   guest ok = yes
+;   read only = yes
 
 # Un-comment the following and create the profiles directory to store
 # users profiles (see the "logon path" option above)
