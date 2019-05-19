@@ -12,6 +12,7 @@
       - iotop
       - iptraf
       - lsof
+      - moreutils
       - mtr-tiny
       - ngrep
       - nethogs

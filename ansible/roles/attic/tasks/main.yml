@@ -3,7 +3,6 @@
   apt:
     name:
       - attic
-      - moreutils
       - sshfs
 
 - name: manage attic_backup
