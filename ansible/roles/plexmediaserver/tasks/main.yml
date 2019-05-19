@@ -1,0 +1,24 @@
+---
+- name: Add plex key
+  apt_key:
+    url: https://downloads.plex.tv/plex-keys/PlexSign.key
+
+- name: Add plex repository
+  apt_repository:
+    repo: deb http://downloads.plex.tv/repo/deb public main
+
+- name: install plexmediaserver
+  apt:
+    name: plexmediaserver
+
+- name: start plexmediaserver
+  service:
+    name: plexmediaserver
+    state: started
+
+- name: configure monit for plexmediaserver
+  template:
+    src: plexmediaserver.monit.j2
+    dest: /etc/monit/conf.d/plexmediaserver
+  notify:
+    - restart monit

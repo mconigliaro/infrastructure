@@ -22,6 +22,7 @@
     - route53_update_dns
     - smartmontools
     - vsftpd
+    - plexmediaserver
   vars:
     awscli_aws_access_key_id: "{{ vault_awscli_aws_access_key_id }}"
     awscli_aws_secret_access_key: "{{ vault_awscli_aws_secret_access_key }}"
