@@ -1,0 +1,4 @@
+check process avahi-daemon with pidfile /var/run/avahi-daemon/pid
+  start program = "/usr/sbin/service avahi-daemon start"
+  stop program  = "/usr/sbin/service avahi-daemon stop"
+  if does not exist for 3 cycles then restart

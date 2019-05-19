@@ -1,0 +1,18 @@
+---
+- name: install avahi
+  apt:
+    name:
+      - avahi-daemon
+      - avahi-utils
+
+- name: start avahi-daemon
+  service:
+    name: avahi-daemon
+    state: started
+
+- name: configure monit for avahi
+  template:
+    src: avahi.monit.j2
+    dest: /etc/monit/conf.d/avahi
+  notify:
+    - restart monit
