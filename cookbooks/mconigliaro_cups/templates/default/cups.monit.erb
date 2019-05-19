@@ -1,7 +1,0 @@
-check process cups with pidfile /var/run/cups/cupsd.pid
-  start program = "/usr/sbin/service cups start"
-  stop program  = "/usr/sbin/service cups stop"
-  if failed port 631 protocol http with timeout 15 seconds for 3 cycles then restart
-  if does not exist for 3 cycles then restart
-
-# FIXME: Need to monitor cups-browsed

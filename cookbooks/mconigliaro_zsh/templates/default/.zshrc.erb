@@ -1,6 +1,0 @@
-source $HOME/.antigen/antigen.zsh
-antigen use oh-my-zsh
-antigen theme <%= @theme %>
-<%= @bundles.map { |bundle| "antigen bundle #{bundle}" }.join("\n") %>
-antigen apply
-<%= @exports.map { |key, value| "export #{key}=#{value}" }.join("\n") %>

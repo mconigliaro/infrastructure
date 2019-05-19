@@ -1,5 +1,0 @@
-check process vsftpd matching "vsftpd"
-  start program = "/usr/sbin/service vsftpd start"
-  stop program  = "/usr/sbin/service vsftpd stop"
-  if failed port 21 protocol ftp with timeout 15 seconds for 3 cycles then restart
-  if does not exist for 3 cycles then restart

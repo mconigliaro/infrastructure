@@ -1,8 +1,0 @@
-check process dovecot with pidfile /var/run/dovecot/master.pid
-  start program = "/usr/sbin/service dovecot start"
-  stop program  = "/usr/sbin/service dovecot stop"
-  <% if @configure_dovecot_imap %>
-  if failed port 143 protocol imap with timeout 15 seconds for 3 cycles then restart
-  # FIXME: http://serverfault.com/questions/610976/monit-failing-to-connect-to-dovecot-over-ssl-imap
-  <% end %>
-  if does not exist for 3 cycles then restart

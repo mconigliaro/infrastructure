@@ -1,9 +1,0 @@
-check process smbd with pidfile /var/run/samba/smbd.pid
-  start program = "/usr/sbin/service smbd start"
-  stop program  = "/usr/sbin/service smbd stop"
-  if does not exist for 3 cycles then restart
-
-check process nmbd with pidfile /var/run/samba/nmbd.pid
-  start program = "/usr/sbin/service nmbd start"
-  stop program  = "/usr/sbin/service nmbd stop"
-  if does not exist for 3 cycles then restart
