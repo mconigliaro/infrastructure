@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+#
+# Swap EBS root disks on two instances
+#
+
+set -eu
+
+HOST1_NAME=$1
+HOST2_NAME=$2
+
+function get_instance() {
+  aws ec2 describe-instances --filter Name=tag:Name,Values="$1" | jq '.Reservations[0].Instances[0]'
+}
+
+function get_instance_id() {
+  echo "$1" | jq -r '.InstanceId'
+}
+
+function get_instance_status() {
+  aws ec2 describe-instance-status --include-all-instances --instance-ids "$1" | jq -r '.InstanceStatuses[0].InstanceState.Name'
+}
+
+function wait_for_instance_status() {
+  instance_id=$1
+  desired_status=$2
+  status=$(get_instance_status "$instance_id")
+  while [ "$status" != "$desired_status" ]; do
+    printf "."
+    sleep 5
+    status=$(get_instance_status "$instance_id")
+  done
+  printf "\n"
+}
+
+function wait_until_instances_stopped() {
+  echo "Stopping instances: $@"
+  aws ec2 stop-instances --instance-ids "$@" > /dev/null
+  for instance_id in "$@"; do
+    wait_for_instance_status "$instance_id" "stopped"
+  done
+}
+
+function wait_until_instances_running() {
+  echo "Starting instances: $@"
+  aws ec2 start-instances --instance-ids "$@" > /dev/null
+  for instance_id in "$@"; do
+    wait_for_instance_status "$instance_id" "running"
+  done
+}
+
+function get_volume_id() {
+  echo "$1" | jq -r '.BlockDeviceMappings[0].Ebs.VolumeId'
+}
+
+function get_volume_status() {
+  aws ec2 describe-volumes --volume-ids "$1" | jq -r '.Volumes[0].State'
+}
+
+function wait_for_volume_status() {
+  volume_id=$1
+  desired_status=$2
+  status=$(get_volume_status "$volume_id")
+  while [ "$status" != "$desired_status" ]; do
+    printf "."
+    sleep 5
+    status=$(get_volume_status "$volume_id")
+  done
+  printf "\n"
+}
+
+function wait_until_volumes_available() {
+  for volume_id in "$@"; do
+    echo "Detaching volume: $volume_id"
+    aws ec2 detach-volume --volume-id "$volume_id" > /dev/null
+    wait_for_volume_status "$volume_id" "available"
+  done
+}
+
+function wait_until_volume_attached() {
+  instance_id=$1
+  volume_id=$2
+  device="/dev/sda1"
+  echo "Attaching volume $volume_id to instance $instance_id as device $device"
+  aws ec2 attach-volume --instance-id "$instance_id" --volume-id "$volume_id" --device "$device" > /dev/null
+  wait_for_volume_status "$volume_id" "in-use"
+}
+
+host1_instance=$(get_instance "$HOST1_NAME")
+host2_instance=$(get_instance "$HOST2_NAME")
+
+host1_instance_id=$(get_instance_id "$host1_instance")
+host2_instance_id=$(get_instance_id "$host2_instance")
+
+host1_volume_id=$(get_volume_id "$host1_instance")
+host2_volume_id=$(get_volume_id "$host2_instance")
+
+echo "$HOST1_NAME ($host1_instance_id) has $host1_volume_id"
+echo "$HOST2_NAME ($host2_instance_id) has $host2_volume_id"
+
+wait_until_instances_stopped "$host1_instance_id" "$host2_instance_id"
+
+wait_until_volumes_available "$host1_volume_id" "$host2_volume_id"
+
+wait_until_volume_attached "$host1_instance_id" "$host2_volume_id"
+wait_until_volume_attached "$host2_instance_id" "$host1_volume_id"
+
+wait_until_instances_running "$host1_instance_id" "$host2_instance_id"
+
+host1_volume_id=$(get_volume_id "$host1_instance")
+host2_volume_id=$(get_volume_id "$host2_instance")

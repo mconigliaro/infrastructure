@@ -1,0 +1,21 @@
+[alias]
+  b = branch
+  ch = checkout
+  co = commit
+  d = diff
+  l = log --all --decorate --oneline --graph
+  p = push
+  s = status
+[credential]
+  helper = osxkeychain
+[diff]
+  compactionHeuristic = true
+[interactive]
+  diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+[pager]
+  log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+[user]
+  email = mike@conigliaro.org
+	name = Mike Conigliaro

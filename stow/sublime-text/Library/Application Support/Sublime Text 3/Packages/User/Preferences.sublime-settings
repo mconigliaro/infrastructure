@@ -1,0 +1,29 @@
+{
+	"added_words":
+	[
+		"Conigliaro"
+	],
+	"auto_complete_commit_on_tab": true,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+	"copy_with_empty_selection": false,
+	"ensure_newline_at_eof_on_save": true,
+	"find_selected_text": true,
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"SideBarEnhancements",
+		"Vintage"
+	],
+	"rulers":
+	[
+		80,
+		120
+	],
+	"save_on_focus_lost": true,
+	"show_panel_on_build": false,
+	"spell_check": true,
+	"theme": "Default.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"update_check": true
+}

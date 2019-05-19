@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eu
+
+ACTION=$1
+COOKBOOK=$2
+
+case $ACTION in
+download)
+  for VERSION in $(knife cookbook show $COOKBOOK | sed -e 's/  */ /g' | cut -d ' ' -f 2-); do
+    knife cookbook download $COOKBOOK $VERSION
+  done
+  ;;
+upload)
+  for DIR in $COOKBOOK*; do
+    rm $COOKBOOK || true
+    ln -s $DIR $COOKBOOK
+    knife cookbook upload $COOKBOOK -o . --freeze || true
+  done
+  ;;
+esac

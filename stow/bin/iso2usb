@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Usage: ./iso2usb <device> <iso>
+# Example: ./iso2usb /dev/disk1 ~/Downloads/ubuntu-16.04.2-server-amd64.iso
+#
+set -ex
+
+DEV=$1 # Get the device name with `diskutil list`
+ISO=$2 # Path to ISO
+
+diskutil unmountDisk "$DEV"
+sudo dd if="$ISO" of="$DEV" bs=1m
+diskutil eject "$DEV"

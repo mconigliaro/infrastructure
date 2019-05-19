@@ -1,0 +1,6 @@
+provisioner:
+  http_proxy: http://10.0.2.2:3128
+  chef_omnibus_url: http://www.chef.io/chef/install.sh
+driver:
+  synced_folders:
+    - ['.', '/host', 'create: true']

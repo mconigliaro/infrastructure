@@ -1,0 +1,18 @@
+{
+	"extensions":
+	[
+		"rake",
+		"jbuilder",
+		"Brewfile",
+		"Vagrantfile",
+		"thor",
+		"rabl",
+		"Berksfile",
+		"Guardfile",
+		"simplecov",
+		"rb",
+		"Thorfile",
+		"podspec"
+	],
+	"tab_size": 2
+}

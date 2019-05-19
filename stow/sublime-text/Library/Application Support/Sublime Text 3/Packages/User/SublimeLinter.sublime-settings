@@ -1,0 +1,8 @@
+// SublimeLinter Settings - User
+{
+    "linters": {
+        "flake8": {
+            "working_dir": "$file_path"
+        }
+    }
+}

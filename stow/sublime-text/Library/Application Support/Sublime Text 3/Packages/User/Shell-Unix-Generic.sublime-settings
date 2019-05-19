@@ -1,0 +1,10 @@
+{
+	"extensions":
+	[
+		"zsh",
+		"sh",
+		".zshrc",
+		"bash",
+		".zprofile"
+	]
+}

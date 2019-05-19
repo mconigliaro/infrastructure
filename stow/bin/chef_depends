@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+grep depends */metadata.rb | sed -e 's/  */ /g' -e 's/[\'\''",]//g' | awk '{ printf "%s%s%s %s\n", $2, $3, $4, $1 }' | sort | column -t

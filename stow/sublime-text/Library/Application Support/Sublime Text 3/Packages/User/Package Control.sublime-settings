@@ -1,0 +1,36 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Ansible",
+		"ApplySyntax",
+		"Chef",
+		"Dockerfile Syntax Highlighting",
+		"Elixir",
+		"Hooks",
+		"Jinja2",
+		"Package Control",
+		"Pretty JSON",
+		"Pretty Ruby",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-annotations",
+		"SublimeLinter-contrib-ansible-lint",
+		"SublimeLinter-contrib-elixirc",
+		"SublimeLinter-contrib-foodcritic",
+		"SublimeLinter-contrib-hadolint",
+		"SublimeLinter-contrib-write-good",
+		"SublimeLinter-contrib-yamllint",
+		"SublimeLinter-flake8",
+		"SublimeLinter-haml",
+		"SublimeLinter-jsl",
+		"SublimeLinter-json",
+		"SublimeLinter-rubocop",
+		"SublimeLinter-ruby",
+		"SublimeLinter-shellcheck",
+		"Terraform"
+	]
+}

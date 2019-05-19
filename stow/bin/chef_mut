@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eux
+
+git pull
+rm Berksfile.lock || true
+berks install
+git tag v$(grep version metadata.rb | sed -e 's/  */ /' -e 's/[\'\''"]//g' | cut -d ' ' -f 2 | head -n 1)
+git push --tags
+berks upload

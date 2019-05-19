@@ -1,0 +1,11 @@
+{
+  "on_post_save_language": [
+    {
+      "command": "exec",
+      "scope": "window",
+      "args": {
+        "shell_cmd": "terraform fmt $file"
+      }
+    }
+  ]
+}
