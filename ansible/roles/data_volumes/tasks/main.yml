@@ -14,10 +14,16 @@
     state: directory
   loop: "{{data_volumes}}"
 
+- name: get volume uuids
+  shell: blkid --match-tag UUID --output value {{item.device}}
+  loop: "{{data_volumes}}"
+  register: uuids
+  changed_when: false
+
 - name: mount data volumes
   mount:
-    path: "{{item.path}}"
-    src: "{{item.device}}"
+    src: "UUID={{item.stdout}}"
+    path: "{{item.item.path}}"
     fstype: auto
     state: mounted
-  loop: "{{data_volumes}}"
+  loop: "{{uuids.results}}"
