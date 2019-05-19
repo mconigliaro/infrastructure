@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Usage: attic_backup <host> <path> ...
+
+set -eu
+
+REMOTE_HOST=$1
+LOCAL_PATH=/var/tmp/$REMOTE_HOST
+REMOTE_PATHS=""
+for p in ${@:2}; do
+  REMOTE_PATHS="$REMOTE_PATHS $LOCAL_PATH$p"
+done
+REPOSITORY=~/$REMOTE_HOST.attic
+
+function cleanup {
+  fusermount -u $LOCAL_PATH
+}
+trap cleanup EXIT
+
+mkdir -p $LOCAL_PATH
+sshfs -o idmap=user $REMOTE_HOST:/ $LOCAL_PATH
+attic create -s $REPOSITORY::$(date +%Y.%m.%d.%H.%M) $REMOTE_PATHS
+attic prune -v $REPOSITORY --keep-daily=7 --keep-weekly=4 --keep-monthly=3

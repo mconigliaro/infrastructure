@@ -1,0 +1,13 @@
+---
+- name: install attic
+  apt:
+    name:
+      - attic
+      - moreutils
+      - sshfs
+
+- name: manage attic_backup
+  template:
+    src: attic_backup.j2
+    dest: /usr/local/bin/attic_backup
+    mode: 0755
