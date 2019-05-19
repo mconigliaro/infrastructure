@@ -32,7 +32,7 @@ resource "aws_route53_record" "a_mail_conigliaro_org" {
   name    = "mail.${aws_route53_zone.conigliaro_org.name}"
   type    = "A"
   ttl     = "60"
-  records = ["${aws_instance.mail.public_ip}"]
+  records = ["${aws_eip.mail.public_ip}"]
 }
 
 resource "aws_route53_record" "mx_conigliaro_org" {
@@ -77,7 +77,7 @@ resource "aws_route53_record" "a_mail_gyrate_org" {
   name    = "mail.${aws_route53_zone.gyrate_org.name}"
   type    = "A"
   ttl     = "60"
-  records = ["${aws_instance.mail.public_ip}"]
+  records = ["${aws_eip.mail.public_ip}"]
 }
 
 resource "aws_route53_record" "mx_gyrate_org" {
