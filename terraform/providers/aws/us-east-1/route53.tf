@@ -95,3 +95,21 @@ resource "aws_route53_record" "cname_bloarzeyd_gyrate_org" {
   ttl     = "60"
   records = ["bloarzeyd.github.com"]
 }
+
+resource "aws_route53_health_check" "mail" {
+  ip_address        = "${aws_eip.mail.public_ip}"
+  type              = "TCP"
+  port              = 25
+  request_interval  = 30
+  failure_threshold = 2
+
+  regions = [
+    "us-east-1",
+    "us-west-1",
+    "us-west-2",
+  ]
+
+  tags = {
+    Name = "mail"
+  }
+}
