@@ -22,7 +22,7 @@
   become_user: mike
   cron:
     name: attic_backup_mail.conigliaro.org
-    minute: '*/12'
+    hour: '*/12'
     job: chronic /usr/local/bin/attic_backup mail.conigliaro.org /mnt/data/mike/Maildir
   when: users_attic_backup
 
