@@ -1,9 +1,7 @@
 ---
 - name: install default packages
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
       - bsd-mailx
       - chkrootkit
       - curl
