@@ -13,6 +13,10 @@
     key: "{{ item }}"
   loop: "{{ users_authorized_keys }}"
 
+- include_role:
+    name: attic
+  when: users_attic_backup
+
 - name: Manage attic cron job
   become: true
   become_user: mike
