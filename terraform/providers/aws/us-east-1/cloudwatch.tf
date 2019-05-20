@@ -3,11 +3,15 @@ resource "aws_cloudwatch_metric_alarm" "billing_estimated_charges" {
   namespace   = "AWS/Billing"
   metric_name = "EstimatedCharges"
 
-  period              = 300
+  dimensions {
+    Currency = "USD"
+  }
+
+  period              = 21600                           # 6 hours
   statistic           = "Average"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = 6
-  evaluation_periods  = 3
+  evaluation_periods  = 1
 
   alarm_actions             = ["${aws_sns_topic.alerts.id}"]
   ok_actions                = ["${aws_sns_topic.alerts.id}"]
