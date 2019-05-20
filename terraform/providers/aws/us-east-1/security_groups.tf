@@ -1,9 +1,9 @@
 resource "aws_security_group_rule" "ssh" {
   security_group_id = "${module.vpc.default_security_group_id}"
   type              = "ingress"
+  protocol          = "tcp"
   from_port         = 22
   to_port           = 22
-  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "SSH"
 }
@@ -25,9 +25,9 @@ resource "aws_security_group" "mail" {
 resource "aws_security_group_rule" "http" {
   security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
+  protocol          = "tcp"
   from_port         = 80
   to_port           = 80
-  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "Certbot"
 }
@@ -35,9 +35,9 @@ resource "aws_security_group_rule" "http" {
 resource "aws_security_group_rule" "icmp_echo_request" {
   security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
+  protocol          = "icmp"
   from_port         = 8
   to_port           = -1
-  protocol          = "icmp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "ICMP echo request"
 }
@@ -45,9 +45,9 @@ resource "aws_security_group_rule" "icmp_echo_request" {
 resource "aws_security_group_rule" "imap" {
   security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
+  protocol          = "tcp"
   from_port         = 143
   to_port           = 143
-  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "IMAP"
 }
@@ -55,9 +55,9 @@ resource "aws_security_group_rule" "imap" {
 resource "aws_security_group_rule" "smtp" {
   security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
+  protocol          = "tcp"
   from_port         = 25
   to_port           = 25
-  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "SMTP"
 }
@@ -65,9 +65,9 @@ resource "aws_security_group_rule" "smtp" {
 resource "aws_security_group_rule" "submission" {
   security_group_id = "${aws_security_group.mail.id}"
   type              = "ingress"
+  protocol          = "tcp"
   from_port         = 587
   to_port           = 587
-  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "Submission"
 }
