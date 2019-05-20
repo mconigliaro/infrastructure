@@ -1,15 +1,17 @@
+resource "aws_security_group_rule" "ssh" {
+  security_group_id = "${module.vpc.default_security_group_id}"
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "SSH"
+}
+
 resource "aws_security_group" "mail" {
   name_prefix = "mail-"
   description = "Mail server"
   vpc_id      = "${module.vpc.vpc_id}"
-
-  # Replace the default egress rule that is normally removed by Terraform
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   tags = {
     Name = "mail"
@@ -58,16 +60,6 @@ resource "aws_security_group_rule" "smtp" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "SMTP"
-}
-
-resource "aws_security_group_rule" "ssh" {
-  security_group_id = "${aws_security_group.mail.id}"
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  description       = "SSH"
 }
 
 resource "aws_security_group_rule" "submission" {
