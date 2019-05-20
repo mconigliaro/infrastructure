@@ -11,12 +11,6 @@ antigen apply
 
 export ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
-# asdf
-asdf_path=$(brew --prefix)/opt/asdf/asdf.sh
-if [[ -e "$asdf_path" ]]; then
-  source "$asdf_path"
-fi
-
 # AWS
 export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
 
@@ -24,12 +18,6 @@ export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
 if command -v brew > /dev/null 2>&1; then
   export PATH=/usr/local/sbin:$PATH
   export GITHUB_API_TOKEN="$(<$HOME/.github_api_token)"
-fi
-
-# iTerm2 Shell Integration
-iterm_shell_integration_path="$HOME/.iterm2_shell_integration.zsh"
-if [[ -e "$iterm_shell_integration_path" ]]; then
-  source "$iterm_shell_integration_path"
 fi
 
 # Postgres.app
@@ -41,6 +29,7 @@ fi
 # Python
 export PYTHONSTARTUP=~/.pystartup
 export PATH="$HOME/.local/bin:$PATH"
+export PIPENV_SHELL_FANCY="1"
 
 # Ruby
 for v in 2.3.0 2.4.0 2.5.0; do
