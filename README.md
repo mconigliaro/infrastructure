@@ -4,7 +4,7 @@
 
     mkdir -p ~/Developer/mconigliaro
     cd ~/Developer/mconigliaro
-    git clone https://github.com/mconigliaro/infrastructure.git
+    git clone https://gitlab.com/mconigliaro/infrastructure.git
     cd infrastructure
     ./setup.sh
 
