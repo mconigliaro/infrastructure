@@ -29,7 +29,6 @@ fi
 # Python
 export PYTHONSTARTUP=~/.pystartup
 export PATH="$HOME/.local/bin:$PATH"
-export PIPENV_SHELL_FANCY="1"
 
 # Ruby
 for v in 2.3.0 2.4.0 2.5.0; do
