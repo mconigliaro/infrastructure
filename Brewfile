@@ -1,11 +1,8 @@
-# Installs `brew services` commands
-tap 'homebrew/services'
-
 # Provides alternate versions of casks
-tap 'caskroom/versions'
+tap 'homebrew/cask-versions'
 
 # Provides access to ‘drivers’
-tap 'caskroom/drivers'
+tap 'homebrew/cask-drivers'
 
 # Dependencies
 cask 'java'
