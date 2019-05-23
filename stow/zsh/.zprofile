@@ -18,6 +18,7 @@ export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
 if command -v brew > /dev/null 2>&1; then
   export PATH=/usr/local/sbin:$PATH
   export GITHUB_API_TOKEN="$(<$HOME/.github_api_token)"
+  export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 # Postgres.app
