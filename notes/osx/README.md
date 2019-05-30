@@ -1,5 +1,9 @@
 # OSX
 
+## List listening ports
+
+   sudo lsof -PiTCP -sTCP:LISTEN
+
 ## Securely delete free space
 
     diskutil secureErase freespace <level> <volume>
