@@ -18,15 +18,19 @@
 
 ### Containers
 
+#### List containers
+
+    docker container ls [-a]
+
 #### Start a container
 
     docker run [-it] [-p <local port>:<container port>] [<host>:<port>/]<name>[:<tag>]
 
 - Images are pulled from Docker Hub (https://hub.docker.com/) by default
 
-#### List containers
+#### Connect to a running container
 
-    docker container ls [-a]
+    docker exec [-it] <container name> /bin/bash
 
 #### Remove stopped containers
 
