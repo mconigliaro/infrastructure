@@ -16,6 +16,10 @@
 
     docker image prune
 
+#### Remove all images
+
+    docker rmi [--force] $(docker images -q)
+
 ### Containers
 
 #### List containers
@@ -35,3 +39,7 @@
 #### Remove stopped containers
 
     docker container prune
+
+#### Remove all containers
+
+    docker rm $(docker ps -a -q)
