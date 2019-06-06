@@ -39,9 +39,6 @@ done
 # ShellCheck
 export SHELLCHECK_OPTS="-e SC1090"
 
-# Terraform (aws_codepipeline provider)
-export GITHUB_TOKEN="$GITHUB_API_TOKEN"
-
 # Pull in everything else we decided not to keep in source control
 zprofile_d=$HOME/.zprofile.d
 if [[ -d "$zprofile_d" && ! -z "$(ls -A "$zprofile_d")" ]]; then
