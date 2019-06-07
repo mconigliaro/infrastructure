@@ -1,29 +1,29 @@
 ---
 - name: format data volumes
   filesystem:
-    dev: "{{item.device}}"
-    fstype: "{{('fstype' in item) | ternary(item.fstype, 'ext4')}}"
-  loop: "{{data_volumes}}"
+    dev: "{{ item.device }}"
+    fstype: "{{ ('fstype' in item) | ternary(item.fstype, 'ext4') }}"
+  loop: "{{ data_volumes }}"
   when: (ansible_mounts | json_query(query) | length) == 0
   vars:
-    query: "[?mount == `{{item.path}}`]"
+    query: "[?mount == `{{ item.path }}`]"
 
 - name: create data volume paths
   file:
-    path: "{{item.path}}"
+    path: "{{ item.path }}"
     state: directory
-  loop: "{{data_volumes}}"
+  loop: "{{ data_volumes }}"
 
 - name: get volume uuids
-  shell: blkid -s UUID -o value {{item.device}}
-  loop: "{{data_volumes}}"
+  shell: blkid -s UUID -o value {{ item.device }}
+  loop: "{{ data_volumes }}"
   register: uuids
   changed_when: false
 
 - name: mount data volumes
   mount:
-    src: "UUID={{item.stdout}}"
-    path: "{{item.item.path}}"
+    src: "UUID={{ item.stdout }}"
+    path: "{{ item.item.path }}"
     fstype: auto
     state: mounted
-  loop: "{{uuids.results}}"
+  loop: "{{ uuids.results }}"
