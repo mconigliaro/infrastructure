@@ -1,10 +1,3 @@
-# asdf
-asdf_root=$(brew --prefix)/opt/asdf
-if [[ -d "$asdf_root" ]]; then
-  source "$asdf_root/asdf.sh"
-  source "$asdf_root/etc/bash_completion.d/asdf.bash"
-fi
-
 # iTerm2 Shell Integration
 iterm_shell_integration_path="$HOME/.iterm2_shell_integration.zsh"
 if [[ -e "$iterm_shell_integration_path" ]]; then

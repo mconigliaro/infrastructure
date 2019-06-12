@@ -30,11 +30,13 @@ fi
 # Python
 export PYTHONSTARTUP=~/.pystartup
 export PATH="$HOME/.local/bin:$PATH"
-
-# Ruby
-for v in 2.3.0 2.4.0 2.5.0; do
-  export PATH="$HOME/.gem/ruby/$v/bin:$PATH"
-done
+export PIPENV_PYTHON="$(pyenv root)/shims/python"
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
 
 # ShellCheck
 export SHELLCHECK_OPTS="-e SC1090"

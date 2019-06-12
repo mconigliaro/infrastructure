@@ -14,9 +14,6 @@ trap error_handler EXIT
 # Run homebrew
 ./homebrew.sh
 
-# Set up asdf
-./asdf.sh
-
 # Install Package Control for Sublime Text 3
 wget -nc -P "$HOME/Library/Application Support/Sublime Text 3/Installed Packages" "https://packagecontrol.io/Package Control.sublime-package"
 

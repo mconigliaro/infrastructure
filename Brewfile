@@ -6,13 +6,14 @@ tap 'homebrew/cask-drivers'
 
 # Dependencies
 cask 'java'
+brew 'sqlite'
 cask 'xquartz'
+brew 'zlib'
 
 # Packages
 brew 'ansible-lint'
 brew 'antigen'
 cask 'appcleaner'
-brew 'asdf'
 cask 'authy'
 brew 'awscli'
 brew 'bfg'
@@ -45,6 +46,7 @@ brew 'pinentry-mac'
 cask 'postman'
 brew 'pssh'
 brew 'pwgen'
+brew 'pyenv'
 brew 'rename'
 cask 'sequel-pro'
 brew 'shellcheck'
