@@ -9,8 +9,8 @@ resource "aws_route53_record" "a_conigliaro_org" {
   type    = "A"
 
   alias {
-    name                   = "www.${aws_route53_zone.conigliaro_org.name}"
-    zone_id                = "${aws_route53_zone.conigliaro_org.id}"
+    name                   = "${aws_s3_bucket.conigliaro_org.website_domain}"
+    zone_id                = "${aws_s3_bucket.conigliaro_org.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -54,8 +54,8 @@ resource "aws_route53_record" "a_gyrate_org" {
   type    = "A"
 
   alias {
-    name                   = "www.${aws_route53_zone.gyrate_org.name}"
-    zone_id                = "${aws_route53_zone.gyrate_org.id}"
+    name                   = "${aws_s3_bucket.gyrate_org.website_domain}"
+    zone_id                = "${aws_s3_bucket.gyrate_org.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
