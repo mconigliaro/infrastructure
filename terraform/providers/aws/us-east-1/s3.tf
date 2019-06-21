@@ -4,6 +4,23 @@ resource "aws_s3_bucket" "mconigliaro-infrastructure" {
   versioning {
     enabled = true
   }
+
+  lifecycle_rule {
+    id      = "terraform"
+    enabled = true
+
+    prefix = "terraform/"
+
+    noncurrent_version_expiration {
+      days = 30
+    }
+
+    expiration {
+      expired_object_delete_marker = true
+    }
+
+    abort_incomplete_multipart_upload_days = 7
+  }
 }
 
 resource "aws_s3_bucket" "conigliaro_org" {
