@@ -24,6 +24,15 @@ resource "aws_s3_bucket_object" "conigliaro_org_index" {
   content_type = "text/html"
 }
 
+resource "aws_s3_bucket_object" "conigliaro_org_robots" {
+  bucket       = "${aws_s3_bucket.conigliaro_org.bucket}"
+  key          = "robots.txt"
+  source       = "s3/robots.txt"
+  etag         = "${filemd5("s3/robots.txt")}"
+  acl          = "public-read"
+  content_type = "text/plain"
+}
+
 resource "aws_s3_bucket" "www_conigliaro_org" {
   bucket = "www.conigliaro.org"
 
@@ -48,6 +57,15 @@ resource "aws_s3_bucket_object" "gyrate_org_index" {
   etag         = "${filemd5("s3/gyrate.org/index.html")}"
   acl          = "public-read"
   content_type = "text/html"
+}
+
+resource "aws_s3_bucket_object" "gyrate_org_robots" {
+  bucket       = "${aws_s3_bucket.gyrate_org.bucket}"
+  key          = "robots.txt"
+  source       = "s3/robots.txt"
+  etag         = "${filemd5("s3/robots.txt")}"
+  acl          = "public-read"
+  content_type = "text/plain"
 }
 
 resource "aws_s3_bucket" "www_gyrate_org" {
