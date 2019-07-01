@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  version = "~> 2.13"
+  version = "~> 2.17"
   region  = "us-east-1"
   profile = "mconigliaro"
 }
