@@ -27,7 +27,7 @@ resource "aws_ses_domain_dkim" "dkim_verification" {
 resource "aws_route53_record" "dkim_verification" {
   count   = 3
   zone_id = "${var.zone_id}"
-  name    = "${element(aws_ses_domain_dkim.dkim_verification.dkim_tokens, count.index)}._domainkey.${local.domain}"
+  name    = "${element(aws_ses_domain_dkim.dkim_verification.dkim_tokens, count.index)}._domainkey.${data.aws_route53_zone.selected.name}"
   type    = "CNAME"
   ttl     = "300"
   records = ["${element(aws_ses_domain_dkim.dkim_verification.dkim_tokens, count.index)}.dkim.amazonses.com"]

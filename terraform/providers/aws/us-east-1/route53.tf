@@ -6,7 +6,6 @@ resource "aws_route53_zone" "conigliaro_org" {
 module "mail_conigliaro_org" {
   source    = "../../../modules/aws/route53_mail_records"
   zone_id   = "${aws_route53_zone.conigliaro_org.id}"
-  zone_name = "${aws_route53_zone.conigliaro_org.name}"
   target_ip = "${aws_eip.mail.public_ip}"
 }
 
@@ -18,7 +17,6 @@ resource "aws_route53_zone" "gyrate_org" {
 module "mail_gyrate_org" {
   source    = "../../../modules/aws/route53_mail_records"
   zone_id   = "${aws_route53_zone.gyrate_org.id}"
-  zone_name = "${aws_route53_zone.gyrate_org.name}"
   target_ip = "${aws_eip.mail.public_ip}"
 }
 

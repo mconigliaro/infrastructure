@@ -1,9 +1,5 @@
 variable "zone_id" {
-  description = "Zone id"
-}
-
-variable "zone_name" {
-  description = "Zone name"
+  description = "Route 53 zone id"
 }
 
 variable "target_ip" {

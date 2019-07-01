@@ -1,5 +1,13 @@
+data "aws_route53_zone" "selected" {
+  zone_id = "${var.zone_id}"
+}
+
+locals {
+  bucket = "${replace(data.aws_route53_zone.selected.name, "/.$/", "")}"
+}
+
 resource "aws_s3_bucket" "bucket" {
-  bucket = "${var.domain_name}"
+  bucket = "${local.bucket}"
 
   website {
     index_document = "${var.index_document}"
@@ -19,7 +27,7 @@ resource "aws_s3_bucket_object" "object" {
 
 resource "aws_route53_record" "a" {
   zone_id = "${var.zone_id}"
-  name    = "${var.domain_name}"
+  name    = "${data.aws_route53_zone.selected.name}"
   type    = "A"
 
   alias {
@@ -30,16 +38,16 @@ resource "aws_route53_record" "a" {
 }
 
 resource "aws_s3_bucket" "www_bucket" {
-  bucket = "www.${var.domain_name}"
+  bucket = "www.${local.bucket}"
 
   website {
-    redirect_all_requests_to = "${var.domain_name}"
+    redirect_all_requests_to = "${local.bucket}"
   }
 }
 
 resource "aws_route53_record" "a_www" {
   zone_id = "${var.zone_id}"
-  name    = "www.${var.domain_name}"
+  name    = "www.${data.aws_route53_zone.selected.name}"
   type    = "A"
 
   alias {
