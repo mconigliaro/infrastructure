@@ -27,46 +27,20 @@ module "conigliaro_org_website" {
   source      = "../../../modules/aws/s3_website"
   domain_name = "conigliaro.org"
   zone_id     = "${aws_route53_zone.conigliaro_org.id}"
-}
 
-resource "aws_s3_bucket_object" "conigliaro_org_index" {
-  bucket       = "${module.conigliaro_org_website.bucket}"
-  key          = "index.html"
-  source       = "s3_website/conigliaro.org/index.html"
-  etag         = "${filemd5("s3_website/conigliaro.org/index.html")}"
-  acl          = "public-read"
-  content_type = "text/html"
-}
-
-resource "aws_s3_bucket_object" "conigliaro_org_robots" {
-  bucket       = "${module.conigliaro_org_website.bucket}"
-  key          = "robots.txt"
-  source       = "s3_website/robots.txt"
-  etag         = "${filemd5("s3_website/robots.txt")}"
-  acl          = "public-read"
-  content_type = "text/plain"
+  files = [
+    "index.html",
+    "robots.txt",
+  ]
 }
 
 module "gyrate_org_website" {
   source      = "../../../modules/aws/s3_website"
   domain_name = "gyrate.org"
   zone_id     = "${aws_route53_zone.gyrate_org.id}"
-}
 
-resource "aws_s3_bucket_object" "gyrate_org_index" {
-  bucket       = "${module.gyrate_org_website.bucket}"
-  key          = "index.html"
-  source       = "s3_website/gyrate.org/index.html"
-  etag         = "${filemd5("s3_website/gyrate.org/index.html")}"
-  acl          = "public-read"
-  content_type = "text/html"
-}
-
-resource "aws_s3_bucket_object" "gyrate_org_robots" {
-  bucket       = "${module.gyrate_org_website.bucket}"
-  key          = "robots.txt"
-  source       = "s3_website/robots.txt"
-  etag         = "${filemd5("s3_website/robots.txt")}"
-  acl          = "public-read"
-  content_type = "text/plain"
+  files = [
+    "index.html",
+    "robots.txt",
+  ]
 }
