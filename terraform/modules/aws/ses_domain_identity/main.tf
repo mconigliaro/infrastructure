@@ -54,8 +54,9 @@ resource "aws_route53_record" "mail_from_spf" {
   records = ["v=spf1 include:amazonses.com ~all"]
 }
 
-resource "aws_ses_identity_notification_topic" "notification_topic_complaint" {
+resource "aws_ses_identity_notification_topic" "complaint" {
+  count             = "${length(var.complaint_notification_topic_ids)}"
   notification_type = "Complaint"
   identity          = "${aws_ses_domain_identity.domain_identity.arn}"
-  topic_arn         = "${var.notification_topic_complaint}"
+  topic_arn         = "${element(var.complaint_notification_topic_ids, count.index)}"
 }

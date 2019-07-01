@@ -7,6 +7,7 @@ variable "mail_from_subdomain" {
   default     = "outbound-smtp"
 }
 
-variable "notification_topic_complaint" {
-  description = "SES notification topic for complaints"
+variable "complaint_notification_topic_ids" {
+  description = "SES notification topics for complaints"
+  default     = []
 }
