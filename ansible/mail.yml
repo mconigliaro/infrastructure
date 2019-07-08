@@ -54,6 +54,29 @@
       - mike@conigliaro.org mike
       - mike@gyrate.org mike
       - bloarzeyd@gyrate.org mike,webmaster@peepees.net
+    postfix_conf_access_sender:
+      - /\.bid$/ REJECT
+      - /\.club$/ REJECT
+      - /\.stream$/ REJECT
+      - /\.top$/ REJECT
+      - /\.trade$/ REJECT
+      - /\.us$/ REJECT
+      - citrixemea.com REJECT
+      - citrixonline.com REJECT
+      - eg-monitoring.com REJECT
+      - freshpair.com REJECT
+      - microcenterinsider.com REJECT
+      - pof.com REJECT
+      - thesocialeffect.com REJECT
+      - 2039068469@vtext.com REJECT
+      - ashleythaislewis@gmail.com REJECT
+      - clintelmann@gmail.com REJECT
+      - lauraangelgirl44@gmail.com REJECT
+      - marie.conigliaro@gmail.com REJECT
+      - samn1uai@gmail.com REJECT
+      - samueljconigliaro@drs-pct.com REJECT
+      - sldharvest@gmail.com REJECT
+      - willie.lintelmann@snet.net REJECT
     postfix_postgrey_whitelist_clients:
       - amazonses.com
       - gmail.com

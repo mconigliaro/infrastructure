@@ -48,6 +48,12 @@
     dest: /etc/postfix/virtual
   notify: run postmap on virtual alias maps
 
+- name: manage access_sender maps
+  copy:
+    content: "{{ postfix_conf_access_sender | join(\"\n\") }}"
+    dest: /etc/postfix/access_sender
+  notify: run postmap on access_sender maps
+
 - name: configure monit for postfix
   template:
     src: postfix.monit.j2

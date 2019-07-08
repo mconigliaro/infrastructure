@@ -14,6 +14,9 @@
 - name: run postmap on virtual alias maps
   command: /usr/sbin/postmap /etc/postfix/virtual
 
+- name: run postmap on access_sender maps
+  command: /usr/sbin/postmap /etc/postfix/access_sender
+
 - name: restart postgrey
   service:
     name: postgrey

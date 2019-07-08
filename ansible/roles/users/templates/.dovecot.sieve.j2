@@ -6,47 +6,6 @@
 
 require [ "regex", "fileinto", "reject" ];
 
-# Top-level domain spam
-if address :matches :domain "from"
-  [
-    "state.co.us"
-  ] {
-  keep;
-  stop;
-}
-if address :regex :domain "from"
-  [
-    "\.bid$",
-    "\.club$",
-    "\.stream$",
-    "\.top$",
-    "\.trade$",
-    "\.us$"
-  ] {
-  discard;
-  stop;
-}
-
-if address :matches :domain "from"
-  [
-    # Citrix
-    "citrix.com",
-    "citrixemea.com",
-    "citrixonline.com",
-    "eg-monitoring.com",
-
-    # Retailers
-    "freshpair.com",
-    "microcenterinsider.com",
-
-    # Other
-    "pof.com",
-    "thesocialeffect.com"
-  ] {
-  reject "Reason: Your unsolicited email is not welcome here.";
-  stop;
-}
-
 if anyof(
     header :contains "X-Spam-Flag" "YES",
     address :matches :domain "from" [
