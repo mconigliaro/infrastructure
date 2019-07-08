@@ -7,6 +7,11 @@ variable "mail_from_subdomain" {
   default     = "outbound-smtp"
 }
 
+variable "bounce_notification_topic_ids" {
+  description = "SES notification topics for bounces"
+  default     = []
+}
+
 variable "complaint_notification_topic_ids" {
   description = "SES notification topics for complaints"
   default     = []
