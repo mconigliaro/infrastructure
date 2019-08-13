@@ -13,6 +13,7 @@ postfix_conf_relayhost: null
 postfix_conf_alias_maps: []
 postfix_conf_sasl_password_maps: []
 postfix_conf_virtual_maps: []
+postfix_conf_access_sender: []
 
 postfix_conf_smtpd_tls_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
 postfix_conf_smtpd_tls_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
