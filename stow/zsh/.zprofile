@@ -28,6 +28,7 @@ if [[ -e "$postgres_app_path" ]]; then
 fi
 
 # Python
+eval "$(pyenv init -)"
 export PYTHONSTARTUP=~/.pystartup
 export PATH="$HOME/.local/bin:$PATH"
 export PIPENV_PYTHON="$(pyenv root)/shims/python"
