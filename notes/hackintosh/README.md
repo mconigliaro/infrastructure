@@ -19,6 +19,7 @@
 ## Drivers
 
 - https://www.europe-canon.com/canon-pixma-ip3000-driver-download/
+- https://github.com/360Controller/360Controller
 
 ## References
 
