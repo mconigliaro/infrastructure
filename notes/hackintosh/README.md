@@ -19,7 +19,7 @@
 ## Installing Kernel Extensions
 
 1. Mount EFI partition via Clover Configurator
-1. Copy `.kext` file(s) to `/EFI/CLOVER/kexts/Other` or `/EFI/CLOVER/drivers64UEFI`
+1. Copy `.kext` file(s) to `/EFI/CLOVER/kexts/Other`
 1. Reboot
 
 ## Additional Drivers
