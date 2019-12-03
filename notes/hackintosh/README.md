@@ -16,11 +16,17 @@
 - Peripherals -> Super IO Configuration -> Serial Port: `Disabled`
 - Peripherals -> USB Configuration -> XHCI Hand-off: `Enabled`
 
-## Drivers
+## Installing Kernel Extensions
 
-- https://www.europe-canon.com/canon-pixma-ip3000-driver-download/
+1. Mount EFI partition via Clover Configurator
+1. Copy `.kext` file(s) to `/EFI/CLOVER/kexts/Other`
+1. Reboot
+
+## Additional Drivers
+
+- https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/ip-series/pixma-ip3000
 - https://github.com/360Controller/360Controller
 
 ## References
 
-- http://hackintosher.com/guides/high-sierra-install-full-guide/
+- http://hackintosher.com
