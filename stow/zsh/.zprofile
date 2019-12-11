@@ -39,6 +39,9 @@ export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
 
+# Ruby
+eval "$(rbenv init -)"
+
 # ShellCheck
 export SHELLCHECK_OPTS="-e SC1090"
 
