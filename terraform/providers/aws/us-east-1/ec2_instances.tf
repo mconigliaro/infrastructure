@@ -10,14 +10,14 @@ data "aws_ami" "ami" {
 }
 
 resource "aws_instance" "mail" {
-  ami           = "${coalesce(var.ami, data.aws_ami.ami.id)}"
+  ami           = coalesce(var.ami, data.aws_ami.ami.id)
   instance_type = "t2.micro"
-  key_name      = "${aws_key_pair.mike.key_name}"
-  subnet_id     = "${module.vpc.public_subnets[0]}"
+  key_name      = aws_key_pair.mike.key_name
+  subnet_id     = module.vpc.public_subnets[0]
 
   vpc_security_group_ids = [
-    "${module.vpc.default_security_group_id}",
-    "${aws_security_group.mail.id}",
+    module.vpc.default_security_group_id,
+    aws_security_group.mail.id,
   ]
 
   tags = {
@@ -38,6 +38,6 @@ resource "aws_ebs_volume" "data" {
 
 resource "aws_volume_attachment" "mail_data" {
   device_name = "/dev/sdf"
-  instance_id = "${aws_instance.mail.id}"
-  volume_id   = "${aws_ebs_volume.data.id}"
+  instance_id = aws_instance.mail.id
+  volume_id   = aws_ebs_volume.data.id
 }

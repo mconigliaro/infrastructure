@@ -1,5 +1,5 @@
 resource "aws_security_group_rule" "ssh" {
-  security_group_id = "${module.vpc.default_security_group_id}"
+  security_group_id = module.vpc.default_security_group_id
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 22
@@ -11,7 +11,7 @@ resource "aws_security_group_rule" "ssh" {
 resource "aws_security_group" "mail" {
   name_prefix = "mail-"
   description = "Mail server"
-  vpc_id      = "${module.vpc.vpc_id}"
+  vpc_id      = module.vpc.vpc_id
 
   tags = {
     Name = "mail"
@@ -23,7 +23,7 @@ resource "aws_security_group" "mail" {
 }
 
 resource "aws_security_group_rule" "http" {
-  security_group_id = "${aws_security_group.mail.id}"
+  security_group_id = aws_security_group.mail.id
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 80
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "http" {
 }
 
 resource "aws_security_group_rule" "icmp_echo_request" {
-  security_group_id = "${aws_security_group.mail.id}"
+  security_group_id = aws_security_group.mail.id
   type              = "ingress"
   protocol          = "icmp"
   from_port         = 8
@@ -43,7 +43,7 @@ resource "aws_security_group_rule" "icmp_echo_request" {
 }
 
 resource "aws_security_group_rule" "imap" {
-  security_group_id = "${aws_security_group.mail.id}"
+  security_group_id = aws_security_group.mail.id
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 143
@@ -53,7 +53,7 @@ resource "aws_security_group_rule" "imap" {
 }
 
 resource "aws_security_group_rule" "smtp" {
-  security_group_id = "${aws_security_group.mail.id}"
+  security_group_id = aws_security_group.mail.id
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 25
@@ -63,7 +63,7 @@ resource "aws_security_group_rule" "smtp" {
 }
 
 resource "aws_security_group_rule" "submission" {
-  security_group_id = "${aws_security_group.mail.id}"
+  security_group_id = aws_security_group.mail.id
   type              = "ingress"
   protocol          = "tcp"
   from_port         = 587

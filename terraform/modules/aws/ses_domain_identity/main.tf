@@ -1,32 +1,32 @@
 data "aws_route53_zone" "selected" {
-  zone_id = "${var.zone_id}"
+  zone_id = var.zone_id
 }
 
 locals {
-  domain = "${replace(data.aws_route53_zone.selected.name, "/.$/", "")}"
+  domain = replace(data.aws_route53_zone.selected.name, "/.$/", "")
 }
 
 data "aws_region" "selected" {}
 
 resource "aws_ses_domain_identity" "domain_identity" {
-  domain = "${local.domain}"
+  domain = local.domain
 }
 
 resource "aws_route53_record" "_amazonses" {
-  zone_id = "${data.aws_route53_zone.selected.id}"
+  zone_id = data.aws_route53_zone.selected.id
   name    = "_amazonses.${data.aws_route53_zone.selected.name}"
   type    = "TXT"
   ttl     = "300"
-  records = ["${aws_ses_domain_identity.domain_identity.verification_token}"]
+  records = [aws_ses_domain_identity.domain_identity.verification_token]
 }
 
 resource "aws_ses_domain_dkim" "dkim_verification" {
-  domain = "${aws_ses_domain_identity.domain_identity.domain}"
+  domain = aws_ses_domain_identity.domain_identity.domain
 }
 
 resource "aws_route53_record" "dkim_verification" {
   count   = 3
-  zone_id = "${var.zone_id}"
+  zone_id = var.zone_id
   name    = "${element(aws_ses_domain_dkim.dkim_verification.dkim_tokens, count.index)}._domainkey.${data.aws_route53_zone.selected.name}"
   type    = "CNAME"
   ttl     = "300"
@@ -34,12 +34,12 @@ resource "aws_route53_record" "dkim_verification" {
 }
 
 resource "aws_ses_domain_mail_from" "mail_from" {
-  domain           = "${aws_ses_domain_identity.domain_identity.domain}"
+  domain           = aws_ses_domain_identity.domain_identity.domain
   mail_from_domain = "${var.mail_from_subdomain}.${local.domain}"
 }
 
 resource "aws_route53_record" "mail_from_mx" {
-  zone_id = "${data.aws_route53_zone.selected.id}"
+  zone_id = data.aws_route53_zone.selected.id
   name    = "${var.mail_from_subdomain}.${data.aws_route53_zone.selected.name}"
   type    = "MX"
   ttl     = "300"
@@ -47,7 +47,7 @@ resource "aws_route53_record" "mail_from_mx" {
 }
 
 resource "aws_route53_record" "mail_from_spf" {
-  zone_id = "${data.aws_route53_zone.selected.id}"
+  zone_id = data.aws_route53_zone.selected.id
   name    = "${var.mail_from_subdomain}.${data.aws_route53_zone.selected.name}"
   type    = "TXT"
   ttl     = "300"
@@ -55,15 +55,15 @@ resource "aws_route53_record" "mail_from_spf" {
 }
 
 resource "aws_ses_identity_notification_topic" "bounce" {
-  count             = "${length(var.bounce_notification_topic_ids)}"
+  count             = length(var.bounce_notification_topic_ids)
   notification_type = "Bounce"
-  identity          = "${aws_ses_domain_identity.domain_identity.arn}"
-  topic_arn         = "${element(var.bounce_notification_topic_ids, count.index)}"
+  identity          = aws_ses_domain_identity.domain_identity.arn
+  topic_arn         = element(var.bounce_notification_topic_ids, count.index)
 }
 
 resource "aws_ses_identity_notification_topic" "complaint" {
-  count             = "${length(var.complaint_notification_topic_ids)}"
+  count             = length(var.complaint_notification_topic_ids)
   notification_type = "Complaint"
-  identity          = "${aws_ses_domain_identity.domain_identity.arn}"
-  topic_arn         = "${element(var.complaint_notification_topic_ids, count.index)}"
+  identity          = aws_ses_domain_identity.domain_identity.arn
+  topic_arn         = element(var.complaint_notification_topic_ids, count.index)
 }

@@ -5,8 +5,8 @@ resource "aws_route53_zone" "conigliaro_org" {
 
 module "mail_conigliaro_org" {
   source    = "../../../modules/aws/route53_mail_records"
-  zone_id   = "${aws_route53_zone.conigliaro_org.id}"
-  target_ip = "${aws_eip.mail.public_ip}"
+  zone_id   = aws_route53_zone.conigliaro_org.id
+  target_ip = aws_eip.mail.public_ip
 }
 
 resource "aws_route53_zone" "gyrate_org" {
@@ -16,12 +16,12 @@ resource "aws_route53_zone" "gyrate_org" {
 
 module "mail_gyrate_org" {
   source    = "../../../modules/aws/route53_mail_records"
-  zone_id   = "${aws_route53_zone.gyrate_org.id}"
-  target_ip = "${aws_eip.mail.public_ip}"
+  zone_id   = aws_route53_zone.gyrate_org.id
+  target_ip = aws_eip.mail.public_ip
 }
 
 resource "aws_route53_record" "cname_bloarzeyd_gyrate_org" {
-  zone_id = "${aws_route53_zone.gyrate_org.id}"
+  zone_id = aws_route53_zone.gyrate_org.id
   name    = "bloarzeyd.${aws_route53_zone.gyrate_org.name}"
   type    = "CNAME"
   ttl     = "300"
@@ -29,7 +29,7 @@ resource "aws_route53_record" "cname_bloarzeyd_gyrate_org" {
 }
 
 resource "aws_route53_health_check" "mail" {
-  ip_address        = "${aws_eip.mail.public_ip}"
+  ip_address        = aws_eip.mail.public_ip
   type              = "TCP"
   port              = 25
   request_interval  = 30
