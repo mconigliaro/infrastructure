@@ -4,7 +4,11 @@ variable "zone_id" {
 
 variable "files" {
   description = "List of files"
-  default     = []
+  type = list(object({
+    name         = string,
+    content_type = string
+  }))
+  default = []
 }
 
 variable "index_document" {

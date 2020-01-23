@@ -28,8 +28,9 @@ module "conigliaro_org_website" {
   zone_id = "${aws_route53_zone.conigliaro_org.id}"
 
   files = [
-    "index.html",
-    "robots.txt",
+    { name = "index.html", content_type = "text/html" },
+    { name = "style.css", content_type = "text/css" },
+    { name = "robots.txt", content_type = "text/plain" }
   ]
 }
 
@@ -38,7 +39,7 @@ module "gyrate_org_website" {
   zone_id = "${aws_route53_zone.gyrate_org.id}"
 
   files = [
-    "index.html",
-    "robots.txt",
+    { name = "index.html", content_type = "text/html" },
+    { name = "robots.txt", content_type = "text/plain" }
   ]
 }

@@ -18,11 +18,11 @@ resource "aws_s3_bucket" "bucket" {
 resource "aws_s3_bucket_object" "object" {
   count        = length(var.files)
   bucket       = aws_s3_bucket.bucket.bucket
-  key          = element(var.files, count.index)
-  source       = "s3_website/${aws_s3_bucket.bucket.bucket}/${element(var.files, count.index)}"
-  etag         = filemd5("s3_website/${aws_s3_bucket.bucket.bucket}/${element(var.files, count.index)}")
+  key          = element(var.files, count.index).name
+  source       = "s3_website/${aws_s3_bucket.bucket.bucket}/${element(var.files, count.index).name}"
+  etag         = filemd5("s3_website/${aws_s3_bucket.bucket.bucket}/${element(var.files, count.index).name}")
   acl          = "public-read"
-  content_type = "text/html"
+  content_type = element(var.files, count.index).content_type
 }
 
 resource "aws_route53_record" "a" {
