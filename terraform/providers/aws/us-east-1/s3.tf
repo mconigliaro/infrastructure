@@ -29,8 +29,8 @@ module "conigliaro_org_website" {
 
   files = [
     { name = "index.html", content_type = "text/html" },
-    { name = "style.css", content_type = "text/css" },
-    { name = "robots.txt", content_type = "text/plain" }
+    { name = "robots.txt", content_type = "text/plain" },
+    { name = "style.css", content_type = "text/css" }
   ]
 }
 
@@ -40,6 +40,7 @@ module "gyrate_org_website" {
 
   files = [
     { name = "index.html", content_type = "text/html" },
-    { name = "robots.txt", content_type = "text/plain" }
+    { name = "robots.txt", content_type = "text/plain" },
+    { name = "style.css", content_type = "text/css" }
   ]
 }
