@@ -1,9 +1,25 @@
 body {
-    font-family: monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #666;
+}
+main {
+    font-family: monospace;
+    background-color: #fff;
     margin-top: 5%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #333;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1 {
+    margin-top: 0;
+    text-align: center;
 }
 h2 {
     margin-bottom: 0;
@@ -15,7 +31,7 @@ ul {
 }
 a:link, a:visited {
   text-decoration: none;
-  color: #336699;
+  color: #369;
 }
 a:hover {
   text-decoration: underline;
