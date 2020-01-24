@@ -1,4 +1,12 @@
 body {
-  color: #ffffff;
-  background-color: #000000;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+    color: #ffffff;
+    background-color: #000000;
+}
+.preformatted {
+    white-space: pre;
 }
