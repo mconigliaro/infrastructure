@@ -1,9 +1,12 @@
 body {
-    font-family: monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10%;
-    color: #ffffff;
-    background-color: #000000;
+    font-family: monospace;
+    color: #fff;
+    background-color: #000;
+}
+pre {
+    margin-top: 20%;
+    font-size: 10px;
 }
