@@ -31,9 +31,9 @@ ul {
     padding: 0;
 }
 a:link, a:visited {
-color: #248;
-  text-decoration: none;
+    color: #248;
+    text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
