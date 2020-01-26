@@ -11,14 +11,14 @@ error_handler() {
 # Begin trapping errors
 trap error_handler EXIT
 
+# Set up OSX defaults
+./osx.sh
+
 # Run homebrew
 ./homebrew.sh
 
-# Install Package Control for Sublime Text 3
-wget -nc -P "$HOME/Library/Application Support/Sublime Text 3/Installed Packages" "https://packagecontrol.io/Package Control.sublime-package"
-
-# Set up OSX defaults
-./osx.sh
+# Set up Sublime Text
+./sublimetext.sh
 
 # Copy files via stow
 ./stow.sh
