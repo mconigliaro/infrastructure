@@ -1,16 +1,16 @@
 body {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     background-color: #444;
+    display: flex;
+    flex-direction: column;
 }
 main {
-    font-family: monospace;
     background-color: #fff;
-    margin-top: 5%;
-    padding: 32px;
     border-radius: 8px;
     box-shadow: 8px 8px 16px #222;
+    font-family: monospace;
+    margin-top: 5%;
+    padding: 32px;
 }
 img {
     display: block;
@@ -18,8 +18,8 @@ img {
     margin-right: auto;
 }
 h1 {
-    margin-top: 0;
     margin-bottom: 16px;
+    margin-top: 0;
     text-align: center;
 }
 h2 {
@@ -31,8 +31,8 @@ ul {
     padding: 0;
 }
 a:link, a:visited {
+color: #248;
   text-decoration: none;
-  color: #248;
 }
 a:hover {
   text-decoration: underline;
