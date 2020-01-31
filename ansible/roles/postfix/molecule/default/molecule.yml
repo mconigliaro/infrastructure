@@ -6,8 +6,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: test.example.com
+  - name: xenial.example.com
     image: ubuntu:16.04
+  - name: focal.example.com
+    image: ubuntu:20.04
 provisioner:
   name: ansible
   lint:
