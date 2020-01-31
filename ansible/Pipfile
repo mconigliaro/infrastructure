@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-ansible = "~=2.7.11"
-boto3 = "~=1.9"
+ansible = "~=2.9"
+boto3 = "~=1.11"
 
 [dev-packages]
 docker-py = "~=1.10"
-molecule = "~=2.19"
+molecule = "~=2.22"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
