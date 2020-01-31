@@ -5,12 +5,12 @@ __pycache__
 # OSX
 .DS_Store
 
+# Sublime Text
+stow/sublime-text/User/oscrypto-ca-bundle.crt
+stow/sublime-text/User/Package Control.cache
+stow/sublime-text/User/Package Control.last-run
+stow/sublime-text/User/Package Control.*-ca-bundle
+
 # Terraform
 .terraform
 *tfstate*
-
-# Vagrant/VirtualBox
-.vagrant
-*.box
-*.dmg
-*.iso
