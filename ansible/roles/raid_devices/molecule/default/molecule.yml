@@ -12,6 +12,7 @@ platforms:
   - name: focal.example.com
     image: ubuntu:20.04
     privileged: true
+    dockerfile: Dockerfile-focal.j2
 provisioner:
   name: ansible
   lint:
