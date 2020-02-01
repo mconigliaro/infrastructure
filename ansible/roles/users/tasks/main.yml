@@ -2,7 +2,7 @@
 - name: manage mike's account
   user:
     name: mike
-    home: "{{ users_home_root}}/mike"
+    home: "{{ users_home_root }}/mike"
     groups:
       - sudo
     append: true

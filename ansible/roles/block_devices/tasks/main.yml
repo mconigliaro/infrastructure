@@ -6,9 +6,12 @@
   register: block_devices_stat_result
 
 - name: create block device files
-  command: dd if=/dev/zero of={{ item.item.file }} bs={{ ('block_size' in item.item) | ternary(item.item.block_size, '1M') }} count={{ ('size' in item.item) | ternary(item.item.size, 1) }}
+  command: |
+      dd if=/dev/zero of={{ item.item.file }}
+      bs={{ ('block_size' in item.item) | ternary(item.item.block_size, '1M') }}
+      count={{ ('size' in item.item) | ternary(item.item.size, 1) }}
   loop: "{{ block_devices_stat_result.results }}"
-  when: item.stat.exists != True
+  when: not item.stat.exists
 
 - name: check whether block devices are used
   command: losetup {{ item.device }}

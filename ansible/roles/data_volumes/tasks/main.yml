@@ -15,7 +15,7 @@
   loop: "{{ data_volumes }}"
 
 - name: get volume uuids
-  shell: blkid -s UUID -o value {{ item.device }}
+  command: blkid -s UUID -o value {{ item.device }}
   loop: "{{ data_volumes }}"
   register: uuids
   changed_when: false

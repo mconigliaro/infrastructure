@@ -26,7 +26,7 @@
   apt:
     name: "{{ packages }}"
   vars:
-    packages: "{{certbot_plugins}}"
+    packages: "{{ certbot_plugins }}"
 
 - name: configure certbot CLI
   template:
