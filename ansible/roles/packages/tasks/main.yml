@@ -8,6 +8,7 @@
       - htop
       - iftop
       - iotop
+      # FIXME: rename to iptraf-ng (focal)
       - iptraf
       - lsof
       - moreutils

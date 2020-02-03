@@ -1,11 +1,3 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-
-
 def test_bsd_mailx(host):
     assert host.exists('mail')
 
@@ -30,8 +22,8 @@ def test_iotop(host):
     assert host.exists('iotop')
 
 
-def test_iptraf(host):
-    assert host.exists('iptraf')
+def test_iptraf_ng(host):
+    assert host.exists('iptraf-ng')
 
 
 def test_lsof(host):

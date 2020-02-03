@@ -1,10 +1,3 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-
-
 def test_openssh(host):
-    assert host.exists('sshd')
+    assert host.service('ssh').is_running
+    assert host.service('ssh').is_enabled

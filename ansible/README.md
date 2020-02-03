@@ -28,8 +28,14 @@ All commands are expected to be run inside a pipenv shell:
     passwd <user>
     smbpasswd -a <user>
 
-## FIXME: Failed tests on Ubuntu 20.04
+## FIXME
 
-- attic (package doesn't exist)
-- awscli (error pip installing awscli)
-
+- attic: package not available for focal yet?
+- awscli: error pip installing awscli on focal
+- certbot: package not available for focal yet?
+- dovecot: tests fail in xenial (ignore)
+- opensshL tests fail in xenial (ignore)
+- postfix: ripole package not available, double check master.cf changes
+- raid_devices: mdadm service missing?
+- route53_update_dns: depends on awscli
+- review all FIXMEs

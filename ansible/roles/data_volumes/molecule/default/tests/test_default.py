@@ -1,11 +1,3 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
-
-
 def test_data_volumes(host):
     assert host.mount_point('/mnt/test0').exists
     assert host.mount_point('/mnt/test0').device == '/dev/loop0'
