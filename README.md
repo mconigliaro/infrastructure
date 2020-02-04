@@ -8,6 +8,10 @@
     cd infrastructure
     ./setup.sh
 
+## Docker Desktop
+
+1. Settings -> Resources -> Proxies -> Web Server -> http://docker.for.mac.localhost:3128
+
 ## GitHub Personal Access Tokens
 
 1. Create a [personal access token](https://github.com/settings/tokens) with full `repo` permissions

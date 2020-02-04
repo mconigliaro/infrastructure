@@ -28,21 +28,25 @@ All commands are expected to be run inside a pipenv shell:
     passwd <user>
     smbpasswd -a <user>
 
-## FIXME
+## Known Issues
 
-- attic: package not available for focal yet?
-- avahi: tests fail on all platforms
-- awscli: error pip installing awscli on focal
-- certbot: package not available for focal yet?
-- dovecot: tests fail in xenial (ignore)
-- openssh: tests fail in xenial (ignore)
-- plexmediaserver: pre-installation script fails on Docker
-- postfix: ripole package not available in focal, tests fail, double check master.cf changes
-- raid_devices: mdadm service missing on focal?
+### Focal
+- attic: package not available?
+- awscli: error pip installing awscli
+- certbot: package not available?
+- plexmediaserver: pre-installation script fails in Docker
+- postfix: tests fail until postfix is restarted manually, double check master.cf changes
+- raid_devices: mdadm service renamed to mdmonitor
 - route53_update_dns: depends on awscli
-- rsyslog: tests fail in xenial (ignore)
-- smartmontools: tests fail in xenial (ignore)
-- vsftpd: tests fail in xenial (ignore)
-- review all FIXMEs
-- can we make docker use a local proxy?
-- docker driver hostname parameter?
+- review FIXMEs in all roles before upgrading
+
+### Xenial
+
+#### Failing Tests
+- avahi
+- dbus
+- dovecot
+- openssh
+- rsyslog
+- smartmontools
+- vsftpd
