@@ -6,11 +6,13 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: xenial.example.com
+  - name: xenial
     image: ubuntu:16.04
+    hostname: xenial.example.com
     privileged: true
   - name: focal.example.com
     image: ubuntu:20.04
+    hostname: focal.example.com
     privileged: true
     dockerfile: Dockerfile-focal.j2
 provisioner:
