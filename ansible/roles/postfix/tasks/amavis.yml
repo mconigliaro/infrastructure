@@ -1,9 +1,7 @@
 ---
 - name: install amavis
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
       - amavisd-new
       - clamav-daemon
       - opendkim
@@ -28,11 +26,9 @@
       - nomarch
       - p7zip-full
       - pax
-      - ripole
       - rpm2cpio
       - unrar-free
       - xz-utils
-      - zoo
   notify:
     - restart amavis
 
