@@ -10,6 +10,7 @@ boto3 = "~=1.11"
 [dev-packages]
 docker-py = "~=1.10"
 molecule = "~=2.22"
+python-vagrant = "~=0.5"
 
 [requires]
 python_version = "3.8"
