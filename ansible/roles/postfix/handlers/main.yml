@@ -3,7 +3,6 @@
   service:
     name: postfix
     state: restarted
-  when: ansible_virtualization_type != "docker"
 
 - name: run newaliases
   command: /usr/bin/newaliases

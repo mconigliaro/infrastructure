@@ -38,8 +38,11 @@ All commands are expected to be run inside a pipenv shell:
 - openssh: tests fail in xenial (ignore)
 - plexmediaserver: pre-installation script fails on Docker
 - postfix: ripole package not available in focal, tests fail, double check master.cf changes
-- raid_devices: mdadm service missing?
+- raid_devices: mdadm service missing on focal?
 - route53_update_dns: depends on awscli
 - rsyslog: tests fail in xenial (ignore)
+- smartmontools: tests fail in xenial (ignore)
+- vsftpd: tests fail in xenial (ignore)
 - review all FIXMEs
-- review docker testing hacks (ag ansible_virtualization_type)
+- can we make docker use a local proxy?
+- docker driver hostname parameter?

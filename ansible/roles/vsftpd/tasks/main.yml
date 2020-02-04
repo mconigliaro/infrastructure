@@ -14,7 +14,6 @@
   service:
     name: vsftpd
     state: started
-  when: ansible_virtualization_type != "docker"
 
 - name: configure monit for vsftpd
   template:

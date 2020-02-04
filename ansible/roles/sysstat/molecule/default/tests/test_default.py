@@ -1,10 +1,6 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
+def test_sysstat_is_running(host):
+    assert host.service('sysstat').is_running
 
 
-def test_sysstat(host):
-    assert host.exists('sar.sysstat')
+def test_sysstat_is_enabled(host):
+    assert host.service('sysstat').is_enabled

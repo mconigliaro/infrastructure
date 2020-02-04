@@ -7,7 +7,6 @@
   service:
     name: postfix
     state: started
-  when: ansible_virtualization_type != "docker"
 
 - name: manage mailname
   template:

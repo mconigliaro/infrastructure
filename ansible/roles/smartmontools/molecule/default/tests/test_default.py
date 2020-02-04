@@ -1,10 +1,6 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
+def test_smartmontools_is_running(host):
+    assert host.service('smartmontools').is_running
 
 
-def test_smartctl(host):
-    assert host.exists('smartctl')
+def test_smartmontools_is_enabled(host):
+    assert host.service('smartmontools').is_enabled

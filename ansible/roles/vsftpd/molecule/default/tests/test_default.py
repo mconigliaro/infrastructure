@@ -1,10 +1,10 @@
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
+def test_vsftpd_is_running(host):
+    assert host.service('vsftpd').is_running
 
 
-def test_vsftpd(host):
-    assert host.exists('vsftpd')
+def test_vsftpd_is_enabled(host):
+    assert host.service('vsftpd').is_enabled
+
+
+def test_vsftpd_is_listening(host):
+    assert 'tcp://0.0.0.0:21' in host.socket.get_listening_sockets()

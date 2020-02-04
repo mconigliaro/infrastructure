@@ -14,7 +14,6 @@
   service:
     name: smartmontools
     state: started
-  when: ansible_virtualization_type != "docker"
 
 - name: configure monit for smartmontools
   template:

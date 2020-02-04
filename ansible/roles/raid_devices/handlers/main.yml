@@ -8,4 +8,3 @@
 # See: http://serverfault.com/questions/763870/raid-device-on-rename-appended-with-0
 - name: run update-initramfs
   command: update-initramfs -u
-  when: ansible_virtualization_type != "docker"
