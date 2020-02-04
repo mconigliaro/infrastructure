@@ -11,7 +11,7 @@ def test_postfix_smtp_is_listening(host):
 
 
 def test_postfix_smtp_amavis_is_listening(host):
-    assert 'tcp://0.0.0.0:10025' in host.socket.get_listening_sockets()
+    assert 'tcp://127.0.0.1:10025' in host.socket.get_listening_sockets()
 
 
 def test_postfix_submission_is_listening(host):
