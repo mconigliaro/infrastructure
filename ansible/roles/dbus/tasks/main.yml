@@ -1,0 +1,16 @@
+---
+- name: install dbus
+  apt:
+    name: dbus
+
+- name: start dbus
+  service:
+    name: dbus
+    state: started
+
+- name: configure monit for dbus
+  template:
+    src: dbus.monit.j2
+    dest: /etc/monit/conf.d/dbus
+  notify:
+    - restart monit
