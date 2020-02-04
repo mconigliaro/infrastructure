@@ -7,7 +7,6 @@
   apt_repository:
     repo: deb http://downloads.plex.tv/repo/deb public main
 
-# FIXME: pre-installation script fails on Docker
 - name: install plexmediaserver
   apt:
     name: plexmediaserver

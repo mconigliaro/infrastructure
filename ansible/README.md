@@ -31,11 +31,15 @@ All commands are expected to be run inside a pipenv shell:
 ## FIXME
 
 - attic: package not available for focal yet?
+- avahi: tests fail on all platforms
 - awscli: error pip installing awscli on focal
 - certbot: package not available for focal yet?
 - dovecot: tests fail in xenial (ignore)
-- opensshL tests fail in xenial (ignore)
-- postfix: ripole package not available, double check master.cf changes
+- openssh: tests fail in xenial (ignore)
+- plexmediaserver: pre-installation script fails on Docker
+- postfix: ripole package not available in focal, tests fail, double check master.cf changes
 - raid_devices: mdadm service missing?
 - route53_update_dns: depends on awscli
+- rsyslog: tests fail in xenial (ignore)
 - review all FIXMEs
+- review docker testing hacks (ag ansible_virtualization_type)
