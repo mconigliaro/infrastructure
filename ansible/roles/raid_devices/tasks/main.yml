@@ -1,12 +1,9 @@
 ---
 - name: install mdadm
   apt:
-    name: mdadm
-
-- name: start mdadm
-  service:
-    name: mdadm
-    state: started
+    name:
+      - mdadm
+      - initramfs-tools
 
 - name: check whether raid devices exist
   stat:
@@ -14,6 +11,8 @@
   loop: "{{ raid_devices }}"
   register: raid_devices_stat_result
 
+# FIXME: mdadm doesn't work in a docker container
+# https://serverfault.com/questions/1001787/how-to-use-software-raid-i-e-mdadm-inside-a-docker-container
 - name: create raid_devices
   command: |
     mdadm --create {{ item.item.device }} --metadata=0.90
@@ -21,7 +20,7 @@
     --raid-devices={{ item.item.volumes | length }}
     {{ item.item.volumes | join(' ') }}
   loop: "{{ raid_devices_stat_result.results }}"
-  when: not item.stat.exists
+  when: not item.stat.exists and ansible_virtualization_type != 'docker'
 
 - name: scan for md devices
   command: mdadm --detail --scan
@@ -36,11 +35,26 @@
     dest: /etc/mdadm/mdadm.conf
   notify:
     - restart mdadm
+    - restart mdmonitor
     - run update-initramfs
 
+- name: start mdadm
+  service:
+    name: mdadm
+    state: started
+  when: ansible_distribution_version == '16.04'
+
+- name: start mdmonitor
+  service:
+    name: mdmonitor
+    state: started
+  when: ansible_distribution_version == '20.04' and ansible_virtualization_type != 'docker'
+
+# FIXME: monitior mdmonitor service in 20.04
 - name: configure monit for mdadm
   template:
     src: mdadm.monit.j2
     dest: /etc/monit/conf.d/mdadm
   notify:
     - restart monit
+  when: ansible_distribution_version == '16.04'
