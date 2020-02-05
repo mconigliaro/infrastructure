@@ -2,24 +2,11 @@
 - hosts: nas
   become: true
   roles:
-    - swap
-    - hosts
-    - apt
-    - packages
-    - unattended_upgrades
-    - sysstat
-    - monit
     - grub
-    - ntp
-    - rsyslog
-    - openssh
-    - postfix
-    - mutt
-    - sudo
-    - fail2ban
     - raid_devices
     - data_volumes
     - users
+    - postfix
     - route53_update_dns
     - smartmontools
     - vsftpd

@@ -2,21 +2,9 @@
 - hosts: mail
   become: true
   roles:
-    - swap
-    - hosts
-    - apt
-    - packages
-    - unattended_upgrades
-    - sysstat
-    - monit
-    - ntp
-    - rsyslog
-    - openssh
-    - certbot
-    - postfix
-    - mutt
-    - sudo
-    - fail2ban
-    - dovecot
     - data_volumes
     - users
+    - certbot
+    - postfix
+    - dovecot
+    - mutt

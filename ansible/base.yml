@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - hosts
+    - swap
+    - apt
+    - packages
+    - unattended_upgrades
+    - ntp
+    - sudo
+    - openssh
+    - sysstat
+    - rsyslog
+    - fail2ban
