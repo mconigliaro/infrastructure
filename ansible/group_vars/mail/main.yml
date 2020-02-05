@@ -1,0 +1,43 @@
+---
+certbot_options:
+  - certonly
+  - --domains mail.conigliaro.org
+  - --standalone
+data_volumes:
+  -
+    device: /dev/xvdf
+    path: /mnt/data
+dovecot_configure_auth: true
+dovecot_configure_imap: true
+dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
+dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
+fail2ban_dovecot_enabled: true
+fail2ban_postfix_enabled: true
+hosts_domain: ec2.local
+monit_mail_format_from: monit@mail.conigliaro.org
+postfix_configure_amavis: true
+postfix_configure_dovecot_imap: true
+postfix_configure_postgrey: true
+postfix_configure_smtpd_sasl: true
+postfix_conf_smtpd_tls_cert_file: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
+postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
+postfix_conf_alias_maps:
+  - "root: mike"
+postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
+postfix_conf_virtual_alias_domains:
+  - conigliaro.org
+  - gyrate.org
+postfix_conf_virtual_maps: "{{ vault_postfix_conf_virtual_maps }}"
+postfix_conf_access_sender: "{{ vault_postfix_conf_access_sender }}"
+postfix_postgrey_whitelist_clients:
+  - amazonses.com
+  - gmail.com
+  - google.com
+  - gov
+  - me.com
+  - outlook.com
+users_home_root: /mnt/data
+users_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2h1LDWTcKTAGGky45old7S+O+iKAgcz9sUGTEKnWrOp0Rtia+UG2FXWpvFWdfbM7j8jiPWZy4kqmOoPAj6E51E2B6w4G1JGXIghaUGF4DF9oFi+iim7ToTGUDIdsrpx8e/ZfWxbqP7UWqMniU6GihUW5nVZxfMcVi5N50TVaFkR4P3gw6Gf4xElZ3nDMSRzRpUJxiUpQyrno1tkGE+EQYvtPSgKFyDpEhShc/ym0RT75lxvLHWuzJfIinE3ub93YtNj0Xt0kldRULXCsyPsv5doclZiZ+Vaa0gK97i4zfWWI6pjMuvHd8oP8Nhm3eI8VD4C1P1woGZQI//QQ8JfjH mike@conigliaro.org
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuxHx4QdgBkj1JgDm5/BAjI3Agc4wf/OgSb6IxQAKg64mINJcfv0BO5YXkKx9aJxkvREcE37rphwI4d39NGplzcB/o3wElN9dr3yWBfl33K/V/nszCfJmduMvCzqHZe05e5U6IQCbh7KVESRDTzdfVYHttgN++J/Xr8R+gN9aj5HsIYYiwVp5EaCdmrvFBl3LiSRzElmcbo5zkvyUOV1NlLBbf9khU4gwQ5XNOpYD48EqV9KQTuVjxUrZ9rPRmkiKtMTdFq5mE77u0RPGtfp3caetNjR2v7Vb1/SShu05vqGXHNHv9s9YKF1vTFe8QcZJPFNSFcAoBY3n2PP8wvbyZ mike@nas
+users_dovecot_sieve: true

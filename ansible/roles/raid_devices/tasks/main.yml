@@ -12,7 +12,7 @@
   register: raid_devices_stat_result
 
 # FIXME: mdadm doesn't work in a docker container
-# https://serverfault.com/questions/1001787/how-to-use-software-raid-i-e-mdadm-inside-a-docker-container
+# https://serverfault.com/questions/1001912/is-it-possible-to-use-software-raid-inside-a-docker-container
 - name: create raid_devices
   command: |
     mdadm --create {{ item.item.device }} --metadata=0.90
