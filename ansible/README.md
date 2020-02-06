@@ -31,7 +31,6 @@ All commands are expected to be run inside a pipenv shell:
 ## Known Issues
 
 ### Focal
-- attic: package not available in focal. switch to borgbackup.
 - awscli: error pip installing awscli
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker

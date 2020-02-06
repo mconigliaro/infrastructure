@@ -14,18 +14,32 @@
   loop: "{{ users_authorized_keys }}"
 
 - include_role:
-    name: attic
-  when: users_attic_backup
+    name: borgbackup
+  when: users_borgbackup_enabled
 
-- name: manage attic cron job
+- name: check whether borg repository exists
+  become: true
+  become_user: mike
+  stat:
+    path: mail.conigliaro.org.borg
+  register: borg_repository_stat_result
+  when: users_borgbackup_enabled
+
+- name: initialize borg repository
+  become: true
+  become_user: mike
+  command: borg init --encryption=none mail.conigliaro.org.borg
+  when: users_borgbackup_enabled and not borg_repository_stat_result.stat.exists
+
+- name: manage borg cron job
   become: true
   become_user: mike
   cron:
-    name: attic_backup_mail.conigliaro.org
+    name: borg_backup_mail.conigliaro.org
     hour: '*/12'
-    minute: 0
-    job: chronic /usr/local/bin/attic_backup mail.conigliaro.org /mnt/data/mike/Maildir
-  when: users_attic_backup
+    minute: '0'
+    job: chronic /usr/local/bin/borg_backup mail.conigliaro.org /mnt/data/mike/Maildir
+  when: users_borgbackup_enabled
 
 - name: manage .dovecot.sieve
   become: true

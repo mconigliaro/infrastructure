@@ -1,0 +1,12 @@
+---
+- name: install borg
+  apt:
+    name:
+      - borgbackup
+      - sshfs
+
+- name: manage borg_backup
+  template:
+    src: borg_backup.j2
+    dest: /usr/local/bin/borg_backup
+    mode: 0755
