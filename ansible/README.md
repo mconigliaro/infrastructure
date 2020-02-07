@@ -31,6 +31,7 @@ All commands are expected to be run inside a pipenv shell:
 ## Known Issues
 
 ### Focal
+- migrate from amavis to rspamd
 - awscli: error pip installing awscli
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker

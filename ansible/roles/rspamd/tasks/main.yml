@@ -1,0 +1,24 @@
+---
+- name: add rspamd key
+  apt_key:
+    url: https://rspamd.com/apt-stable/gpg.key
+
+- name: Add rspamd repository
+  apt_repository:
+    repo: deb http://rspamd.com/apt-stable/ {{ ansible_lsb.codename }} main
+
+- name: install rspamd
+  apt:
+    name: rspamd
+
+- name: start rspamd
+  service:
+    name: rspamd
+    state: started
+
+- name: configure monit for rspamd
+  template:
+    src: rspamd.monit.j2
+    dest: /etc/monit/conf.d/rspamd
+  notify:
+    - restart monit

@@ -1,0 +1,8 @@
+check process rspamd with pidfile /var/run/rspamd/rspamd.pid
+  start program = "/usr/sbin/service rspamd start"
+  stop program  = "/usr/sbin/service rspamd stop"
+  if failed port 11332 with timeout 15 seconds for 3 cycles then restart
+  if failed port 11333 with timeout 15 seconds for 3 cycles then restart
+  # FIXME: add 'protocol http'
+  if failed port 11334 with timeout 15 seconds for 3 cycles then restart
+  if does not exist for 3 cycles then restart
