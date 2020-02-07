@@ -8,7 +8,6 @@ LocalSocketMode 666
 # TemporaryDirectory is not set to its default /tmp here to make overriding
 # the default with environment variables TMPDIR/TMP/TEMP possible
 User clamav
-AllowSupplementaryGroups true
 ScanMail true
 ScanArchive true
 ArchiveBlockEncrypted false
@@ -23,6 +22,8 @@ LogRotate true
 LogFacility LOG_LOCAL6
 LogClean false
 LogVerbose false
+PreludeEnable no
+PreludeAnalyzerName ClamAV
 DatabaseDirectory /var/lib/clamav
 OfficialDatabaseOnly false
 SelfCheck 3600
@@ -38,7 +39,6 @@ MaxHTMLNoTags 2M
 MaxScriptNormalize 5M
 MaxZipTypeRcg 1M
 ScanSWF true
-DetectBrokenExecutables false
 ExitOnOOM false
 LeaveTemporaryFiles false
 AlgorithmicDetection true
@@ -54,16 +54,16 @@ DetectPUA false
 ScanPartialMessages false
 HeuristicScanPrecedence false
 StructuredDataDetection false
-CommandReadTimeout 5
+CommandReadTimeout 30
 SendBufTimeout 200
 MaxQueue 100
 ExtendedDetectionInfo true
 OLE2BlockMacros false
-ScanOnAccess false
 AllowAllMatchScan true
 ForceToDisk false
 DisableCertCheck false
 DisableCache false
+MaxScanTime 120000
 MaxScanSize 100M
 MaxFileSize 25M
 MaxRecursion 16
@@ -76,10 +76,6 @@ PCREMaxFileSize 25M
 ScanXMLDOCS true
 ScanHWP3 true
 MaxRecHWP3 16
-StatsEnabled false
-StatsPEDisabled true
-StatsHostID auto
-StatsTimeout 10
 StreamMaxLength 25M
 LogFile /var/log/clamav/clamav.log
 LogTime true
@@ -88,3 +84,4 @@ LogFileMaxSize 0
 Bytecode true
 BytecodeSecurity TrustSigned
 BytecodeTimeout 60000
+OnAccessMaxFileSize 5M

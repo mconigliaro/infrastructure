@@ -34,7 +34,6 @@ All commands are expected to be run inside a pipenv shell:
 - awscli: error pip installing awscli
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker
-- postfix: tests fail until postfix is restarted manually, double check master.cf changes
 - raid_devices: mdadm service renamed to mdmonitor
 - route53_update_dns: depends on awscli
 - review FIXMEs in all roles before upgrading

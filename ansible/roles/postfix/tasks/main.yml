@@ -3,11 +3,6 @@
   apt:
     name: postfix
 
-- name: start postfix
-  service:
-    name: postfix
-    state: started
-
 - name: manage mailname
   template:
     src: mailname.j2
@@ -52,6 +47,11 @@
     content: "{{ postfix_conf_access_sender | join(\"\n\") }}"
     dest: /etc/postfix/access_sender
   notify: run postmap on access_sender maps
+
+- name: start postfix
+  service:
+    name: postfix
+    state: started
 
 - name: configure monit for postfix
   template:
