@@ -1,0 +1,39 @@
+---
+- name: install redis
+  apt:
+    name:
+      - redis-server
+      - sysfsutils
+
+- name: overcommit memory
+  sysctl:
+    name: vm.overcommit_memory
+    value: '1'
+    sysctl_file: /etc/sysctl.d/10-redis.conf
+  when: ansible_virtualization_type != 'docker'
+
+- name: disable transparent huge pages
+  template:
+    src: 10-redis.conf.j2
+    dest: /etc/sysfs.d/10-redis.conf
+  notify:
+    - restart sysfsutils
+
+- name: manage redis.conf
+  template:
+    src: redis-{{ ansible_distribution_release }}.conf.j2
+    dest: /etc/redis/redis.conf
+  notify:
+    - restart redis
+
+- name: start redis
+  service:
+    name: redis-server
+    state: started
+
+- name: configure monit for redis
+  template:
+    src: redis.monit.j2
+    dest: /etc/monit/conf.d/redis
+  notify:
+    - restart monit

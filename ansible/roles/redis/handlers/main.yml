@@ -1,0 +1,11 @@
+---
+- name: restart redis
+  service:
+    name: redis-server
+    state: restarted
+
+- name: restart sysfsutils
+  service:
+    name: sysfsutils
+    state: restarted
+  when: ansible_virtualization_type != 'docker'
