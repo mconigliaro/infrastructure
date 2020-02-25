@@ -69,8 +69,9 @@ brew 'watch'
 brew 'wget'
 brew 'zsh'
 
-# Linters
+# Code quality
 brew 'ansible-lint'
+brew 'black'
 brew 'flake8'
 brew 'hadolint'
 cask 'jsl'
