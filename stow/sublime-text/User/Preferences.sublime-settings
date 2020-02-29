@@ -7,6 +7,10 @@
 	"copy_with_empty_selection": false,
 	"ensure_newline_at_eof_on_save": true,
 	"find_selected_text": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"save_on_focus_lost": true,
 	"spell_check": true,
 	"translate_tabs_to_spaces": true,

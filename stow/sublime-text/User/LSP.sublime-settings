@@ -1,0 +1,24 @@
+{
+	"clients":
+	{
+		"pyls":
+		{
+			"enabled": true,
+            "settings": {
+                "pyls": {
+                    "configurationSources": ["flake8"],
+                    "plugins": {
+                        "jedi_definition": {
+                            "follow_imports": true
+                        }
+                    }
+                }
+            },
+            "scopes": ["source.python"],
+            "syntaxes": [
+                "Packages/Python/Python.sublime-syntax",
+            ],
+            "languageId": "python"
+		}
+	}
+}
