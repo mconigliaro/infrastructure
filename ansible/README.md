@@ -35,12 +35,9 @@ All commands are expected to be run inside a pipenv shell:
 
 ### Focal
 - migrate from amavis to rspamd
-- awscli: error pip installing awscli
 - certbot: package not available yet?
-- fail2ban: set up monit
 - plexmediaserver: pre-installation script fails in Docker
 - raid_devices: mdadm service renamed to mdmonitor
-- route53_update_dns: depends on awscli
 - review FIXMEs in all roles before upgrading
 
 ### Xenial
