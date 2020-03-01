@@ -12,7 +12,6 @@ platforms:
   - name: focal
     image: ubuntu:20.04
     hostname: focal.example.com
-    dockerfile: Dockerfile-focal.j2
 provisioner:
   name: ansible
   lint:
