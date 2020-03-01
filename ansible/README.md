@@ -28,21 +28,16 @@ All commands are expected to be run inside a pipenv shell:
     passwd <user>
     smbpasswd -a <user>
 
-## Known Issues
+## To Do
 
-### Ansible 3.0
-- delete obsolete `ansible/roles/*/molecule/default/Dockerfile.j2`
-
-### Focal
+### Xenial to Focal
 - migrate from amavis to rspamd
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker
 - raid_devices: mdadm service renamed to mdmonitor
 - review FIXMEs in all roles before upgrading
 
-### Xenial
-
-#### Failing Tests
+#### Known Failing Tests (Xenial)
 - avahi
 - dbus
 - dovecot
@@ -50,3 +45,6 @@ All commands are expected to be run inside a pipenv shell:
 - rsyslog
 - smartmontools
 - vsftpd
+
+### Ansible 3.0
+- delete obsolete `ansible/roles/*/molecule/default/Dockerfile.j2`
