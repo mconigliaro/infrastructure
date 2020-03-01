@@ -21,3 +21,11 @@
   service:
     name: fail2ban
     state: started
+
+- name: configure monit for fail2ban
+  template:
+    src: fail2ban.monit.j2
+    dest: /etc/monit/conf.d/fail2ban
+  notify:
+    - restart monit
+  when: ansible_distribution_version != '16.04'
