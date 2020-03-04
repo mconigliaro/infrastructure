@@ -3,11 +3,10 @@
   template:
     src: sources.list.j2
     dest: /etc/apt/sources.list
-  notify:
-    - run apt update
 
-- name: run apt update immediately
-  meta: flush_handlers
+- name: run apt update
+  apt:
+    cache_valid_time: 86400
 
 - name: install debconf-utils
   apt:
