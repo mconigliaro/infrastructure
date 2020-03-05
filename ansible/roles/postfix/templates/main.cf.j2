@@ -67,13 +67,6 @@ smtpd_recipient_restrictions =
  reject_unauth_destination,
  check_sender_access hash:/etc/postfix/access_sender,
  reject_rbl_client zen.spamhaus.org,
-{% if postfix_configure_postgrey %}
- check_policy_service inet:127.0.0.1:10023
-{% endif %}
-
-{% if postfix_configure_amavis %}
-content_filter = smtp-amavis:127.0.0.1:10024
-{% endif %}
 
 {% if postfix_configure_rspamd %}
 smtpd_milters = inet:127.0.0.1:11332

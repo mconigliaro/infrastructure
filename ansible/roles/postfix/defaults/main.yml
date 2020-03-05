@@ -1,7 +1,5 @@
 ---
-postfix_configure_amavis: false
 postfix_configure_dovecot_imap: false
-postfix_configure_postgrey: false
 postfix_configure_rspamd: false
 postfix_configure_smtpd_sasl: false
 
@@ -18,6 +16,3 @@ postfix_conf_access_sender: []
 
 postfix_conf_smtpd_tls_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
 postfix_conf_smtpd_tls_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
-
-postfix_postgrey_conf_delay: 1
-postfix_postgrey_whitelist_clients: []

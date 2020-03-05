@@ -31,7 +31,6 @@ All commands are expected to be run inside a pipenv shell:
 ## To Do
 
 ### Xenial to Focal
-- delete postfix's amavis and postgrey tasks
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker
 - raid_devices: mdadm service renamed to mdmonitor

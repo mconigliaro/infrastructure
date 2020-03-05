@@ -66,9 +66,3 @@
     dest: /etc/monit/conf.d/postfix
   notify:
     - restart monit
-
-- import_tasks: amavis.yml
-  when: postfix_configure_amavis
-
-- import_tasks: postgrey.yml
-  when: postfix_configure_postgrey

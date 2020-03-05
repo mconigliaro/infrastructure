@@ -19,8 +19,3 @@
       - username password
     postfix_conf_virtual_maps:
       - test@example.com test
-
-    postfix_postgrey_whitelist_clients:
-      - example.com
-      - example.net
-      - example.org
