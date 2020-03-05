@@ -3,18 +3,14 @@
   apt:
     name: dovecot-common
 
-- name: configure dovecot ssl
+- name: configure dovecot
   template:
-    src: 99-ssl.conf.j2
-    dest: /etc/dovecot/conf.d/99-ssl.conf
+    src: "{{ item }}.j2"
+    dest: "/etc/dovecot/conf.d/{{ item }}"
+  loop:
+    - 10-mail.override.conf
+    - 10-ssl.override.conf
   notify: restart dovecot
-
-- name: configure monit for dovecot
-  template:
-    src: dovecot.monit.j2
-    dest: /etc/monit/conf.d/dovecot
-  notify:
-    - restart monit
 
 - import_tasks: auth.yml
   when: dovecot_configure_auth
@@ -22,7 +18,17 @@
 - import_tasks: imap.yml
   when: dovecot_configure_imap
 
+- import_tasks: sieve.yml
+  when: dovecot_configure_sieve
+
 - name: start dovecot
   service:
     name: dovecot
     state: started
+
+- name: configure monit for dovecot
+  template:
+    src: dovecot.monit.j2
+    dest: /etc/monit/conf.d/dovecot
+  notify:
+    - restart monit

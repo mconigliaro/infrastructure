@@ -2,6 +2,4 @@
 - name: sievec
   become: true
   become_user: mike
-  command: sievec .dovecot.sieve .dovecot.sievec
-  args:
-    chdir: "{{ users_home_root }}/mike"
+  command: "sievec {{ users_home_root }}/mike/.dovecot.sieve"

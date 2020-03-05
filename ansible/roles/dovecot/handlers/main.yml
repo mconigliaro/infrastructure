@@ -3,3 +3,6 @@
   service:
     name: dovecot
     state: restarted
+
+- name: sievec_sieve_before
+  command: sievec /var/lib/dovecot/sieve.d

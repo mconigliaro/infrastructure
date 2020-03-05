@@ -1,0 +1,27 @@
+---
+- name: install dovecot sieve
+  apt:
+    name:
+      - dovecot-sieve
+
+- name: configure dovecot sieve
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/dovecot/conf.d/{{ item }}"
+  loop:
+    - 15-lda.override.conf
+    - 90-sieve.override.conf
+  notify: restart dovecot
+
+- name: create sieve_before directory
+  file:
+    path: /var/lib/dovecot/sieve.d
+    state: directory
+
+- name: manage sieve_before scripts
+  template:
+    src: "{{ item }}.j2"
+    dest: "/var/lib/dovecot/sieve.d/{{ item }}"
+  loop:
+    - 10-junk.sieve
+  notify: sievec_sieve_before

@@ -1,6 +1,9 @@
 ---
-- name: configure dovecot imap
+- include_role:
+    name: postfix
+
+- name: configure dovecot auth
   template:
-    src: 99-auth.conf.j2
-    dest: /etc/dovecot/conf.d/99-auth.conf
+    src: 10-auth.override.conf.j2
+    dest: /etc/dovecot/conf.d/10-auth.override.conf
   notify: restart dovecot

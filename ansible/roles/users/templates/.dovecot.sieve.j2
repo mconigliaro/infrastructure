@@ -1,13 +1,12 @@
 #
 # Reference: http://sieve.mozdev.org/reference.html
-# To apply changes: sievec .dovecot.sieve .dovecot.sievec
+# To apply changes: sievec .dovecot.sieve
 # To test: sieve-test .dovecot.sieve <test email>
 #
 
 require [ "regex", "fileinto", "reject" ];
 
 if anyof(
-    header :contains "X-Spam" "Yes",
     address :matches :domain "from" [
       # Retailers
       "*.express.com"
