@@ -31,7 +31,6 @@ All commands are expected to be run inside a pipenv shell:
 ## To Do
 
 ### Xenial to Focal
-- migrate from amavis to rspamd
 - certbot: package not available yet?
 - plexmediaserver: pre-installation script fails in Docker
 - raid_devices: mdadm service renamed to mdmonitor

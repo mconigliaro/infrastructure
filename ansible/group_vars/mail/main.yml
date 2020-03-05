@@ -15,9 +15,8 @@ fail2ban_dovecot_enabled: true
 fail2ban_postfix_enabled: true
 hosts_domain: ec2.local
 monit_mail_format_from: monit@mail.conigliaro.org
-postfix_configure_amavis: true
 postfix_configure_dovecot_imap: true
-postfix_configure_postgrey: true
+postfix_configure_rspamd: true
 postfix_configure_smtpd_sasl: true
 postfix_conf_smtpd_tls_cert_file: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
