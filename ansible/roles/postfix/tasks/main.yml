@@ -1,4 +1,8 @@
 ---
+- include_role:
+    name: rspamd
+  when: postfix_configure_rspamd
+
 - name: install postfix
   apt:
     name: postfix
@@ -8,6 +12,7 @@
     src: mailname.j2
     dest: /etc/mailname
   notify:
+    - stop postfix
     - restart postfix
 
 - name: manage master.cf
@@ -15,6 +20,7 @@
     src: master.cf.j2
     dest: /etc/postfix/master.cf
   notify:
+    - stop postfix
     - restart postfix
 
 - name: manage main.cf
@@ -22,6 +28,7 @@
     src: main.cf.j2
     dest: /etc/postfix/main.cf
   notify:
+    - stop postfix
     - restart postfix
 
 - name: manage alias maps

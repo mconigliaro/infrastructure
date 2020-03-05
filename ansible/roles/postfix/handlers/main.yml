@@ -1,4 +1,9 @@
 ---
+# FIXME: Why doesn't the init script stop postfix in Docker?
+- name: stop postfix
+  command: /usr/sbin/postfix stop
+  when: ansible_virtualization_type == 'docker'
+
 - name: restart postfix
   service:
     name: postfix

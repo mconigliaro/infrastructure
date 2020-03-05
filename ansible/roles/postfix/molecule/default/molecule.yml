@@ -9,9 +9,10 @@ platforms:
   - name: xenial
     image: ubuntu:16.04
     hostname: xenial.example.com
-  - name: focal
-    image: ubuntu:20.04
-    hostname: focal.example.com
+  # FIXME: rspamd packages not available yet
+  # - name: focal
+  #   image: ubuntu:20.04
+  #   hostname: focal.example.com
 provisioner:
   name: ansible
   lint:

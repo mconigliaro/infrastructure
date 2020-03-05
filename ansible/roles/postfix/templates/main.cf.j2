@@ -18,7 +18,7 @@ notify_classes = resource, software
 readme_directory = no
 biff = no
 
-message_size_limit = 20480000
+message_size_limit = 25000000
 
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
@@ -73,6 +73,11 @@ smtpd_recipient_restrictions =
 
 {% if postfix_configure_amavis %}
 content_filter = smtp-amavis:127.0.0.1:10024
+{% endif %}
+
+{% if postfix_configure_rspamd %}
+smtpd_milters = inet:127.0.0.1:11332
+milter_default_action = accept
 {% endif %}
 
 disable_vrfy_command = yes

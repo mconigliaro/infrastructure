@@ -4,9 +4,10 @@
   roles:
     - role: postfix
   vars:
-    postfix_configure_amavis: true
+    # postfix_configure_amavis: true
     postfix_configure_dovecot_imap: true
-    postfix_configure_postgrey: true
+    # postfix_configure_postgrey: true
+    postfix_configure_rspamd: true
     postfix_configure_smtpd_sasl: true
 
     postfix_conf_virtual_alias_domains:

@@ -2,6 +2,7 @@
 postfix_configure_amavis: false
 postfix_configure_dovecot_imap: false
 postfix_configure_postgrey: false
+postfix_configure_rspamd: false
 postfix_configure_smtpd_sasl: false
 
 postfix_conf_myhostname: "{{ ansible_fqdn }}"
