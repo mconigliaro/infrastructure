@@ -1,9 +1,7 @@
 ---
 - name: install dovecot imap
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages:
+    name:
       - dovecot-imapd
       - dovecot-sieve
 
