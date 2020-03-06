@@ -7,10 +7,6 @@ data_volumes:
   -
     device: /dev/xvdf
     path: /mnt/data
-dovecot_configure_auth: true
-dovecot_configure_imap: true
-dovecot_configure_lmtp: true
-dovecot_configure_sieve: true
 dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
 fail2ban_dovecot_enabled: true

@@ -1,28 +1,37 @@
 ---
 - name: install dovecot
   apt:
-    name: dovecot-common
+    name:
+      - dovecot-common
+      - dovecot-imapd
+      - dovecot-lmtpd
+      - dovecot-sieve
 
 - name: configure dovecot
   template:
     src: "{{ item }}.j2"
     dest: "/etc/dovecot/conf.d/{{ item }}"
   loop:
+    - 10-auth.override.conf
     - 10-mail.override.conf
     - 10-ssl.override.conf
+    - 20-imap.override.conf
+    - 20-lmtp.override.conf
+    - 90-sieve.override.conf
   notify: restart dovecot
 
-- import_tasks: auth.yml
-  when: dovecot_configure_auth
+- name: create sieve_before directory
+  file:
+    path: /var/lib/dovecot/sieve_before.d
+    state: directory
 
-- import_tasks: imap.yml
-  when: dovecot_configure_imap
-
-- import_tasks: lmtp.yml
-  when: dovecot_configure_lmtp
-
-- import_tasks: sieve.yml
-  when: dovecot_configure_sieve
+- name: manage sieve_before scripts
+  template:
+    src: "{{ item }}.j2"
+    dest: "/var/lib/dovecot/sieve_before.d/{{ item }}"
+  loop:
+    - 10-junk.sieve
+  notify: sievec_sieve_before
 
 - name: start dovecot
   service:

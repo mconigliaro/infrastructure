@@ -1,3 +1,8 @@
 ---
 dependencies:
-  - monit
+  -
+    role: postfix
+    vars:
+      postfix_configure_dovecot_lmtp: true
+  -
+    role: monit
