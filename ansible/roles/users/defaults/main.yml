@@ -1,5 +1,0 @@
----
-users_home_root: /home
-users_authorized_keys: []
-users_borgbackup_enabled: false
-users_dovecot_sieve: false

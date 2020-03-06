@@ -33,6 +33,15 @@
     - 10-junk.sieve
   notify: sievec_sieve_before
 
+- name: "manage {{ user_username }}'s .dovecot.sieve"
+  become: true
+  become_user: "{{ user_username }}"
+  template:
+    src: .dovecot.sieve.j2
+    dest: "{{ user_home_root }}/{{ user_username }}/.dovecot.sieve"
+  notify:
+    - user_sievec
+
 - name: start dovecot
   service:
     name: dovecot

@@ -28,3 +28,7 @@ def test_dovecot_lmtp_socket(host):
 
 def test_dovecot_sieve_before_scripts(host):
     assert host.file("/var/lib/dovecot/sieve_before.d/10-junk.svbin").exists
+
+
+def test_dovecot_user_sieve(host):
+    assert host.file("/home/mike/.dovecot.svbin").exists

@@ -5,10 +5,10 @@
     - grub
     - raid_devices
     - data_volumes
-    - users
     - postfix
     - route53_update_dns
     - smartmontools
     - vsftpd
     - samba
     - plexmediaserver
+    - borgbackup

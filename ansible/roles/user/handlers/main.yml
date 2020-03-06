@@ -1,0 +1,5 @@
+---
+- name: user_sievec
+  become: true
+  become_user: "{{ user_username }}"
+  command: "sievec {{ user_home_root }}/{{ user_username }}/.dovecot.sieve"

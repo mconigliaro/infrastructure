@@ -1,5 +1,0 @@
----
-- name: sievec
-  become: true
-  become_user: mike
-  command: "sievec {{ users_home_root }}/mike/.dovecot.sieve"

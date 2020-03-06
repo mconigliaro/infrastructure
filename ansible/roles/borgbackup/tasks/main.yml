@@ -3,6 +3,8 @@
   apt:
     name:
       - borgbackup
+      - cron
+      - cronic
       - sshfs
 
 - name: manage borg_backup
@@ -10,3 +12,12 @@
     src: borg_backup.j2
     dest: /usr/local/bin/borg_backup
     mode: 0755
+
+- name: manage borg_backup cron job
+  become: true
+  become_user: "{{ user_username }}"
+  cron:
+    name: borg_backup_mail.conigliaro.org
+    hour: '*/12'
+    minute: '0'
+    job: "cronic /usr/local/bin/borg_backup mail.conigliaro.org /mnt/data/{{ user_username }}/Maildir"

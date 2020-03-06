@@ -1,0 +1,14 @@
+---
+- name: "manage {{ user_username }}'s account"
+  user:
+    name: "{{ user_username }}"
+    home: "{{ user_home_root }}/{{ user_username }}"
+    groups:
+      - sudo
+    append: true
+
+- name: "manage {{ user_username }}'s SSH authorized_keys"
+  authorized_key:
+    user: "{{ user_username }}"
+    key: "{{ item }}"
+  loop: "{{ user_authorized_keys }}"
