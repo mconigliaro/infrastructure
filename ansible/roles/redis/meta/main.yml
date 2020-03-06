@@ -1,4 +1,3 @@
 ---
 dependencies:
-  - apt
-  - monit
+  - role: monit

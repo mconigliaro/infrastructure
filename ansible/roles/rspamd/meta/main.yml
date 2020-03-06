@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - redis
-  - monit
+  - role: redis
+  - role: monit
