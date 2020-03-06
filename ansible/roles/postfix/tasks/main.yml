@@ -1,7 +1,9 @@
 ---
 - name: install postfix
   apt:
-    name: postfix
+    name:
+      - postfix
+      - ssl-cert
 
 - name: manage mailname
   template:
