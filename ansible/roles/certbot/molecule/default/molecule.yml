@@ -8,8 +8,9 @@ lint:
 platforms:
   - name: xenial
     image: ubuntu:16.04
-  - name: focal
-    image: ubuntu:20.04
+  # FIXME: package not available yet
+  # - name: focal
+  #   image: ubuntu:20.04
 provisioner:
   name: ansible
   lint:

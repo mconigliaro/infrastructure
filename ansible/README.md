@@ -30,12 +30,6 @@ All commands are expected to be run inside a pipenv shell:
 
 ## To Do
 
-### Xenial to Focal
-- certbot: package not available yet?
-- plexmediaserver: pre-installation script fails in Docker
-- raid_devices: mdadm service renamed to mdmonitor
-- review FIXMEs in all roles before upgrading
-
 #### Known Failing Tests (Xenial)
 - avahi
 - dbus

@@ -50,7 +50,7 @@
     state: started
   when: ansible_distribution_version == '20.04' and ansible_virtualization_type != 'docker'
 
-# FIXME: monitior mdmonitor service in 20.04
+# FIXME: mdadm service renamed to mdmonitor in 20.04
 - name: configure monit for mdadm
   template:
     src: mdadm.monit.j2
