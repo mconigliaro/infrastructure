@@ -5,6 +5,7 @@
     - data_volumes
     - users
     - certbot
+    - rspamd
     - postfix
     - dovecot
     - mutt

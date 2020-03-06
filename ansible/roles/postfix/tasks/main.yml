@@ -1,8 +1,4 @@
 ---
-- include_role:
-    name: rspamd
-  when: postfix_configure_rspamd
-
 - name: install postfix
   apt:
     name: postfix

@@ -11,18 +11,18 @@ def test_dovecot_is_listening(host):
 
 
 def test_dovecot_auth_socket(host):
-    file = host.file("/var/spool/postfix/private/dovecot-auth")
+    file = host.file("/var/lib/dovecot/dovecot-auth")
     assert file.exists
-    assert file.user == "postfix"
-    assert file.group == "postfix"
+    assert file.user == "dovecot"
+    assert file.group == "dovecot"
     assert file.mode == 0o666
 
 
 def test_dovecot_lmtp_socket(host):
-    file = host.file("/var/spool/postfix/private/dovecot-lmtp")
+    file = host.file("/var/lib/dovecot/dovecot-lmtp")
     assert file.exists
-    assert file.user == "postfix"
-    assert file.group == "postfix"
+    assert file.user == "dovecot"
+    assert file.group == "dovecot"
     assert file.mode == 0o666
 
 

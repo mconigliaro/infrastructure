@@ -1,3 +1,8 @@
 ---
 dovecot_ssl_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem
 dovecot_ssl_key: /etc/ssl/private/ssl-cert-snakeoil.key
+
+dovecot_socket_dir: /var/lib/dovecot
+dovecot_socket_user: dovecot
+dovecot_socket_group: dovecot
+dovecot_socket_mode: "0666"

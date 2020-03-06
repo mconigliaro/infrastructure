@@ -1,8 +1,8 @@
 service auth {
-  unix_listener /var/spool/postfix/private/dovecot-auth {
-    user = postfix
-    group = postfix
-    mode = 0666
+  unix_listener {{ dovecot_socket_dir }}/dovecot-auth {
+    user = {{ dovecot_socket_user }}
+    group = {{ dovecot_socket_group }}
+    mode = {{ dovecot_socket_mode }}
   }
 }
 

@@ -9,13 +9,15 @@ data_volumes:
     path: /mnt/data
 dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
+dovecot_socket_dir: /var/spool/postfix/private
+dovecot_socket_user: postfix
+dovecot_socket_group: postfix
 fail2ban_dovecot_enabled: true
 fail2ban_postfix_enabled: true
 hosts_domain: ec2.local
 monit_mail_format_from: monit@mail.conigliaro.org
-postfix_configure_dovecot_lmtp: true
-postfix_configure_rspamd: true
 postfix_configure_smtpd_sasl: true
+postfix_conf_smtpd_milters: inet:127.0.0.1:11332
 postfix_conf_smtpd_tls_cert_file: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
 postfix_conf_alias_maps:
@@ -23,6 +25,7 @@ postfix_conf_alias_maps:
 postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
 postfix_conf_virtual_maps: "{{ vault_postfix_conf_virtual_maps }}"
 postfix_conf_access_sender: "{{ vault_postfix_conf_access_sender }}"
+postfix_conf_mailbox_transport: lmtp:unix:private/dovecot-lmtp
 users_home_root: /mnt/data
 users_authorized_keys:
   - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2h1LDWTcKTAGGky45old7S+O+iKAgcz9sUGTEKnWrOp0Rtia+UG2FXWpvFWdfbM7j8jiPWZy4kqmOoPAj6E51E2B6w4G1JGXIghaUGF4DF9oFi+iim7ToTGUDIdsrpx8e/ZfWxbqP7UWqMniU6GihUW5nVZxfMcVi5N50TVaFkR4P3gw6Gf4xElZ3nDMSRzRpUJxiUpQyrno1tkGE+EQYvtPSgKFyDpEhShc/ym0RT75lxvLHWuzJfIinE3ub93YtNj0Xt0kldRULXCsyPsv5doclZiZ+Vaa0gK97i4zfWWI6pjMuvHd8oP8Nhm3eI8VD4C1P1woGZQI//QQ8JfjH mike@conigliaro.org

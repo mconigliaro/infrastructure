@@ -6,9 +6,7 @@ mydestination = $myhostname, localhost
 
 alias_maps = hash:/etc/aliases
 virtual_alias_maps = hash:/etc/postfix/virtual
-{% if postfix_configure_dovecot_lmtp %}
-mailbox_transport = lmtp:unix:private/dovecot-lmtp
-{% endif %}
+mailbox_transport = {{ postfix_conf_mailbox_transport }}
 
 mailbox_size_limit = 0
 message_size_limit = 25000000
@@ -56,15 +54,11 @@ smtpd_recipient_restrictions =
  reject_unauth_destination,
  check_sender_access hash:/etc/postfix/access_sender
 
-{% if postfix_configure_rspamd %}
-smtpd_milters = inet:127.0.0.1:11332
+smtpd_milters = {{ postfix_conf_smtpd_milters }}
 milter_default_action = accept
-{% endif %}
 
 # https://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html
-{% if postfix_conf_relayhost %}
 relayhost = {{ postfix_conf_relayhost }}
-{% endif %}
 smtp_sasl_auth_enable = yes
 smtp_sasl_security_options = noanonymous
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_password
