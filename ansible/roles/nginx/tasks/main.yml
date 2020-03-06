@@ -1,0 +1,37 @@
+---
+- name: install nginx
+  apt:
+    name:
+      - nginx
+      - ssl-cert
+
+- name: configure nginx
+  template:
+    src: "{{ item }}.conf.j2"
+    dest: "/etc/nginx/{{ item }}"
+    mode: 0644
+  loop:
+    - proxy_params
+    - ssl_params
+  notify:
+    - reload nginx
+
+- name: configure nginx default site
+  template:
+    src: default.site.j2
+    dest: /etc/nginx/sites-available/default
+    mode: 0644
+  notify:
+    - reload nginx
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+
+- name: configure monit for nginx
+  template:
+    src: nginx.monit.j2
+    dest: /etc/monit/conf.d/nginx
+  notify:
+    - restart monit

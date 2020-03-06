@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: apt
+    - role: nginx
+  vars:
+    nginx_proxy_paths:
+      test: http://127.0.0.1:80/
