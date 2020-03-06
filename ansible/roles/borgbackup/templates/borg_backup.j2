@@ -19,5 +19,8 @@ trap cleanup EXIT
 
 mkdir -p "$LOCAL_PATH"
 sshfs -o idmap=user "$REMOTE_HOST:/" "$LOCAL_PATH"
+if [[ ! -e "$REPOSITORY" ]]; then
+    borg init --encryption=none "$REPOSITORY"
+fi
 borg create --progress --stats "$REPOSITORY::$(date +%Y.%m.%d.%H.%M)" $REMOTE_PATHS
 borg prune --verbose "$REPOSITORY" --keep-daily=7 --keep-weekly=4 --keep-monthly=3
