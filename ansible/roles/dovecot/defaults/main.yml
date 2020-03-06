@@ -1,6 +1,7 @@
 ---
 dovecot_configure_auth: false
 dovecot_configure_imap: false
+dovecot_configure_lmtp: false
 dovecot_configure_sieve: false
 
 dovecot_ssl_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem

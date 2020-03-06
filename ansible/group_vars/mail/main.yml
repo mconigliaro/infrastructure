@@ -9,6 +9,7 @@ data_volumes:
     path: /mnt/data
 dovecot_configure_auth: true
 dovecot_configure_imap: true
+dovecot_configure_lmtp: true
 dovecot_configure_sieve: true
 dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
@@ -16,7 +17,7 @@ fail2ban_dovecot_enabled: true
 fail2ban_postfix_enabled: true
 hosts_domain: ec2.local
 monit_mail_format_from: monit@mail.conigliaro.org
-postfix_configure_dovecot_imap: true
+postfix_configure_dovecot_lmtp: true
 postfix_configure_rspamd: true
 postfix_configure_smtpd_sasl: true
 postfix_conf_smtpd_tls_cert_file: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
@@ -24,9 +25,6 @@ postfix_conf_smtpd_tls_key_file: /etc/letsencrypt/live/mail.conigliaro.org/privk
 postfix_conf_alias_maps:
   - "root: mike"
 postfix_conf_sasl_password_maps: "{{ vault_postfix_conf_sasl_password_maps }}"
-postfix_conf_virtual_alias_domains:
-  - conigliaro.org
-  - gyrate.org
 postfix_conf_virtual_maps: "{{ vault_postfix_conf_virtual_maps }}"
 postfix_conf_access_sender: "{{ vault_postfix_conf_access_sender }}"
 users_home_root: /mnt/data

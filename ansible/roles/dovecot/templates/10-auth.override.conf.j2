@@ -1,5 +1,9 @@
 service auth {
-  unix_listener /var/spool/postfix/private/auth {
+  unix_listener /var/spool/postfix/private/dovecot-auth {
+    user = postfix
+    group = postfix
     mode = 0666
   }
 }
+
+auth_username_format = %Ln

@@ -18,6 +18,9 @@
 - import_tasks: imap.yml
   when: dovecot_configure_imap
 
+- import_tasks: lmtp.yml
+  when: dovecot_configure_lmtp
+
 - import_tasks: sieve.yml
   when: dovecot_configure_sieve
 

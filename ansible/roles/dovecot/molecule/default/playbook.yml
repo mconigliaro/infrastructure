@@ -6,4 +6,5 @@
   vars:
     dovecot_configure_auth: true
     dovecot_configure_imap: true
+    dovecot_configure_lmtp: true
     dovecot_configure_sieve: true

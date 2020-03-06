@@ -4,14 +4,9 @@
   roles:
     - role: postfix
   vars:
-    postfix_configure_dovecot_imap: true
+    postfix_configure_dovecot_lmtp: true
     postfix_configure_rspamd: true
     postfix_configure_smtpd_sasl: true
-
-    postfix_conf_virtual_alias_domains:
-      - example.com
-      - example.net
-      - example.org
 
     postfix_conf_alias_maps:
       - "test: mike"
