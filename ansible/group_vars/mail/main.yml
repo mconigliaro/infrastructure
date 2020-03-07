@@ -1,7 +1,7 @@
 ---
 certbot_options:
   - certonly
-  - --domains mail.conigliaro.org
+  - --domains mail.conigliaro.org,mail.gyrate.org
   - --standalone
 data_volumes:
   -
