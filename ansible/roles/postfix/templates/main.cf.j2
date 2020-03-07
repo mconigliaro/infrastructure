@@ -2,9 +2,8 @@ compatibility_level = 2
 
 inet_interfaces = {{ postfix_conf_inet_interfaces | join(', ') }}
 
-myorigin = /etc/mailname
 myhostname = {{ postfix_conf_myhostname }}
-mydestination = $myhostname, localhost
+myorigin = /etc/mailname
 
 alias_maps = hash:/etc/aliases
 virtual_alias_maps = hash:/etc/postfix/virtual
@@ -14,15 +13,10 @@ mailbox_size_limit = 0
 message_size_limit = 25000000
 recipient_delimiter = +
 
-delay_warning_time = 15m
-notify_classes = resource, software
-
-readme_directory = no
 biff = no
-
-disable_vrfy_command = yes
-smtpd_delay_reject = yes
-smtpd_helo_required = yes
+delay_warning_time = 15m
+confirm_delay_cleared = yes
+notify_classes = delay, resource, software
 
 # https://ssl-config.mozilla.org
 smtpd_use_tls = yes
@@ -30,8 +24,10 @@ smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
 smtpd_tls_cert_file = {{ postfix_conf_smtpd_tls_cert_file }}
 smtpd_tls_key_file = {{ postfix_conf_smtpd_tls_key_file }}
-smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, !TLSv1.2
-smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1, !TLSv1.2
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_protocols = !SSLv2, !SSLv3, !TLSv1, !TLSv1.1
+smtpd_tls_mandatory_ciphers = medium
+tls_medium_cipherlist = ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
 tls_preempt_cipherlist = no
 
 {% if postfix_configure_smtpd_sasl %}
@@ -42,26 +38,28 @@ smtpd_sasl_authenticated_header = yes
 smtpd_sasl_security_options = noanonymous
 {% endif %}
 
-smtpd_client_restrictions =
- permit_mynetworks,
- check_client_access hash:/etc/postfix/access_client
-smtpd_sender_restrictions =
- permit_mynetworks,
- reject_non_fqdn_sender,
- reject_unknown_sender_domain
-smtpd_recipient_restrictions =
- permit_mynetworks,
-{% if postfix_configure_smtpd_sasl %}
- permit_sasl_authenticated,
-{% endif %}
- reject_unauth_pipelining,
- reject_non_fqdn_recipient,
- reject_unknown_recipient_domain,
- reject_unauth_destination,
- check_sender_access hash:/etc/postfix/access_sender
+disable_vrfy_command = yes
+show_user_unknown_table_name = no
+strict_rfc821_envelopes = yes
+smtpd_tls_received_header = yes
 
 smtpd_milters = {{ postfix_conf_smtpd_milters }}
 milter_default_action = accept
+
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_pipelining,
+  reject_non_fqdn_sender,
+  reject_unknown_sender_domain,
+  check_sender_access hash:/etc/postfix/access_sender,
+  reject_non_fqdn_recipient,
+  reject_unknown_recipient_domain
+
+smtpd_relay_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination
 
 # https://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html
 relayhost = {{ postfix_conf_relayhost }}
