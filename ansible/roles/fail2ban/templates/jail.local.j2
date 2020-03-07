@@ -5,12 +5,12 @@
 enabled = true
 logpath = /var/log/mail.log
 {% endif %}
+{% if fail2ban_nginx_enabled %}
+[nginx-http-auth]
+enabled = true
+{% endif %}
 {% if fail2ban_postfix_enabled %}
 [postfix]
 enabled = true
 logpath = /var/log/mail.log
-{% endif %}
-{% if fail2ban_nginx_enabled %}
-[nginx-http-auth]
-enabled = true
 {% endif %}
