@@ -4,7 +4,7 @@
     name:
       - borgbackup
       - cron
-      - cronic
+      - moreutils
       - sshfs
 
 - name: manage borg_backup
@@ -20,4 +20,4 @@
     name: borg_backup_mail.conigliaro.org
     hour: '*/12'
     minute: '0'
-    job: "cronic /usr/local/bin/borg_backup mail.conigliaro.org /mnt/data/{{ user_username }}/Maildir"
+    job: "chronic /usr/local/bin/borg_backup mail.conigliaro.org /mnt/data/{{ user_username }}/Maildir"
