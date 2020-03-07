@@ -19,6 +19,7 @@
     mode: 0644
   loop:
     - auth_params
+    - proxy_params
     - ssl_params
   notify:
     - reload nginx
