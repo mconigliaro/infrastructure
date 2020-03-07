@@ -1,4 +1,3 @@
 ---
 nginx_ssl_certificate: /etc/ssl/certs/ssl-cert-snakeoil.pem
 nginx_ssl_certificate_key: /etc/ssl/private/ssl-cert-snakeoil.key
-nginx_proxy_paths: {}

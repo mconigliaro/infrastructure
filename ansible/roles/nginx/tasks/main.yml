@@ -3,15 +3,22 @@
   apt:
     name:
       - nginx
+      # FIXME: Use auth_pam in 20.04
+      # - libnginx-mod-http-auth-pam
       - ssl-cert
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
 
 - name: configure nginx
   template:
     src: "{{ item }}.conf.j2"
-    dest: "/etc/nginx/{{ item }}"
+    dest: "/etc/nginx/snippets/{{ item }}.conf"
     mode: 0644
   loop:
-    - proxy_params
+    - auth_params
     - ssl_params
   notify:
     - reload nginx
@@ -24,10 +31,16 @@
   notify:
     - reload nginx
 
-- name: start nginx
-  service:
-    name: nginx
-    state: started
+- name: delete default index.html
+  file:
+    path: /var/www/html/index.nginx-debian.html
+    state: absent
+
+- name: manage index.html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    mode: 0644
 
 - name: configure monit for nginx
   template:

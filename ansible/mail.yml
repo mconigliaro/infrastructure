@@ -8,3 +8,4 @@
     - postfix
     - dovecot
     - mutt
+    - nginx

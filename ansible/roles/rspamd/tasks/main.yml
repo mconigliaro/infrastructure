@@ -23,6 +23,13 @@
     name: rspamd
     state: started
 
+- name: configure nginx for rspamd
+  template:
+    src: rspamd_proxy.conf.j2
+    dest: /etc/nginx/snippets/rspamd_proxy.conf
+  notify:
+    - reload nginx
+
 - name: configure monit for rspamd
   template:
     src: rspamd.monit.j2
