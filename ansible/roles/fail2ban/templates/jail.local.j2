@@ -10,3 +10,7 @@ logpath = /var/log/mail.log
 enabled = true
 logpath = /var/log/mail.log
 {% endif %}
+{% if fail2ban_nginx_enabled %}
+[nginx-http-auth]
+enabled = true
+{% endif %}

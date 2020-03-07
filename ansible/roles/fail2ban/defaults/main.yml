@@ -1,3 +1,4 @@
 ---
 fail2ban_dovecot_enabled: false
 fail2ban_postfix_enabled: false
+fail2ban_nginx_enabled: false

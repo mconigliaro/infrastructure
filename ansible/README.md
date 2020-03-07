@@ -30,8 +30,7 @@ All commands are expected to be run inside a pipenv shell:
 
 ## To Do
 
-- Set up nginx proxy to rspamd and plex
-  - Add basic auth with PAM
+- Set up nginx proxy to plex
 - Fix postfix mail forwarding
     - https://serverfault.com/questions/681278/forwarding-email-with-postfix-via-aws-ses
     - https://serverfault.com/questions/499955/aws-ses-email-address-is-not-verified-error-with-postfix-relay/634366#634366
