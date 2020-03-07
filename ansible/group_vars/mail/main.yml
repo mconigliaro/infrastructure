@@ -1,8 +1,10 @@
 ---
+certbot_plugins:
+  - python3-certbot-nginx
 certbot_options:
   - certonly
   - --domains mail.conigliaro.org,mail.gyrate.org
-  - --standalone
+  - --nginx
 data_volumes:
   -
     device: /dev/xvdf
