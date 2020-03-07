@@ -32,6 +32,16 @@ resource "aws_security_group_rule" "http" {
   description       = "Certbot"
 }
 
+resource "aws_security_group_rule" "https" {
+  security_group_id = aws_security_group.mail.id
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 443
+  to_port           = 443
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "Nginx"
+}
+
 resource "aws_security_group_rule" "icmp_echo_request" {
   security_group_id = aws_security_group.mail.id
   type              = "ingress"
