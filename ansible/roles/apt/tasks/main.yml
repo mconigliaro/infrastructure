@@ -19,7 +19,8 @@
 
 - name: run apt upgrade
   apt:
-    upgrade: true
+    upgrade: yes
+  # FIXME: Why is Ansible warning about this being a string?
   when: apt_upgrade
 
 # Required by apt-key commands
