@@ -1,16 +1,5 @@
-data "aws_ami" "ami" {
-  owners = ["099720109477"]
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
-  }
-
-  most_recent = true
-}
-
 resource "aws_instance" "mail" {
-  ami           = coalesce(var.ami, data.aws_ami.ami.id)
+  ami           = "ami-80861296" # us-east-1 xenial hvm ssd
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mike.key_name
   subnet_id     = module.vpc.public_subnets[0]
@@ -29,6 +18,7 @@ resource "aws_instance" "mail" {
 
 resource "aws_ebs_volume" "data" {
   availability_zone = "us-east-1b"
+  type              = "standard"
   size              = 3
 
   tags = {
