@@ -2,8 +2,14 @@
 - name: install avahi
   apt:
     name:
+      - dbus
       - avahi-daemon
       - avahi-utils
+
+- name: start dbus
+  service:
+    name: dbus
+    state: started
 
 - name: start avahi
   service:
