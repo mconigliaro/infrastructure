@@ -38,23 +38,15 @@
     - restart mdmonitor
     - run update-initramfs
 
-- name: start mdadm
-  service:
-    name: mdadm
-    state: started
-  when: ansible_distribution_version == '16.04'
-
 - name: start mdmonitor
   service:
     name: mdmonitor
     state: started
-  when: ansible_distribution_version == '20.04' and ansible_virtualization_type != 'docker'
+  when: ansible_virtualization_type != 'docker'
 
-# FIXME: mdadm service renamed to mdmonitor in 20.04
-- name: configure monit for mdadm
+- name: configure monit for mdmonitor
   template:
-    src: mdadm.monit.j2
-    dest: /etc/monit/conf.d/mdadm
+    src: mdmonitor.monit.j2
+    dest: /etc/monit/conf.d/mdmonitor
   notify:
     - restart monit
-  when: ansible_distribution_version == '16.04'

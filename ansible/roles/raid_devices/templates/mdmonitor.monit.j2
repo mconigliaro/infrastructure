@@ -1,0 +1,4 @@
+check process mdmonitor matching 'mdadm --monitor'
+  start program = "/usr/sbin/service mdmonitor start"
+  stop program  = "/usr/sbin/service mdmonitor stop"
+  if does not exist for 3 cycles then restart

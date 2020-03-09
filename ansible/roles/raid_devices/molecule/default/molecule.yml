@@ -6,14 +6,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: xenial
-    image: ubuntu:16.04
-    hostname: xenial.example.com
+  - name: bionic
+    image: ubuntu:18.04
+    hostname: bionic.example.com
     privileged: true
-  - name: focal
-    image: ubuntu:20.04
-    hostname: focal.example.com
-    privileged: true
+  # - name: focal
+  #   image: ubuntu:20.04
+  #   hostname: focal.example.com
+  #   privileged: true
 provisioner:
   name: ansible
   lint:
