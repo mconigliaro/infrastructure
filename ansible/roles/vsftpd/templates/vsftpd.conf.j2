@@ -11,7 +11,7 @@
 #
 # Run standalone?  vsftpd can run either from an inetd or as a standalone
 # daemon started from an initscript.
-listen=NO
+listen=YES
 #
 # This directive enables listening on IPv6 sockets. By default, listening
 # on the IPv6 "any" address (::) will accept connections from both IPv6
@@ -19,7 +19,7 @@ listen=NO
 # sockets. If you want that (perhaps because you want to listen on specific
 # addresses) then you must run two copies of vsftpd with two configuration
 # files.
-listen_ipv6=YES
+listen_ipv6=NO
 #
 # Allow anonymous FTP? (Disabled by default).
 anonymous_enable=NO

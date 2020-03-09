@@ -3,7 +3,7 @@
   apt:
     name:
       - nginx
-      # FIXME: Use auth_pam in 20.04
+      # FIXME: Use auth_pam in 18.04+
       # - libnginx-mod-http-auth-pam
       - ssl-cert
 
