@@ -19,6 +19,14 @@
   notify:
     - restart sysfsutils
 
+- name: manage redis dir
+  file:
+    path: "{{ redis_dir }}"
+    state: directory
+    owner: redis
+    group: redis
+    mode: 0750
+
 - name: manage redis.conf
   template:
     src: redis-{{ ansible_distribution_release }}.conf.j2
