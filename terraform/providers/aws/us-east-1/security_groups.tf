@@ -1,3 +1,13 @@
+resource "aws_security_group_rule" "icmp_echo_request" {
+  security_group_id = module.vpc.default_security_group_id
+  type              = "ingress"
+  protocol          = "icmp"
+  from_port         = 8
+  to_port           = -1
+  cidr_blocks       = ["0.0.0.0/0"]
+  description       = "ICMP echo request"
+}
+
 resource "aws_security_group_rule" "ssh" {
   security_group_id = module.vpc.default_security_group_id
   type              = "ingress"
@@ -40,16 +50,6 @@ resource "aws_security_group_rule" "https" {
   to_port           = 443
   cidr_blocks       = ["0.0.0.0/0"]
   description       = "Nginx"
-}
-
-resource "aws_security_group_rule" "icmp_echo_request" {
-  security_group_id = aws_security_group.mail.id
-  type              = "ingress"
-  protocol          = "icmp"
-  from_port         = 8
-  to_port           = -1
-  cidr_blocks       = ["0.0.0.0/0"]
-  description       = "ICMP echo request"
 }
 
 resource "aws_security_group_rule" "imap" {
