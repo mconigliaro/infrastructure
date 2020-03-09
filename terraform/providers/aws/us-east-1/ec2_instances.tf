@@ -1,4 +1,4 @@
-resource "aws_instance" "mail" {
+resource "aws_instance" "mail-2017-09-12" {
   ami           = "ami-80861296" # us-east-1 xenial hvm ssd
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mike.key_name
@@ -10,7 +10,7 @@ resource "aws_instance" "mail" {
   ]
 
   tags = {
-    Name = "mail"
+    Name = "mail-2017-09-12"
   }
 
   disable_api_termination = true
@@ -28,6 +28,6 @@ resource "aws_ebs_volume" "data" {
 
 resource "aws_volume_attachment" "mail_data" {
   device_name = "/dev/sdf"
-  instance_id = aws_instance.mail.id
+  instance_id = aws_instance.mail-2017-09-12.id
   volume_id   = aws_ebs_volume.data.id
 }
