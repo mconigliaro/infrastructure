@@ -7,7 +7,6 @@
     - apt
     - ubuntu
     - unattended_upgrades
-    - ntp
     - sudo
     - openssh
     - sysstat

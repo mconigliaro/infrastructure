@@ -1,4 +1,10 @@
 ---
+- name: install redis
+  apt:
+    name:
+      - redis-server
+      - sysfsutils
+
 - name: overcommit memory
   sysctl:
     name: vm.overcommit_memory
@@ -12,12 +18,6 @@
     dest: /etc/sysfs.d/10-redis.conf
   notify:
     - restart sysfsutils
-
-- name: install redis
-  apt:
-    name:
-      - redis-server
-      - sysfsutils
 
 - name: manage custom redis dir
   file:
