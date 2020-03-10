@@ -1,7 +1,7 @@
 resource "aws_ebs_volume" "data" {
   availability_zone = "us-east-1b"
   type              = "standard"
-  size              = 3
+  size              = 4
 
   tags = {
     Name = "data"
