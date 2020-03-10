@@ -10,5 +10,4 @@
     - sudo
     - openssh
     - sysstat
-    - rsyslog
     - fail2ban
