@@ -1,5 +1,5 @@
 resource "aws_eip" "mail" {
-  instance = aws_instance.mail-2017-09-12.id
+  instance = aws_instance.mail-2020-03-09.id
   vpc      = true
 
   tags = {
