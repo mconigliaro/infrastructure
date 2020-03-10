@@ -20,4 +20,17 @@ set httpd port 2812 and
   use address localhost
   allow localhost
 
+check filesystem rootfs with path /
+  if space usage > 90% for 5 times within 15 cycles then alert
+
+check process cron with pidfile /var/run/crond.pid
+  start program = "/usr/sbin/service cron start"
+  stop program  = "/usr/sbin/service cron stop"
+  if does not exist for 3 cycles then restart
+
+check process rsyslog with pidfile /var/run/rsyslogd.pid
+  start program = "/usr/sbin/service rsyslog start"
+  stop program  = "/usr/sbin/service rsyslog stop"
+  if does not exist for 3 cycles then restart
+
 include /etc/monit/conf.d/*
