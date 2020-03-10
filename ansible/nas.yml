@@ -2,7 +2,6 @@
 - hosts: nas
   become: true
   roles:
-    - grub
     - raid_devices
     - data_volumes
     - postfix
