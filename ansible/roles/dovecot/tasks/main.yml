@@ -20,6 +20,20 @@
     - 90-sieve.override.conf
   notify: restart dovecot
 
+- name: create sieve directory
+  file:
+    path: /var/lib/dovecot/sieve
+    state: directory
+
+- name: manage sieve scripts
+  template:
+    src: "{{ item }}.j2"
+    dest: "/var/lib/dovecot/sieve/{{ item }}"
+  loop:
+    - learn_ham.sieve
+    - learn_spam.sieve
+  notify: sievec_sieve
+
 - name: create sieve_before directory
   file:
     path: /var/lib/dovecot/sieve_before.d

@@ -1,3 +1,18 @@
 plugin {
+  sieve_plugins = sieve_imapsieve sieve_extprograms
+
   sieve_before = /var/lib/dovecot/sieve_before.d
+
+  imapsieve_mailbox1_name = Junk
+  imapsieve_mailbox1_causes = COPY
+  imapsieve_mailbox1_before = file:/var/lib/dovecot/sieve/learn_spam.sieve
+
+  imapsieve_mailbox2_name = *
+  imapsieve_mailbox2_from = Junk
+  imapsieve_mailbox2_causes = COPY
+  imapsieve_mailbox2_before = file:/var/lib/dovecot/sieve/learn_ham.sieve
+
+  sieve_pipe_bin_dir = /usr/bin
+
+  sieve_global_extensions = +vnd.dovecot.pipe
 }

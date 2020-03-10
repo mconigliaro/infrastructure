@@ -4,5 +4,8 @@
     name: dovecot
     state: restarted
 
+- name: sievec_sieve
+  command: sievec /var/lib/dovecot/sieve
+
 - name: sievec_sieve_before
   command: sievec /var/lib/dovecot/sieve_before.d
