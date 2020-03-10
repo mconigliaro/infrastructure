@@ -1,4 +1,5 @@
 ---
+certbot_email: mike@conigliaro.org
 certbot_plugins:
   - python3-certbot-nginx
 certbot_options:

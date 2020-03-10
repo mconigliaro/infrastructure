@@ -1,6 +1,5 @@
-{% for key, value in certbot_cli.items() %}
-{{ key }} = {{ value }}
-{% endfor %}
+agree-tos = true
+email = {{ certbot_email }}
 
 # Because we are using logrotate for greater flexibility, disable the
 # internal certbot logrotation.

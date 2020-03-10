@@ -1,5 +1,5 @@
 check process redis-server with pidfile /var/run/redis/redis-server.pid
   start program = "/usr/sbin/service redis-server start"
   stop program  = "/usr/sbin/service redis-server stop"
-  if failed port 6379 with timeout 15 seconds for 3 cycles then restart
+  if failed port 6379 protocol redis with timeout 15 seconds for 3 cycles then restart
   if does not exist for 2 cycles then restart

@@ -1,10 +1,4 @@
 ---
-- name: install redis
-  apt:
-    name:
-      - redis-server
-      - sysfsutils
-
 - name: overcommit memory
   sysctl:
     name: vm.overcommit_memory
@@ -19,13 +13,34 @@
   notify:
     - restart sysfsutils
 
-- name: manage redis dir
+- name: install redis
+  apt:
+    name:
+      - redis-server
+      - sysfsutils
+
+- name: manage custom redis dir
   file:
     path: "{{ redis_dir }}"
     state: directory
     owner: redis
     group: redis
     mode: 0750
+  when: redis_dir != "/var/lib/redis"
+
+- name: manage redis systemd overrides directory
+  file:
+    path: /etc/systemd/system/redis-server.service.d/
+    state: directory
+  when: redis_dir != "/var/lib/redis"
+
+- name: manage redis systemd overrides
+  template:
+    src: redis-server.systemd.conf.j2
+    dest: /etc/systemd/system/redis-server.service.d/override.conf
+  when: redis_dir != "/var/lib/redis"
+  notify:
+    - reload systemd
 
 - name: manage redis.conf
   template:

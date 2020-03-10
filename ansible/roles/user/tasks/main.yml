@@ -1,8 +1,14 @@
 ---
+- name: install zsh
+  apt:
+    name: zsh
+
 - name: "manage {{ user_username }}'s account"
   user:
     name: "{{ user_username }}"
+    password: "{{ user_password }}"
     home: "{{ user_home_root }}/{{ user_username }}"
+    shell: /bin/zsh
     groups:
       - sudo
     append: true

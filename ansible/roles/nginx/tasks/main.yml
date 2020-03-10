@@ -3,14 +3,17 @@
   apt:
     name:
       - nginx
-      # FIXME: Use auth_pam in 18.04+
-      # - libnginx-mod-http-auth-pam
+      - libnginx-mod-http-auth-pam
       - ssl-cert
 
-- name: start nginx
-  service:
-    name: nginx
-    state: started
+- name: allow nginx to read /etc/shadow for auth_pam
+  user:
+    name: www-data
+    groups:
+      - shadow
+    append: true
+  notify:
+    - restart nginx
 
 - name: configure nginx
   template:
@@ -42,6 +45,11 @@
     src: index.html.j2
     dest: /var/www/html/index.html
     mode: 0644
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
 
 - name: configure monit for nginx
   template:

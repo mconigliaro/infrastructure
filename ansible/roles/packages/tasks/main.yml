@@ -3,25 +3,15 @@
   apt:
     name:
       - bsd-mailx
-      - chkrootkit
       - curl
       - htop
-      - iftop
-      - iotop
-      # FIXME: rename to iptraf-ng (focal)
-      - iptraf
       - lsof
-      - moreutils
       - mtr-tiny
-      - ngrep
-      - nethogs
-      - nmap
       - psmisc
       - silversearcher-ag
       - strace
       - tcpdump
       - telnet
       - tmux
-      - tshark
       - usbmount
       - vim

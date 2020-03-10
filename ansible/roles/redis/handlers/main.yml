@@ -9,3 +9,7 @@
     name: sysfsutils
     state: restarted
   when: ansible_virtualization_type != 'docker'
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
