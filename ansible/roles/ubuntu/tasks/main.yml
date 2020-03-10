@@ -1,4 +1,9 @@
 ---
+- name: configure motd-news
+  template:
+    src: motd-news.j2
+    dest: /etc/default/motd-news
+
 - name: install default packages
   apt:
     name:

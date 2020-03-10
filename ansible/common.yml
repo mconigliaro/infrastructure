@@ -5,7 +5,7 @@
     - hosts
     - swap
     - apt
-    - packages
+    - ubuntu
     - unattended_upgrades
     - ntp
     - sudo

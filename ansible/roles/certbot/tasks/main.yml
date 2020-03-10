@@ -25,9 +25,7 @@
 
 - name: install certbot plugins
   apt:
-    name: "{{ packages }}"
-  vars:
-    packages: "{{ certbot_plugins }}"
+    name: "{{ certbot_plugins }}"
 
 - name: configure certbot CLI
   template:
