@@ -9,5 +9,4 @@
     - unattended_upgrades
     - sudo
     - openssh
-    - sysstat
     - fail2ban
