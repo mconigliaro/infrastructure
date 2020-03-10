@@ -6,9 +6,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  # - name: xenial
-  #   image: ubuntu:16.04
-  #   hostname: xenial.example.com
   - name: bionic
     image: ubuntu:18.04
     hostname: bionic.example.com
