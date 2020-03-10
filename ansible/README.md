@@ -31,7 +31,6 @@ All commands are expected to be run inside a pipenv shell:
 ## To Do
 
 - Is redis starting before sysfsutils?
-- Monit should monitor all filesystems
 - Fix postfix mail forwarding
     - https://serverfault.com/questions/681278/forwarding-email-with-postfix-via-aws-ses
     - https://serverfault.com/questions/499955/aws-ses-email-address-is-not-verified-error-with-postfix-relay/634366#634366

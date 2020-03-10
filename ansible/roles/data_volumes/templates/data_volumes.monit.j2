@@ -1,0 +1,5 @@
+{% for volume in data_volumes %}
+check filesystem {{ volume.path|trim(chars='/')|replace('/', '_') }} with path {{ volume.path }}
+  if space usage > 90% for 5 times within 15 cycles then alert
+
+{% endfor %}

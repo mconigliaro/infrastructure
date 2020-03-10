@@ -27,3 +27,10 @@
     fstype: auto
     state: mounted
   loop: "{{ uuids.results }}"
+
+- name: configure monit for data volumes
+  template:
+    src: data_volumes.monit.j2
+    dest: /etc/monit/conf.d/data_volumes
+  notify:
+    - restart monit
