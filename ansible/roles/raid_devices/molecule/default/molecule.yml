@@ -10,10 +10,10 @@ platforms:
     image: ubuntu:18.04
     hostname: bionic.example.com
     privileged: true
-  # - name: focal
-  #   image: ubuntu:20.04
-  #   hostname: focal.example.com
-  #   privileged: true
+  - name: focal
+    image: ubuntu:20.04
+    hostname: focal.example.com
+    privileged: true
 provisioner:
   name: ansible
   lint:
