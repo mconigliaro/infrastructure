@@ -14,14 +14,10 @@
   apt:
     cache_valid_time: 86400
 
-- name: install debconf-utils
-  apt:
-    name: debconf-utils
-
+# FIXME: Why is Ansible warning about this being a string?
 - name: run apt upgrade
   apt:
     upgrade: yes
-  # FIXME: Why is Ansible warning about this being a string?
   when: apt_upgrade
 
 # Required by apt-key commands
