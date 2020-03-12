@@ -21,4 +21,4 @@ ssl_stapling_verify on;
 ssl_trusted_certificate {{ nginx_ssl_trusted_certificate }};
 
 # replace with the IP address of your resolver
-# resolver FIXME: how to get from ansible?;
+resolver {{ ansible_dns['nameservers'][0] }};
