@@ -1,4 +1,3 @@
-// SublimeLinter Settings - User
 {
     "linters": {
         "flake8": {
