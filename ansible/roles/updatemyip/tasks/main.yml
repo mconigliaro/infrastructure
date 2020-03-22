@@ -16,4 +16,4 @@
   cron:
     name: updatemyip
     minute: '*/5'
-    job: PATH=/usr/local/bin:$PATH /usr/local/bin/updatemyip {{ updatemyip_args }}
+    job: chronic /usr/local/bin/updatemyip {{ updatemyip_args }}
