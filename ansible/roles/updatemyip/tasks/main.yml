@@ -1,0 +1,19 @@
+---
+- name: install updatemyip dependencies
+  apt:
+    name:
+      - cron
+
+- name: install pip
+  apt:
+    name: python3-pip
+
+- name: pip install updatemyip
+  pip:
+    name: updatemyip
+
+- name: Manage updatemyip cron job
+  cron:
+    name: updatemyip
+    minute: '*/5'
+    job: PATH=/usr/local/bin:$PATH /usr/local/bin/updatemyip {{ updatemyip_args }}

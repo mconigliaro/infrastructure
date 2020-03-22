@@ -5,7 +5,7 @@
     - raid_devices
     - data_volumes
     - postfix
-    - route53_update_dns
+    - updatemyip
     - smartmontools
     - vsftpd
     - samba
