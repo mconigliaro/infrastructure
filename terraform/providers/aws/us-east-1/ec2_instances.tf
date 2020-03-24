@@ -20,6 +20,11 @@ resource "aws_instance" "mail-2020-03-09" {
   key_name      = aws_key_pair.mike.key_name
   subnet_id     = module.vpc.public_subnets[0]
 
+  # FIXME: Reduce root volume size
+  # root_block_device {
+  #   volume_size = 6
+  # }
+
   vpc_security_group_ids = [
     module.vpc.default_security_group_id,
     aws_security_group.mail.id,
