@@ -11,7 +11,7 @@
   helper = osxkeychain
 
 [diff]
-  compactionHeuristic = true
+  algorithm = histogram
 
 [interactive]
   diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
