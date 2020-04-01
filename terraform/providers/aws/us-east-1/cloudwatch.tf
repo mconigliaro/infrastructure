@@ -44,7 +44,7 @@ resource "aws_cloudwatch_metric_alarm" "mail_status_check_failed" {
   metric_name = "StatusCheckFailed"
 
   dimensions = {
-    InstanceId = aws_instance.mail-2020-03-09.id
+    InstanceId = aws_instance.mail.id
   }
 
   period              = 300
@@ -63,7 +63,7 @@ resource "aws_cloudwatch_metric_alarm" "mail_cpu_utilization" {
   metric_name = "CPUUtilization"
 
   dimensions = {
-    InstanceId = aws_instance.mail-2020-03-09.id
+    InstanceId = aws_instance.mail.id
   }
 
   period              = 300
