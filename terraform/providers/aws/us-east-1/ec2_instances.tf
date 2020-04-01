@@ -16,9 +16,13 @@ resource "aws_volume_attachment" "mail_data" {
 
 resource "aws_instance" "mail" {
   ami           = "ami-046842448f9e74e7d" # us-east-1 bionic hvm ssd
-  instance_type = "t2.micro"
+  instance_type = "t2.micro"              # FIXME: Migrate to t3.micro in 2021
   key_name      = aws_key_pair.mike.key_name
   subnet_id     = module.vpc.public_subnets[0]
+
+  credit_specification {
+    cpu_credits = "standard"
+  }
 
   vpc_security_group_ids = [
     module.vpc.default_security_group_id,
