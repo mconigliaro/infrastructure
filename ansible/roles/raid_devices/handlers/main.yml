@@ -1,9 +1,10 @@
 ---
+# FIXME: This service was renamed to mdmonitor in 20.04
 - name: restart mdadm
   service:
     name: mdadm
     state: restarted
-  when: ansible_distribution_version == '16.04'
+  when: ansible_distribution_version == '18.04'
 
 - name: restart mdmonitor
   service:
