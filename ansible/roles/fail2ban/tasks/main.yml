@@ -10,7 +10,7 @@
   notify:
     - restart fail2ban
 
-# FIXME: This file doesn't exist in Docker
+# This file doesn't exist in Docker and fail2ban won't start without it
 - name: create /var/log/auth.log
   copy:
     dest: /var/log/auth.log
@@ -28,4 +28,3 @@
     dest: /etc/monit/conf.d/fail2ban
   notify:
     - restart monit
-  when: ansible_distribution_version != '16.04'
