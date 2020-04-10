@@ -18,6 +18,6 @@
   become_user: "{{ user_username }}"
   cron:
     name: borg_backup_mail.conigliaro.org
-    hour: '*/12'
+    hour: '0'
     minute: '0'
     job: "chronic /usr/local/bin/borg_backup mail.conigliaro.org /mnt/data/{{ user_username }}/sdbox"
