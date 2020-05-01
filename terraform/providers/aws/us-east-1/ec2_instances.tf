@@ -1,7 +1,7 @@
 resource "aws_ebs_volume" "data" {
   availability_zone = "us-east-1b"
   type              = "standard"
-  size              = 4
+  size              = 3
 
   tags = {
     Name = "data"
@@ -30,10 +30,6 @@ resource "aws_instance" "mail" {
   ]
 
   tags = {
-    Name = "mail"
-  }
-
-  volume_tags = {
     Name = "mail"
   }
 }
