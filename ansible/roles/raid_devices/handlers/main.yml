@@ -4,13 +4,13 @@
   service:
     name: mdadm
     state: restarted
-  when: ansible_distribution_version == '18.04'
+  when: ansible_distribution_release == 'bionic'
 
 - name: restart mdmonitor
   service:
     name: mdmonitor
     state: restarted
-  when: ansible_distribution_version == '20.04' and ansible_virtualization_type != 'docker'
+  when: ansible_distribution_release == 'focal' and ansible_virtualization_type != 'docker'
 
 # Update initramfs so it'll have the updated mdadm.conf on boot
 # See: http://serverfault.com/questions/763870/raid-device-on-rename-appended-with-0
