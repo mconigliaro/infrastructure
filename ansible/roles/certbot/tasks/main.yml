@@ -1,13 +1,4 @@
 ---
-- name: add certbot key
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 75BCA694
-
-- name: add certbot repository
-  apt_repository:
-    repo: ppa:certbot/certbot
-
 - name: install ssl-cert
   apt:
     name: ssl-cert
@@ -18,7 +9,6 @@
     group: ssl-cert
     recurse: true
 
-# FIXME: package not available in focal yet
 - name: install certbot
   apt:
     name: certbot
