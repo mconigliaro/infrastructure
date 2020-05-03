@@ -1,5 +1,5 @@
 ---
-# FIXME: This service was renamed to mdmonitor in 20.04
+# FIXME: This service was renamed to mdmonitor in focal
 - name: restart mdadm
   service:
     name: mdadm
