@@ -2,9 +2,7 @@ authenticated {
     priority = high;
     authenticated = yes;
     apply {
-        # FIXME: Not sure why this outer "default" block is needed, but it was
-        # the only way I could make this work. notkoos on Freenode says it's
-        # a bug in libucl: https://github.com/vstakhov/libucl
+        # FIXME: https://github.com/vstakhov/libucl/issues/226
         default {
             symbols_enabled = [];
         }
