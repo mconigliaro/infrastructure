@@ -19,6 +19,13 @@
   notify:
     - restart rspamd
 
+- name: configure user settings for rspamd
+  template:
+    src: settings.conf.j2
+    dest: /etc/rspamd/local.d/settings.conf
+  notify:
+    - restart rspamd
+
 - name: start rspamd
   service:
     name: rspamd
