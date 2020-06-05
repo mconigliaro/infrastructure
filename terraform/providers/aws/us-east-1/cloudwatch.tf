@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "billing_estimated_charges" {
   period              = 21600 # 6 hours
   statistic           = "Average"
   comparison_operator = "GreaterThanOrEqualToThreshold"
-  threshold           = 8
+  threshold           = 9 # FIXME: Reevaluate after migration to t3.micro in 2021
   evaluation_periods  = 1
 
   alarm_actions             = [aws_sns_topic.alerts.id]
