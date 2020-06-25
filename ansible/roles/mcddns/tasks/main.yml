@@ -1,0 +1,19 @@
+---
+- name: install mcddns dependencies
+  apt:
+    name:
+      - cron
+
+- name: install pip
+  apt:
+    name: python3-pip
+
+- name: pip install mcddns
+  pip:
+    name: mcddns
+
+- name: Manage mcddns cron job
+  cron:
+    name: mcddns
+    minute: '*/5'
+    job: chronic /usr/local/bin/mcddns {{ mcddns_args }}

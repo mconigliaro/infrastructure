@@ -5,7 +5,7 @@
     - raid_devices
     - data_volumes
     - postfix
-    - updatemyip
+    - mcddns
     - smartmontools
     - vsftpd
     - samba
