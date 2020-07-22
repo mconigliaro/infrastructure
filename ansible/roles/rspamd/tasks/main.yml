@@ -7,7 +7,6 @@
   apt_repository:
     repo: deb http://rspamd.com/apt-stable/ {{ ansible_lsb.codename }} main
 
-# FIXME: rspamd packages not available for focal yet
 - name: install rspamd
   apt:
     name: rspamd
@@ -26,6 +25,7 @@
   notify:
     - restart rspamd
 
+# FIXME: https://github.com/rspamd/rspamd/issues/3348 (focal)
 - name: start rspamd
   service:
     name: rspamd
