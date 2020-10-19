@@ -7,6 +7,9 @@
   p = push
   s = status
 
+[core]
+  attributesfile = ~/.gitattributes
+
 [credential]
   helper = osxkeychain
 
