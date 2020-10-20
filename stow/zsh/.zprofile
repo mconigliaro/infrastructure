@@ -17,7 +17,7 @@ export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
 # Homebrew
 if command -v brew > /dev/null 2>&1; then
   export PATH=/usr/local/sbin:$PATH
-  export GITHUB_API_TOKEN="$(<$HOME/.github_api_token)"
+  export GITHUB_API_TOKEN="$(<$HOME/.config/github/api_token)"
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
@@ -30,7 +30,7 @@ fi
 # Python
 eval "$(pyenv init -)"
 export PYENV_VERSION=3.6.10
-export PYTHONSTARTUP=~/.pystartup
+export PYTHONSTARTUP="$HOME/.config/python/startup"
 export PIPENV_SHELL_FANCY=1
 
 # Ruby
