@@ -58,3 +58,9 @@
     dest: /etc/monit/conf.d/dovecot
   notify:
     - restart monit
+
+- name: configure certbot renewal hook for dovecot
+  template:
+    src: 99-dovecot.j2
+    dest: /etc/letsencrypt/renewal-hooks/deploy/99-dovecot
+    mode: 0755

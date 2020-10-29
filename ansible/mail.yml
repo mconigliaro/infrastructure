@@ -3,7 +3,6 @@
   become: true
   roles:
     - data_volumes
-    - certbot
     - rspamd
     - postfix
     - dovecot

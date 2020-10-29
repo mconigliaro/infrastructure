@@ -10,7 +10,7 @@ All commands are expected to be run inside a pipenv shell:
 ## Testing Roles
 
     cd roles/<role>
-    molecule converge
+    molecule [--debug] converge
     molecule verify
     molecule login [--host <name>]
     molecule destroy
