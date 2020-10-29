@@ -3,8 +3,6 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
 platforms:
   - name: bionic
     image: ubuntu:18.04
@@ -16,13 +14,7 @@ platforms:
     privileged: true
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   options:
     D: true
-scenario:
-  name: default
 verifier:
   name: testinfra
-  lint:
-    name: flake8

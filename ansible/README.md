@@ -33,7 +33,7 @@ All commands are expected to be run inside a pipenv shell:
 - Wait for focal rspamd packages
 - Test focal
 - Upgrade to focal
+- Remove bionic from tests
 - Fix postfix mail forwarding
     - https://serverfault.com/questions/681278/forwarding-email-with-postfix-via-aws-ses
     - https://serverfault.com/questions/499955/aws-ses-email-address-is-not-verified-error-with-postfix-relay/634366#634366
-- Ansible 3.0: Delete obsolete `ansible/roles/*/molecule/default/Dockerfile.j2`
