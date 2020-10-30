@@ -34,7 +34,6 @@
     src: mdadm.conf.j2
     dest: /etc/mdadm/mdadm.conf
   notify:
-    - restart mdadm
     - restart mdmonitor
     - run update-initramfs
 
