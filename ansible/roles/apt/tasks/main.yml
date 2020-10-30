@@ -11,12 +11,11 @@
 
 - name: run apt update
   apt:
-    cache_valid_time: 300
+    cache_valid_time: 900
 
-# FIXME: Why is Ansible warning about this being a string?
 - name: run apt upgrade
   apt:
-    upgrade: true
+    upgrade: "yes"
   when: apt_upgrade
 
 # Required by apt-key commands
