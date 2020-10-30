@@ -25,7 +25,6 @@
   notify:
     - restart rspamd
 
-# FIXME: https://github.com/rspamd/rspamd/issues/3348 (focal)
 - name: start rspamd
   service:
     name: rspamd

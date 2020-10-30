@@ -30,7 +30,6 @@ All commands are expected to be run inside a pipenv shell:
 
 ## To Do
 
-- Wait for focal rspamd packages
 - Test focal
 - Upgrade to focal
 - Remove bionic from tests
