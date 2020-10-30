@@ -15,8 +15,10 @@ resource "aws_volume_attachment" "mail_data" {
 }
 
 resource "aws_instance" "mail" {
-  ami           = "ami-046842448f9e74e7d" # us-east-1 bionic hvm ssd
-  instance_type = "t2.micro"              # FIXME: Migrate to t3.micro in 2021
+  # https://cloud-images.ubuntu.com/locator/ec2/
+  # us-east-1 focal amd64
+  ami           = "ami-0885b1f6bd170450c"
+  instance_type = "t2.micro" # FIXME: Migrate to t3.micro in 2021
   key_name      = aws_key_pair.mike.key_name
   subnet_id     = module.vpc.public_subnets[0]
 
