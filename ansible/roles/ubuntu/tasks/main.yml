@@ -12,6 +12,7 @@
       - htop
       - lsof
       - mtr-tiny
+      - net-tools
       - psmisc
       - silversearcher-ag
       - strace

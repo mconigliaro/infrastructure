@@ -5,21 +5,21 @@
       - mdadm
       - initramfs-tools
 
-- name: check whether raid devices exist
+- name: check raid devices
   stat:
     path: "{{ item.device }}"
   loop: "{{ raid_devices }}"
-  register: raid_devices_stat_result
+  register: raid_devices_stat
 
 # FIXME: mdadm doesn't work in a docker container
 # https://serverfault.com/questions/1001912/is-it-possible-to-use-software-raid-inside-a-docker-container
-- name: create raid_devices
+- name: create raid devices
   command: |
     mdadm --create {{ item.item.device }} --metadata=0.90
     --level={{ item.item.raid_level }}
     --raid-devices={{ item.item.volumes | length }}
     {{ item.item.volumes | join(' ') }}
-  loop: "{{ raid_devices_stat_result.results }}"
+  loop: "{{ raid_devices_stat.results }}"
   when: not item.stat.exists and ansible_virtualization_type != 'docker'
 
 - name: scan for md devices

@@ -28,6 +28,19 @@
     mode: 0750
   when: redis_dir != "/var/lib/redis"
 
+- name: check redis data
+  stat:
+    path: "{{ redis_dir }}/dump.rdb"
+  register: redis_data_stat
+
+- name: manage redis data
+  file:
+    path: "{{ redis_dir }}/dump.rdb"
+    owner: redis
+    group: redis
+    mode: 0660
+  when: redis_data_stat.stat.exists
+
 - name: manage redis systemd overrides directory
   file:
     path: /etc/systemd/system/redis-server.service.d/

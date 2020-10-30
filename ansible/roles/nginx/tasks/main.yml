@@ -35,6 +35,14 @@
   notify:
     - reload nginx
 
+- name: enable nginx default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    src: /etc/nginx/sites-available/default
+    state: link
+  notify:
+    - reload nginx
+
 - name: delete default index.html
   file:
     path: /var/www/html/index.nginx-debian.html

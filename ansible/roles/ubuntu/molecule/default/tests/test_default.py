@@ -18,6 +18,10 @@ def test_mtr(host):
     assert host.exists("mtr")
 
 
+def test_netstat(host):
+    assert host.exists("netstat")
+
+
 def test_psmisc(host):
     assert host.exists("pkill")
 

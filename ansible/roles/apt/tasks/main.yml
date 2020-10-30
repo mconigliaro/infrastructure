@@ -11,7 +11,7 @@
 
 - name: run apt update
   apt:
-    cache_valid_time: 900
+    cache_valid_time: "{{ apt_cache_valid_time }}"
 
 - name: run apt upgrade
   apt:

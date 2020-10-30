@@ -7,7 +7,6 @@ def test_vm_overcommit_memory(host):
 #     assert host.file('/sys/kernel/mm/transparent_hugepage/enabled').contains("\[never\]")
 
 
-# FIXME: Fails on bionic
 def test_redis_is_running(host):
     assert host.service("redis-server").is_running
 

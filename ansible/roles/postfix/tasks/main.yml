@@ -54,9 +54,9 @@
   notify: run postmap on access_sender maps
 
 - name: generate dh params
-  command: openssl dhparam -out /etc/postfix/dh1024.pem 1024
+  command: openssl dhparam -out /etc/postfix/dh2048.pem 2048
   args:
-    creates: /etc/postfix/dh1024.pem
+    creates: /etc/postfix/dh2048.pem
 
 - name: start postfix
   service:

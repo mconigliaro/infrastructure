@@ -4,9 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: bionic
-    image: ubuntu:18.04
-    privileged: true
   - name: focal
     image: ubuntu:20.04
     privileged: true
