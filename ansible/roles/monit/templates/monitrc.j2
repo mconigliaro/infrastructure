@@ -4,6 +4,10 @@ set logfile /var/log/monit.log
 set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
 
+set ssl options {
+  verify: enable
+}
+
 set mailserver localhost
 
 set eventqueue
@@ -12,10 +16,6 @@ set eventqueue
 
 set mail-format {
   from: {{ monit_mail_format_from }}
-}
-
-set ssl options {
-  verify: enable
 }
 
 set alert root@localhost
