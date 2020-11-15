@@ -20,11 +20,20 @@
 - Peripherals -> Super IO Configuration -> Serial Port: `Disabled`
 - Peripherals -> USB Configuration -> XHCI Hand-off: `Enabled`
 
-## Installing Kernel Extensions
+## Clover Configurator
 
-1. Mount EFI partition via Clover Configurator
+### Mount EFI partition
+
+- Tools -> Mount EFI
+
+### Installing Kernel Extensions
+
 1. Copy `.kext` file(s) to `/EFI/CLOVER/kexts/Other`
 1. Reboot
+
+### Settings (`/EFI/CLOVER/config.plist`)
+
+- Devices -> Audio -> Inject: `11`
 
 ## Additional Drivers
 
