@@ -9,7 +9,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
-export ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # AWS
 export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
