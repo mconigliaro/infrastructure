@@ -14,6 +14,9 @@ stow $stow_options --target "$brew_prefix/bin" bin
 stow $stow_options --target "$HOME" git
 
 # Gnupg
+if [[ ! -d "$HOME/.gnupg" ]]; then
+    mkdir "$HOME/.gnupg"
+fi
 stow $stow_options --target "$HOME/.gnupg" gnupg
 
 # OpenSSH
@@ -34,10 +37,11 @@ squid_conf="$brew_prefix/etc/squid.conf"
 if [[ -e "$squid_conf" && ! -L "$squid_conf" ]]; then
     mv "$squid_conf" "$squid_conf-orig"
 fi
-stow $stow_options --target "$brew_prefix/etc" squid
-if [[ ! -d "$brew_prefix/var/cache/squid/00" ]]; then
-    squid -z
-fi
+# FIXME: Still needed?
+# stow $stow_options --target "$brew_prefix/etc" squid
+# if [[ ! -d "$brew_prefix/var/cache/squid/00" ]]; then
+#     squid -z
+# fi
 brew services restart squid
 
 # Sublime Text
