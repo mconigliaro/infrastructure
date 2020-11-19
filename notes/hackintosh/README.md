@@ -29,8 +29,8 @@
 
 ## Additional Drivers
 
-- https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/ip-series/pixma-ip3000
-- https://github.com/360Controller/360Controller
+- Canon PIXMA iP3000: `brew install gutenprint`
+- 8BitDo SN30 Pro: https://github.com/360Controller/360Controller
 
 ## References
 
