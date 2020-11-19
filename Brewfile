@@ -20,7 +20,6 @@ cask 'handbrake'
 cask 'iterm2'
 cask 'openemu'
 cask 'sequel-pro'
-cask 'sonos'
 cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'transmission'
@@ -66,6 +65,7 @@ brew 'rbenv'
 
 # Code quality
 brew 'hadolint'
-cask 'jsl'
+# FIXME: Deleted?
+# cask 'jsl'
 brew 'shellcheck'
 brew 'write-good'
