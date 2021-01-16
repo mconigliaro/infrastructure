@@ -1,12 +1,24 @@
 # Infrastructure
 
 ## Getting Started
-
+```
     mkdir -p ~/Developer/mconigliaro
     cd ~/Developer/mconigliaro
     git clone https://gitlab.com/mconigliaro/infrastructure.git
     cd infrastructure
-    ./setup.sh
+
+    # Set up OSX
+    ./osx.sh
+
+    # Set up homebrew
+    ./homebrew.sh
+
+    # Set up Sublime Text
+    ./sublimetext.sh
+
+    # Copy files via stow
+    ./stow.sh
+```
 
 ## Docker Desktop
 
@@ -23,3 +35,7 @@ When using Git HTTPS Authentication with 2FA, log in using your username and a p
 
 1. iTerm2 -> Install Shell Integration
 1. Restart shell
+
+## FIXME
+
+- How to implement different profiles for home and work? (e.g. borg backups should only happen from home)

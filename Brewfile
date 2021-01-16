@@ -28,8 +28,11 @@ cask 'wireshark'
 
 # Infrastructure
 brew 'awscli'
+brew 'borgbackup'
 cask 'docker'
+brew 'osxfuse'
 brew 'squid'
+brew 'sshfs'
 brew 'terraform'
 brew 'tor'
 cask 'vagrant'
