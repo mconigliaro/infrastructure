@@ -10,5 +10,4 @@
     - vsftpd
     - samba
     - plexmediaserver
-    - borgbackup
     - user

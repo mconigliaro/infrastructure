@@ -3,6 +3,7 @@
   apt:
     name:
       - cron
+      - moreutils
 
 - name: install pip
   apt:
