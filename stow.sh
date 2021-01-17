@@ -8,29 +8,26 @@ stow_options="--verbose $*" # Use --delete to unstow
 brew_prefix=$(brew --prefix)
 
 # Miscellaneous scripts
-stow $stow_options --target "$brew_prefix/bin" bin
+stow $stow_options --target "$brew_prefix/bin" --no-folding bin
 
 # Git
-stow $stow_options --target "$HOME" git
+stow $stow_options --target "$HOME" --no-folding git
 
 # Gnupg
-if [[ ! -d "$HOME/.gnupg" ]]; then
-    mkdir "$HOME/.gnupg"
-fi
-stow $stow_options --target "$HOME/.gnupg" gnupg
+stow $stow_options --target "$HOME" --no-folding gnupg
 
 # launchd
-stow $stow_options --target "$HOME/Library/LaunchAgents" launchd
+stow $stow_options --target "$HOME" --no-folding launchd
+launchctl load ~/Library/LaunchAgents/*
 
 # OpenSSH
 if [[ ! -d "$HOME/.ssh" ]]; then
-    mkdir "$HOME/.ssh"
-    ssh-keygen -t rsa -b 4096 -o -a 100 -f "$HOME/.ssh/id_rsa"
+    ssh-keygen -t rsa -b 4096 -o -a 100
 fi
-stow $stow_options --target "$HOME/.ssh" openssh
+stow $stow_options --target "$HOME" --no-folding openssh
 
 # Python
-stow $stow_options --target "$HOME" python
+stow $stow_options --target "$HOME" --no-folding python
 
 # Ruby
 stow $stow_options --target "$HOME" ruby
@@ -40,7 +37,7 @@ squid_conf="$brew_prefix/etc/squid.conf"
 if [[ -e "$squid_conf" && ! -L "$squid_conf" ]]; then
     mv "$squid_conf" "$squid_conf-orig"
 fi
-stow $stow_options --target "$brew_prefix/etc" squid
+stow $stow_options --target "$brew_prefix" --no-folding squid
 if [[ ! -d "$brew_prefix/var/cache/squid/00" ]]; then
     squid -z
 fi
@@ -55,11 +52,10 @@ fi
 stow $stow_options --target "$sublime_package_dir" sublime-text
 
 # Test Kitchen
-mkdir -p "$HOME/.kitchen"
-stow $stow_options --target "$HOME/.kitchen" test-kitchen
+stow $stow_options --target "$HOME" --no-folding test-kitchen
 
 # Tor
-stow $stow_options --target "$brew_prefix/etc/tor" tor
+stow $stow_options --target "$brew_prefix" --no-folding tor
 
 # ZSH
 zsh_path="$brew_prefix/bin/zsh"
@@ -67,5 +63,3 @@ if [[ "$SHELL" != "$zsh_path" ]]; then
     sudo chsh -s "$zsh_path" "$USER"
 fi
 stow $stow_options --target "$HOME" zsh
-
-hash -r
