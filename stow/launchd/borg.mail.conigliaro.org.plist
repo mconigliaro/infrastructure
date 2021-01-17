@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>borg.mail.conigliaro.org.plist</string>
+    <string>borg.mail.conigliaro.org</string>
     <key>ProgramArguments</key>
     <array>
         <string>/Users/mike/bin/borg_backup</string>
