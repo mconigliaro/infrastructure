@@ -6,7 +6,7 @@
     <string>borg.mail.conigliaro.org</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/mike/bin/borg_backup</string>
+        <string>/usr/local/bin/borg_backup</string>
         <string>mail.conigliaro.org</string>
         <string>/mnt/data/mike/sdbox</string>
     </array>

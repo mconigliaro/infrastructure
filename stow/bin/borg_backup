@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Usage: borg_backup <host> <path> ...
 
@@ -27,6 +27,6 @@ if [[ ! -e "$REPOSITORY" ]]; then
     borg init --verbose --encryption=none "$REPOSITORY"
 fi
 
-borg create --verbose --progress --stats "$REPOSITORY::$(date +%Y.%m.%d.%H.%M)" $REMOTE_PATHS
+borg create --verbose --stats "$REPOSITORY::$(date +%Y.%m.%d.%H.%M)" $REMOTE_PATHS
 borg prune --verbose "$REPOSITORY" --keep-daily=7 --keep-weekly=4 --keep-monthly=3
 borg check --verbose "$REPOSITORY"
