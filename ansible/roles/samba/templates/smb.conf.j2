@@ -185,6 +185,16 @@
 # public shares, not just authenticated ones
    usershare allow guests = yes
 
+# Enable Time Machine support
+# https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X
+# https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html
+   vfs objects = catia fruit streams_xattr
+   fruit:metadata = stream
+   fruit:veto_appledouble = yes
+   fruit:wipe_intentionally_left_blank_rfork = yes
+   fruit:delete_empty_adfiles = yes
+   fruit:copyfile = yes
+
 #======================= Share Definitions =======================
 
 # Un-comment the following (and tweak the other settings below to suit)
@@ -212,6 +222,10 @@
 # can connect to \\server\username
 # This might need tweaking when using external authentication schemes
    valid users = %S
+
+# Enable Time Machine support
+   fruit:time machine = yes
+   fruit:time machine max size = 1T
 
 # Un-comment the following and create the netlogon directory for Domain Logons
 # (you need to configure Samba to act as a domain controller too.)
@@ -257,3 +271,10 @@
 # Please note that you also need to set appropriate Unix permissions
 # to the drivers directory for these users to have write rights in it
 ;   write list = root, @lpadmin
+
+# Public share
+[public]
+path = {{ user_home_root }}/public
+read only = no
+guest ok = yes
+guest only = yes

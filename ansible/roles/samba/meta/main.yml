@@ -1,4 +1,5 @@
 ---
 dependencies:
+  - role: user
   - role: avahi
   - role: monit

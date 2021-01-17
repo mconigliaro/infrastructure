@@ -10,6 +10,14 @@
   notify:
     - restart samba
 
+- name: create public directory for samba
+  file:
+    path: "{{ user_home_root }}/public"
+    state: directory
+    owner: nobody
+    group: nogroup
+    mode: 0755
+
 - name: configure avahi for samba
   template:
     src: smb.avahi.j2
