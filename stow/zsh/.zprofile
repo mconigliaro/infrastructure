@@ -44,7 +44,7 @@ export SHELLCHECK_OPTS="-e SC1090"
 
 # Pull in everything else we decided not to keep in source control
 zprofile_d=$HOME/.zprofile.d
-if [[ -d "$zprofile_d" && ! -z "$(ls -A "$zprofile_d")" ]]; then
+if [[ -d "$zprofile_d" && -n "$(ls -A "$zprofile_d")" ]]; then
   for f in "$zprofile_d"/*; do
     source "$f";
   done
