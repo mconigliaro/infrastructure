@@ -13,10 +13,7 @@
     # Set up homebrew
     ./homebrew.sh
 
-    # Set up Sublime Text
-    ./sublimetext.sh
-
-    # Copy files via stow
+    # Set up configuration via stow
     ./stow.sh
 ```
 

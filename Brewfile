@@ -1,11 +1,12 @@
 # Provides alternate versions of casks
 tap 'homebrew/cask-versions'
 
-# Provides access to ‘drivers’
+# Provides access to 'drivers'
 tap 'homebrew/cask-drivers'
 
 # Dependencies
 cask 'java6'
+cask 'osxfuse'
 brew 'sqlite'
 cask 'xquartz'
 brew 'zlib'
@@ -30,7 +31,6 @@ cask 'wireshark'
 brew 'awscli'
 brew 'borgbackup'
 cask 'docker'
-cask 'osxfuse'
 brew 'squid'
 brew 'sshfs'
 brew 'terraform'
@@ -67,8 +67,9 @@ brew 'pyenv'
 brew 'rbenv'
 
 # Code quality
+brew 'ansible-lint'
+brew 'flake8'
 brew 'hadolint'
-# FIXME: Deleted?
-# cask 'jsl'
 brew 'shellcheck'
 brew 'write-good'
+brew 'yamllint'

@@ -49,6 +49,7 @@ if [[ -e "$sublime_package_dir/User" && ! -L "$sublime_package_dir/User" ]]; the
     killall -v 'Sublime Text' || true
     mv "$sublime_package_dir/User" "$sublime_package_dir/User-orig"
 fi
+wget -nc -P "$HOME/Library/Application Support/Sublime Text 3/Installed Packages" "https://packagecontrol.io/Package Control.sublime-package"
 stow $stow_options --target "$sublime_package_dir" sublime-text
 
 # Test Kitchen

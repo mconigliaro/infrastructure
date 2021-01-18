@@ -32,12 +32,13 @@ fi
 
 # Python
 eval "$(pyenv init -)"
-export PYENV_VERSION=3.6.10
+export PYENV_VERSION=system
 export PYTHONSTARTUP="$HOME/.config/python/startup"
 export PIPENV_SHELL_FANCY=1
 
 # Ruby
 eval "$(rbenv init -)"
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 
 # ShellCheck
 export SHELLCHECK_OPTS="-e SC1090"

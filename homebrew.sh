@@ -9,6 +9,8 @@ fi
 
 # Install packages
 brew bundle
+npm install csslint htmlhint -g
+gem install rubocop --user-install
 hash -r
 
 # Allow launchctl to find Homebrew binaries
