@@ -6,10 +6,15 @@
     <string>borg.mail.conigliaro.org</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/local/bin/borg_backup</string>
-        <string>mail.conigliaro.org</string>
-        <string>/mnt/data/mike/sdbox</string>
+        <string>/usr/local/bin/borgmatic</string>
+        <string>--syslog-verbosity</string>
+        <string>1</string>
     </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/mike</string>
+    </dict>
     <key>StartInterval</key>
     <integer>86400</integer>
 </dict>
