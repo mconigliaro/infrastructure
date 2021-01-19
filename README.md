@@ -17,14 +17,14 @@
     ./stow.sh
 ```
 
-## Borg Backups
+## Borgmatic
 
-Special permissions must be given in order for the `borg.mail.conigliaro.org` LaunchAgent to run:
+[Special permissions](https://projects.torsion.org/witten/borgmatic/issues/293) must be given in order for the `borgmatic` LaunchAgent to run:
 
 1. System Preferences > Security & Privacy > Privacy
 1. Add `bin/bash` to "Full Disk Access"
 
-## Local Squid Proxy for Docker Desktop
+## Docker Desktop: Local Squid Proxy
 
 1. Settings > Resources > Proxies > Web Server > http://docker.for.mac.localhost:3128
 
@@ -42,4 +42,4 @@ When using Git HTTPS Authentication with 2FA, log in using your username and a p
 
 ## FIXME
 
-- How to implement different profiles for home and work? (e.g. borg backups should only happen from home)
+- How to implement different profiles for home and work? (e.g. borgmatic should only run at home)
