@@ -5,7 +5,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/cask-drivers'
 
 # Dependencies
-cask 'java6'
 cask 'osxfuse'
 brew 'sqlite'
 cask 'xquartz'
