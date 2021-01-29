@@ -18,5 +18,4 @@ variable "index_document" {
 
 variable "error_document" {
   description = "Error document"
-  default     = "index.html"
 }
