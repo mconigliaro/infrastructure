@@ -15,5 +15,5 @@ resource "aws_route53_record" "mx" {
   name    = data.aws_route53_zone.selected.name
   type    = "MX"
   ttl     = "300"
-  records = ["10 mail.${data.aws_route53_zone.selected.name}"]
+  records = ["10 mail.${data.aws_route53_zone.selected.name}."]
 }

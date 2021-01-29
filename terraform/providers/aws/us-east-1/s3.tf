@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "mconigliaro-infrastructure" {
 
 module "conigliaro_org_website" {
   source  = "../../../modules/aws/s3_website"
-  zone_id = "${aws_route53_zone.conigliaro_org.id}"
+  zone_id = aws_route53_zone.conigliaro_org.id
 
   files = [
     { name = "index.html", content_type = "text/html" },
@@ -36,7 +36,7 @@ module "conigliaro_org_website" {
 
 module "gyrate_org_website" {
   source  = "../../../modules/aws/s3_website"
-  zone_id = "${aws_route53_zone.gyrate_org.id}"
+  zone_id = aws_route53_zone.gyrate_org.id
 
   files = [
     { name = "index.html", content_type = "text/html" },

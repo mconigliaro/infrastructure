@@ -3,7 +3,7 @@ data "aws_route53_zone" "selected" {
 }
 
 locals {
-  bucket = replace(data.aws_route53_zone.selected.name, "/.$/", "")
+  bucket = data.aws_route53_zone.selected.name
 }
 
 resource "aws_s3_bucket" "bucket" {

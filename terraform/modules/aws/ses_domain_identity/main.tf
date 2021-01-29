@@ -3,7 +3,7 @@ data "aws_route53_zone" "selected" {
 }
 
 locals {
-  domain = replace(data.aws_route53_zone.selected.name, "/.$/", "")
+  domain = data.aws_route53_zone.selected.name
 }
 
 data "aws_region" "selected" {}

@@ -5,10 +5,16 @@ terraform {
     region  = "us-east-1"
     profile = "mconigliaro"
   }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.26"
+    }
+  }
 }
 
 provider "aws" {
-  version = "~> 2.44"
   region  = "us-east-1"
   profile = "mconigliaro"
 }
