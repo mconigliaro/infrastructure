@@ -5,7 +5,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/cask-drivers'
 
 # Dependencies
-cask 'osxfuse'
 brew 'sqlite'
 cask 'xquartz'
 brew 'zlib'
@@ -28,7 +27,6 @@ cask 'wireshark'
 
 # Infrastructure
 brew 'awscli'
-brew 'borgbackup'
 cask 'docker'
 brew 'squid'
 brew 'sshfs'

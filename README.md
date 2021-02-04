@@ -17,12 +17,12 @@
     ./stow.sh
 ```
 
-## Borgmatic
+## Rsync
 
-[Special permissions](https://projects.torsion.org/witten/borgmatic/issues/293) must be given in order for the `borgmatic` LaunchAgent to run:
+Special permissions must be given in order for the `org.conigliaro.mail.rsync` LaunchAgent to run:
 
 1. System Preferences > Security & Privacy > Privacy
-1. Add `bin/bash` to "Full Disk Access"
+1. Add `/usr/bin/rsync` to "Full Disk Access"
 
 ## Docker Desktop: Local Squid Proxy
 
