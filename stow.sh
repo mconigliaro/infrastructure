@@ -10,9 +10,6 @@ brew_prefix=$(brew --prefix)
 # Miscellaneous scripts
 stow $stow_options --target "$brew_prefix/bin" --no-folding bin
 
-# Borgmatic
-stow $stow_options --target "$HOME" --no-folding borgmatic
-
 # Git
 stow $stow_options --target "$HOME" --no-folding git
 
