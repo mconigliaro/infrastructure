@@ -128,6 +128,12 @@
         "options": {
           "full_name": "osxfuse"
         }
+      },
+      "flycut": {
+        "version": "1.9.6",
+        "options": {
+          "full_name": "flycut"
+        }
       }
     },
     "brew": {
