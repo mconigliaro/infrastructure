@@ -15,12 +15,12 @@ export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 export AWS_SDK_LOAD_CONFIG=true # aws-sdk-js
 
 # GitHub CLI
-export GH_TOKEN="$(<$HOME/.config/github/token)"
+export GITHUB_TOKEN="$(<$HOME/.config/github/token)"
 
 # Homebrew
 if command -v brew > /dev/null 2>&1; then
   export PATH=/usr/local/sbin:$PATH
-  export HOMEBREW_GITHUB_API_TOKEN="$GH_TOKEN"
+  export HOMEBREW_GITHUB_API_TOKEN="$GITHUB_TOKEN"
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
