@@ -16,5 +16,9 @@
     <true/>
     <key>StartInterval</key>
     <integer>3600</integer>
+    <key>StandardOutPath</key>
+    <string>/tmp/org.conigliaro.mail.rsync.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/org.conigliaro.mail.rsync.log</string>
 </dict>
 </plist>
