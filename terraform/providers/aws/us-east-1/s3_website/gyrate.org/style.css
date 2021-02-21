@@ -6,7 +6,11 @@ body {
     flex-direction: column;
     font-family: monospace;
 }
+@media only screen and (max-width: 320px) {
+    body {
+        font-size: 8px;
+    }
+}
 pre {
-    font-size: 9px;
     margin-top: 20%;
 }
