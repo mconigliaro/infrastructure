@@ -8,7 +8,7 @@ certbot_options:
   - --nginx
 data_volumes:
   -
-    device: /dev/xvdf
+    device: /dev/nvme1n1
     path: /mnt/data
 dovecot_ssl_cert: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 dovecot_ssl_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
