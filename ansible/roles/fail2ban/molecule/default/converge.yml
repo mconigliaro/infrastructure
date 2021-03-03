@@ -2,7 +2,6 @@
 - name: Converge
   hosts: all
   roles:
-    - role: apt
     - role: fail2ban
   vars:
     fail2ban_dovecot_enabled: false
