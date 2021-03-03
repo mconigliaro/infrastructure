@@ -18,13 +18,6 @@
   notify:
     - restart rspamd
 
-- name: configure greylist for rspamd
-  template:
-    src: greylist.conf.j2
-    dest: /etc/rspamd/local.d/greylist.conf
-  notify:
-    - restart rspamd
-
 - name: configure user settings for rspamd
   template:
     src: settings.conf.j2
