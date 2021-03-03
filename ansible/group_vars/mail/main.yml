@@ -18,7 +18,6 @@ dovecot_socket_group: postfix
 fail2ban_dovecot_enabled: true
 fail2ban_postfix_enabled: true
 fail2ban_nginx_enabled: true
-hosts_domain: ec2.local
 monit_mail_format_from: monit@mail.conigliaro.org
 nginx_ssl_certificate: /etc/letsencrypt/live/mail.conigliaro.org/fullchain.pem
 nginx_ssl_certificate_key: /etc/letsencrypt/live/mail.conigliaro.org/privkey.pem
