@@ -1,3 +1,4 @@
 ---
 postfix_conf_relayhost: "[email-smtp.us-east-1.amazonaws.com]:587"
+user_username: "{{ vault_user_username }}"
 user_password: "{{ vault_user_password }}"

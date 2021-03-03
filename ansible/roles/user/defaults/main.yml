@@ -1,6 +1,6 @@
 ---
-user_username: mike
-# mkpasswd --method=sha-512 mike
-user_password: $6$sJ51/5Bk6I4PeiE$DeTcjVKLIm9KHyy23NRVpV1EfAPxMsofRtajrOIEkzwQmlNWA2LQ2O3JUPq69xGk9mIWAvCbz0ddKBwSJKvIj.
+user_username:
+# mkpasswd --method=sha-512 example
+user_password: $6$KLSZsV9Q$PXVmizACmVVS4dNI6C2qlvW6it/VEN0jjJvg0U4iLl9W9VgaZN7OGtDcUJBgAkQnfP5wYGglG/NnrWJNqsbLn/
 user_home_root: /home
 user_authorized_keys: []

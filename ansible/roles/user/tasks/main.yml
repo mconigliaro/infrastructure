@@ -12,20 +12,28 @@
     groups:
       - sudo
     append: true
+  when: user_username
+
+- name: install git
+  apt:
+    name: git
 
 - name: install antigen
   git:
     repo: https://github.com/zsh-users/antigen.git
     dest: "{{ user_home_root }}/{{ user_username }}/.antigen"
     version: v2.2.3
+  when: user_username
 
 - name: "manage {{ user_username }}'s .zshrc"
   template:
     src: .zshrc.j2
     dest: "{{ user_home_root }}/{{ user_username }}/.zshrc"
+  when: user_username
 
 - name: "manage {{ user_username }}'s SSH authorized_keys"
   authorized_key:
     user: "{{ user_username }}"
     key: "{{ item }}"
   loop: "{{ user_authorized_keys }}"
+  when: user_username
