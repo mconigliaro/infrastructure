@@ -16,9 +16,9 @@ resource "aws_volume_attachment" "mail_data" {
 
 resource "aws_instance" "mail" {
   # https://cloud-images.ubuntu.com/locator/ec2/
-  # us-east-1 focal arm64
-  ami           = "ami-0b75998a97c952252"
-  instance_type = "t4g.micro"
+  # us-east-1 focal amd64
+  ami           = "ami-042e8287309f5df03"
+  instance_type = "t3a.micro"
   key_name      = aws_key_pair.mike.key_name
   subnet_id     = module.vpc.public_subnets[0]
 

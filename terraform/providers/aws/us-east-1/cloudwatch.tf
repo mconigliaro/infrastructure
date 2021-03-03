@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "billing_estimated_charges" {
   period              = 21600 # 6 hours
   statistic           = "Average"
   comparison_operator = "GreaterThanOrEqualToThreshold"
-  threshold           = 2
+  threshold           = 9
   evaluation_periods  = 1
 
   alarm_actions             = [aws_sns_topic.alerts.id]
