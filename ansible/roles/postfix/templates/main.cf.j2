@@ -8,10 +8,11 @@ myorigin = /etc/mailname
 alias_maps = hash:/etc/aliases
 virtual_alias_maps = hash:/etc/postfix/virtual
 mailbox_transport = {{ postfix_conf_mailbox_transport }}
+recipient_delimiter = +
+propagate_unmatched_extensions =
 
 mailbox_size_limit = 0
-message_size_limit = 25000000
-recipient_delimiter = +
+message_size_limit = 50000000
 
 biff = no
 delay_warning_time = 15m
