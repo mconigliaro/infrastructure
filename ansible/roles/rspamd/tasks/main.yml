@@ -11,19 +11,16 @@
   apt:
     name: rspamd
 
-- name: configure redis for rspamd
+- name: configure rspamd
   template:
-    src: redis.conf.j2
-    dest: /etc/rspamd/local.d/redis.conf
-  notify:
-    - restart rspamd
-
-- name: configure user settings for rspamd
-  template:
-    src: settings.conf.j2
-    dest: /etc/rspamd/local.d/settings.conf
-  notify:
-    - restart rspamd
+    src: "{{ item }}.j2"
+    dest: "/etc/rspamd/local.d/{{ item }}"
+  loop:
+    - actions.conf
+    - milter_headers.conf
+    - redis.conf
+    - settings.conf
+  notify: restart rspamd
 
 - name: start rspamd
   service:
